@@ -93,24 +93,24 @@ const menuRouter = [
     },
 
     // International
-    {
-        path: "/international/app-management",
-        name: (
-            <Translation>
-                {(t) => t("internationalPlatform.applicationManagement.title")}
-            </Translation>
-        ),
-        component: lazy(() => import("@/pages/international/app_management"))
-    },
-    {
-        path: "/international/entry-management",
-        name: (
-            <Translation>
-                {(t) => t("internationalPlatform.entryManagement.title")}
-            </Translation>
-        ),
-        component: lazy(() => import("@/pages/international/entry_management"))
-    },
+    // {
+    //     path: "/international/app-management",
+    //     name: (
+    //         <Translation>
+    //             {(t) => t("internationalPlatform.applicationManagement.title")}
+    //         </Translation>
+    //     ),
+    //     component: lazy(() => import("@/pages/international/app_management"))
+    // },
+    // {
+    //     path: "/international/entry-management",
+    //     name: (
+    //         <Translation>
+    //             {(t) => t("internationalPlatform.entryManagement.title")}
+    //         </Translation>
+    //     ),
+    //     component: lazy(() => import("@/pages/international/entry_management"))
+    // },
 
     // WMS - config center - basic
     {
@@ -478,24 +478,24 @@ const menuRouter = [
     },
 
     //Plugin System
-    {
-        path: "/plugin/plugin-management",
-        name: (
-            <Translation>
-                {(t) => t("pluginSystem.pluginManagement.title")}
-            </Translation>
-        ),
-        component: lazy(() => import("@/pages/plugin/plugin_management"))
-    },
-    {
-        path: "/plugin/plugin-store",
-        name: (
-            <Translation>
-                {(t) => t("pluginSystem.pluginStore.title")}
-            </Translation>
-        ),
-        component: lazy(() => import("@/pages/plugin/plugin_store"))
-    },
+    // {
+    //     path: "/plugin/plugin-management",
+    //     name: (
+    //         <Translation>
+    //             {(t) => t("pluginSystem.pluginManagement.title")}
+    //         </Translation>
+    //     ),
+    //     component: lazy(() => import("@/pages/plugin/plugin_management"))
+    // },
+    // {
+    //     path: "/plugin/plugin-store",
+    //     name: (
+    //         <Translation>
+    //             {(t) => t("pluginSystem.pluginStore.title")}
+    //         </Translation>
+    //     ),
+    //     component: lazy(() => import("@/pages/plugin/plugin_store"))
+    // },
 
     // work station system
     {

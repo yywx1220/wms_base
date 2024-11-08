@@ -21,7 +21,7 @@ export enum ChooseArea {
 }
 
 export enum OperationType {
-    RECEIVING = "RECEIVING" /** 收货 */,
+    RECEIVE = "RECEIVE" /** 收货 */,
     PUT_AWAY = "PUT_AWAY" /** 上架 */,
     PICKING = "PICKING" /** 拣货 */,
     SORTING = "SORTING",

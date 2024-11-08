@@ -79,9 +79,7 @@ export default class Admin extends React.Component<AdminProps, State> {
             // return { key: value, label: menus[value].title }
             return {
                 key: menu,
-                label: (this.state.menus as any)[menu].languageValueMappings[
-                    e.value
-                ]
+                label: (this.state.menus as any)[menu].title
             }
         })
         if (this.state.iframeShow) {
@@ -141,9 +139,7 @@ export default class Admin extends React.Component<AdminProps, State> {
                     // return { key: value, label: menus[value].title }
                     return {
                         key: value,
-                        label: menus[value].languageValueMappings[
-                            this.props.store.locale
-                        ]
+                        label: menus[value].title
                     }
                 })
 
@@ -159,7 +155,7 @@ export default class Admin extends React.Component<AdminProps, State> {
 
                 // 角色的仓库权限为空时，不初始化仓库
                 if (res.data.warehouses) {
-                    this.initWarehouseSelect(res.data.warehouses)
+                    // this.initWarehouseSelect(res.data.warehouses)
                 }
             })
         }

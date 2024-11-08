@@ -22,7 +22,7 @@ export enum StationTypes {
 const cardOptions = [
     {
         title: <Translation>{(t) => t("receiving.title")}</Translation>,
-        value: "RECEIVING",
+        value: "RECEIVE",
         description: (
             <Translation>{(t) => t("receiving.cardDescription")}</Translation>
         ),
