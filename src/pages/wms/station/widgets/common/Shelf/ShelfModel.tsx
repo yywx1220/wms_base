@@ -1,29 +1,33 @@
 import React from "react"
 import type { ContainerSlotSpecsItem } from "@/pages/wms/station/event-loop/types"
+import Shelf from "./Shelf"
 /* 显示的货架层数 **/
 const SHOW_LAYERS = 5
 
 const ShelfModel = (props: any) => {
     const {
-        containerSpec,
+        containerSlotSpecs,
         activeSlotCodes,
         disabledSlotCodes,
         recommendSlotCodes,
         showAllSlots,
+        showLevel = true,
         onCustomActionDispatch
     } = props
-
-    const level = containerSpec?.containerSlotSpecs?.reduce(
-        (pre: number, cur: ContainerSlotSpecsItem) => {
-            return cur.locLevel > pre ? cur.locLevel : pre
-        },
-        0
-    )
+    console.log("containerSlotSpecs", containerSlotSpecs)
+    const level = containerSlotSpecs
+        ? containerSlotSpecs.reduce(
+              (pre: number, cur: ContainerSlotSpecsItem) => {
+                  return cur.locLevel > pre ? cur.locLevel : pre
+              },
+              0
+          )
+        : 0
 
     const rows = [...new Array(level)].map((r, index) => index + 1)
 
     const shelfList = rows.map((row) => {
-        return containerSpec?.containerSlotSpecs
+        return containerSlotSpecs
             ?.filter((c: ContainerSlotSpecsItem) => c.locLevel === row)
             .sort(
                 (c: ContainerSlotSpecsItem, c1: ContainerSlotSpecsItem) =>
@@ -68,7 +72,7 @@ const ShelfModel = (props: any) => {
                         key={index}
                         style={{ height: 100 / list.length + "%" }}
                     >
-                        {item && (
+                        {showLevel && item && (
                             <div
                                 className="d-flex items-center justify-center w-10 text-md rounded-md m-1"
                                 style={{
@@ -81,8 +85,16 @@ const ShelfModel = (props: any) => {
                                 {item?.[0].level}
                             </div>
                         )}
+                        <Shelf
+                            item={item}
+                            index={index}
+                            activeSlotCodes={activeSlotCodes}
+                            disabledSlotCodes={disabledSlotCodes}
+                            recommendSlotCodes={recommendSlotCodes}
+                            onCustomActionDispatch={onCustomActionDispatch}
+                        />
 
-                        <div
+                        {/* <div
                             key={index}
                             className="d-flex flex-col-reverse items-center m-1"
                             style={{
@@ -154,7 +166,7 @@ const ShelfModel = (props: any) => {
                                         )
                                     }
                                 )}
-                        </div>
+                        </div> */}
                     </div>
                 )
             })}

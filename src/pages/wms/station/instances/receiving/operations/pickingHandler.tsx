@@ -30,7 +30,7 @@ export const valueFilter = (data: WorkStationEvent<any>) => {
     }
 }
 
-const PickAreaHandler = (props: OperationProps<any, any>) => {
+const PickAreaHandler = (props: any) => {
     const { value = {} } = props
     return (
         <>

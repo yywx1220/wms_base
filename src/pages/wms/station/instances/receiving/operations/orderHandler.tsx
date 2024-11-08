@@ -36,7 +36,7 @@ const OrderAreaData = [
     }
 ]
 
-const OrderHandler = (props: OperationProps<OrderHandlerProps, any>) => {
+const OrderHandler = (props: any) => {
     const { value, onCustomActionDispatch } = props
 
     return (

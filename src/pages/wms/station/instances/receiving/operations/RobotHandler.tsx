@@ -3,10 +3,11 @@ import type { replenishProps } from "@/pages/wms/station/instances/replenish/typ
 import type { OperationProps } from "@/pages/wms/station/instances/types"
 import React, { useEffect, useState } from "react"
 import { CustomActionType } from "@/pages/wms/station/instances/replenish/customActionType"
-import { Row, Col, Input, Divider, Button, InputNumber } from "antd"
+import { Row, Col, Input, Divider, Button, InputNumber, Radio } from "antd"
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons"
+import type { RadioChangeEvent } from "antd"
 import request from "@/utils/requestInterceptor"
-import { container_spec } from "@/pages/wms/constants/select_search_api_contant"
+import ShelfModel from "@/pages/wms/station/widgets/common/Shelf/ShelfModel"
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
@@ -53,9 +54,7 @@ export const valueFilter = (
     }
 }
 
-const RobotHandler = (
-    props: OperationProps<RobotHandlerProps, ContainerHandlerConfirmProps>
-) => {
+const RobotHandler = (props: any) => {
     const { value, onCustomActionDispatch } = props
 
     const { robotArea } = value || {}
@@ -65,6 +64,10 @@ const RobotHandler = (
             ?.arrivedContainer
 
     const [inputValue, setInputValue] = useState<number>()
+    const [specOtions, setSpecOtions] = useState<any[]>([])
+    const [containerSpec, setContainerSpec] = useState<string>("")
+    const [containerSlotSpec, setContainerSlotSpec] = useState<string>("")
+    const [activeSlot, setActiveSlot] = useState<string[]>([])
 
     useEffect(() => {
         request({
@@ -108,6 +111,10 @@ const RobotHandler = (
             }
         }).then((res: any) => {
             console.log("res", res?.data?.options)
+            setSpecOtions(res?.data?.options || [])
+            setContainerSpec(res?.data?.options[0]?.value)
+            const slotSpec = res?.data?.options[0]?.containerSlotSpecs
+            setContainerSlotSpec(JSON.parse(slotSpec))
         })
     }, [])
 
@@ -137,6 +144,20 @@ const RobotHandler = (
 
     const handlePlus = () => {
         setInputValue((prev: number) => prev + 1)
+    }
+
+    const onSpecChange = (e: RadioChangeEvent) => {
+        console.log(`radio checked:${e.target.value}`)
+        setContainerSpec(e.target.value)
+        const slotSpec = specOtions.find(
+            (item) => item.value === e.target.value
+        )?.containerSlotSpecs
+        setContainerSlotSpec(JSON.parse(slotSpec))
+    }
+
+    const onSlotChange = (cell: any) => {
+        console.log("cell", cell)
+        setActiveSlot([cell.containerSlotSpecCode])
     }
     return (
         <>
@@ -179,13 +200,41 @@ const RobotHandler = (
                         </div>
                     </Col>
                 </Row>
-                <Row>
+                <Row className="my-2">
                     <Col span={6}>
                         <div className="text-right leading-loose">
                             容器规格选择：
                         </div>
                     </Col>
-                    <Col></Col>
+                    <Col span={14}>
+                        <div>
+                            <Radio.Group
+                                value={containerSpec}
+                                buttonStyle="solid"
+                                onChange={onSpecChange}
+                            >
+                                {specOtions.map((item) => (
+                                    <Radio.Button value={item.value}>
+                                        {item.label}
+                                    </Radio.Button>
+                                ))}
+                            </Radio.Group>
+                        </div>
+                        <div
+                            className="d-flex flex-col"
+                            style={{ height: 160 }}
+                        >
+                            <ShelfModel
+                                containerSlotSpecs={containerSlotSpec}
+                                activeSlotCodes={activeSlot}
+                                showAllSlots={true}
+                                showLevel={false}
+                                onCustomActionDispatch={(cell: any) =>
+                                    onSlotChange(cell)
+                                }
+                            />
+                        </div>
+                    </Col>
                 </Row>
                 <Row>
                     <Col span={6}>
@@ -195,6 +244,12 @@ const RobotHandler = (
                     </Col>
                     <Col span={14}>
                         <Input />
+                    </Col>
+                </Row>
+                <Row justify="end" className="mt-2">
+                    <Col span={8}>
+                        <Button type="primary">满箱</Button>
+                        <Button className="ml-2">确定</Button>
                     </Col>
                 </Row>
             </div>

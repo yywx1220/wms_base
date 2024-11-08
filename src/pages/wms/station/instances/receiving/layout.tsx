@@ -1,9 +1,10 @@
 /**
  * 当前工作站实例的布局
  */
-import { Col, Row } from "antd"
+import { Col, Row, Input, Button } from "antd"
 import classNames from "classnames/bind"
-import React from "react"
+import React, { useState } from "react"
+import request from "@/utils/requestInterceptor"
 
 import type {
     WorkStationEvent,
@@ -23,6 +24,9 @@ import { valueFilter as pickFilter } from "./operations/pickingHandler"
 import { valueFilter as robotFilter } from "./operations/RobotHandler"
 import { valueFilter as scanInfoFilter } from "./operations/tips"
 import { StationOperationType } from "./type"
+import PickingHandler from "./operations/pickingHandler"
+import RobotHandler from "./operations/RobotHandler"
+import OrderHandler from "./operations/orderHandler"
 
 interface ReplenishLayoutProps extends OperationProps<any, any> {
     workStationEvent: WorkStationEvent<any>
@@ -39,85 +43,76 @@ const Layout = (props: ReplenishLayoutProps) => {
 
     const stationStatus = workStationEvent?.stationProcessingStatus
 
+    const [orderNo, setOrderNo] = useState("")
+
+    const [orderInfo, setOrderInfo] = useState()
+
+    const onScanSubmit = () => {
+        // console.log("orderNo",orderNo)
+        request({
+            method: "post",
+            url: `/inbound/plan/query/${orderNo}/${workStationEvent.warehouseCode}`
+        }).then((res: any) => {
+            console.log("res", res)
+            setOrderInfo(res.data)
+        })
+    }
+
     return (
         <>
-            <Row className="h-full" gutter={24}>
-                <Col span={24} className="mb-2">
-                    <ComponentWrapper
-                        type={StationOperationType.orderArea}
-                        Component={
-                            OPERATION_MAP[StationOperationType.orderArea]
-                        }
-                        valueFilter={defaultFilter}
-                    />
-                </Col>
-                <Col span={12}>
-                    <ComponentWrapper
-                        type={StationOperationType.selectDetailArea}
-                        Component={
-                            OPERATION_MAP[StationOperationType.selectDetailArea]
-                        }
-                        valueFilter={defaultFilter}
-                    />
-                </Col>
-                <Col span={12}>
-                    <ComponentWrapper
-                        type={StationOperationType.robotArea}
-                        Component={
-                            OPERATION_MAP[StationOperationType.robotArea]
-                        }
-                        valueFilter={defaultFilter}
-                    />
-                </Col>
-                {/* {stationStatus &&
-                Object.keys(taskStatusText).includes(stationStatus) ? (
-                    <Col className="flex-1 rounded-lg">
-                        <ComponentWrapper
-                            type={StationOperationType.defaultArea}
+            {orderInfo ? (
+                <Row className="h-full" gutter={24}>
+                    <Col span={24} className="mb-2">
+                        {/* <ComponentWrapper
+                            type={StationOperationType.orderArea}
                             Component={
-                                OPERATION_MAP[StationOperationType.defaultArea]
+                                OPERATION_MAP[StationOperationType.orderArea]
                             }
                             valueFilter={defaultFilter}
-                        />
+                        /> */}
+                        <OrderHandler value={orderInfo} />
                     </Col>
-                ) : (
-                    <>
-                        <Col className="rounded-lg h-full" span={24}>
-                            <ComponentWrapper
-                                type={StationOperationType.orderArea}
-                                Component={
-                                    OPERATION_MAP[
-                                        StationOperationType.orderArea
-                                    ]
-                                }
-                                valueFilter=""
-                            />
-                        </Col>
-                        <Col className="rounded-lg h-full" span={12}>
-                            <ComponentWrapper
-                                type={StationOperationType.robotArea}
-                                Component={
-                                    OPERATION_MAP[
-                                        StationOperationType.robotArea
-                                    ]
-                                }
-                                valueFilter={filterMap.robotArea}
-                            />
-                        </Col>
-                        <Col className="rounded-lg h-full" span={12}>
-                            <ComponentWrapper
-                                type={StationOperationType.selectDetailArea}
-                                Component={
-                                    OPERATION_MAP[
-                                        StationOperationType.selectDetailArea
-                                    ]
-                                }
-                                valueFilter={pickFilter}
-                            />
-                        </Col>
-                    </>
-                )} */}
-            </Row>
+                    <Col span={12}>
+                        {/* <ComponentWrapper
+                            type={StationOperationType.selectDetailArea}
+                            Component={
+                                OPERATION_MAP[
+                                    StationOperationType.selectDetailArea
+                                ]
+                            }
+                            valueFilter={defaultFilter}
+                        /> */}
+                        <PickingHandler value={orderInfo} />
+                    </Col>
+                    <Col span={12}>
+                        {/* <ComponentWrapper
+                            type={StationOperationType.robotArea}
+                            Component={
+                                OPERATION_MAP[StationOperationType.robotArea]
+                            }
+                            valueFilter={defaultFilter}
+                        /> */}
+                        <RobotHandler value={orderInfo} />
+                    </Col>
+                </Row>
+            ) : (
+                <div className="w-full h-full d-flex flex-col justify-center items-center">
+                    <div className="w-1/3">
+                        <div className="text-xl">请扫描LPN号</div>
+                        <Input
+                            size="large"
+                            className="my-4 w-full"
+                            value={orderNo}
+                            onChange={(e) => setOrderNo(e.target.value)}
+                            // style={{ width: "100%" }}
+                        />
+                        <Button type="primary" block onClick={onScanSubmit}>
+                            确定
+                        </Button>
+                    </div>
+                </div>
+            )}
+
             <ComponentWrapper
                 type={StationOperationType.tips}
                 Component={OPERATION_MAP[StationOperationType.tips]}

@@ -64,7 +64,7 @@ const MaterialRack = (props: MaterialProps) => {
                 bay={toBePickdSlot?.locBay}
             />
             <ShelfModel
-                containerSpec={containerSpec}
+                containerSlotSpecs={containerSpec?.containerSlotSpecs}
                 activeSlotCodes={activeSlotCodes}
                 disabledSlotCodes={disabledSlotCodes}
                 recommendSlotCodes={recommendSlotCodes}
