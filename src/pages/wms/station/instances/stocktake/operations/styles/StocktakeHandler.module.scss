@@ -1,0 +1,50 @@
+.skus-info-container {
+  display: flex;
+  padding-top: 40px;
+
+  .task-table {
+    width: 300px;
+    margin-right: 24px;
+    overflow: auto;
+    color: #999;
+
+    .table-row {
+      color: #999;
+      cursor: pointer;
+    }
+
+    .table-row--active {
+      color: #333;
+      cursor: pointer;
+    }
+  }
+}
+
+.count-container {
+  display: flex;
+  gap: 24px;
+  margin-top: 40px;
+
+  .actual-quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 144px;
+    padding: 0 16px;
+    line-height: 1.25;
+    background: #fafafa;
+
+    .count-label {
+      font-size: 16px;
+      color: #666;
+    }
+  }
+
+  .operation-btn {
+    min-width: 160px;
+    height: 64px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+}
