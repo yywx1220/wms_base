@@ -17,7 +17,7 @@ const form = [
     {
         label: "${'userCenter.userManagement.table.loginUsername' | t}",
         type: "input-text",
-        name: "username",
+        name: "account",
         required: true
     },
     {
@@ -92,7 +92,7 @@ const columns = [
         searchable: true
     },
     {
-        name: "username",
+        name: "account",
         label: "${'userCenter.userManagement.table.loginUsername' | t}",
         searchable: true
     },

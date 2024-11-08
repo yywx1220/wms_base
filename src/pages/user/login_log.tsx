@@ -6,7 +6,7 @@ const columns = [
         label: "ID"
     },
     {
-        name: "username",
+        name: "account",
         label: "${'userCenter.userManagement.table.loginUsername' | t}",
         searchable: true
     },
