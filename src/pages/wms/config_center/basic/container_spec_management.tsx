@@ -182,7 +182,7 @@ const schema = {
     //   title: "容器规格管理",
     title: <Translation>{(t) => t("containerSpec.title")}</Translation>,
     toolbar: [],
-    initApi: "/mdm/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "crud",

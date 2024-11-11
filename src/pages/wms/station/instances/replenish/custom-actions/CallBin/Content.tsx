@@ -101,7 +101,7 @@ const Content = (props: CallBinContentProps) => {
     const getStockTakeOptions = async () => {
         const res: any = await request({
             method: "get",
-            url: `/mdm/dictionary/getAll`
+            url: `post:/mdm/config/dictionary/getAll`
         })
         setSpecSlotOptions(res?.data?.CallContainerSlotSpecCode || [])
     }

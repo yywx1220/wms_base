@@ -146,7 +146,7 @@ const schema = {
     type: "page",
     title: "${'wms.menu.inventoryRecords' | t}",
     toolbar: [],
-    initApi: "/mdm/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "crud",

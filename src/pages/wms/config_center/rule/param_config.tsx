@@ -150,7 +150,7 @@ const showColumns = columns
 const schema = {
     type: "page",
     title: "${'parameterManagement.title' | t}",
-    initApi: "/mdm/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "crud",

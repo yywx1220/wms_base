@@ -110,7 +110,7 @@ const schema = {
     type: "page",
     title: "${'warehouseAreaManagement.title' | t}",
     toolbar: [],
-    initApi: "/mdm/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "crud",
