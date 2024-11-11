@@ -30,11 +30,11 @@ const columns = [
         label: "${'table.customerOrderNo' | t}",
         searchable: true
     },
-    {
-        name: "inboundOrderType",
-        label: "订单类型",
-        hidden: true
-    },
+//     {
+//         name: "inboundOrderType",
+//         label: "订单类型",
+//         hidden: true
+//     },
     {
         name: "inboundPlanOrderStatus",
         label: "${'table.status' | t}",
