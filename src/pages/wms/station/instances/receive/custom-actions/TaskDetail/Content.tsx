@@ -4,30 +4,6 @@ let warehouseCode = localStorage.getItem("warehouseCode")
 
 const columns = [
     {
-        name: "customerOrderNo",
-        dbField: "opo.customer_order_no",
-        label: "客户单号",
-        searchable: true
-    },
-    {
-        name: "customerOrderNo",
-        dbField: "opo.customer_order_no",
-        label: "LPN号",
-        searchable: true
-    },
-    {
-        name: "customerOrderType",
-        dbField: "opo.customer_order_type",
-        label: "入库类型",
-        searchable: true
-    },
-    {
-        name: "customerOrderType",
-        dbField: "opo.customer_order_type",
-        label: "货主",
-        searchable: true
-    },
-    {
         name: "skuCode",
         dbField: "smd.sku_code",
         label: "商品编码",
@@ -53,20 +29,10 @@ const columns = [
         name: "operatedQty",
         dbField: "ot.operated_qty",
         label: "异常数量"
-    },
-    {
-        name: "operatedQty",
-        dbField: "ot.operated_qty",
-        label: "容器状态"
-    },
-    {
-        name: "skuAttributes",
-        dbField: "sba.sku_attributes",
-        label: "批次属性"
     }
 ]
 
-const searchIdentity = "WOutboundOperationTask"
+const searchIdentity = "WReceiveTaskDetail"
 const showColumns = columns
 
 const schema = {
@@ -77,7 +43,7 @@ const schema = {
     body: [
         {
             type: "crud",
-            name: "PickingOrderTable",
+            name: "ReceiveOrderDetailTable",
             api: {
                 method: "POST",
                 url:
@@ -88,11 +54,7 @@ const schema = {
             defaultParams: {
                 searchIdentity: searchIdentity,
                 showColumns: showColumns,
-                searchObject: {
-                    tables: "w_operation_task ot, w_picking_order_detail pod, w_outbound_plan_order opo, w_sku_batch_attribute sba, m_sku_main_data smd",
-                    where: "ot.detail_id = pod.id and pod.outbound_order_plan_id = opo.id and ot.sku_batch_attribute_id = sba.id and ot.sku_id = smd.id and ot.required_qty > 0",
-                    orderBy: "ot.update_time desc"
-                }
+                searchObject: {}
             },
             autoFillHeight: true,
             autoGenerateFilter: {

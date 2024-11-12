@@ -1,7 +1,7 @@
 /**
  * 当前工作站实例的布局
  */
-import { Col, Row, Input, Button } from "antd"
+import { Col, Row, Input, Button, message } from "antd"
 import classNames from "classnames/bind"
 import React, { useState } from "react"
 import request from "@/utils/requestInterceptor"
@@ -56,10 +56,15 @@ const Layout = (props: ReplenishLayoutProps) => {
             method: "post",
             // url: `/wms/inbound/plan/query/${orderNo}/${workStationEvent.warehouseCode}`
             url: `/wms/inbound/plan/query/${orderNo}/MOBILESENTRIX`
-        }).then((res: any) => {
-            console.log("res", res)
-            setOrderInfo(res.data.data)
         })
+            .then((res: any) => {
+                console.log("res", res)
+                setOrderInfo(res.data.data)
+            })
+            .catch((error) => {
+                console.log("error", error)
+                message.error(error.message)
+            })
     }
 
     const onSkuChange = (detail: any) => {
@@ -68,11 +73,11 @@ const Layout = (props: ReplenishLayoutProps) => {
 
     const onConfirm = ({
         containerCode,
-        containerSpec,
+        containerSpecCode,
+        containerId,
         activeSlot,
-        number
+        inputValue
     }: any) => {
-        console.log("activeSlot", activeSlot)
         request({
             method: "post",
             url: "/wms/inbound/plan/accept",
@@ -80,16 +85,28 @@ const Layout = (props: ReplenishLayoutProps) => {
                 inboundPlanOrderId: orderInfo.id,
                 inboundPlanOrderDetailId: currentSkuInfo.id,
                 warehouseCode,
-                qtyAccepted: number,
+                qtyAccepted: inputValue,
                 skuId: currentSkuInfo.skuId,
-                qtyAbnormal: currentSkuInfo.qtyAbnormal,
                 targetContainerCode: containerCode,
-                targetContainerSpecCode: containerSpec
-                // targetContainerSlotCode: activeSlot[0]
+                targetContainerSpecCode: containerSpecCode,
+                targetContainerSlotCode: activeSlot[0],
+                batchAttributes: {},
+                targetContainerId: containerId,
+                workStationId: workStationEvent.workStationId
+            },
+            headers: {
+                "Content-Type": "application/json"
             }
-        }).then((res) => {
-            console.log("confirm", res)
         })
+            .then((res: any) => {
+                console.log("confirm", res)
+                if (res.status === 200) {
+                    onScanSubmit()
+                }
+            })
+            .catch((error) => {
+                console.log("error", error)
+            })
     }
 
     return (

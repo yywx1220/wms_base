@@ -4,10 +4,10 @@ import { TabActionModalType } from "@/pages/wms/station/tab-actions/types"
 import React from "react"
 import { Translation } from "react-i18next"
 
-import Content from "@/pages/wms/station/instances/replenish/custom-actions/TaskDetail/Content"
+import Content from "./Content"
 
 const TaskDetail: TabAction = {
-    name: "上架任务详情",
+    name: "收货明细",
     key: "TaskDetail",
     position: "left",
     modalType: TabActionModalType.FULL_SCREEN,
@@ -17,7 +17,7 @@ const TaskDetail: TabAction = {
         return <Content {...props} />
     },
     modalConfig: {
-        title: "上架任务详情",
+        title: "收货明细",
         okText: "",
         footer: null
     },

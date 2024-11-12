@@ -255,6 +255,7 @@ export interface WorkStationEvent<T> {
     /** 已呼叫容器数 */
     callContainerCount?: number
     warehouseAreaId?: string
+    workStationId: string
 }
 
 export interface ContainerSlotSpecsItem {
