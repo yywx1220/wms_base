@@ -28,6 +28,8 @@ import PickingHandler from "./operations/pickingHandler"
 import RobotHandler from "./operations/RobotHandler"
 import OrderHandler from "./operations/orderHandler"
 
+let warehouseCode = localStorage.getItem("warehouseCode")
+
 interface ReplenishLayoutProps extends OperationProps<any, any> {
     workStationEvent: WorkStationEvent<any>
     workStationInfo: WorkStationInfo
@@ -45,16 +47,48 @@ const Layout = (props: ReplenishLayoutProps) => {
 
     const [orderNo, setOrderNo] = useState("")
 
-    const [orderInfo, setOrderInfo] = useState()
+    const [orderInfo, setOrderInfo] = useState<any>()
+    const [currentSkuInfo, setCurrentSkuInfo] = useState<any>({})
 
     const onScanSubmit = () => {
         // console.log("orderNo",orderNo)
         request({
             method: "post",
-            url: `/inbound/plan/query/${orderNo}/${workStationEvent.warehouseCode}`
+            // url: `/wms/inbound/plan/query/${orderNo}/${workStationEvent.warehouseCode}`
+            url: `/wms/inbound/plan/query/${orderNo}/MOBILESENTRIX`
         }).then((res: any) => {
             console.log("res", res)
-            setOrderInfo(res.data)
+            setOrderInfo(res.data.data)
+        })
+    }
+
+    const onSkuChange = (detail: any) => {
+        setCurrentSkuInfo(detail)
+    }
+
+    const onConfirm = ({
+        containerCode,
+        containerSpec,
+        activeSlot,
+        number
+    }: any) => {
+        console.log("activeSlot", activeSlot)
+        request({
+            method: "post",
+            url: "/wms/inbound/plan/accept",
+            data: {
+                inboundPlanOrderId: orderInfo.id,
+                inboundPlanOrderDetailId: currentSkuInfo.id,
+                warehouseCode,
+                qtyAccepted: number,
+                skuId: currentSkuInfo.skuId,
+                qtyAbnormal: currentSkuInfo.qtyAbnormal,
+                targetContainerCode: containerCode,
+                targetContainerSpecCode: containerSpec
+                // targetContainerSlotCode: activeSlot[0]
+            }
+        }).then((res) => {
+            console.log("confirm", res)
         })
     }
 
@@ -82,7 +116,10 @@ const Layout = (props: ReplenishLayoutProps) => {
                             }
                             valueFilter={defaultFilter}
                         /> */}
-                        <PickingHandler value={orderInfo} />
+                        <PickingHandler
+                            value={orderInfo}
+                            onSkuChange={onSkuChange}
+                        />
                     </Col>
                     <Col span={12}>
                         {/* <ComponentWrapper
@@ -92,7 +129,7 @@ const Layout = (props: ReplenishLayoutProps) => {
                             }
                             valueFilter={defaultFilter}
                         /> */}
-                        <RobotHandler value={orderInfo} />
+                        <RobotHandler value={orderInfo} onConfirm={onConfirm} />
                     </Col>
                 </Row>
             ) : (

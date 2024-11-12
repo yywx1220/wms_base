@@ -1,10 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 
-import type { OperationProps } from "@/pages/wms/station/instances/types"
 import { WorkStationEvent } from "@/pages/wms/station/event-loop/types"
-import PickingWholeBox from "./components/PickingWholeBox"
-import PickingSKU from "./components/PickingSKU"
-import { Row, Col, Input, Divider } from "antd"
+
+import { Input, Divider, message } from "antd"
 import SkuInfo from "@/pages/wms/station/widgets/common/SkuInfo"
 
 export interface SKUHandlerConfirmProps {
@@ -31,12 +29,36 @@ export const valueFilter = (data: WorkStationEvent<any>) => {
 }
 
 const PickAreaHandler = (props: any) => {
-    const { value = {} } = props
+    const { value = {}, onSkuChange } = props
+    const { details } = value
+
+    const [skuCode, setSkuCode] = useState<string>("")
+    const [currentSkuInfo, setCurrentSkuInfo] = useState<any>({})
+    // const { qtyAbnormal, qtyAccepted, qtyRestocked, skuCode, skuName } = value
+    const onChange = (e: any) => {
+        setSkuCode(e.target.value)
+    }
+
+    const onPressEnter = () => {
+        const detail = details.find((item: any) => item.skuCode === skuCode)
+        if (!detail) {
+            setSkuCode("")
+            message.warning("sku不属于当前订单，请重新扫码")
+            return
+        }
+        setCurrentSkuInfo(detail)
+        onSkuChange(detail)
+    }
     return (
         <>
             <div className="d-flex items-center">
                 <div className="white-space-nowrap">请扫描商品条码:</div>
-                <Input bordered={false} />
+                <Input
+                    bordered={false}
+                    value={skuCode}
+                    onChange={onChange}
+                    onPressEnter={onPressEnter}
+                />
             </div>
             <Divider style={{ margin: "12px 0" }} />
             <div className="bg-gray-100 py-4 pl-6 d-flex">
@@ -45,7 +67,9 @@ const PickAreaHandler = (props: any) => {
                     <div>/到货数</div>
                 </div>
                 <div className="border-solid border-gray-200 border-l border-r mx-4"></div>
-                <div className="text-2xl">800/21000</div>
+                <div className="text-2xl">
+                    {currentSkuInfo.qtyAccepted}/{currentSkuInfo.qtyRestocked}
+                </div>
             </div>
             <div className="bg-gray-100 mt-4 p-3">
                 <div>商品详情</div>
@@ -53,6 +77,9 @@ const PickAreaHandler = (props: any) => {
                     // {...scannedSkuInfo}
                     imgWidth={160}
                     detailHeight={130}
+                    skuAttributes={currentSkuInfo.batchAttributes}
+                    skuName={currentSkuInfo.skuName}
+                    barCode={currentSkuInfo.skuCode}
                 />
             </div>
         </>

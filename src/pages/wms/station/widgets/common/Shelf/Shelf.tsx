@@ -7,7 +7,8 @@ const Shelf = ({
     activeSlotCodes,
     disabledSlotCodes,
     recommendSlotCodes,
-    onCustomActionDispatch
+    onCustomActionDispatch,
+    type
 }: any) => {
     return (
         <div
@@ -58,7 +59,9 @@ const Shelf = ({
                             <span className="d-flex flex-1 flex-col items-center justify-center w-full text-md leading-5 text-center">
                                 {isActiveSlot
                                     ? // ? cell.containerSlotSpecCode
-                                      cell.level + cell.locBay
+                                      type === "CONTAINER"
+                                        ? cell.containerSlotSpecCode
+                                        : cell.level + cell.locBay
                                     : ""}
                                 &nbsp;
                             </span>

@@ -55,19 +55,14 @@ export const valueFilter = (
 }
 
 const RobotHandler = (props: any) => {
-    const { value, onCustomActionDispatch } = props
-
-    const { robotArea } = value || {}
-
-    const arrivedContainer =
-        robotArea?.workLocationViews?.[0].workLocationSlots?.[0]
-            ?.arrivedContainer
+    const { value, onConfirm } = props
 
     const [inputValue, setInputValue] = useState<number>()
     const [specOtions, setSpecOtions] = useState<any[]>([])
     const [containerSpec, setContainerSpec] = useState<string>("")
     const [containerSlotSpec, setContainerSlotSpec] = useState<string>("")
     const [activeSlot, setActiveSlot] = useState<string[]>([])
+    const [containerCode, setContainerCode] = useState<string>("")
 
     useEffect(() => {
         request({
@@ -114,24 +109,9 @@ const RobotHandler = (props: any) => {
             setSpecOtions(res?.data?.options || [])
             setContainerSpec(res?.data?.options[0]?.value)
             const slotSpec = res?.data?.options[0]?.containerSlotSpecs
-            setContainerSlotSpec(JSON.parse(slotSpec))
+            setContainerSlotSpec(JSON.parse(slotSpec || "[]"))
         })
     }, [])
-
-    const handleSelectSlot = async (cell: any) => {
-        if (
-            arrivedContainer?.activeSlotCodes?.includes(
-                cell.containerSlotSpecCode
-            )
-        ) {
-            return
-        }
-        await onCustomActionDispatch({
-            eventCode: CustomActionType.CHOOSE_CONTAINER_SLOT_CODE,
-            data: cell.containerSlotSpecCode
-        })
-        // return !errorCode
-    }
 
     const onChange = (value: number) => {
         setInputValue(value)
@@ -159,11 +139,37 @@ const RobotHandler = (props: any) => {
         console.log("cell", cell)
         setActiveSlot([cell.containerSlotSpecCode])
     }
+
+    const onContainerChange = (e: any) => {
+        setContainerCode(e.target.value)
+    }
+
+    const onPressEnter = () => {
+        request({
+            method: "post",
+            url: `/wms/basic/container/get?containerCode=${containerCode}&warehouseCode=${warehouseCode}`
+        }).then((res: any) => {
+            console.log("containerCode", res)
+            const data = res.data
+            setContainerSpec(data.containerSpecCode)
+        })
+    }
+
+    const handleOK = () => {
+        console.log("activeSlotrobot", activeSlot)
+        onConfirm({ containerCode, containerSpec, activeSlot, inputValue })
+    }
+
     return (
         <>
             <div className="d-flex items-center">
                 <div className="white-space-nowrap">请扫描容器号:</div>
-                <Input bordered={false} />
+                <Input
+                    bordered={false}
+                    value={containerCode}
+                    onChange={onContainerChange}
+                    onPressEnter={onPressEnter}
+                />
             </div>
             <Divider style={{ margin: "12px 0" }} />
             <div className="px-10">
@@ -243,13 +249,15 @@ const RobotHandler = (props: any) => {
                         </div>
                     </Col>
                     <Col span={14}>
-                        <Input />
+                        <Input value={activeSlot[0]} />
                     </Col>
                 </Row>
                 <Row justify="end" className="mt-2">
                     <Col span={8}>
                         <Button type="primary">满箱</Button>
-                        <Button className="ml-2">确定</Button>
+                        <Button className="ml-2" onClick={handleOK}>
+                            确定
+                        </Button>
                     </Col>
                 </Row>
             </div>

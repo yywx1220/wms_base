@@ -102,7 +102,7 @@ const fromBody = [
 
 const form = {
     type: "form",
-    api: "post:/wms/containerSpec/createOrUpdate",
+    api: "post:/wms/basic/containerSpec/createOrUpdate",
     body: fromBody
 }
 
@@ -113,7 +113,7 @@ const add = {
     label: "${'button.add' | t}",
     target: "role",
     dialog: {
-        size: "lg",
+        size: "full",
         title: "${'button.add' | t}",
         closeOnEsc: true,
         body: form
@@ -242,7 +242,7 @@ const schema = {
                                         url: "/wms/containerSpec/${id}",
                                         method: "get"
                                     },
-                                    api: "post:/wms/containerSpec/createOrUpdate",
+                                    api: "post:/wms/basic/containerSpec/createOrUpdate",
                                     controls: fromBody
                                 }
                             }

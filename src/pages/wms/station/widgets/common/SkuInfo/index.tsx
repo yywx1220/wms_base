@@ -65,20 +65,27 @@ export interface SkuInfoProps {
     actualQty?: number
     /** 工作站配置的商品展示字段 */
     skuDisplayProperty?: CommonDescription[]
+    skuAttributes?: any
+    barCode?: string
+    url: string
 }
 
 const SkuInfo = (props: Partial<pickingViewItem> & Partial<SkuInfoProps>) => {
     const {
         imgWidth = 204,
         detailHeight = 204,
-        skuMainDataDTO,
-        skuBatchAttributeDTO
+        // skuMainDataDTO,
+        // skuBatchAttributeDTO
+        skuAttributes,
+        skuName,
+        barCode,
+        url
     } = props
 
     const { t } = useTranslation()
-    const { skuAttributes = {} } = skuBatchAttributeDTO || {}
-    const { skuName, skuBarcode, skuAttribute } = skuMainDataDTO || {}
-    const url = skuAttribute?.imageUrl || placeholderImage
+    // const { skuAttributes = {} } = skuBatchAttributeDTO || {}
+    // const { skuName, skuBarcode, skuAttribute } = skuMainDataDTO || {}
+    // const url = skuAttribute?.imageUrl || placeholderImage
 
     const returnNotBatchPropertyContent = (value: string) => {
         return (
@@ -93,7 +100,7 @@ const SkuInfo = (props: Partial<pickingViewItem> & Partial<SkuInfoProps>) => {
             <div
                 className="h-full"
                 style={{
-                    backgroundImage: `url(${url})`,
+                    backgroundImage: `url(${url || placeholderImage})`,
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "top center",
                     backgroundOrigin: "50%",
@@ -112,7 +119,8 @@ const SkuInfo = (props: Partial<pickingViewItem> & Partial<SkuInfoProps>) => {
                     style={{ color: "#292B3E", minWidth: 0 }}
                     data-testid="skuCode"
                 >
-                    {skuBarcode?.barcodes.join(" | ")}
+                    {/* {skuBarcode?.barcodes.join(" | ")} */}
+                    {barCode}
                 </div>
                 <div
                     className="text-ellipsis text-lg pb-2 w-full"
@@ -122,22 +130,6 @@ const SkuInfo = (props: Partial<pickingViewItem> & Partial<SkuInfoProps>) => {
                 </div>
 
                 <div className="d-flex flex-wrap w-full gap-1">
-                    {/* <div
-                        className="d-flex items-center py-2 pl-3 mb-2  w-5/12"
-                        style={{
-                            color: "#292B3",
-                            backgroundColor: "#f4f4f5",
-                            width: "45%"
-                        }}
-                    >
-                        <div>
-                            <span className="w-20">{t("skuArea.skuCode")}</span>
-                            <span className="px-2" style={{ color: "#DCDCDC" }}>
-                                |
-                            </span>
-                        </div>
-                        <div data-testid="skuCode">{skuCode}</div>
-                    </div> */}
                     {skuAttributes &&
                         Object.keys(skuAttributes)?.map((key, index) => {
                             return (

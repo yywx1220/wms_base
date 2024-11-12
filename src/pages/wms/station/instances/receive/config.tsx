@@ -44,7 +44,7 @@ export const CurrentModeType: any = {
  */
 
 const config: WorkStationConfig<string> = {
-    type: "receiving",
+    type: "receive",
     title: "收货",
     stepsDescribe: [
         {
