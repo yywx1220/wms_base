@@ -89,7 +89,8 @@ const schema = {
                 searchIdentity: searchIdentity,
                 showColumns: showColumns,
                 searchObject: {
-                    tables: "w_accept_order a inner join w_accept_order_detail ad on a.id = ad.acc"
+                    tables: "w_accept_order a inner join w_accept_order_detail ad on a.id = ad.acc",
+                    where: "a.accept_order_status = NEW"
                 }
             },
             autoFillHeight: true,
