@@ -4,35 +4,69 @@ let warehouseCode = localStorage.getItem("warehouseCode")
 
 const columns = [
     {
+        name: "acceptOrderDetailId",
+        dbField: "ad.id",
+        hidden: true
+    },
+    {
+        name: "acceptOrderId",
+        dbField: "a.id",
+        hidden: true
+    },
+    {
+        name: "orderNo",
+        dbField: "a.orderNo",
+        label: "收货单号",
+        searchable: true
+    },
+    {
+        name: "identifyNo",
+        dbField: "a.identifyNo",
+        label: "容器",
+        searchable: true
+    },
+    {
+        name: "targetContainerSpecCode",
+        dbField: "ad.targetContainerSpecCode",
+        label: "容器规格"
+    },
+    {
+        name: "targetContainerSlotCode",
+        dbField: "ad.targetContainerSlotCode",
+        label: "容器格口"
+    },
+    {
+        name: "ownerCode",
+        dbField: "ad.ownerCode",
+        label: "货主",
+        searchable: true
+    },
+
+    {
         name: "skuCode",
-        dbField: "smd.sku_code",
+        dbField: "ad.sku_code",
         label: "商品编码",
         searchable: true
     },
     {
         name: "skuName",
-        dbField: "smd.sku_name",
+        dbField: "ad.sku_name",
         label: "商品名称",
         searchable: true
     },
     {
-        name: "requiredQty",
-        dbField: "ot.required_qty",
-        label: "需求数量"
+        name: "qtyAccepted",
+        dbField: "ad.qtyAccepted",
+        label: "收货数量"
     },
     {
-        name: "operatedQty",
-        dbField: "ot.operated_qty",
-        label: "待收数量"
-    },
-    {
-        name: "operatedQty",
-        dbField: "ot.operated_qty",
-        label: "异常数量"
+        name: "acceptOrderStatus",
+        dbField: "a.acceptOrderStatus",
+        label: "收货单状态"
     }
 ]
 
-const searchIdentity = "WReceiveTaskDetail"
+const searchIdentity = "WReceiveDTaskDetail"
 const showColumns = columns
 
 const schema = {
@@ -54,7 +88,9 @@ const schema = {
             defaultParams: {
                 searchIdentity: searchIdentity,
                 showColumns: showColumns,
-                searchObject: {}
+                searchObject: {
+                    tables: "w_accept_order a inner join w_accept_order_detail ad on a.id = ad.acc"
+                }
             },
             autoFillHeight: true,
             autoGenerateFilter: {
@@ -63,7 +99,47 @@ const schema = {
             },
             headerToolbar: ["reload"],
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
-            columns
+             columns: [
+                ...columns,
+                {
+                    type: "operation",
+                    label: "${'table.operation' | t}",
+                    width: 130,
+                    buttons: [
+                        {
+                            label: "${'button.close' | t}",
+                            type: "button",
+                            level: "link",
+                            disabledOn: "${acceptOrderStatus !== 'NEW'}",
+                            actionType: "dialog",
+                            dialog: {
+                                title: "${'toast.prompt' | t}",
+                                body: "${'toast.sureCancelAccept' | t}",
+                                actions: [
+                                    {
+                                        label: "${'button.cancel' | t}",
+                                        actionType: "cancel",
+                                        type: "button"
+                                    },
+                                    {
+                                        label: "${'button.confirm' | t}",
+                                        actionType: "ajax",
+                                        primary: true,
+                                        type: "button",
+                                        api: {
+                                            method: "post",
+                                            url: "/wms/inbound/accept/cancel?acceptOrderId="+$acceptOrderId+"&acceptOrderDetailId="+$acceptOrderDetailId,
+                                        },
+                                        close: true,
+                                        reload: "ReceiveOrderDetailTable"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    toggled: true
+                }
+            ]
         }
     ]
 }
