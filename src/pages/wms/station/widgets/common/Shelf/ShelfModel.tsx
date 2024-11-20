@@ -92,6 +92,7 @@ const ShelfModel = (props: any) => {
                             disabledSlotCodes={disabledSlotCodes}
                             recommendSlotCodes={recommendSlotCodes}
                             onCustomActionDispatch={onCustomActionDispatch}
+                            type="CONTAINER"
                         />
 
                         {/* <div

@@ -4,7 +4,7 @@ import {api_system_config_get, api_system_config_save_or_update} from "@/pages/w
 const schema = {
     type: "page",
     // title: "${'systemConfigManagement.title' | t}",
-    initApi: "/config/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "form",

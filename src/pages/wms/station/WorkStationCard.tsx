@@ -16,7 +16,8 @@ export enum StationTypes {
     WITHOUT_ORDER_PUT_AWAY = `without_order_replenish`,
     PICKING = `outbound`,
     STOCKTAKE = `stocktake`,
-    ONE_STEP_RELOCATION = `oneStepInventory`
+    ONE_STEP_RELOCATION = `oneStepInventory`,
+    RECEIVE = "receive"
 }
 
 const cardOptions = [
@@ -92,7 +93,8 @@ const cardOptions = [
 
 const Station = (props: any) => {
     const { history, location, workStationEvent } = props
-    const { workStationStatus, operationType } = workStationEvent || {}
+    const { workStationStatus, operationType, workStationMode } =
+        workStationEvent || {}
     const { onCustomActionDispatch } = useContext(APIContext)
 
     // useEffect(() => {
@@ -102,13 +104,13 @@ const Station = (props: any) => {
 
     useEffect(() => {
         const path =
-            workStationStatus !== "OFFLINE" && operationType
+            workStationStatus !== "OFFLINE" && workStationMode
                 ? `${WORK_STATION_PATH_PREFIX}/${
-                      StationTypes[operationType as keyof typeof StationTypes]
+                      StationTypes[workStationMode as keyof typeof StationTypes]
                   }`
                 : WORK_STATION_PATH_PREFIX
         history.replace(path)
-    }, [operationType, workStationStatus])
+    }, [workStationMode, workStationStatus])
 
     const handleCardClick = (data: string) => {
         onCustomActionDispatch({

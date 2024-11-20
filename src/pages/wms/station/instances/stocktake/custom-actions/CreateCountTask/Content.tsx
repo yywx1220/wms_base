@@ -25,7 +25,7 @@ let areaConditions =
 const schema = {
     type: "page",
     title: "${'modal.receiveInventoryList' | t}",
-    initApi: "/config/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: {
         type: "wizard",
         actionFinishLabel: "${'modal.generateInventoryOrder' | t}",

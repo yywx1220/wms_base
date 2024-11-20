@@ -1,7 +1,7 @@
 /**
  * 当前工作站实例的布局
  */
-import { Col, Row, Input, Button } from "antd"
+import { Col, Row, Input, Button, message } from "antd"
 import classNames from "classnames/bind"
 import React, { useState } from "react"
 import request from "@/utils/requestInterceptor"
@@ -28,6 +28,8 @@ import PickingHandler from "./operations/pickingHandler"
 import RobotHandler from "./operations/RobotHandler"
 import OrderHandler from "./operations/orderHandler"
 
+let warehouseCode = localStorage.getItem("warehouseCode")
+
 interface ReplenishLayoutProps extends OperationProps<any, any> {
     workStationEvent: WorkStationEvent<any>
     workStationInfo: WorkStationInfo
@@ -45,17 +47,66 @@ const Layout = (props: ReplenishLayoutProps) => {
 
     const [orderNo, setOrderNo] = useState("")
 
-    const [orderInfo, setOrderInfo] = useState()
+    const [orderInfo, setOrderInfo] = useState<any>()
+    const [currentSkuInfo, setCurrentSkuInfo] = useState<any>({})
 
     const onScanSubmit = () => {
         // console.log("orderNo",orderNo)
         request({
             method: "post",
-            url: `/inbound/plan/query/${orderNo}/${workStationEvent.warehouseCode}`
-        }).then((res: any) => {
-            console.log("res", res)
-            setOrderInfo(res.data)
+            // url: `/wms/inbound/plan/query/${orderNo}/${workStationEvent.warehouseCode}`
+            url: `/wms/inbound/plan/query/${orderNo}/MOBILESENTRIX`
         })
+            .then((res: any) => {
+                console.log("res", res)
+                setOrderInfo(res.data.data)
+            })
+            .catch((error) => {
+                console.log("error", error)
+                message.error(error.message)
+            })
+    }
+
+    const onSkuChange = (detail: any) => {
+        setCurrentSkuInfo(detail)
+    }
+
+    const onConfirm = ({
+        containerCode,
+        containerSpecCode,
+        containerId,
+        activeSlot,
+        inputValue
+    }: any) => {
+        request({
+            method: "post",
+            url: "/wms/inbound/plan/accept",
+            data: {
+                inboundPlanOrderId: orderInfo.id,
+                inboundPlanOrderDetailId: currentSkuInfo.id,
+                warehouseCode,
+                qtyAccepted: inputValue,
+                skuId: currentSkuInfo.skuId,
+                targetContainerCode: containerCode,
+                targetContainerSpecCode: containerSpecCode,
+                targetContainerSlotCode: activeSlot[0],
+                batchAttributes: {},
+                targetContainerId: containerId,
+                workStationId: workStationEvent.workStationId
+            },
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then((res: any) => {
+                console.log("confirm", res)
+                if (res.status === 200) {
+                    onScanSubmit()
+                }
+            })
+            .catch((error) => {
+                console.log("error", error)
+            })
     }
 
     return (
@@ -82,7 +133,10 @@ const Layout = (props: ReplenishLayoutProps) => {
                             }
                             valueFilter={defaultFilter}
                         /> */}
-                        <PickingHandler value={orderInfo} />
+                        <PickingHandler
+                            value={orderInfo}
+                            onSkuChange={onSkuChange}
+                        />
                     </Col>
                     <Col span={12}>
                         {/* <ComponentWrapper
@@ -92,7 +146,7 @@ const Layout = (props: ReplenishLayoutProps) => {
                             }
                             valueFilter={defaultFilter}
                         /> */}
-                        <RobotHandler value={orderInfo} />
+                        <RobotHandler value={orderInfo} onConfirm={onConfirm} />
                     </Col>
                 </Row>
             ) : (

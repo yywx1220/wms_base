@@ -187,7 +187,7 @@ const detailDialog = {
 
 const schema = {
     type: "page",
-    initApi: "/config/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: {
         type: "crud",
         syncLocation: false,

@@ -509,9 +509,9 @@ const menuRouter = [
         }
     },
     {
-        path: "/wms/workStation/receiving",
+        path: "/wms/workStation/receive",
         name: "商品收货",
-        component: (props: any) => <WorkStation {...props} type="receiving" />,
+        component: (props: any) => <WorkStation {...props} type="receive" />,
         meta: {
             ...meta,
             cache: false

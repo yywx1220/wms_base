@@ -30,11 +30,11 @@ const columns = [
         label: "${'table.customerOrderNo' | t}",
         searchable: true
     },
-    {
-        name: "inboundOrderType",
-        label: "订单类型",
-        hidden: true
-    },
+//     {
+//         name: "inboundOrderType",
+//         label: "订单类型",
+//         hidden: true
+//     },
     {
         name: "inboundPlanOrderStatus",
         label: "${'table.status' | t}",
@@ -218,7 +218,7 @@ const schema = {
     type: "page",
     title: "${'menu.inboundOrder' | t}",
     toolbar: [],
-    initApi: "/config/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "crud",

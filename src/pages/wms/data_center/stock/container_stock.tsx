@@ -170,7 +170,7 @@ const schema = {
     type: "page",
     title: "${'inventoryDetails.title' | t}",
     toolbar: [],
-    initApi: "/config/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "crud",

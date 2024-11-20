@@ -102,7 +102,7 @@ const fromBody = [
 
 const form = {
     type: "form",
-    api: "post:/wms/containerSpec/createOrUpdate",
+    api: "post:/wms/basic/containerSpec/createOrUpdate",
     body: fromBody
 }
 
@@ -113,7 +113,7 @@ const add = {
     label: "${'button.add' | t}",
     target: "role",
     dialog: {
-        size: "lg",
+        size: "full",
         title: "${'button.add' | t}",
         closeOnEsc: true,
         body: form
@@ -182,7 +182,7 @@ const schema = {
     //   title: "容器规格管理",
     title: <Translation>{(t) => t("containerSpec.title")}</Translation>,
     toolbar: [],
-    initApi: "/config/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "crud",
@@ -242,7 +242,7 @@ const schema = {
                                         url: "/wms/containerSpec/${id}",
                                         method: "get"
                                     },
-                                    api: "post:/wms/containerSpec/createOrUpdate",
+                                    api: "post:/wms/basic/containerSpec/createOrUpdate",
                                     controls: fromBody
                                 }
                             }

@@ -23,14 +23,18 @@ export default function request(config: AxiosRequestConfig) {
 
     config.headers["X-WarehouseID"] = warehouseCode
     config.headers["locale"] = store.locale
+    console.log("config", config.data)
+    let data = config.data
+    if (typeof config.data === "string") {
+        data = { ...JSON.parse(config.data) }
+    }
     if (
         config.url.startsWith("/gw/wms") &&
         (config.method == "post" || config.method == "POST") &&
         config.data !== undefined &&
-        !Array.isArray(JSON.parse(config.data))
+        !Array.isArray(data)
     ) {
         if (config.headers["Content-Type"] == "application/json") {
-            let data = { ...JSON.parse(config.data) }
             data["warehouseCode"] = warehouseCode
             config.data = JSON.stringify(data)
         } else {

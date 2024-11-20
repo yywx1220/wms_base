@@ -1,6 +1,13 @@
 import schema2component from "@/utils/schema2component"
-import {container_spec, warehouse_area_id, warehouse_logic_code} from "@/pages/wms/constants/select_search_api_contant"
-import {create_update_columns, true_false_options} from "@/utils/commonContants"
+import {
+    container_spec,
+    warehouse_area_id,
+    warehouse_logic_code
+} from "@/pages/wms/constants/select_search_api_contant"
+import {
+    create_update_columns,
+    true_false_options
+} from "@/utils/commonContants"
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
@@ -67,7 +74,7 @@ const fromBody = [
 
 const form = {
     type: "form",
-    api: "post:/wms/container/create",
+    api: "post:/wms/basic/container/create",
     body: fromBody
 }
 
@@ -175,7 +182,7 @@ const schema = {
     type: "page",
     title: "${'containerManagement.title' | t}",
     toolbar: [],
-    initApi: "/config/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "crud",
@@ -223,7 +230,7 @@ const schema = {
                                                 {
                                                     type: "hidden",
                                                     name: "containerIds",
-                                                    value: "${SPLIT(ids, \",\")}"
+                                                    value: '${SPLIT(ids, ",")}'
                                                 }
                                             ]
                                         }

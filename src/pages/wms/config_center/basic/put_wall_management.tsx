@@ -222,7 +222,7 @@ const schema = {
     type: "page",
     title: "${'seedingWallManagement.title' | t}",
     toolbar: [],
-    initApi: "/config/dictionary/getAll",
+    initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "crud",

@@ -136,6 +136,7 @@
     "toast.passwordNotMatch": "两次输入的密码不一致！",
     "toast.loginSuccess": "登录成功！",
     "toast.selectBatch": "请选择批次！",
+    "toast.sureCancelAccept": "确认取消收货?",
 
     "skuArea.scanBarcode": "请扫描商品条码",
     "skuArea.scanOrEnterBarcode": "请扫描/输入商品条码",

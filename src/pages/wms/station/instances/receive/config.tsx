@@ -1,19 +1,12 @@
 import React from "react"
 import { Translation } from "react-i18next"
 
-import defaultPage from "@/pages/wms/station/instances/replenish/operations/defaultPage"
 import type { WorkStationConfig } from "@/pages/wms/station/instances/types"
 import { DebugType } from "@/pages/wms/station/instances/types"
-import { TabActionType } from "@/pages/wms/station/tab-actions/constant"
-import CollectingDoc from "@/pages/wms/station/instances/replenish/custom-actions/CollectingDoc"
+
 import Tips from "@/pages/wms/station/instances/replenish/operations/tips"
-// import IntlMessages from "@/util/IntlMessages"
-// import Abnormal from "./custom-actions/Abnormal"
-import CallBin from "@/pages/wms/station/instances/replenish/custom-actions/CallBin"
-import WholeBoxConfig from "./custom-actions/WholeBox"
-import unBoxConfig from "./custom-actions/Unboxing"
-// import TaskDetail from "./custom-actions/TaskDetail"
 import Abnormal from "./custom-actions/Abnormal"
+import TaskDetail from "./custom-actions/TaskDetail"
 import InstanceLayout from "./layout"
 import mockData from "./mock-events"
 import PickingHandler from "./operations/pickingHandler"
@@ -44,7 +37,7 @@ export const CurrentModeType: any = {
  */
 
 const config: WorkStationConfig<string> = {
-    type: "receiving",
+    type: "receive",
     title: "收货",
     stepsDescribe: [
         {
@@ -60,7 +53,7 @@ const config: WorkStationConfig<string> = {
             name: "信息录入"
         }
     ],
-    actions: [],
+    actions: [TaskDetail],
     operationMap: OPERATION_MAP,
     layout: InstanceLayout,
     debugType: DebugType.STATIC,

@@ -155,7 +155,7 @@ export default class Admin extends React.Component<AdminProps, State> {
 
                 // 角色的仓库权限为空时，不初始化仓库
                 if (res.data.warehouses) {
-                    // this.initWarehouseSelect(res.data.warehouses)
+                    this.initWarehouseSelect(res.data.warehouses)
                 }
             })
         }
