@@ -307,7 +307,7 @@ export default class WorkStationEventLoop {
             process.env.NODE_ENV === "development" ? "connect.test.com" : domain
 
         this.eventSource = new EventSource(
-            `http://${hostName}:9045/sse/nettyConnect`
+            `/gw/station/sse/connect?Authorization=` + encodeURIComponent(localStorage.getItem("ws_token") as string)
         )
 
         this.eventSource.onopen = () => {

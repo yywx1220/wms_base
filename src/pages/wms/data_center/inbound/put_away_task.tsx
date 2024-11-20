@@ -203,7 +203,7 @@ const schema = {
     type: "page",
     title: "${'wms.menu.putAwayTasks' | t}",
     toolbar: [],
-    initApi: "/mdm/dictionary/getAll",
+    initApi: "/config/dictionary/getAll",
     body: [
         {
             type: "crud",

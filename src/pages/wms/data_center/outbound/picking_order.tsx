@@ -164,7 +164,7 @@ const schema = {
     type: "page",
     title: "${'pickingTasks.title' | t}",
     toolbar: [],
-    initApi: "/mdm/dictionary/getAll",
+    initApi: "/config/dictionary/getAll",
     body: [
         {
             type: "crud",

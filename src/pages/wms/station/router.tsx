@@ -5,11 +5,11 @@ import Index, { WORK_STATION_PATH_PREFIX } from "./WorkStationCard"
 const WorkStation = lazy(() => import("@/pages/wms/station"))
 
 const WORK_STATION_ROUTES = [
-    // {
-    //     /* 收货 */
-    //     path: "/receiving",
-    //     component: (props) => <WorkStation {...props} station="receiving" />
-    // },
+    {
+        /* 收货 */
+        path: "/receiving",
+        component: (props) => <WorkStation {...props} station="receiving" />
+    },
     // {
     //     /* 入库 */
     //     path: "/inbound",

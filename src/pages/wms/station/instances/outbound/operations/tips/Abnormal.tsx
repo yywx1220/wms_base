@@ -99,7 +99,7 @@ const Abnormal = (props: AbnormalInfo) => {
     const getContainerSpecOptions = async () => {
         const res: any = await request({
             method: "get",
-            url: `/mdm/dictionary/getAll`
+            url: `/config/dictionary/getAll`
         })
         setAbnormalReportReasonOptions(res?.data?.StockAbnormalReason || [])
         setAbnormalReportReason(res?.data?.StockAbnormalReason?.[0].value)

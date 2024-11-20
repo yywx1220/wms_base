@@ -9,7 +9,7 @@ import { DEBOUNCE_TIME } from "@/pages/wms/station/constant"
 
 const schema = {
     type: "page",
-    initApi: "/mdm/dictionary/getAll",
+    initApi: "/config/dictionary/getAll",
     style: {
         width: "360px"
     },

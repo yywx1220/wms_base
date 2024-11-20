@@ -33,7 +33,7 @@ const LocationInfo = (props: any) => {
     const getStockTakeOptions = async () => {
         const res: any = await request({
             method: "get",
-            url: `/mdm/dictionary/getAll`
+            url: `/config/dictionary/getAll`
         })
         // setSpecSlotOptions(res?.data?.CallContainerSlotSpecCode || [])
         const size = res?.data?.CallContainerSlotSpecCode?.find(

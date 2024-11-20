@@ -957,7 +957,7 @@ const schema = {
     type: "page",
     title: "${'wms.menu.inventoryCheck' | t}",
     toolbar: [],
-    initApi: "/mdm/dictionary/getAll",
+    initApi: "/config/dictionary/getAll",
     body: [
         {
             type: "crud",

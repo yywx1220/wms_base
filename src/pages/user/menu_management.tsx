@@ -182,7 +182,7 @@ const schema = {
     type: "page",
     title: "${'userCenter.menuManagement.title' | t}",
     toolbar: [],
-    initApi: "/mdm/dictionary/getAll",
+    initApi: "/config/dictionary/getAll",
     body: [
         {
             type: "crud",

@@ -31,7 +31,7 @@ const schema = {
         mode: "horizontal",
         labelWidth: 0,
         id: "stepForm",
-        initApi: "/mdm/dictionary/getAll",
+        initApi: "/config/dictionary/getAll",
         body: [
             {
                 type: "service",

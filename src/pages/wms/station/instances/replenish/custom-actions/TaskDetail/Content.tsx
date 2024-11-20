@@ -73,7 +73,7 @@ const schema = {
     type: "page",
     // title: "订单详情",
     toolbar: [],
-    initApi: "/mdm/dictionary/getAll",
+    initApi: "/config/dictionary/getAll",
     body: [
         {
             type: "crud",
