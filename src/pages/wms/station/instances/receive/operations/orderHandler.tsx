@@ -1,7 +1,9 @@
 import React from "react"
 import type { WorkStationEvent } from "@/pages/wms/station/event-loop/types"
 import type { OperationProps } from "@/pages/wms/station/instances/types"
-import { Row, Col } from "antd"
+import { Row, Col, Typography } from "antd"
+
+const { Title } = Typography
 
 interface ReceiveOrderProps {}
 
@@ -40,29 +42,29 @@ const OrderHandler = (props: any) => {
     const { value, onCustomActionDispatch } = props
     const { customerOrderNo, storageType, skuKindNum, totalQty } = value
     return (
-        <Row gutter={16}>
+        <Row gutter={16} className="py-3 bg-white">
             <Col className="gutter-row" span={6}>
-                <div className="flex-1 bg-gray-100 py-2 pl-3">
+                <div className="flex-1 bg-gray-100 py-2 pl-10 rounded">
                     <div>客户单号/LPN号</div>
-                    <div>{customerOrderNo}</div>
+                    <Title level={4}>{customerOrderNo}</Title>
                 </div>
             </Col>
             <Col className="gutter-row" span={6}>
-                <div className="flex-1 bg-gray-100 py-2 pl-3">
+                <div className="flex-1 bg-gray-100 py-2 pl-10 rounded">
                     <div>入库类型</div>
-                    <div>{storageType}</div>
+                    <Title level={4}>{storageType}</Title>
                 </div>
             </Col>
             <Col className="gutter-row" span={6}>
-                <div className="flex-1 bg-gray-100 py-2 pl-3">
+                <div className="flex-1 bg-gray-100 py-2 pl-10 rounded">
                     <div>品项总数/已收/待收</div>
-                    <div>{skuKindNum}</div>
+                    <Title level={4}>{skuKindNum}</Title>
                 </div>
             </Col>
             <Col className="gutter-row" span={6}>
-                <div className="flex-1 bg-gray-100 py-2 pl-3">
+                <div className="flex-1 bg-gray-100 py-2 pl-10 rounded">
                     <div>入库总数/已收/待收</div>
-                    <div>{totalQty}</div>
+                    <Title level={4}>{totalQty}</Title>
                 </div>
             </Col>
         </Row>

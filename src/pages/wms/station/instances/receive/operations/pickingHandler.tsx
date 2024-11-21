@@ -50,8 +50,8 @@ const PickAreaHandler = (props: any) => {
         onSkuChange(detail)
     }
     return (
-        <>
-            <div className="d-flex items-center">
+        <div className="bg-white p-4 h-full">
+            <div className="d-flex items-center bg-white">
                 <div className="white-space-nowrap">请扫描商品条码:</div>
                 <Input
                     bordered={false}
@@ -82,7 +82,7 @@ const PickAreaHandler = (props: any) => {
                     barCode={currentSkuInfo.skuCode}
                 />
             </div>
-        </>
+        </div>
     )
 }
 

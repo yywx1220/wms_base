@@ -1,6 +1,7 @@
 import { Col, Row } from "antd"
 import React, { useEffect, useContext } from "react"
 import { Translation } from "react-i18next"
+import request from "@/utils/requestInterceptor"
 
 import { withRouter } from "react-router-dom"
 import * as images from "@/icon/station"

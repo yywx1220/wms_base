@@ -112,8 +112,8 @@ const Layout = (props: ReplenishLayoutProps) => {
     return (
         <>
             {orderInfo ? (
-                <Row className="h-full" gutter={24}>
-                    <Col span={24} className="mb-2">
+                <Row className="h-full" justify="space-between" gutter={16}>
+                    <Col span={24}>
                         {/* <ComponentWrapper
                             type={StationOperationType.orderArea}
                             Component={
@@ -123,7 +123,7 @@ const Layout = (props: ReplenishLayoutProps) => {
                         /> */}
                         <OrderHandler value={orderInfo} />
                     </Col>
-                    <Col span={12}>
+                    <Col span={12} className="pt-4">
                         {/* <ComponentWrapper
                             type={StationOperationType.selectDetailArea}
                             Component={
@@ -138,7 +138,7 @@ const Layout = (props: ReplenishLayoutProps) => {
                             onSkuChange={onSkuChange}
                         />
                     </Col>
-                    <Col span={12}>
+                    <Col span={12} className="pt-4">
                         {/* <ComponentWrapper
                             type={StationOperationType.robotArea}
                             Component={

@@ -100,7 +100,7 @@ const schema = {
             },
             headerToolbar: ["reload"],
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
-             columns: [
+            columns: [
                 ...columns,
                 {
                     type: "operation",
@@ -129,7 +129,7 @@ const schema = {
                                         type: "button",
                                         api: {
                                             method: "post",
-                                            url: "/wms/inbound/accept/cancel?acceptOrderId="+$acceptOrderId+"&acceptOrderDetailId="+$acceptOrderDetailId,
+                                            url: "/wms/inbound/accept/cancel?acceptOrderId=${acceptOrderId}&acceptOrderDetailId=${acceptOrderDetailId}"
                                         },
                                         close: true,
                                         reload: "ReceiveOrderDetailTable"

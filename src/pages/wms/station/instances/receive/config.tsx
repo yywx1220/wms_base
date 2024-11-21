@@ -3,6 +3,7 @@ import { Translation } from "react-i18next"
 
 import type { WorkStationConfig } from "@/pages/wms/station/instances/types"
 import { DebugType } from "@/pages/wms/station/instances/types"
+import { TabActionType } from "@/pages/wms/station/tab-actions/constant"
 
 import Tips from "@/pages/wms/station/instances/replenish/operations/tips"
 import Abnormal from "./custom-actions/Abnormal"
@@ -53,7 +54,7 @@ const config: WorkStationConfig<string> = {
             name: "信息录入"
         }
     ],
-    actions: [TaskDetail],
+    actions: [TaskDetail, TabActionType.EXIT],
     operationMap: OPERATION_MAP,
     layout: InstanceLayout,
     debugType: DebugType.STATIC,
