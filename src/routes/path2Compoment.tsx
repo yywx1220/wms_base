@@ -1,6 +1,6 @@
-import React, { lazy } from "react"
-import { Translation } from "react-i18next"
-import StationRouter from "@/pages/wms/station/router"
+import React, {lazy} from "react"
+import {Translation} from "react-i18next"
+
 const WorkStation = lazy(() => import("@/pages/wms/station"))
 
 interface RouterItem {
@@ -92,26 +92,6 @@ const menuRouter = [
         component: lazy(() => import("@/pages/api_platform/api_log"))
     },
 
-    // International
-    // {
-    //     path: "/international/app-management",
-    //     name: (
-    //         <Translation>
-    //             {(t) => t("internationalPlatform.applicationManagement.title")}
-    //         </Translation>
-    //     ),
-    //     component: lazy(() => import("@/pages/international/app_management"))
-    // },
-    // {
-    //     path: "/international/entry-management",
-    //     name: (
-    //         <Translation>
-    //             {(t) => t("internationalPlatform.entryManagement.title")}
-    //         </Translation>
-    //     ),
-    //     component: lazy(() => import("@/pages/international/entry_management"))
-    // },
-
     // WMS - config center - basic
     {
         path: "/wms/config-center",
@@ -146,7 +126,7 @@ const menuRouter = [
             () =>
                 import(
                     "@/pages/wms/config_center/basic/batch_attribute_management"
-                )
+                    )
         )
     },
     {
@@ -156,7 +136,7 @@ const menuRouter = [
             () =>
                 import(
                     "@/pages/wms/config_center/basic/container_spec_management"
-                )
+                    )
         )
     },
     {
@@ -193,7 +173,7 @@ const menuRouter = [
             () =>
                 import(
                     "@/pages/wms/config_center/basic/work_location_management"
-                )
+                    )
         )
     },
 
@@ -215,7 +195,7 @@ const menuRouter = [
             () =>
                 import(
                     "@/pages/wms/config_center/warehouse/warehouse_management"
-                )
+                    )
         )
     },
     {
@@ -229,7 +209,7 @@ const menuRouter = [
             () =>
                 import(
                     "@/pages/wms/config_center/warehouse/warehouse_area_group"
-                )
+                    )
         )
     },
     {
@@ -263,7 +243,7 @@ const menuRouter = [
             () =>
                 import(
                     "@/pages/wms/config_center/warehouse/location_management"
-                )
+                    )
         )
     },
 
@@ -351,13 +331,19 @@ const menuRouter = [
             () =>
                 import(
                     "@/pages/wms/data_center/inbound/empty_container_inbound"
-                )
+                    )
         )
     },
     {
         path: "/wms/data-center/receiving-manage",
         name: (
             <Translation>{(t) => t("wms.menu.receiptManagement")}</Translation>
+        ),
+        component: lazy(
+            () =>
+                import(
+                    "@/pages/wms/data_center/inbound/accept_order"
+                    )
         )
     },
     {
@@ -482,7 +468,7 @@ const menuRouter = [
         path: "/wms/workStation",
         name: <Translation>{(t) => t("station.operatingStation")}</Translation>,
         // component: lazy(() => import("@/pages/wms/station/router"))
-        component: (props: any) => <WorkStation {...props} type="card" />,
+        component: (props: any) => <WorkStation {...props} type="card"/>,
         meta: {
             ...meta,
             cache: false
@@ -491,7 +477,7 @@ const menuRouter = [
     {
         path: "/wms/workStation/receive",
         name: "商品收货",
-        component: (props: any) => <WorkStation {...props} type="receive" />,
+        component: (props: any) => <WorkStation {...props} type="receive"/>,
         meta: {
             ...meta,
             cache: false
@@ -500,7 +486,7 @@ const menuRouter = [
     {
         path: "/wms/workStation/outbound",
         name: "出库",
-        component: (props: any) => <WorkStation {...props} type="outbound" />,
+        component: (props: any) => <WorkStation {...props} type="outbound"/>,
         meta: {
             ...meta,
             cache: false
@@ -509,7 +495,7 @@ const menuRouter = [
     {
         path: "/wms/workStation/stocktake",
         name: "盘点",
-        component: (props: any) => <WorkStation {...props} type="stocktake" />,
+        component: (props: any) => <WorkStation {...props} type="stocktake"/>,
         meta: {
             ...meta,
             cache: false
@@ -526,9 +512,9 @@ const router = menuRouter.map((item: RouterItem) => {
     return item.meta
         ? item
         : {
-              ...item,
-              meta
-          }
+            ...item,
+            meta
+        }
 })
 
 const path2components = [...baseRouter, ...router]

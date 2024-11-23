@@ -195,6 +195,7 @@
     "emptyContainerInboundOrder.detail.modal.title": "Empty container inbound order details",
     "outboundOrder.detail.modal.title": "Outbound order details",
     "putAwayTask.detail.modal.title": "Put away task details",
+    "accept.order.detail.modal.title": "Accept order details",
     "inventoryCounting.detail.modal.title": "Inventory count task details",
     "outboundOrder.title": "Outbound Order",
     "pickingTasks.title": "Picking Tasks",
@@ -487,6 +488,9 @@
     "table.putWallBay": "Seeding wall bay",
     "table.value": "value",
     "table.label": "label",
+    "table.acceptOrderNo": "accept order no",
+    "table.acceptMethod": "accept method",
+    "table.acceptOrderStatus": "accept order status",
 
     "form.tab.basicInformation": "Basic Information",
     "form.tab.configurationInformation": "Configuration Information",

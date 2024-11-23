@@ -1,6 +1,12 @@
 import schema2component from "@/utils/schema2component"
-import {warehouse_area_id, work_location} from "@/pages/wms/constants/select_search_api_contant"
+import {warehouse_area_id} from "@/pages/wms/constants/select_search_api_contant"
 import {create_update_columns, true_false_options} from "@/utils/commonContants"
+import {
+    api_work_station_add,
+    api_work_station_config_add,
+    api_work_station_config_get,
+    api_work_station_get
+} from "@/pages/wms/config_center/constants/api_constant";
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
@@ -39,10 +45,10 @@ const baseInfoForm = [
     },
     {
         label: "table.operationalBusiness",
-        name: "allowOperationTypes",
+        name: "allowWorkStationModes",
         type: "select",
         multiple: true,
-        source: "${WorkStationOperationType}"
+        source: "${WorkStationMode}"
     },
     {
         label: "table.position",
@@ -446,7 +452,7 @@ const add = {
         closeOnEsc: true,
         body: {
             type: "form",
-            api: "post:/wms/workStation/createOrUpdateStation",
+            api: api_work_station_add,
             body: baseInfoForm
         }
     }
@@ -488,10 +494,10 @@ const columns = [
         label: "table.workstationName"
     },
     {
-        name: "operationType",
+        name: "workStationMode",
         label: "table.currentOperationType",
         type: "mapping",
-        source: "${WorkStationOperationType}"
+        source: "${WorkStationMode}"
     },
     {
         name: "workStationStatus",
@@ -562,8 +568,8 @@ const schema = {
                                 closeOnOutside: true,
                                 body: {
                                     type: "form",
-                                    api: "post:/wms/workStation/createOrUpdateStation",
-                                    initApi: "get:/wms/workStation/${id}",
+                                    api: api_work_station_add,
+                                    initApi: api_work_station_get,
                                     body: baseInfoForm
                                 }
                             }
@@ -579,10 +585,10 @@ const schema = {
                                 closeOnOutside: true,
                                 body: {
                                     type: "form",
-                                    api: "post:/wms/workStation/createOrUpdateStationConfig",
+                                    api: api_work_station_config_add,
                                     initApi: {
                                         method: "get",
-                                        url: "/wms/workStation/getStationConfig/${id}",
+                                        url: api_work_station_config_get,
                                         adaptor: function (payload: any) {
                                             // 新增配置时，删除后端返回的空 workStationId，避免将上下文中获取的 workStationId 覆盖掉
                                             if (

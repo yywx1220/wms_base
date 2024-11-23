@@ -188,6 +188,7 @@
     "emptyContainerInboundOrder.detail.modal.title": "空箱入库单详情",
     "outboundOrder.detail.modal.title": "出库单详情",
     "putAwayTask.detail.modal.title": "上架任务详情",
+    "accept.order.detail.modal.title": "收货单详情",
     "inventoryCounting.detail.modal.title": "盘点单详情",
     "outboundOrder.title": "出库单",
     "pickingTasks.title": "拣货任务",
@@ -481,6 +482,9 @@
     "table.putWallBay": "播种墙列",
     "table.value": "值",
     "table.label": "展示",
+    "table.acceptOrderNo": "收货单号",
+    "table.acceptMethod": "收货方式",
+    "table.acceptOrderStatus": "收货单号",
 
     "form.tab.basicInformation": "基础信息",
     "form.tab.configurationInformation": "配置信息",
