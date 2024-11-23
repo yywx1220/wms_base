@@ -75,15 +75,7 @@ const baseInfoForm = [
                     {
                         label: "table.workBitEncoding",
                         name: "workLocations[0].workLocationCode",
-                        type: "select",
-                        source: work_location,
-                        requiredOn: "${workLocations[0].enable}"
-                    },
-                    {
-                        label: "table.terminalType",
-                        name: "workLocations[0].terminalType",
-                        type: "select",
-                        source: "${TerminalType}",
+                        type: "input-text",
                         requiredOn: "${workLocations[0].enable}"
                     },
                     {
@@ -99,15 +91,7 @@ const baseInfoForm = [
                     {
                         label: "table.workBitEncoding",
                         name: "workLocations[1].workLocationCode",
-                        type: "select",
-                        source: work_location,
-                        requiredOn: "${workLocations[1].enable}"
-                    },
-                    {
-                        label: "table.terminalType",
-                        name: "workLocations[1].terminalType",
-                        type: "select",
-                        source: "${TerminalType}",
+                        type: "input-text",
                         requiredOn: "${workLocations[1].enable}"
                     },
                     {
@@ -123,15 +107,7 @@ const baseInfoForm = [
                     {
                         label: "table.workBitEncoding",
                         name: "workLocations[2].workLocationCode}",
-                        type: "select",
-                        source: work_location,
-                        requiredOn: "${workLocations[2].enable}"
-                    },
-                    {
-                        label: "table.terminalType",
-                        name: "workLocations[2].terminalType",
-                        type: "select",
-                        source: "${TerminalType}",
+                        type: "input-text",
                         requiredOn: "${workLocations[2].enable}"
                     },
                     {
@@ -210,12 +186,6 @@ const configInfoForm = [
     {
         type: "tabs",
         tabs: [
-            // {
-            //     "title": "入库配置",
-            //     "body": [
-            //
-            //     ]
-            // },
             {
                 title: "table.outboundConfiguration",
                 body: [

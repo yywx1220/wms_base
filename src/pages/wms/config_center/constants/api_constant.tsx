@@ -21,9 +21,9 @@ export const api_sku_update = "post:/wms/basic/sku/createOrUpdate"
 export const api_sku_get = "post:/wms/basic/sku/${id}"
 
 // barcode parse rule module
-export const api_barcode_parse_rule_add = "post:/wms/config/barcodeParseRule/createOrUpdate"
-export const api_barcode_parse_rule_update = "post:/wms/config/barcodeParseRule/createOrUpdate"
-export const api_barcode_parse_rule_get = "post:/wms/config/barcodeParseRule/${id}"
+export const api_barcode_parse_rule_add = "post:/wms/config/barcode/parse/createOrUpdate"
+export const api_barcode_parse_rule_update = "post:/wms/config/barcode/parse/createOrUpdate"
+export const api_barcode_parse_rule_get = "post:/wms/config/barcode/parse/get/${id}"
 
 // batch attribute module
 export const api_batch_attribute_add = "post:/wms/config/batchAttribute/createOrUpdate"
@@ -33,7 +33,7 @@ export const api_batch_attribute_get = "post:/wms/config/batchAttribute/get/${id
 // dictionary module
 export const api_dictionary_add = "post:/wms/config/dictionary/createOrUpdate"
 export const api_dictionary_update = "post:/wms/config/dictionary/createOrUpdate"
-export const api_dictionary_get = "post:/wms/config/dictionary/${id}"
+export const api_dictionary_get = "post:/wms/config/dictionary/get/${id}"
 
 // param config module
 export const api_param_config_add = "post:/wms/config/parameterConfig/createOrUpdate"
@@ -55,3 +55,9 @@ export const api_container_batch_add = "post:/wms/basic/container/create"
 export const api_container_change_spec = "post:/wms/basic/container/changeContainerSpec/${containerId}"
 export const api_container_get = "post:/wms/basic/container/get/${id}"
 export const api_container_delete = "post:/wms/basic/container/delete/${id}"
+
+// work station module
+export const api_work_station_add = "post:/wms/basic/work/station/createOrUpdateWorkStation"
+export const api_work_station_get = "post:/wms/basic/work/station/get/${id}"
+export const api_work_station_config_get = "post:/wms/basic/work/station/getStationConfig/${workStationId}"
+export const api_work_station_config_add = "post:/wms/basic/work/station/createOrUpdateStationConfig"

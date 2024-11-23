@@ -485,6 +485,8 @@
     "table.ptlTag": "Ptl tag",
     "table.putWallLevel": "Seeding wall level",
     "table.putWallBay": "Seeding wall bay",
+    "table.value": "value",
+    "table.label": "label",
 
     "form.tab.basicInformation": "Basic Information",
     "form.tab.configurationInformation": "Configuration Information",

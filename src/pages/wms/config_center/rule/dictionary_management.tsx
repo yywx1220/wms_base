@@ -42,23 +42,18 @@ const form = [
     },
     {
         type: "input-table",
-        name: "dictionaryItems",
+        name: "items",
         addable: true,
         editable: true,
         columns: [
             {
                 name: "value",
-                label: "table.encode",
+                label: "table.value",
                 type: "input-text"
             },
             {
-                name: "zh_CN",
-                label: "table.zh_CN",
-                type: "input-text"
-            },
-            {
-                name: "en_US",
-                label: "table.en_US",
+                name: "showContent",
+                label: "table.value",
                 type: "input-text"
             },
             {

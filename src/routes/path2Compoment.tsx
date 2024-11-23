@@ -477,26 +477,6 @@ const menuRouter = [
         )
     },
 
-    //Plugin System
-    // {
-    //     path: "/plugin/plugin-management",
-    //     name: (
-    //         <Translation>
-    //             {(t) => t("pluginSystem.pluginManagement.title")}
-    //         </Translation>
-    //     ),
-    //     component: lazy(() => import("@/pages/plugin/plugin_management"))
-    // },
-    // {
-    //     path: "/plugin/plugin-store",
-    //     name: (
-    //         <Translation>
-    //             {(t) => t("pluginSystem.pluginStore.title")}
-    //         </Translation>
-    //     ),
-    //     component: lazy(() => import("@/pages/plugin/plugin_store"))
-    // },
-
     // work station system
     {
         path: "/wms/workStation",
@@ -527,38 +507,9 @@ const menuRouter = [
         }
     },
     {
-        path: "/wms/workStation/replenish",
-        name: "选择容器上架",
-        component: (props: any) => <WorkStation {...props} type="replenish" />,
-        meta: {
-            ...meta,
-            cache: false
-        }
-    },
-    {
         path: "/wms/workStation/stocktake",
         name: "盘点",
         component: (props: any) => <WorkStation {...props} type="stocktake" />,
-        meta: {
-            ...meta,
-            cache: false
-        }
-    },
-    {
-        path: "/wms/workStation/oneStepInventory",
-        name: "理货",
-        component: (props: any) => <WorkStation {...props} type="tally" />,
-        meta: {
-            ...meta,
-            cache: false
-        }
-    },
-    {
-        path: "/wms/workStation/without_order_replenish",
-        name: "无单上架",
-        component: (props: any) => (
-            <WorkStation {...props} type="without_order_replenish" />
-        ),
         meta: {
             ...meta,
             cache: false

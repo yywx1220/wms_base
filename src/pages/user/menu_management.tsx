@@ -16,7 +16,7 @@ const form = [
         label: "userCenter.menuManagement.form.systemCoding",
         type: "select",
         name: "systemCode",
-        source: "${SystemCode}",
+        source: "${AppCode}",
         required: true
     },
     {

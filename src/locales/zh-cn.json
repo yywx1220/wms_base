@@ -479,6 +479,8 @@
     "table.ptlTag": "电子标签",
     "table.putWallLevel": "播种墙层级",
     "table.putWallBay": "播种墙列",
+    "table.value": "值",
+    "table.label": "展示",
 
     "form.tab.basicInformation": "基础信息",
     "form.tab.configurationInformation": "配置信息",

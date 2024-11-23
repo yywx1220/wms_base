@@ -34,12 +34,6 @@ const form = [
         source: role_search_api,
         required: true
     },
-    // {
-    //     "label": "密码",
-    //     "type": "input-password",
-    //     "name": "password",
-    //     "required": true
-    // },
     {
         label: "userCenter.userManagement.table.mobilePhoneNumber",
         type: "input-text",
