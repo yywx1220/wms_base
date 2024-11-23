@@ -1,19 +1,13 @@
 import schema2component from "@/utils/schema2component"
 import {
     api_warehouse_add,
+    api_warehouse_config_add,
+    api_warehouse_config_get,
     api_warehouse_get,
     api_warehouse_update
 } from "@/pages/wms/config_center/constants/api_constant"
-import {
-    create_update_columns,
-    true_false_options
-} from "@/utils/commonContants"
-import {
-    city,
-    country,
-    district,
-    province
-} from "@/pages/wms/constants/select_search_api_contant"
+import {create_update_columns, true_false_options} from "@/utils/commonContants"
+import {city, country, district, province} from "@/pages/wms/constants/select_search_api_contant"
 
 const form = [
     {
@@ -29,7 +23,8 @@ const form = [
         type: "input-text",
         name: "warehouseCode",
         maxLength: 64,
-        required: true
+        required: true,
+        disabledOn: "data.mode === 'edit'"  // 修改时禁用
     },
     {
         label: "table.warehouseName",
@@ -190,7 +185,8 @@ const add = {
         body: {
             type: "form",
             api: api_warehouse_add,
-            body: form
+            body: form,
+            data: {mode: "add"}
         }
     },
     reload: "role"
@@ -384,10 +380,10 @@ const schema = {
                                 closeOnOutside: true,
                                 body: {
                                     type: "form",
-                                    initApi:
-                                        "get:/wms/warehouseConfig/${warehouseCode}",
-                                    api: "post:/wms/warehouseConfig/createOrUpdate",
-                                    body: form
+                                    initApi: api_warehouse_config_get,
+                                    api: api_warehouse_config_add,
+                                    body: form,
+                                    data: {mode: "edit"}
                                 }
                             }
                         }

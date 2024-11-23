@@ -1,8 +1,9 @@
-import axios, { AxiosRequestConfig } from "axios"
-import { toast, makeTranslator } from "amis"
-import { attachmentAdpator } from "amis-core"
-import { ApiObject } from "amis-core/lib/types"
+import axios, {AxiosRequestConfig} from "axios"
+import {makeTranslator, toast} from "amis"
+import {attachmentAdpator} from "amis-core"
+import {ApiObject} from "amis-core/lib/types"
 import store from "@/stores"
+
 /**
  * 全局请求拦截，方便对错误进行统一处理
  * @param config
@@ -34,9 +35,11 @@ export default function request(config: AxiosRequestConfig) {
     ) {
         if (config.headers["Content-Type"] == "application/json") {
             if (typeof config.data === "string") {
-                data = { ...JSON.parse(config.data) }
+                data = {...JSON.parse(config.data)}
             }
-            data["warehouseCode"] = warehouseCode
+            if (data["warehouseCode"] === null || data["warehouseCode"] === undefined || data["warehouseCode"] === "") {
+                data["warehouseCode"] = warehouseCode
+            }
             config.data = JSON.stringify(data)
         } else {
             config.data = warehouseCode

@@ -463,9 +463,9 @@ export const work_location = {
         "/search/search/searchSelectResult?perPage=1000&activePage=1&warehouseCode-op=eq&warehouseCode=" +
         warehouseCode,
     data: {
-        searchIdentity: "SearchWorksLocation",
+        searchIdentity: "SearchEmsLocationConfig",
         searchObject: {
-            tables: "e_work_location"
+            tables: "e_ems_location_config"
         },
         showColumns: [
             {

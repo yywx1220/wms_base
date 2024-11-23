@@ -8,7 +8,12 @@ import {
     create_update_columns,
     true_false_options
 } from "@/utils/commonContants"
-
+import {
+    api_container_batch_add,
+    api_container_change_spec,
+    api_container_get,
+    api_container_delete
+} from "@/pages/wms/config_center/constants/api_constant"
 let warehouseCode = localStorage.getItem("warehouseCode")
 
 const fromBody = [
@@ -74,7 +79,7 @@ const fromBody = [
 
 const form = {
     type: "form",
-    api: "post:/wms/basic/container/create",
+    api: api_container_batch_add,
     body: fromBody
 }
 
@@ -106,16 +111,6 @@ const columns = [
     {
         name: "containerCode",
         label: "table.containerCode",
-        searchable: true
-    },
-    {
-        name: "face",
-        label: "table.face",
-        searchable: true
-    },
-    {
-        name: "containerSlotCode",
-        label: "table.containerSlotCode",
         searchable: true
     },
     {

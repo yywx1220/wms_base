@@ -3,7 +3,12 @@ import schema2component from "@/utils/schema2component"
 import { volume } from "@/pages/wms/config_center/constants/form_constants"
 import { Translation } from "react-i18next"
 import { create_update_columns } from "@/utils/commonContants"
-
+import {
+    api_container_spec_add,
+    api_container_spec_get,
+    api_container_spec_update,
+    api_container_spec_delete
+} from "@/pages/wms/config_center/constants/api_constant"
 let warehouseCode = localStorage.getItem("warehouseCode")
 
 const fromBody = [
@@ -102,7 +107,7 @@ const fromBody = [
 
 const form = {
     type: "form",
-    api: "post:/wms/basic/containerSpec/createOrUpdate",
+    api: api_container_spec_add,
     body: fromBody
 }
 
@@ -238,11 +243,8 @@ const schema = {
                                 size: "xl",
                                 body: {
                                     type: "form",
-                                    initApi: {
-                                        url: "/wms/containerSpec/${id}",
-                                        method: "get"
-                                    },
-                                    api: "post:/wms/basic/containerSpec/createOrUpdate",
+                                    initApi: api_container_spec_get,
+                                    api: api_container_spec_update,
                                     controls: fromBody
                                 }
                             }
@@ -254,7 +256,7 @@ const schema = {
                             level: "danger",
                             confirmText: "toast.sureDelete",
                             confirmTitle: "button.delete",
-                            api: "delete:/wms/containerSpec/${id}",
+                            api: api_container_spec_delete,
                             reload: "ContainerSpecTable"
                         }
                     ],

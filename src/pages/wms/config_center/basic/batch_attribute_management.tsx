@@ -223,10 +223,7 @@ const schema = {
                                 closeOnOutside: true,
                                 body: {
                                     type: "form",
-                                    initApi: {
-                                        url: api_batch_attribute_get,
-                                        method: "get"
-                                    },
+                                    initApi: api_batch_attribute_get,
                                     api: api_batch_attribute_update,
                                     controls: form
                                 }

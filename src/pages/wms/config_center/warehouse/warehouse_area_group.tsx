@@ -4,14 +4,13 @@ import {
     enable_options,
     true_false_options
 } from "@/utils/commonContants"
+import {api_warehouse_area_group_add} from "@/pages/wms/config_center/constants/api_constant";
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
 const form = {
     type: "form",
-    api: {
-        url: "/wms/warehouseAreaGroup/createOrUpdate"
-    },
+    api: api_warehouse_area_group_add,
     body: [
         {
             type: "hidden",

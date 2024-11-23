@@ -1,14 +1,13 @@
 import schema2component from "@/utils/schema2component"
 import { create_update_columns, enable_options } from "@/utils/commonContants"
 import { warehouse_area_id } from "@/pages/wms/constants/select_search_api_contant"
+import {api_warehouse_area_logic_add} from "@/pages/wms/config_center/constants/api_constant";
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
 const form = {
     type: "form",
-    api: {
-        url: "/wms/warehouseLogic/createOrUpdate"
-    },
+    api: api_warehouse_area_logic_add,
     body: [
         {
             type: "hidden",
