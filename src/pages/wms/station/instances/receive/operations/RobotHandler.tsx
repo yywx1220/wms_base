@@ -178,7 +178,7 @@ const RobotHandler = (props: any) => {
     }
 
     return (
-        <>
+        <div className="bg-white p-4 h-full">
             <div className="d-flex items-center">
                 <div className="white-space-nowrap">请扫描容器号:</div>
                 <Input
@@ -280,7 +280,7 @@ const RobotHandler = (props: any) => {
                     </Col>
                 </Row>
             </div>
-        </>
+        </div>
     )
 }
 

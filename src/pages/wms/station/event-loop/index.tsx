@@ -69,6 +69,8 @@ export default class WorkStationEventLoop {
     // private mockData: any[] = []
     private mockData: any
     private eventSource: EventSource | null = null
+    private websocket: WebSocket | null = null
+    private stationId: string | null = null
 
     public constructor(config: WorkStationEventLoopConfig) {
         const {
@@ -143,7 +145,8 @@ export default class WorkStationEventLoop {
     /**
      * @description: 事件循环开始
      */
-    public start: () => void = () => {
+    public start: () => void = async () => {
+        await this.getApiData()
         this.queryEvent()
     }
 
@@ -153,11 +156,12 @@ export default class WorkStationEventLoop {
     public stop: () => void = async () => {
         console.log("%c =====> event loop stop", "color:red;font-size:20px;")
         // window.clearInterval(this.pollId)
-        this.eventSource?.close()
-        const res = await request({
-            method: "delete",
-            url: "/station/sse/disconnect"
-        })
+        // this.eventSource?.close()
+        this.websocket?.close()
+        // const res = await request({
+        //     method: "delete",
+        //     url: "/station/sse/disconnect"
+        // })
     }
 
     /**
@@ -250,7 +254,8 @@ export default class WorkStationEventLoop {
         ) {
             data = await this.getMockEventData()
         } else {
-            data = await this.getSSEMessageData()
+            // data = await this.getSSEMessageData()
+            data = await this.getWebsocketData()
             // const workStationInfo = await this.getWorkStationInfo()
             // if (
             //     workStationInfo?.runningStatusUUID !==
@@ -307,7 +312,8 @@ export default class WorkStationEventLoop {
             process.env.NODE_ENV === "development" ? "connect.test.com" : domain
 
         this.eventSource = new EventSource(
-            `/gw/station/sse/connect?Authorization=` + encodeURIComponent(localStorage.getItem("ws_token") as string)
+            `/gw/station/sse/connect?Authorization=` +
+                encodeURIComponent(localStorage.getItem("ws_token") as string)
         )
 
         this.eventSource.onopen = () => {
@@ -326,6 +332,59 @@ export default class WorkStationEventLoop {
         }
         return data
     }
+
+    private getWebsocketData: () => Promise<WorkStationEvent<any> | undefined> =
+        async () => {
+            let data
+            let that = this
+            const currentUrl = window.location.href
+            const domain = new URL(currentUrl).hostname
+
+            const hostName =
+                process.env.NODE_ENV === "development"
+                    ? "connect.test.com"
+                    : domain
+
+            this.websocket = new WebSocket(
+                `ws://connect.test.com:8090/station/websocket?stationCode=${that.stationId}&Authorization=` +
+                    encodeURIComponent(
+                        localStorage.getItem("ws_token") as string
+                    )
+            )
+
+            this.websocket.onopen = () => {
+                console.log(`websocket 连接成功，状态${this.websocket}`)
+            }
+            // 监听消息事件
+            this.websocket.addEventListener("message", (event) => {
+                console.log("websocket", event.data)
+                if (!event.data) return
+                if (event.data === "changed") {
+                    that.getApiData()
+                }
+
+                // that.handleEventChange(data)
+                // 服务端推送的数据
+                console.log(event.data, "######")
+            })
+            this.websocket.onerror = () => {
+                console.log(
+                    `websocket 连接错误，状态${this.eventSource?.readyState}`
+                )
+            }
+            return data
+        }
+
+    private getApiData: () => void = async () => {
+        const res: any = await request({
+            method: "get",
+            url: "/station/api"
+        })
+        this.stationId = res.data.workStationId
+        this.handleEventChange(res.data)
+        // this.queryEvent()
+    }
+
     /**
      * @description: 获取后台接口数据
      */
