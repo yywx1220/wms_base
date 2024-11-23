@@ -24,26 +24,26 @@ const form = [
         name: "version"
     },
     {
-        label: "${'skuArea.ownerCode' | t}",
+        label: "skuArea.ownerCode",
         type: "input-text",
         name: "ownerCode",
         required: true
     },
     {
-        label: "${'table.ownerName' | t}",
+        label: "table.ownerName",
         type: "input-text",
         name: "ownerName",
         required: true
     },
     {
-        label: "${'table.ownerType' | t}",
+        label: "table.ownerType",
         type: "select",
         name: "ownerType",
         source: "${OwnerType}",
         required: true
     },
     {
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         name: "warehouseCode",
         type: "hidden",
         value: warehouseCode
@@ -51,13 +51,13 @@ const form = [
 
     // 地址信息
     {
-        label: "${'table.country' | t}",
+        label: "table.country",
         type: "select",
         name: "addressDTO.country",
         source: country
     },
     {
-        label: "${'table.province' | t}",
+        label: "table.province",
         type: "select",
         name: "addressDTO.province",
         initFetchOn: "data.addressDTO.country",
@@ -67,7 +67,7 @@ const form = [
         }
     },
     {
-        label: "${'table.city' | t}",
+        label: "table.city",
         type: "select",
         name: "addressDTO.city",
         initFetchOn: "data.addressDTO.province",
@@ -79,7 +79,7 @@ const form = [
         }
     },
     {
-        label: "${'table.district/county' | t}",
+        label: "table.district/county",
         type: "select",
         name: "addressDTO.district",
         initFetchOn: "data.addressDTO.city",
@@ -91,19 +91,19 @@ const form = [
         }
     },
     {
-        label: "${'table.fullAddress' | t}",
+        label: "table.fullAddress",
         type: "input-text",
         name: "addressDTO.address"
     },
 
     // 联系方式
     {
-        label: "${'table.contact' | t}",
+        label: "table.contact",
         type: "input-text",
         name: "contactorDTO.name"
     },
     {
-        label: "${'table.phoneNumber' | t}",
+        label: "table.phoneNumber",
         type: "input-text",
         name: "contactorDTO.tel",
         validations: {
@@ -111,7 +111,7 @@ const form = [
         }
     },
     {
-        label: "${'table.email' | t}",
+        label: "table.email",
         type: "input-text",
         name: "contactorDTO.mail",
         validations: {
@@ -119,7 +119,7 @@ const form = [
         }
     },
     {
-        label: "${'table.fax' | t}",
+        label: "table.fax",
         type: "input-text",
         name: "contactorDTO.fax",
         validations: {
@@ -132,10 +132,10 @@ const add = {
     type: "button",
     actionType: "drawer",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "role",
     drawer: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         body: {
             type: "form",
@@ -158,22 +158,22 @@ const columns = [
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         hidden: true
     },
     {
         name: "ownerCode",
-        label: "${'skuArea.ownerCode' | t}",
+        label: "skuArea.ownerCode",
         searchable: true
     },
     {
         name: "ownerName",
-        label: "${'table.ownerName' | t}",
+        label: "table.ownerName",
         searchable: true
     },
     {
         name: "ownerType",
-        label: "${'table.ownerType' | t}",
+        label: "table.ownerType",
         type: "mapping",
         source: "${OwnerType}",
         searchable: {
@@ -183,35 +183,35 @@ const columns = [
     },
     {
         name: "country",
-        label: "${'table.country' | t}"
+        label: "table.country"
     },
     {
         name: "province",
-        label: "${'table.province' | t}"
+        label: "table.province"
     },
     {
         name: "city",
-        label: "${'table.city' | t}"
+        label: "table.city"
     },
     {
         name: "district",
-        label: "${'table.district/county' | t}"
+        label: "table.district/county"
     },
     {
         name: "name",
-        label: "${'table.contact' | t}"
+        label: "table.contact"
     },
     {
         name: "tel",
-        label: "${'table.phoneNumber' | t}"
+        label: "table.phoneNumber"
     },
     {
         name: "mail",
-        label: "${'table.email' | t}"
+        label: "table.email"
     },
     {
         name: "fax",
-        label: "${'table.fax' | t}"
+        label: "table.fax"
     },
     ...create_update_columns
 ]
@@ -221,7 +221,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'shipperManagement.title' | t}",
+    title: "shipperManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -254,15 +254,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 100,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "drawer",
                             drawer: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 body: {

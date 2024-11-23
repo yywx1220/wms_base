@@ -16,19 +16,19 @@ const fromBody = [
         name: "version"
     },
     {
-        label: "${'table.specificationCode' | t}",
+        label: "table.specificationCode",
         type: "input-text",
         name: "containerSpecCode",
         required: true
     },
     {
-        label: "${'table.specificationName' | t}",
+        label: "table.specificationName",
         type: "input-text",
         name: "containerSpecName",
         required: true
     },
     {
-        label: "${'table.containerType' | t}",
+        label: "table.containerType",
         type: "select",
         name: "containerType",
         source: "${ContainerType}",
@@ -37,7 +37,7 @@ const fromBody = [
     {
         type: "hidden",
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         value: warehouseCode
     },
     ...volume,
@@ -52,13 +52,13 @@ const fromBody = [
             ...volume,
             {
                 name: "containerSlotSpecCode",
-                label: "${'table.containerLatticeSlogan' | t}",
+                label: "table.containerLatticeSlogan",
                 type: "input-text",
                 required: true
             },
             {
                 name: "face",
-                label: "${'table.face/wall_coding' | t}",
+                label: "table.face/wall_coding",
                 type: "select",
                 options: [
                     {
@@ -74,13 +74,13 @@ const fromBody = [
             },
             {
                 name: "level",
-                label: "${'workLocationArea.layer' | t}",
+                label: "workLocationArea.layer",
                 type: "input-text",
                 required: true
             },
             {
                 name: "bay",
-                label: "${'table.column' | t}",
+                label: "table.column",
                 type: "input-number",
                 required: true
             },
@@ -110,11 +110,11 @@ const add = {
     type: "button",
     actionType: "dialog",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "role",
     dialog: {
         size: "full",
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         body: form
     }
@@ -133,17 +133,17 @@ const columns = [
     },
     {
         name: "containerSpecCode",
-        label: "${'table.specificationCode' | t}",
+        label: "table.specificationCode",
         searchable: true
     },
     {
         name: "containerSpecName",
-        label: "${'table.specificationName' | t}",
+        label: "table.specificationName",
         searchable: true
     },
     {
         name: "containerType",
-        label: "${'table.containerType' | t}",
+        label: "table.containerType",
         type: "mapping",
         source: "${ContainerType}",
         searchable: {
@@ -152,22 +152,22 @@ const columns = [
         }
     },
     {
-        label: "${'table.volume' | t}(mm³)",
+        label: "table.volume(mm³)",
         name: "volume",
         tpl: "${volume} mm³"
     },
     {
-        label: "${'table.length' | t}(mm)",
+        label: "table.length(mm)",
         name: "length",
         tpl: "${length} mm"
     },
     {
-        label: "${'table.width' | t}(mm)",
+        label: "table.width(mm)",
         name: "width",
         tpl: "${width} mm"
     },
     {
-        label: "${'table.height' | t}(mm)",
+        label: "table.height(mm)",
         name: "height",
         tpl: "${height} mm"
     },
@@ -212,7 +212,7 @@ const schema = {
                 add,
                 {
                     type: "export-excel",
-                    label: "${'button.export' | t}",
+                    label: "button.export",
                     api:
                         "post:/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
                         warehouseCode,
@@ -224,15 +224,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 100,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 size: "xl",
@@ -248,12 +248,12 @@ const schema = {
                             }
                         },
                         {
-                            label: "${'button.delete' | t}",
+                            label: "button.delete",
                             type: "button",
                             actionType: "ajax",
                             level: "danger",
-                            confirmText: "${'toast.sureDelete' | t}",
-                            confirmTitle: "${'button.delete' | t}",
+                            confirmText: "toast.sureDelete",
+                            confirmTitle: "button.delete",
                             api: "delete:/wms/containerSpec/${id}",
                             reload: "ContainerSpecTable"
                         }

@@ -17,13 +17,13 @@ const form = [
         name: "version"
     },
     {
-        label: "${'table.ruleEncoding' | t}",
+        label: "table.ruleEncoding",
         type: "input-text",
         name: "code",
         required: true
     },
     {
-        label: "${'table.ruleName' | t}",
+        label: "table.ruleName",
         type: "input-text",
         name: "name",
         required: true
@@ -31,11 +31,11 @@ const form = [
     {
         type: "select",
         name: "ownerCode",
-        label: "${'table.productOwner' | t}",
+        label: "table.productOwner",
         source: owner_code
     },
     {
-        label: "${'table.SKUCategories' | t}",
+        label: "table.SKUCategories",
         type: "select",
         name: "skuFirstCategory",
         source: "${SkuFirstCategory}"
@@ -43,7 +43,7 @@ const form = [
     {
         name: "enable",
         type: "switch",
-        label: "${'table.whetherEnabled' | t}"
+        label: "table.whetherEnabled"
     },
     {
         type: "input-table",
@@ -69,36 +69,36 @@ const form = [
         columns: [
             {
                 name: "fieldCode",
-                label: "${'table.batchAttributeCode' | t}",
+                label: "table.batchAttributeCode",
                 type: "input-text",
                 required: true
             },
             {
                 name: "fieldName",
-                label: "${'table.batchAttributes' | t}",
+                label: "table.batchAttributes",
                 type: "input-text"
             },
             {
                 name: "required",
-                label: "${'table.required' | t}",
+                label: "table.required",
                 type: "select",
                 options: true_false_options
             },
             {
                 name: "keyAttribute",
-                label: "${'table.keyAttributes' | t}",
+                label: "table.keyAttributes",
                 type: "select",
                 options: true_false_options
             },
             {
                 name: "exactMatch",
-                label: "${'table.preciseMatch' | t}",
+                label: "table.preciseMatch",
                 type: "select",
                 options: true_false_options
             },
             {
                 name: "enable",
-                label: "${'table.enable' | t}",
+                label: "table.enable",
                 type: "select",
                 options: enable_options
             }
@@ -110,9 +110,9 @@ const add = {
     type: "button",
     actionType: "dialog",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     dialog: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         size: "lg",
         closeOnEsc: true,
         body: {
@@ -136,17 +136,17 @@ const columns = [
     },
     {
         name: "code",
-        label: "${'table.ruleEncoding' | t}",
+        label: "table.ruleEncoding",
         searchable: true
     },
     {
         name: "name",
-        label: "${'table.ruleName' | t}",
+        label: "table.ruleName",
         searchable: true
     },
     {
         name: "ownerCode",
-        label: "${'table.productOwner' | t}",
+        label: "table.productOwner",
         type: "mapping",
         source: owner_code,
         searchable: {
@@ -156,7 +156,7 @@ const columns = [
     },
     {
         name: "skuFirstCategory",
-        label: "${'table.SKUCategories' | t}",
+        label: "table.SKUCategories",
         type: "mapping",
         source: "${SkuFirstCategory}",
         searchable: {
@@ -166,7 +166,7 @@ const columns = [
     },
     {
         name: "enable",
-        label: "${'table.enable' | t}",
+        label: "table.enable",
         type: "mapping",
         source: "${EnableStatus}",
     },
@@ -178,7 +178,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'batchManagement.title' | t}",
+    title: "batchManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -209,15 +209,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 100,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 size: "lg",
                                 closeOnEsc: true,
                                 closeOnOutside: true,

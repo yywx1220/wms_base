@@ -20,44 +20,44 @@ const form = [
         name: "version"
     },
     {
-        label: "${'table.ruleEncoding' | t}",
+        label: "table.ruleEncoding",
         type: "input-text",
         name: "code",
         required: true
     },
     {
-        label: "${'table.ruleName' | t}",
+        label: "table.ruleName",
         type: "input-text",
         name: "name",
         required: true
     },
     {
-        label: "${'table.productOwner' | t}",
+        label: "table.productOwner",
         type: "select",
         name: "ownerCode",
         source: owner_code_barcode_analysis
     },
     {
-        label: "${'table.buriedPoint' | t}",
+        label: "table.buriedPoint",
         type: "select",
         name: "executeTime",
         source: "${ExecuteTime}",
         required: true
     },
     {
-        label: "${'table.businessModules' | t}",
+        label: "table.businessModules",
         type: "select",
         name: "businessFlow",
         source: "${BusinessFlow}",
         required: true
     },
     {
-        label: "${'table.brand' | t}",
+        label: "table.brand",
         type: "select",
         name: "brand"
     },
     {
-        label: "${'table.stitchingPosition' | t}",
+        label: "table.stitchingPosition",
         type: "select",
         name: "unionLocation",
         source: "${UnionLocation}"
@@ -65,17 +65,17 @@ const form = [
     {
         type: "input-text",
         name: "unionStr",
-        placeholder: "${'table.stitchingContent' | t}"
+        placeholder: "table.stitchingContent"
     },
     {
-        label: "${'table.resolutionRules' | t}",
+        label: "table.resolutionRules",
         type: "textarea",
         name: "regularExpression",
         required: true
     },
     {
         name: "resultFields",
-        label: "${'table.resolveObjects' | t}",
+        label: "table.resolveObjects",
         type: "input-array",
         required: true,
         items: {
@@ -87,7 +87,7 @@ const form = [
     {
         name: "enable",
         type: "switch",
-        label: "${'table.whetherEnabled' | t}",
+        label: "table.whetherEnabled",
         onText: "启用",
         offText: "禁用",
         "en-US": {
@@ -102,10 +102,10 @@ const add = {
     type: "button",
     actionType: "dialog",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     dialog: {
         name: "addDialog",
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         size: "lg",
         body: {
@@ -129,17 +129,17 @@ const columns = [
     },
     {
         name: "code",
-        label: "${'table.ruleEncoding' | t}",
+        label: "table.ruleEncoding",
         searchable: true
     },
     {
         name: "name",
-        label: "${'table.ruleName' | t}",
+        label: "table.ruleName",
         searchable: true
     },
     {
         name: "ownerCode",
-        label: "${'table.productOwner' | t}",
+        label: "table.productOwner",
         type: "mapping",
         source: owner_code_barcode_analysis,
         searchable: {
@@ -149,7 +149,7 @@ const columns = [
     },
     {
         name: "executeTime",
-        label: "${'table.buriedPoint' | t}",
+        label: "table.buriedPoint",
         type: "mapping",
         source: "${ExecuteTime}",
         searchable: {
@@ -159,7 +159,7 @@ const columns = [
     },
     {
         name: "enable",
-        label: "${'table.whetherEnabled' | t}",
+        label: "table.whetherEnabled",
         type: "mapping",
         map: true_false_options
     },
@@ -171,7 +171,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'barcodeParsingManagement.title' | t}",
+    title: "barcodeParsingManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -202,15 +202,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 100,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 size: "lg",

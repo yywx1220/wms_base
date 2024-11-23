@@ -25,18 +25,18 @@ let areaConditions =
 
 const schema = {
     type: "page",
-    title: "${'modal.receiveInventoryList' | t}",
+    title: "modal.receiveInventoryList",
     initApi: "post:/mdm/config/dictionary/getAll",
     body: {
         type: "wizard",
-        actionFinishLabel: "${'modal.generateInventoryOrder' | t}",
+        actionFinishLabel: "modal.generateInventoryOrder",
         // api: api_stocktake_order_add,
         preventEnterSubmit: true,
         reload: "stocktakeOrderTable",
         id: "wizardComponent",
         steps: [
             {
-                // title: "${'modal.selectInventoryArea' | t}",
+                // title: "modal.selectInventoryArea",
                 title: (
                     <Translation>
                         {(t) => t("modal.selectInventoryArea")}
@@ -55,7 +55,7 @@ const schema = {
                     {
                         type: "select",
                         name: "warehouseAreaId",
-                        label: "${'workLocationArea.warehouseArea' | t}",
+                        label: "workLocationArea.warehouseArea",
                         selectFirst: true,
                         source: {
                             ...warehouse_area_id,
@@ -70,7 +70,7 @@ const schema = {
                         type: "select",
                         name: "warehouseLogicId",
                         // "initFetchOn": "data.warehouseAreaCode",
-                        label: "${'table.logicArea' | t}",
+                        label: "table.logicArea",
                         clearable: true,
                         source: warehouse_logic_id,
                         className: "warehouseLogic"
@@ -78,7 +78,7 @@ const schema = {
                     {
                         type: "select",
                         name: "ownerCode",
-                        label: "${'table.productOwner' | t}",
+                        label: "table.productOwner",
                         clearable: true,
                         source: owner_code,
                         className: "ownerCode"
@@ -105,7 +105,7 @@ const schema = {
                     {
                         type: "button-group-select",
                         name: "stocktakeType",
-                        label: "${'table.countType' | t}",
+                        label: "table.countType",
                         selectFirst: true,
                         source: "${StocktakeType}",
                         required: true,
@@ -115,7 +115,7 @@ const schema = {
                         type: "button-group-select",
                         name: "stocktakeMethod",
                         selectFirst: true,
-                        label: "${'table.countMethod' | t}",
+                        label: "table.countMethod",
                         source: "${StocktakeMethod}",
                         required: true,
                         className: "stocktakeMethod"
@@ -136,12 +136,12 @@ const schema = {
                     // {
                     //     type: "switch",
                     //     name: "isStocktakeZeroStockSku",
-                    //     label: "${'modal.inventory0ItemsInStock' | t}"
+                    //     label: "modal.inventory0ItemsInStock"
                     // },
                     // {
                     //     type: "switch",
                     //     name: "isStocktakeEmptySlot",
-                    //     label: "${'modal.spaceCouting' | t}"
+                    //     label: "modal.spaceCouting"
                     // }
                 ],
                 actions: [
@@ -172,7 +172,7 @@ const schema = {
                     tabsMode: "strong",
                     tabs: [
                         // {
-                        //     title: "${'modal.countByShelf' | t}",
+                        //     title: "modal.countByShelf",
                         //     value: "SHELF",
                         //     tab: {
                         //         type: "transfer",
@@ -227,7 +227,7 @@ const schema = {
                                         type: "input-text",
                                         multiple: true,
                                         placeholder:
-                                            "${'skuArea.scanBarcode' | t}",
+                                            "skuArea.scanBarcode",
                                         trimContents: true,
                                         clearable: true,
                                         className:
@@ -273,7 +273,7 @@ const schema = {
                                         className:
                                             "inline-block w-1/6 align-top",
                                         btnLabel:
-                                            "${'button.import' | t} Excel",
+                                            "button.import Excel",
                                         onEvent: {
                                             success: {
                                                 actions: [
@@ -475,7 +475,7 @@ const schema = {
                         }
                     },
                     {
-                        label: "${'modal.generateInventoryOrder' | t}",
+                        label: "modal.generateInventoryOrder",
                         type: "submit",
                         level: "primary",
                         actionType: "submit",

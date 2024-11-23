@@ -19,37 +19,37 @@ const form = {
             name: "version"
         },
         {
-            label: "${'table.reservoirAreaCode' | t}",
+            label: "table.reservoirAreaCode",
             name: "warehouseAreaId",
             type: "select",
             source: warehouse_area_id,
             required: true
         },
         {
-            label: "${'table.logicalAreaEncoding' | t}",
+            label: "table.logicalAreaEncoding",
             name: "warehouseLogicCode",
             type: "input-text",
             required: true
         },
         {
-            label: "${'table.logicalAreaName' | t}",
+            label: "table.logicalAreaName",
             name: "warehouseLogicName",
             type: "input-text",
             required: true
         },
         {
-            label: "${'table.warehouseLogicType' | t}",
+            label: "table.warehouseLogicType",
             name: "warehouseLogicType",
             type: "select",
             source: "${WarehouseLogicType}"
         },
         {
-            label: "${'table.remark' | t}",
+            label: "table.remark",
             name: "remark",
             type: "input-text"
         },
         {
-            label: "${'table.status' | t}",
+            label: "table.status",
             name: "enable",
             type: "switch",
             value: true,
@@ -57,7 +57,7 @@ const form = {
             required: true
         },
         {
-            label: "${'table.warehouseCode' | t}",
+            label: "table.warehouseCode",
             name: "warehouseCode",
             type: "hidden",
             value: warehouseCode
@@ -68,10 +68,10 @@ const add = {
     type: "button",
     actionType: "drawer",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "role",
     drawer: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         body: form
     }
@@ -90,12 +90,12 @@ const columns = [
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         hidden: true
     },
     {
         name: "warehouseAreaId",
-        label: "${'table.reservoirAreaCode' | t}",
+        label: "table.reservoirAreaCode",
         type: "mapping",
         source: warehouse_area_id,
         searchable: {
@@ -105,26 +105,26 @@ const columns = [
     },
     {
         name: "warehouseLogicCode",
-        label: "${'table.logicalAreaEncoding' | t}",
+        label: "table.logicalAreaEncoding",
         searchable: true
     },
     {
         name: "warehouseLogicName",
-        label: "${'table.logicalAreaName' | t}"
+        label: "table.logicalAreaName"
     },
     {
         name: "warehouseLogicType",
-        label: "${'table.warehouseLogicType' | t}",
+        label: "table.warehouseLogicType",
         type: "mapping",
         source: "${WarehouseLogicType}"
     },
     {
         name: "remark",
-        label: "${'table.remark' | t}"
+        label: "table.remark"
     },
     {
         name: "enable",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         map: enable_options
     },
@@ -136,7 +136,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'logicalAreaManagement.title' | t}",
+    title: "logicalAreaManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -169,15 +169,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 100,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "drawer",
                             drawer: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 body: form

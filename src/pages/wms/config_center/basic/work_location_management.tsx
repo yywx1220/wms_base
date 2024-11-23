@@ -13,20 +13,20 @@ const baseInfoForm = [
         name: "id"
     },
     {
-        label: "${'table.workBitEncoding' | t}",
+        label: "table.workBitEncoding",
         name: "locationCode",
         type: "input-text",
         required: true
     },
     {
-        label: "${'table.theTypeOfConatainerReceived' | t}",
+        label: "table.theTypeOfConatainerReceived",
         name: "receiveContainerType",
         type: "select",
         source: "${ContainerType}",
         required: true
     },
     {
-        label: "${'workLocationArea.warehouseArea' | t}",
+        label: "workLocationArea.warehouseArea",
         name: "warehouseAreaId",
         type: "select",
         source: warehouse_area_id,
@@ -35,7 +35,7 @@ const baseInfoForm = [
     {
         type: "hidden",
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         value: warehouseCode
     }
 ]
@@ -44,10 +44,10 @@ const add = {
     type: "button",
     actionType: "dialog",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "role",
     dialog: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         size: "lg",
         closeOnEsc: true,
         body: {
@@ -66,11 +66,11 @@ const columns = [
     },
     {
         name: "locationCode",
-        label: "${'table.workBitEncoding' | t}"
+        label: "table.workBitEncoding"
     },
     {
         name: "receiveContainerType",
-        label: "${'table.theTypeOfConatainerReceived' | t}",
+        label: "table.theTypeOfConatainerReceived",
         searchable: {
             type: "select",
             source: "${ContainerType}"
@@ -78,13 +78,13 @@ const columns = [
     },
     {
         name: "warehouseAreaId",
-        label: "${'workLocationArea.warehouseArea' | t}",
+        label: "workLocationArea.warehouseArea",
         type: "mapping",
         source: warehouse_area_id
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         hidden: true
     },
     ...create_update_columns
@@ -95,7 +95,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'workBitsManagement.title' | t}",
+    title: "workBitsManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -128,15 +128,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 180,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 size: "lg",
                                 closeOnEsc: true,
                                 body: {

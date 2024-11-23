@@ -12,13 +12,13 @@ const columns = [
     {
         dbField: "r.order_no",
         name: "abnormalOrderNo",
-        label: "${'table.exceptionTrackingNumber' | t}",
+        label: "table.exceptionTrackingNumber",
         searchable: true
     },
     {
         dbField: "r.stock_abnormal_type",
         name: "stockAbnormalType",
-        label: "${'table.exceptionType' | t}",
+        label: "table.exceptionType",
         type: "mapping",
         source: "${StockAbnormalType}",
         searchable: {
@@ -35,12 +35,12 @@ const columns = [
     {
         dbField: "r.replay_no",
         name: "replayNo",
-        label: "${'table.reviewOrderNumber' | t}"
+        label: "table.reviewOrderNumber"
     },
     {
         dbField: "r.stock_abnormal_status",
         name: "stockAbnormalStatus",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         source: "${StockAbnormalStatus}",
         searchable: {
@@ -51,30 +51,30 @@ const columns = [
     {
         dbField: "r.warehouse_code",
         name: "warehouseCode",
-        label: "${'table.warehouse' | t}"
+        label: "table.warehouse"
     },
 
     {
         dbField: "r.container_code",
         name: "containerCode",
-        label: "${'table.containerCode' | t}",
+        label: "table.containerCode",
         searchable: true
     },
     {
         dbField: "r.container_slot_code",
         name: "containerSlotCode",
-        label: "${'table.containerSlotCode' | t}"
+        label: "table.containerSlotCode"
     },
     {
         dbField: "g.bar_code_list",
         name: "barCodeList",
-        label: "${'skuArea.barcode' | t}",
+        label: "skuArea.barcode",
         searchable: true
     },
     {
         dbField: "r.sku_code",
         name: "skuCode",
-        label: "${'skuArea.skuCode' | t}"
+        label: "skuArea.skuCode"
     },
 
     {
@@ -86,19 +86,19 @@ const columns = [
     {
         dbField: "r.qty_abnormal",
         name: "qtyAbnormal",
-        label: "${'table.profit' | t}"
+        label: "table.profit"
     },
     {
         dbField: "r.stock_abnormal_reason",
         name: "stockAbnormalReason",
-        label: "${'table.differenceReason' | t}",
+        label: "table.differenceReason",
         type: "mapping",
         source: "${StockAbnormalReason}"
     },
     {
         dbField: "r.reason_desc",
         name: "reasonDesc",
-        label: "${'table.causeDescription' | t}"
+        label: "table.causeDescription"
     },
     {
         dbField: "r.container_stock_id",
@@ -110,7 +110,7 @@ const columns = [
     {
         dbField: "r.sku_batch_stock_id",
         name: "skuBatchStockId",
-        label: "${'table.lotNumber' | t}"
+        label: "table.lotNumber"
     },
 
     {
@@ -122,7 +122,7 @@ const columns = [
     {
         dbField: "r.create_time",
         name: "createTime",
-        label: "${'table.creationTime' | t}",
+        label: "table.creationTime",
         tpl: "${createTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
         searchable: {
             type: "input-date-range",
@@ -132,7 +132,7 @@ const columns = [
     {
         dbField: "r.update_time",
         name: "updateTime",
-        label: "${'table.updated' | t}",
+        label: "table.updated",
         tpl: "${updateTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}"
     }
 ]
@@ -142,7 +142,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'inventorAnomalies.title' | t}",
+    title: "inventorAnomalies.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -174,7 +174,7 @@ const schema = {
                 "reload",
                 {
                     type: "export-excel",
-                    label: "${'button.export' | t}",
+                    label: "button.export",
                     api:
                         "/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
                         warehouseCode,
@@ -186,26 +186,26 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 130,
                     buttons: [
                         {
-                            label: "${'button.close' | t}",
+                            label: "button.close",
                             type: "button",
                             level: "link",
                             disabledOn: "${stockAbnormalStatus !== 'NEW'}",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'toast.prompt' | t}",
-                                body: "${'toast.sureToCloseOrder' | t}",
+                                title: "toast.prompt",
+                                body: "toast.sureToCloseOrder",
                                 actions: [
                                     {
-                                        label: "${'button.cancel' | t}",
+                                        label: "button.cancel",
                                         actionType: "cancel",
                                         type: "button"
                                     },
                                     {
-                                        label: "${'button.confirm' | t}",
+                                        label: "button.confirm",
                                         actionType: "ajax",
                                         primary: true,
                                         type: "button",
@@ -220,8 +220,8 @@ const schema = {
                                 ]
                             }
                             // actionType: "ajax",
-                            // confirmText: "${'toast.sureToCloseOrder' | t}",
-                            // confirmTitle: "${'button.close' | t}",
+                            // confirmText: "toast.sureToCloseOrder",
+                            // confirmTitle: "button.close",
                             // api: {
                             //     method: "post",
                             //     url: "/wms/stock/abnormal/record/manualClose",
@@ -230,22 +230,22 @@ const schema = {
                             // reload: "paramConfigTable"
                         },
                         {
-                            label: "${'button.adjustInventoryOrder' | t}",
+                            label: "button.adjustInventoryOrder",
                             type: "button",
                             level: "link",
                             disabledOn: "${stockAbnormalStatus !== 'NEW'}",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'toast.prompt' | t}",
-                                body: "${'toast.confirmGenerateOrder' | t}",
+                                title: "toast.prompt",
+                                body: "toast.confirmGenerateOrder",
                                 actions: [
                                     {
-                                        label: "${'button.cancel' | t}",
+                                        label: "button.cancel",
                                         actionType: "cancel",
                                         type: "button"
                                     },
                                     {
-                                        label: "${'button.confirm' | t}",
+                                        label: "button.confirm",
                                         actionType: "ajax",
                                         primary: true,
                                         type: "button",
@@ -261,23 +261,23 @@ const schema = {
                             }
                         },
                         {
-                            label: "${'button.takeInventoryAgain' | t}",
+                            label: "button.takeInventoryAgain",
                             type: "button",
                             level: "link",
                             disabledOn: "${stockAbnormalStatus !== 'NEW'}",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'toast.prompt' | t}",
-                                body: "${'toast.confirmRecount' | t}",
+                                title: "toast.prompt",
+                                body: "toast.confirmRecount",
                                 actions: [
                                     {
-                                        label: "${'button.cancel' | t}",
+                                        label: "button.cancel",
                                         actionType: "cancel",
                                         // primary: true,
                                         type: "button"
                                     },
                                     {
-                                        label: "${'button.confirm' | t}",
+                                        label: "button.confirm",
                                         actionType: "ajax",
                                         primary: true,
                                         type: "button",

@@ -21,14 +21,14 @@ const fromBody = [
         name: "version"
     },
     {
-        label: "${'table.containerType' | t}",
+        label: "table.containerType",
         type: "select",
         name: "containerType",
         source: "${ContainerType}",
         required: true
     },
     {
-        label: "${'workLocationArea.containerSpecification' | t}",
+        label: "workLocationArea.containerSpecification",
         type: "select",
         name: "containerSpecCode",
         initFetchOn: "data.containerType",
@@ -41,25 +41,25 @@ const fromBody = [
         required: true
     },
     {
-        label: "${'table.numberOfDigits' | t}",
+        label: "table.numberOfDigits",
         type: "input-text",
         name: "indexNumber",
         required: true
     },
     {
-        label: "${'table.numberingPrefix' | t}",
+        label: "table.numberingPrefix",
         type: "input-text",
         name: "containerCodePrefix",
         required: true
     },
     {
-        label: "${'table.startNumber' | t}",
+        label: "table.startNumber",
         type: "input-number",
         name: "startIndex",
         required: true
     },
     {
-        label: "${'table.createdNumber' | t}",
+        label: "table.createdNumber",
         type: "input-text",
         name: "createNumber",
         required: true
@@ -67,7 +67,7 @@ const fromBody = [
     {
         type: "hidden",
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         value: warehouseCode
     }
 ]
@@ -82,11 +82,11 @@ const add = {
     type: "button",
     actionType: "drawer",
     icon: "fa fa-plus",
-    label: "${'button.batchCreation' | t}",
+    label: "button.batchCreation",
     target: "ContainerTable",
     drawer: {
         size: "lg",
-        title: "${'button.batchCreation' | t}",
+        title: "button.batchCreation",
         closeOnEsc: true,
         body: form
     }
@@ -105,22 +105,22 @@ const columns = [
     },
     {
         name: "containerCode",
-        label: "${'table.containerCode' | t}",
+        label: "table.containerCode",
         searchable: true
     },
     {
         name: "face",
-        label: "${'table.face' | t}",
+        label: "table.face",
         searchable: true
     },
     {
         name: "containerSlotCode",
-        label: "${'table.containerSlotCode' | t}",
+        label: "table.containerSlotCode",
         searchable: true
     },
     {
         name: "containerSpecCode",
-        label: "${'workLocationArea.containerSpecification' | t}",
+        label: "workLocationArea.containerSpecification",
         type: "mapping",
         source: container_spec,
         searchable: {
@@ -135,25 +135,25 @@ const columns = [
     },
     {
         name: "containerStatus",
-        label: "${'table.containerStatus' | t}",
+        label: "table.containerStatus",
         type: "mapping",
         source: "${ContainerStatus}"
     },
     {
         name: "warehouseAreaId",
-        label: "${'table.warehouseAreaName' | t}",
+        label: "table.warehouseAreaName",
         type: "mapping",
         source: warehouse_area_id
     },
     {
         name: "warehouseLogicCode",
-        label: "${'table.warehouseLogicName' | t}",
+        label: "table.warehouseLogicName",
         type: "mapping",
         source: warehouse_logic_code
     },
     {
         name: "emptyContainer",
-        label: "${'table.emptyContainers' | t}",
+        label: "table.emptyContainers",
         type: "mapping",
         map: true_false_options,
         searchable: {
@@ -163,13 +163,13 @@ const columns = [
     },
     {
         name: "locked",
-        label: "${'table.lock' | t}",
+        label: "table.lock",
         type: "mapping",
         map: true_false_options
     },
     {
         name: "locationCode",
-        label: "${'table.locationCode' | t}",
+        label: "table.locationCode",
         searchable: true
     },
     ...create_update_columns
@@ -180,7 +180,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'containerManagement.title' | t}",
+    title: "containerManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -207,7 +207,7 @@ const schema = {
             },
             bulkActions: [
                 {
-                    label: "${'button.batchChangeWarehouseLogic' | t}",
+                    label: "button.batchChangeWarehouseLogic",
                     type: "button",
                     onEvent: {
                         click: {
@@ -215,7 +215,7 @@ const schema = {
                                 {
                                     actionType: "dialog",
                                     dialog: {
-                                        title: "${'batchChangeWarehouseArea.title' | t}",
+                                        title: "batchChangeWarehouseArea.title",
                                         body: {
                                             type: "form",
                                             api: "post:/wms/container/changeWarehouseLogicArea",
@@ -223,7 +223,7 @@ const schema = {
                                             body: [
                                                 {
                                                     type: "select",
-                                                    label: "${'table.warehouseLogicName' | t}",
+                                                    label: "table.warehouseLogicName",
                                                     name: "warehouseLogicCode",
                                                     source: warehouse_logic_code
                                                 },
@@ -247,7 +247,7 @@ const schema = {
                 "bulkActions",
                 {
                     type: "export-excel",
-                    label: "${'button.export' | t}",
+                    label: "button.export",
                     api: {
                         method: "POST",
                         url:
@@ -263,7 +263,7 @@ const schema = {
                 ...columns
                 // {
                 //     type: "operation",
-                //     label: "${'table.operation' | t}",
+                //     label: "table.operation",
                 //     width: 100,
                 //     buttons: [],
                 //     toggled: true

@@ -19,13 +19,13 @@ const form = [
         name: "version"
     },
     {
-        label: "${'table.enumerationEncoding' | t}",
+        label: "table.enumerationEncoding",
         type: "input-text",
         name: "code",
         required: true
     },
     {
-        label: "${'table.enumerationName' | t}",
+        label: "table.enumerationName",
         type: "input-text",
         name: "name",
         required: true
@@ -33,10 +33,10 @@ const form = [
     {
         type: "switch",
         name: "editable",
-        label: "${'table.allowEditing' | t}"
+        label: "table.allowEditing"
     },
     {
-        label: "${'table.description' | t}",
+        label: "table.description",
         type: "input-text",
         name: "description"
     },
@@ -48,33 +48,33 @@ const form = [
         columns: [
             {
                 name: "value",
-                label: "${'table.encode' | t}",
+                label: "table.encode",
                 type: "input-text"
             },
             {
                 name: "zh_CN",
-                label: "${'table.zh_CN' | t}",
+                label: "table.zh_CN",
                 type: "input-text"
             },
             {
                 name: "en_US",
-                label: "${'table.en_US' | t}",
+                label: "table.en_US",
                 type: "input-text"
             },
             {
                 name: "order",
-                label: "${'table.displayOrder' | t}",
+                label: "table.displayOrder",
                 type: "input-number"
             },
             {
                 name: "defaultItem",
-                label: "${'table.whetherDefaultValue' | t}",
+                label: "table.whetherDefaultValue",
                 type: "select",
                 options: true_false_options
             },
             {
                 name: "description",
-                label: "${'table.description' | t}",
+                label: "table.description",
                 type: "input-text"
             }
         ]
@@ -85,9 +85,9 @@ const add = {
     type: "button",
     actionType: "dialog",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     dialog: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         size: "lg",
         closeOnEsc: true,
         body: {
@@ -111,23 +111,23 @@ const columns = [
     },
     {
         name: "code",
-        label: "${'table.enumerationEncoding' | t}",
+        label: "table.enumerationEncoding",
         searchable: true
     },
     {
         name: "name",
-        label: "${'table.enumerationName' | t}",
+        label: "table.enumerationName",
         searchable: true
     },
     {
         name: "editable",
-        label: "${'table.whetherDefaultValue' | t}",
+        label: "table.whetherDefaultValue",
         type: "mapping",
         map: true_false_options
     },
     {
         name: "description",
-        label: "${'table.description' | t}"
+        label: "table.description"
     },
     ...create_update_columns
 ]
@@ -137,7 +137,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'dictionaryManagement.title' | t}",
+    title: "dictionaryManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -168,15 +168,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 100,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 size: "lg",
                                 closeOnEsc: true,
                                 closeOnOutside: true,

@@ -15,19 +15,19 @@ const form = [
         name: "id"
     },
     {
-        label: "${'userCenter.userManagement.table.loginUsername' | t}",
+        label: "userCenter.userManagement.table.loginUsername",
         type: "input-text",
         name: "account",
         required: true
     },
     {
-        label: "${'userCenter.userManagement.table.name' | t}",
+        label: "userCenter.userManagement.table.name",
         type: "input-text",
         name: "name",
         required: true
     },
     {
-        label: "${'userCenter.userManagement.form.role' | t}",
+        label: "userCenter.userManagement.form.role",
         type: "select",
         name: "roleIds",
         multiple: true,
@@ -41,18 +41,18 @@ const form = [
     //     "required": true
     // },
     {
-        label: "${'userCenter.userManagement.table.mobilePhoneNumber' | t}",
+        label: "userCenter.userManagement.table.mobilePhoneNumber",
         type: "input-text",
         name: "phone",
         required: true
     },
     {
-        label: "${'table.email' | t}",
+        label: "table.email",
         type: "input-text",
         name: "email"
     },
     {
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "switch",
         name: "status",
         value: 1,
@@ -65,11 +65,11 @@ const add = {
     type: "button",
     actionType: "drawer",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "UserTable",
     drawer: {
         size: "lg",
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         body: {
             type: "form",
@@ -88,33 +88,33 @@ const columns = [
     },
     {
         name: "name",
-        label: "${'userCenter.userManagement.table.name' | t}",
+        label: "userCenter.userManagement.table.name",
         searchable: true
     },
     {
         name: "account",
-        label: "${'userCenter.userManagement.table.loginUsername' | t}",
+        label: "userCenter.userManagement.table.loginUsername",
         searchable: true
     },
     {
         name: "email",
-        label: "${'table.email' | t}",
+        label: "table.email",
         searchable: true
     },
     {
         name: "phone",
-        label: "${'userCenter.userManagement.table.mobilePhoneNumber' | t}",
+        label: "userCenter.userManagement.table.mobilePhoneNumber",
         searchable: true
     },
     {
         name: "status",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         map: yes_no_options
     },
     {
         name: "lastLoginIp",
-        label: "${'userCenter.userManagement.table.LoginIP' | t}"
+        label: "userCenter.userManagement.table.LoginIP"
     },
     ...create_update_columns
 ]
@@ -124,7 +124,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'userCenter.userManagement.title' | t}",
+    title: "userCenter.userManagement.title",
     toolbar: [],
     body: [
         {
@@ -150,7 +150,7 @@ const schema = {
                 add,
                 {
                     type: "export-excel",
-                    label: "${'button.export' | t}",
+                    label: "button.export",
                     api: {
                         method: "POST",
                         url: "/search/search?page=${1}&perPage=${100000}&createTime-op=bt"
@@ -163,15 +163,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 200,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "drawer",
                             drawer: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 body: {
@@ -184,20 +184,20 @@ const schema = {
                             }
                         },
                         {
-                            label: "${'button.delete' | t}",
+                            label: "button.delete",
                             type: "button",
                             actionType: "ajax",
                             level: "danger",
-                            confirmText: "${'toast.sureDelete' | t}",
-                            confirmTitle: "${'button.delete' | t}",
+                            confirmText: "toast.sureDelete",
+                            confirmTitle: "button.delete",
                             api: api_user_delete
                         },
                         {
-                            label: "${'button.resetPassword' | t}",
+                            label: "button.resetPassword",
                             type: "button",
                             actionType: "ajax",
-                            confirmText: "${'toast.sureResetPassword' | t}",
-                            confirmTitle: "${'button.reset' | t}",
+                            confirmText: "toast.sureResetPassword",
+                            confirmTitle: "button.reset",
                             api: api_user_reset_password
                         }
                     ],

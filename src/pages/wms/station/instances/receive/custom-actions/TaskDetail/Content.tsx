@@ -104,26 +104,26 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 130,
                     buttons: [
                         {
-                            label: "${'button.close' | t}",
+                            label: "button.close",
                             type: "button",
                             level: "link",
                             disabledOn: "${acceptOrderStatus !== 'NEW'}",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'toast.prompt' | t}",
-                                body: "${'toast.sureCancelAccept' | t}",
+                                title: "toast.prompt",
+                                body: "toast.sureCancelAccept",
                                 actions: [
                                     {
-                                        label: "${'button.cancel' | t}",
+                                        label: "button.cancel",
                                         actionType: "cancel",
                                         type: "button"
                                     },
                                     {
-                                        label: "${'button.confirm' | t}",
+                                        label: "button.confirm",
                                         actionType: "ajax",
                                         primary: true,
                                         type: "button",

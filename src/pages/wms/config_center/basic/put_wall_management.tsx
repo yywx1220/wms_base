@@ -18,12 +18,12 @@ const putWallSlotColumns = [
         hidden: true
     },
     {
-        label: "${'table.putWallSlotCode' | t}",
+        label: "table.putWallSlotCode",
         name: "putWallSlotCode",
         value: "${putWallSlotCode == null ? containerSlotSpecCode : putWallSlotCode}"
     },
     {
-        label: "${'table.ptlTag' | t}",
+        label: "table.ptlTag",
         name: "ptlTag",
         type: "input-text",
         required: true
@@ -34,11 +34,11 @@ const putWallSlotColumns = [
         hidden: true
     },
     {
-        label: "${'table.putWallLevel' | t}",
+        label: "table.putWallLevel",
         name: "level"
     },
     {
-        label: "${'table.putWallBay' | t}",
+        label: "table.putWallBay",
         name: "bay"
     },
     {
@@ -52,7 +52,7 @@ const putWallSlotColumns = [
         hidden: true
     },
     {
-        label: "${'table.enable' | t}",
+        label: "table.enable",
         name: "enable",
         value: true,
         type: "switch"
@@ -94,21 +94,21 @@ const formBody = [
         value: "IDLE"
     },
     {
-        label: "${'table.seedingWallCoding' | t}",
+        label: "table.seedingWallCoding",
         name: "putWallCode",
         type: "input-text",
         disabledOn: "${id != null}",
         required: true
     },
     {
-        label: "${'table.seedingWallName' | t}",
+        label: "table.seedingWallName",
         name: "putWallName",
         type: "input-text",
         disabledOn: "${id != null}",
         required: true
     },
     {
-        label: "${'table.workstationBelongs' | t}",
+        label: "table.workstationBelongs",
         name: "workStationId",
         type: "select",
         disabledOn: "${id != null}",
@@ -116,7 +116,7 @@ const formBody = [
         required: true
     },
     {
-        label: "${'table.seedingWallSpecifications' | t}",
+        label: "table.seedingWallSpecifications",
         name: "containerSpecId",
         type: "select",
         source: put_wall_spec,
@@ -136,7 +136,7 @@ const formBody = [
         }
     },
     {
-        label: "${'table.seedingWallLocation' | t}",
+        label: "table.seedingWallLocation",
         name: "location",
         type: "select",
         source: "${PutwallLocation}",
@@ -145,7 +145,7 @@ const formBody = [
     {
         name: "enable",
         type: "switch",
-        label: "${'table.whetherEnabled' | t}"
+        label: "table.whetherEnabled"
     },
     {
         id: "putWallSlots",
@@ -160,10 +160,10 @@ const add = {
     type: "button",
     actionType: "dialog",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "PutWallTable",
     dialog: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         size: "lg",
         body: {
             type: "form",
@@ -186,29 +186,29 @@ const columns = [
     },
     {
         name: "workStationId",
-        label: "${'table.workstationBelongs' | t}",
+        label: "table.workstationBelongs",
         type: "mapping",
         source: work_station
     },
     {
         name: "putWallCode",
-        label: "${'table.seedingWallCoding' | t}",
+        label: "table.seedingWallCoding",
         searchable: true
     },
     {
         name: "putWallName",
-        label: "${'table.seedingWallName' | t}",
+        label: "table.seedingWallName",
         searchable: true
     },
     {
         name: "containerSpecId",
-        label: "${'table.seedingWallSpecifications' | t}",
+        label: "table.seedingWallSpecifications",
         type: "mapping",
         source: put_wall_spec
     },
     {
         name: "enable",
-        label: "${'table.enable' | t}",
+        label: "table.enable",
         type: "mapping",
         source: "${EnableStatus}",
     },
@@ -220,7 +220,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'seedingWallManagement.title' | t}",
+    title: "seedingWallManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -254,15 +254,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 100,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 size: "lg",
                                 body: {
                                     type: "form",
@@ -273,12 +273,12 @@ const schema = {
                             }
                         },
                         {
-                            label: "${'button.delete' | t}",
+                            label: "button.delete",
                             type: "button",
                             actionType: "ajax",
                             level: "danger",
-                            confirmText: "${'toast.sureDelete' | t}",
-                            confirmTitle: "${'button.delete' | t}",
+                            confirmText: "toast.sureDelete",
+                            confirmTitle: "button.delete",
                             api: "delete:/wms/putWall/${id}",
                             reload: "PutWallTable"
                         }

@@ -26,57 +26,57 @@ const form = {
             name: "version"
         },
         {
-            label: "${'table.reservoirAreaCode' | t}",
+            label: "table.reservoirAreaCode",
             name: "warehouseAreaCode",
             type: "select",
             source: warehouse_area_id
         },
         {
-            label: "${'table.warehouseLogicName' | t}",
+            label: "table.warehouseLogicName",
             name: "warehouseLogicId",
             type: "select",
             source: warehouse_logic_id
         },
         {
-            label: "${'table.roadwayCoding' | t}",
+            label: "table.roadwayCoding",
             name: "aisleCode",
             type: "input-text"
         },
         {
-            label: "${'table.locationType' | t}",
+            label: "table.locationType",
             name: "locationType",
             type: "select",
             source: "${LocationType}"
         },
         {
-            label: "${'table.locationCode' | t}",
+            label: "table.locationCode",
             name: "locationCode",
             type: "input-text"
         },
         {
-            label: "${'table.locationHeat' | t}",
+            label: "table.locationHeat",
             name: "heat",
             type: "input-text"
         },
         {
-            label: "${'table.occupation' | t}",
+            label: "table.occupation",
             name: "occupied",
             type: "switch",
             options: true_false_options
         },
         {
-            label: "${'table.remark' | t}",
+            label: "table.remark",
             name: "remark",
             type: "input-text"
         },
         {
-            label: "${'table.locationStatus' | t}",
+            label: "table.locationStatus",
             name: "locationStatus",
             type: "switch",
             options: enable_options
         },
         {
-            label: "${'table.warehouseCode' | t}",
+            label: "table.warehouseCode",
             name: "warehouseCode",
             type: "hidden",
             value: warehouseCode
@@ -87,10 +87,10 @@ const add = {
     type: "button",
     actionType: "drawer",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "role",
     drawer: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         body: form
     }
@@ -109,12 +109,12 @@ const columns = [
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         hidden: true
     },
     {
         name: "warehouseAreaId",
-        label: "${'table.warehouseLogicName' | t}",
+        label: "table.warehouseLogicName",
         type: "mapping",
         source: warehouse_area_id,
         searchable: {
@@ -124,7 +124,7 @@ const columns = [
     },
     {
         name: "warehouseLogicId",
-        label: "${'table.logicalAreaEncoding' | t}",
+        label: "table.logicalAreaEncoding",
         type: "mapping",
         source: warehouse_logic_id,
         searchable: {
@@ -134,31 +134,31 @@ const columns = [
     },
     {
         name: "aisleCode",
-        label: "${'table.roadwayCoding' | t}",
+        label: "table.roadwayCoding",
         searchable: true
     },
     {
         name: "shelfCode",
-        label: "${'table.shelfCoding' | t}",
+        label: "table.shelfCoding",
         searchable: true
     },
     {
         name: "locationCode",
-        label: "${'table.locationCode' | t}",
+        label: "table.locationCode",
         searchable: true
     },
     {
         name: "locationType",
-        label: "${'table.locationType' | t}",
+        label: "table.locationType",
         source: "${LocationType}"
     },
     {
         name: "heat",
-        label: "${'table.locationHeat' | t}"
+        label: "table.locationHeat"
     },
     {
         name: "occupied",
-        label: "${'table.occupation' | t}"
+        label: "table.occupation"
     },
     {
         name: "position",
@@ -166,7 +166,7 @@ const columns = [
     },
     {
         name: "locationStatus",
-        label: "${'table.locationStatus' | t}",
+        label: "table.locationStatus",
         type: "mapping",
         map: enable_options
     },
@@ -178,7 +178,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'locationManagement.title' | t}",
+    title: "locationManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -220,15 +220,15 @@ const schema = {
                 },
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 100,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "drawer",
                             drawer: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 body: form

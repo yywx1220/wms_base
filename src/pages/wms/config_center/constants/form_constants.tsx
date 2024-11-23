@@ -7,12 +7,12 @@ import {
 
 export const contactor = [
     {
-        label: "${'table.contact' | t}",
+        label: "table.contact",
         type: "input-text",
         name: "name"
     },
     {
-        label: "${'table.phoneNumber' | t}",
+        label: "table.phoneNumber",
         type: "input-text",
         validations: {
             isTelNumber: true
@@ -20,7 +20,7 @@ export const contactor = [
         name: "tel"
     },
     {
-        label: "${'table.email' | t}",
+        label: "table.email",
         type: "input-text",
         validations: {
             isEmail: true
@@ -28,7 +28,7 @@ export const contactor = [
         name: "mail"
     },
     {
-        label: "${'table.fax' | t}",
+        label: "table.fax",
         type: "input-text",
         validations: {
             isTelNumber: true
@@ -39,13 +39,13 @@ export const contactor = [
 
 export const address = [
     {
-        label: "${'table.country' | t}",
+        label: "table.country",
         type: "select",
         name: "country",
         source: country
     },
     {
-        label: "${'table.province' | t}",
+        label: "table.province",
         type: "select",
         name: "province",
         initFetchOn: "data.country",
@@ -55,7 +55,7 @@ export const address = [
         }
     },
     {
-        label: "${'table.city' | t}",
+        label: "table.city",
         type: "select",
         name: "city",
         initFetchOn: "data.province",
@@ -67,7 +67,7 @@ export const address = [
         }
     },
     {
-        label: "${'table.district/county' | t}",
+        label: "table.district/county",
         type: "select",
         name: "district",
         initFetchOn: "data.city",
@@ -79,7 +79,7 @@ export const address = [
         }
     },
     {
-        label: "${'table.fullAddress' | t}",
+        label: "table.fullAddress",
         type: "input-text",
         name: "address"
     }
@@ -87,25 +87,25 @@ export const address = [
 
 export const volume = [
     {
-        label: "${'table.volume' | t}(mm³)",
+        label: "table.volume(mm³)",
         type: "input-number",
         name: "volume"
         // description: "mm³"
     },
     {
-        label: "${'table.length' | t}(mm)",
+        label: "table.length(mm)",
         type: "input-number",
         name: "length"
         // description: "mm"
     },
     {
-        label: "${'table.width' | t}(mm)",
+        label: "table.width(mm)",
         type: "input-number",
         name: "width"
         // description: "mm"
     },
     {
-        label: "${'table.height' | t}(mm)",
+        label: "table.height(mm)",
         type: "input-number",
         name: "height"
         // description: "mm"
@@ -114,12 +114,12 @@ export const volume = [
 
 export const weight = [
     {
-        label: "${'table.grossWeight' | t}",
+        label: "table.grossWeight",
         type: "input-number",
         name: "grossWeight"
     },
     {
-        label: "${'table.netWeight' | t}",
+        label: "table.netWeight",
         type: "input-number",
         name: "netWeight"
     }

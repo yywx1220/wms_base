@@ -80,14 +80,14 @@ const SKUCountColumns = [
 
 const dialog = {
     type: "wizard",
-    actionFinishLabel: "${'modal.generateInventoryOrder' | t}",
+    actionFinishLabel: "modal.generateInventoryOrder",
     api: api_stocktake_order_add,
     preventEnterSubmit: true,
     reload: "stocktakeOrderTable",
     id: "wizardComponent",
     steps: [
         {
-            // title: "${'modal.selectInventoryArea' | t}",
+            // title: "modal.selectInventoryArea",
             title: (
                 <Translation>
                     {(t) => t("modal.selectInventoryArea")}
@@ -106,7 +106,7 @@ const dialog = {
                 {
                     type: "select",
                     name: "warehouseAreaId",
-                    label: "${'workLocationArea.warehouseArea' | t}",
+                    label: "workLocationArea.warehouseArea",
                     selectFirst: true,
                     source: {
                         ...warehouse_area_id,
@@ -121,7 +121,7 @@ const dialog = {
                     type: "select",
                     name: "warehouseLogicId",
                     // "initFetchOn": "data.warehouseAreaCode",
-                    label: "${'table.logicArea' | t}",
+                    label: "table.logicArea",
                     clearable: true,
                     source: warehouse_logic_id,
                     className: "warehouseLogic"
@@ -129,7 +129,7 @@ const dialog = {
                 {
                     type: "select",
                     name: "ownerCode",
-                    label: "${'table.productOwner' | t}",
+                    label: "table.productOwner",
                     clearable: true,
                     source: owner_code,
                     className: "ownerCode"
@@ -156,7 +156,7 @@ const dialog = {
                 {
                     type: "button-group-select",
                     name: "stocktakeType",
-                    label: "${'table.countType' | t}",
+                    label: "table.countType",
                     selectFirst: true,
                     source: "${StocktakeType}",
                     required: true,
@@ -166,7 +166,7 @@ const dialog = {
                     type: "button-group-select",
                     name: "stocktakeMethod",
                     selectFirst: true,
-                    label: "${'table.countMethod' | t}",
+                    label: "table.countMethod",
                     source: "${StocktakeMethod}",
                     required: true,
                     className: "stocktakeMethod"
@@ -186,12 +186,12 @@ const dialog = {
                 {
                     type: "switch",
                     name: "includeZeroStock",
-                    label: "${'modal.inventory0ItemsInStock' | t}"
+                    label: "modal.inventory0ItemsInStock"
                 },
                 // {
                 //     type: "switch",
                 //     name: "isStocktakeEmptySlot",
-                //     label: "${'modal.spaceCouting' | t}"
+                //     label: "modal.spaceCouting"
                 // }
             ],
             actions: [
@@ -222,7 +222,7 @@ const dialog = {
                 tabsMode: "strong",
                 tabs: [
                     // {
-                    //     title: "${'modal.countByShelf' | t}",
+                    //     title: "modal.countByShelf",
                     //     value: "SHELF",
                     //     hiddenOn: "${stocktakeType === 'DISCREPANCY_REVIEW'}",
                     //     disabledOn: "${stockIds.length > 0}",
@@ -262,7 +262,7 @@ const dialog = {
                                     id: "barCode",
                                     type: "input-text",
                                     multiple: true,
-                                    placeholder: "${'skuArea.scanBarcode' | t}",
+                                    placeholder: "skuArea.scanBarcode",
                                     trimContents: true,
                                     clearable: true,
                                     className:
@@ -306,7 +306,7 @@ const dialog = {
                                         url: "/mdm/common-import/parse"
                                     },
                                     className: "inline-block w-1/6 align-top",
-                                    btnLabel: "${'button.import' | t} Excel",
+                                    btnLabel: "button.import Excel",
                                     onEvent: {
                                         success: {
                                             actions: [
@@ -416,7 +416,7 @@ const dialog = {
                     //                 id: "barCode",
                     //                 type: "input-text",
                     //                 multiple: true,
-                    //                 placeholder: "${'skuArea.scanBarcode' | t}",
+                    //                 placeholder: "skuArea.scanBarcode",
                     //                 trimContents: true,
                     //                 clearable: true,
                     //                 className:
@@ -621,7 +621,7 @@ const dialog = {
                     }
                 },
                 {
-                    label: "${'modal.generateInventoryOrder' | t}",
+                    label: "modal.generateInventoryOrder",
                     type: "submit",
                     level: "primary",
                     actionType: "submit",
@@ -649,9 +649,9 @@ const add = {
     type: "button",
     actionType: "dialog",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     dialog: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         actions: [],
         closeOnEsc: true,
         size: "xl",
@@ -668,22 +668,22 @@ const columns = [
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouse' | t}",
+        label: "table.warehouse",
         hidden: true
     },
     {
         name: "orderNo",
-        label: "${'table.countOrderNumber' | t}",
+        label: "table.countOrderNumber",
         searchable: true
     },
     // {
     //     name: "customerOrderNo",
-    //     label: "${'table.customerOrderNo' | t}",
+    //     label: "table.customerOrderNo",
     //     searchable: true
     // },
     {
         name: "stocktakeType",
-        label: "${'table.orderType' | t}",
+        label: "table.orderType",
         type: "mapping",
         source: "${StocktakeType}",
         searchable: {
@@ -693,7 +693,7 @@ const columns = [
     },
     {
         name: "stocktakeCreateMethod",
-        label: "${'table.howItWasCreated' | t}",
+        label: "table.howItWasCreated",
         type: "mapping",
         source: "${StocktakeCreateMethod}",
         searchable: {
@@ -703,7 +703,7 @@ const columns = [
     },
     {
         name: "stocktakeUnitType",
-        label: "${'table.creationType' | t}",
+        label: "table.creationType",
         type: "mapping",
         source: "${StocktakeUnitType}",
         searchable: {
@@ -713,7 +713,7 @@ const columns = [
     },
     {
         name: "stocktakeOrderStatus",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         source: "${StocktakeOrderStatus}",
         searchable: {
@@ -725,7 +725,7 @@ const columns = [
     },
     {
         name: "warehouseAreaId",
-        label: "${'table.warehouseAreaBelongs' | t}",
+        label: "table.warehouseAreaBelongs",
         type: "mapping",
         source: warehouse_area_id,
         searchable: {
@@ -735,7 +735,7 @@ const columns = [
     },
     {
         name: "warehouseLogicId",
-        label: "${'table.logicalAreaName' | t}",
+        label: "table.logicalAreaName",
         type: "mapping",
         source: warehouse_logic_id,
         searchable: {
@@ -745,7 +745,7 @@ const columns = [
     },
     {
         name: "suspend",
-        label: "${'table.pendingOrderID' | t}",
+        label: "table.pendingOrderID",
         type: "mapping",
         map: yes_no_options,
         searchable: {
@@ -755,7 +755,7 @@ const columns = [
     },
     {
         name: "abnormal",
-        label: "${'table.exceptionIdentification' | t}",
+        label: "table.exceptionIdentification",
         type: "mapping",
         map: yes_no_options,
         searchable: {
@@ -779,27 +779,27 @@ const detailColumns_STOCK = [
     },
     {
         name: "barCodeList",
-        label: "${'skuArea.barcode' | t}"
+        label: "skuArea.barcode"
     },
     {
         name: "skuName",
-        label: "${'skuArea.productName' | t}"
+        label: "skuArea.productName"
     },
     {
         name: "ownerCode",
-        label: "${'table.productOwner' | t}"
+        label: "table.productOwner"
     },
     {
         name: "containerCode",
-        label: "${'table.containerCode' | t}"
+        label: "table.containerCode"
     },
     {
         name: "containerFace",
-        label: "${'workLocationArea.face' | t}"
+        label: "workLocationArea.face"
     },
     {
         name: "containerSlotCode",
-        label: "${'table.containerSlotCode' | t}"
+        label: "table.containerSlotCode"
     }
 ]
 
@@ -811,15 +811,15 @@ const detailColumns_SHELF = [
     },
     {
         name: "containerCode",
-        label: "${'table.containerCode' | t}"
+        label: "table.containerCode"
     },
     {
         name: "containerFace",
-        label: "${'workLocationArea.face' | t}"
+        label: "workLocationArea.face"
     },
     {
         name: "containerSlotCode",
-        label: "${'table.containerSlotCode' | t}"
+        label: "table.containerSlotCode"
     }
 ]
 
@@ -836,15 +836,15 @@ const recordColumns = [
     },
     {
         name: "barCodeList",
-        label: "${'skuArea.barcode' | t}"
+        label: "skuArea.barcode"
     },
     {
         name: "skuName",
-        label: "${'skuArea.productName' | t}"
+        label: "skuArea.productName"
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouse' | t}"
+        label: "table.warehouse"
     },
     // {
     //     name: "ownerCode",
@@ -852,34 +852,34 @@ const recordColumns = [
     // },
     {
         name: "containerCode",
-        label: "${'table.containerCode' | t}"
+        label: "table.containerCode"
     },
     {
         name: "containerFace",
-        label: "${'workLocationArea.face' | t}"
+        label: "workLocationArea.face"
     },
     {
         name: "containerSlotCode",
-        label: "${'table.containerSlotCode' | t}"
+        label: "table.containerSlotCode"
     },
     {
         name: "qtyOriginal",
-        label: "${'table.inventoryQuantity' | t}"
+        label: "table.inventoryQuantity"
     },
     {
         name: "qtyStocktake",
-        label: "${'table.countQty' | t}"
+        label: "table.countQty"
     },
     {
         name: "stocktakeRecordStatus",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         source: "${StocktakeRecordStatus}"
     }
 ]
 
 const detailDialog_STOCK = {
-    title: "${'inventoryCounting.detail.modal.title' | t}",
+    title: "inventoryCounting.detail.modal.title",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -904,7 +904,7 @@ const detailDialog_STOCK = {
 }
 
 const DetailDialog_SHELF = {
-    title: "${'inventoryCounting.detail.modal.title' | t}",
+    title: "inventoryCounting.detail.modal.title",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -929,7 +929,7 @@ const DetailDialog_SHELF = {
 }
 
 const recordDialog = {
-    title: "${'button.inventoryRecord' | t}",
+    title: "button.inventoryRecord",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -955,7 +955,7 @@ const recordDialog = {
 
 const schema = {
     type: "page",
-    title: "${'wms.menu.inventoryCheck' | t}",
+    title: "wms.menu.inventoryCheck",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -995,25 +995,25 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     // width: 130,
                     buttons: [
                         {
-                            label: "${'button.detail' | t}",
+                            label: "button.detail",
                             type: "button",
                             actionType: "dialog",
                             dialog: detailDialog_STOCK,
                             visibleOn: "${stocktakeUnitType === 'STOCK'}"
                         },
                         {
-                            label: "${'button.detail' | t}",
+                            label: "button.detail",
                             type: "button",
                             actionType: "dialog",
                             dialog: DetailDialog_SHELF,
                             visibleOn: "${stocktakeUnitType === 'SHELF'}"
                         },
                         {
-                            label: "${'button.inventoryRecord' | t}",
+                            label: "button.inventoryRecord",
                             type: "button",
                             actionType: "dialog",
                             dialog: recordDialog

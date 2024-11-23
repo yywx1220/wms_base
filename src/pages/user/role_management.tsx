@@ -15,17 +15,17 @@ const form = [
         name: "id"
     },
     {
-        label: "${'userCenter.roleManagement.table.roleCoding' | t}",
+        label: "userCenter.roleManagement.table.roleCoding",
         type: "input-text",
         name: "code"
     },
     {
-        label: "${'userCenter.roleManagement.table.roleName' | t}",
+        label: "userCenter.roleManagement.table.roleName",
         type: "input-text",
         name: "name"
     },
     {
-        label: "${'userCenter.roleManagement.form.repositoryPermissions' | t}",
+        label: "userCenter.roleManagement.form.repositoryPermissions",
         type: "select",
         multiple: true,
         search: true,
@@ -33,12 +33,12 @@ const form = [
         source: warehouse_code_search_api
     },
     {
-        label: "${'table.description' | t}",
+        label: "table.description",
         type: "input-text",
         name: "description"
     },
     {
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "switch",
         name: "status",
         value: 1,
@@ -51,11 +51,11 @@ const add = {
     type: "button",
     actionType: "drawer",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "RoleTable",
     drawer: {
         size: "lg",
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         body: {
             type: "form",
@@ -74,17 +74,17 @@ const columns = [
     },
     {
         name: "name",
-        label: "${'userCenter.roleManagement.table.roleName' | t}",
+        label: "userCenter.roleManagement.table.roleName",
         searchable: true
     },
     {
         name: "code",
-        label: "${'userCenter.roleManagement.table.roleCoding' | t}",
+        label: "userCenter.roleManagement.table.roleCoding",
         searchable: true
     },
     {
         name: "status",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         map: yes_no_options
     },
@@ -95,7 +95,7 @@ const menuTree = [
     {
         type: "input-tree",
         name: "menus",
-        label: "${'userCenter.roleManagement.form.menuPermissions' | t}",
+        label: "userCenter.roleManagement.form.menuPermissions",
         labelField: "title",
         valueField: "id",
         multiple: true,
@@ -111,7 +111,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'userCenter.roleManagement.title' | t}",
+    title: "userCenter.roleManagement.title",
     toolbar: [],
     body: [
         {
@@ -137,7 +137,7 @@ const schema = {
                 add,
                 {
                     type: "export-excel",
-                    label: "${'button.export' | t}",
+                    label: "button.export",
                     api: {
                         method: "POST",
                         url: "/search/search?page=${1}&perPage=${100000}&createTime-op=bt"
@@ -150,15 +150,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 200,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "drawer",
                             drawer: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 body: {
@@ -171,20 +171,20 @@ const schema = {
                             }
                         },
                         {
-                            label: "${'button.delete' | t}",
+                            label: "button.delete",
                             type: "button",
                             actionType: "ajax",
                             level: "danger",
-                            confirmText: "${'toast.sureDelete' | t}",
-                            confirmTitle: "${'button.delete' | t}",
+                            confirmText: "toast.sureDelete",
+                            confirmTitle: "button.delete",
                             api: api_role_delete
                         },
                         {
-                            label: "${'button.assignPermissions' | t}",
+                            label: "button.assignPermissions",
                             type: "button",
                             actionType: "drawer",
                             drawer: {
-                                title: "${'button.assignPermissions' | t}",
+                                title: "button.assignPermissions",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 body: {

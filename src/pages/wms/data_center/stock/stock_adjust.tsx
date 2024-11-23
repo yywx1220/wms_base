@@ -11,12 +11,12 @@ const columns = [
 
     {
         name: "orderNo",
-        label: "${'table.adjustmentOrderNo' | t}",
+        label: "table.adjustmentOrderNo",
         searchable: true
     },
     {
         name: "status",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         source: "${StockAdjustmentOrderStatus}",
         searchable: {
@@ -26,7 +26,7 @@ const columns = [
     }
     // {
     //     name: "description",
-    //     label: "${'table.description' | t}"
+    //     label: "table.description"
     // }
 ]
 
@@ -40,32 +40,32 @@ const detailColumns = [
     {
         dbField: "d.container_code",
         name: "containerCode",
-        label: "${'table.containerNumber' | t}"
+        label: "table.containerNumber"
     },
     {
         dbField: "d.container_slot_code",
         name: "containerSlotCode",
-        label: "${'table.containerLatticeSlogan' | t}"
+        label: "table.containerLatticeSlogan"
     },
     {
         dbField: "d.sku_code",
         name: "skuCode",
-        label: "${'skuArea.skuCode' | t}"
+        label: "skuArea.skuCode"
     },
     {
         dbField: "g.bar_code_list",
         name: "barCodeList",
-        label: "${'skuArea.barcode' | t}"
+        label: "skuArea.barcode"
     },
     {
         dbField: "d.qty_adjustment",
         name: "qtyAdjustment",
-        label: "${'table.adjustQuantity' | t}"
+        label: "table.adjustQuantity"
     },
     {
         dbField: "d.increase_or_decrease",
         name: "increaseOrDecrease",
-        label: "${'table.increaseOrDecrease' | t}",
+        label: "table.increaseOrDecrease",
         type: "mapping",
         source: "${IncreaseOrDecrease}"
     },
@@ -101,7 +101,7 @@ const showColumns = columns
 const showDetailColumns = detailColumns
 
 const detailDialog = {
-    title: "${'modal.stockAdjustmentOrderDetails' | t}",
+    title: "modal.stockAdjustmentOrderDetails",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -130,7 +130,7 @@ const detailDialog = {
 
 const schema = {
     type: "page",
-    title: "${'wms.menu.inventoryAdjustment' | t}",
+    title: "wms.menu.inventoryAdjustment",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -162,7 +162,7 @@ const schema = {
                 "reload"
                 // {
                 //     type: "export-excel",
-                //     label: "${'button.export' | t}",
+                //     label: "button.export",
                 //     api:
                 //         "/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
                 //         warehouseCode,
@@ -174,33 +174,33 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     // width: 130,
                     buttons: [
                         {
-                            label: "${'button.detail' | t}",
+                            label: "button.detail",
                             type: "button",
                             level: "link",
                             actionType: "dialog",
                             dialog: detailDialog
                         },
                         {
-                            label: "${'button.adjustInventory' | t}",
+                            label: "button.adjustInventory",
                             type: "button",
                             level: "link",
                             disabledOn: "${status !== 'NEW'}",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'toast.prompt' | t}",
-                                body: "${'toast.confirmAjust' | t}",
+                                title: "toast.prompt",
+                                body: "toast.confirmAjust",
                                 actions: [
                                     {
-                                        label: "${'button.cancel' | t}",
+                                        label: "button.cancel",
                                         actionType: "cancel",
                                         type: "button"
                                     },
                                     {
-                                        label: "${'button.confirm' | t}",
+                                        label: "button.confirm",
                                         actionType: "ajax",
                                         primary: true,
                                         type: "button",
@@ -215,8 +215,8 @@ const schema = {
                                 ]
                             }
                             // actionType: "ajax",
-                            // confirmText: "${'toast.confirmAjust' | t}",
-                            // confirmTitle: "${'toast.prompt' | t}",
+                            // confirmText: "toast.confirmAjust",
+                            // confirmTitle: "toast.prompt",
                             // api: {
                             //     method: "post",
                             //     url: "/wms/stock/adjustment/adjust",
@@ -225,22 +225,22 @@ const schema = {
                             // reload: "stockAdjustmentTable"
                         },
                         {
-                            label: "${'button.close' | t}",
+                            label: "button.close",
                             type: "button",
                             level: "link",
                             disabledOn: "${status !== 'NEW'}",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'toast.prompt' | t}",
-                                body: "${'toast.confirmToClose' | t}",
+                                title: "toast.prompt",
+                                body: "toast.confirmToClose",
                                 actions: [
                                     {
-                                        label: "${'button.cancel' | t}",
+                                        label: "button.cancel",
                                         actionType: "cancel",
                                         type: "button"
                                     },
                                     {
-                                        label: "${'button.confirm' | t}",
+                                        label: "button.confirm",
                                         actionType: "ajax",
                                         primary: true,
                                         type: "button",
@@ -255,8 +255,8 @@ const schema = {
                                 ]
                             }
                             // actionType: "ajax",
-                            // confirmText: "${'toast.confirmToClose' | t}",
-                            // confirmTitle: "${'button.close' | t}",
+                            // confirmText: "toast.confirmToClose",
+                            // confirmTitle: "button.close",
                             // api: {
                             //     method: "post",
                             //     url: "/wms/stock/adjustment/close",

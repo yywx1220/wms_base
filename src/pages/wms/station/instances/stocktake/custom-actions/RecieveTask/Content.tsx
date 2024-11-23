@@ -13,17 +13,17 @@ const columns = [
     },
     {
         name: "orderNo",
-        label: "${'table.countOrderNumber' | t}",
+        label: "table.countOrderNumber",
         searchable: true
     },
     // {
     //     name: "taskNo",
-    //     label: "${'table.inventoryTaskNumber' | t}",
+    //     label: "table.inventoryTaskNumber",
     //     searchable: true
     // },
     // {
     //     name: "warehouseCode",
-    //     label: "${'table.warehouse' | t}",
+    //     label: "table.warehouse",
     // },
     // {
     //     name: "stocktakeType",
@@ -37,17 +37,17 @@ const columns = [
     // },
     {
         name: "stocktakeTaskStatus",
-        label: "${'table.status' | t}",
+        label: "table.status",
         source: "${StocktakeTaskStatus}",
         type: "mapping",
     },
     {
-        label: "${'table.createdBy' | t}",
+        label: "table.createdBy",
         name: "createUser"
     },
     {
         name: "createTime",
-        label: "${'table.creationTime' | t}",
+        label: "table.creationTime",
         tpl: "${createTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
         searchable: {
             type: "input-date-range",
@@ -55,11 +55,11 @@ const columns = [
         }
     },
     {
-        label: "${'table.modifiedBy' | t}",
+        label: "table.modifiedBy",
         name: "updateUser"
     },
     {
-        label: "${'table.updated' | t}",
+        label: "table.updated",
         name: "updateTime",
         tpl: "${updateTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}"
     }
@@ -83,35 +83,35 @@ const detailColumns = [
     },
     {
         name: "barCodeList",
-        label: "${'skuArea.barcode' | t}"
+        label: "skuArea.barcode"
     },
     {
         name: "skuName",
-        label: "${'skuArea.productName' | t}"
+        label: "skuArea.productName"
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouse' | t}"
+        label: "table.warehouse"
     },
     {
         name: "containerCode",
-        label: "${'table.containerCode' | t}"
+        label: "table.containerCode"
     },
     {
         name: "containerFace",
-        label: "${'workLocationArea.face' | t}"
+        label: "workLocationArea.face"
     },
     {
         name: "containerSlotCode",
-        label: "${'table.containerSlotCode' | t}"
+        label: "table.containerSlotCode"
     },
     {
         name: "totalQty",
-        label: "${'table.inventoryQuantity' | t}"
+        label: "table.inventoryQuantity"
     },
     {
         name: "stocktakeTaskDetailStatus",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         source: "${StocktakeTaskDetailStatus}"
     }
@@ -119,7 +119,7 @@ const detailColumns = [
 
 
 const detailDialog = {
-    title: "${'inventoryCounting.detail.modal.title' | t}",
+    title: "inventoryCounting.detail.modal.title",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -145,7 +145,7 @@ const detailDialog = {
 
 const schema = {
     type: "page",
-    title: "${'modal.receiveInventoryList' | t}",
+    title: "modal.receiveInventoryList",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -174,7 +174,7 @@ const schema = {
             headerToolbar: ["reload", "bulkActions"],
             bulkActions: [
                 {
-                    label: "${'button.receiveInBatches' | t}",
+                    label: "button.receiveInBatches",
                     level: "primary",
                     // actionType: "ajax",
                     // api: {
@@ -211,7 +211,7 @@ const schema = {
             columns: [
                 ...columns,
                 {
-                    label: "${'button.detail' | t}",
+                    label: "button.detail",
                     type: "button",
                     level: "link",
                     actionType: "dialog",

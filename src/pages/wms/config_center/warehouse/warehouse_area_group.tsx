@@ -22,30 +22,30 @@ const form = {
             name: "version"
         },
         {
-            label: "${'table.warehouseAreaEncoding' | t}",
+            label: "table.warehouseAreaEncoding",
             name: "warehouseAreaGroupCode",
             type: "input-text",
             required: true
         },
         {
-            label: "${'table.warehouseAreaName' | t}",
+            label: "table.warehouseAreaName",
             name: "warehouseAreaGroupName",
             type: "input-text",
             required: true
         },
         {
-            label: "${'table.remark' | t}",
+            label: "table.remark",
             name: "remark",
             type: "input-text"
         },
         {
-            label: "${'table.status' | t}",
+            label: "table.status",
             name: "enable",
             type: "switch",
             options: enable_options
         },
         {
-            label: "${'table.warehouseCode' | t}",
+            label: "table.warehouseCode",
             name: "warehouseCode",
             type: "hidden",
             value: warehouseCode
@@ -56,10 +56,10 @@ const add = {
     type: "button",
     actionType: "drawer",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "role",
     drawer: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         body: form
     }
@@ -78,25 +78,25 @@ const columns = [
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         hidden: true
     },
     {
         name: "warehouseAreaGroupCode",
-        label: "${'table.warehouseAreaEncoding' | t}",
+        label: "table.warehouseAreaEncoding",
         searchable: true
     },
     {
         name: "warehouseAreaGroupName",
-        label: "${'table.warehouseAreaName' | t}"
+        label: "table.warehouseAreaName"
     },
     {
         name: "remark",
-        label: "${'table.remark' | t}"
+        label: "table.remark"
     },
     {
         name: "enable",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         map: enable_options
     },
@@ -108,7 +108,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'warehouseAreaManagement.title' | t}",
+    title: "warehouseAreaManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -141,17 +141,17 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 100,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "drawer",
                             drawer: {
                                 closeOnEsc: true,
                                 closeOnOutside: true,
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 body: form
                             }
                         }

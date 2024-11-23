@@ -36,17 +36,17 @@ const columns = [
     },
     {
         name: "orderNo",
-        label: "${'table.putAwayTaskNo' | t}",
+        label: "table.putAwayTaskNo",
         searchable: true
     },
     {
         name: "taskNo",
-        label: "${'table.internalTrackingNumber' | t}",
+        label: "table.internalTrackingNumber",
         searchable: true
     },
     {
         name: "taskType",
-        label: "${'table.putAwayMethod' | t}",
+        label: "table.putAwayMethod",
         type: "mapping",
         source: "${PutAwayTaskType}",
         searchable: {
@@ -56,7 +56,7 @@ const columns = [
     },
     {
         name: "taskStatus",
-        label: "${'table.putAwayStatus' | t}",
+        label: "table.putAwayStatus",
         type: "mapping",
         source: "${PutAwayTaskStatusEnum}",
         searchable: {
@@ -71,16 +71,16 @@ const columns = [
     // },
     {
         name: "workStationId",
-        label: "${'station.operatingStation' | t}",
+        label: "station.operatingStation",
         searchable: true
     },
     {
-        label: "${'table.createdBy' | t}",
+        label: "table.createdBy",
         name: "createUser"
     },
     {
         name: "createTime",
-        label: "${'table.creationTime' | t}",
+        label: "table.creationTime",
         tpl: "${createTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
         searchable: {
             type: "input-date-range",
@@ -89,7 +89,7 @@ const columns = [
     },
     {
         name: "updateTime",
-        label: "${'table.completionTime' | t}",
+        label: "table.completionTime",
         // tpl: "${auditTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
         tpl: "${updateTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
         searchable: {
@@ -111,7 +111,7 @@ const detailColumns = [
     },
     {
         name: "skuCode",
-        label: "${'skuArea.skuCode' | t}"
+        label: "skuArea.skuCode"
     },
     // {
     //     name: "skuName",
@@ -123,15 +123,15 @@ const detailColumns = [
     // },
     {
         name: "qtyPlanPutAway",
-        label: "${'table.plannedQuantity' | t}"
+        label: "table.plannedQuantity"
     },
     {
         name: "qtyPutAway",
-        label: "${'table.qtyPutAway' | t}"
+        label: "table.qtyPutAway"
     },
     {
         name: "qtyAbnormal",
-        label: "${'table.qtyDifferences' | t}"
+        label: "table.qtyDifferences"
     },
     // {
     //     name: "qtyAbnormal",
@@ -139,11 +139,11 @@ const detailColumns = [
     // },
     {
         name: "containerCode",
-        label: "${'table.containerCode' | t}"
+        label: "table.containerCode"
     },
     {
         name: "containerSlotCode",
-        label: "${'table.containerLatticeSlogan' | t}"
+        label: "table.containerLatticeSlogan"
     },
     // {
     //     name: "locationCode",
@@ -159,7 +159,7 @@ const detailColumns = [
     // }
     {
         name: "batchAttributeId",
-        label: "${'table.lotNumber' | t}"
+        label: "table.lotNumber"
     }
 ]
 
@@ -170,8 +170,8 @@ const showColumns = columns
 const showDetailColumns = detailColumns
 
 const detailDialog = {
-    // title: "${'table.inboundPlanDetails' | t}",
-    title: "${'putAwayTask.detail.modal.title' | t}",
+    // title: "table.inboundPlanDetails",
+    title: "putAwayTask.detail.modal.title",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -201,7 +201,7 @@ const detailDialog = {
 
 const schema = {
     type: "page",
-    title: "${'wms.menu.putAwayTasks' | t}",
+    title: "wms.menu.putAwayTasks",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -233,7 +233,7 @@ const schema = {
                 "reload",
                 {
                     type: "export-excel",
-                    label: "${'button.export' | t}",
+                    label: "button.export",
                     method: "POST",
                     api: {
                         method: "POST",
@@ -253,7 +253,7 @@ const schema = {
             columns: [
                 ...columns,
                 {
-                    label: "${'button.detail' | t}",
+                    label: "button.detail",
                     type: "button",
                     level: "link",
                     actionType: "dialog",

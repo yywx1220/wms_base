@@ -14,38 +14,38 @@ const baseInfoForm = [
         name: "version"
     },
     {
-        label: "${'table.workstationCoding' | t}",
+        label: "table.workstationCoding",
         name: "stationCode",
         type: "input-text",
         required: true
     },
     {
-        label: "${'table.workstationName' | t}",
+        label: "table.workstationName",
         name: "stationName",
         type: "input-text",
         required: true
     },
     {
-        label: "${'table.warehouseAreaBelongs' | t}",
+        label: "table.warehouseAreaBelongs",
         name: "warehouseAreaId",
         type: "select",
         source: warehouse_area_id,
         required: true
     },
     {
-        label: "${'table.taskRules' | t}",
+        label: "table.taskRules",
         name: "stationRuleId",
         type: "select"
     },
     {
-        label: "${'table.operationalBusiness' | t}",
+        label: "table.operationalBusiness",
         name: "allowOperationTypes",
         type: "select",
         multiple: true,
         source: "${WorkStationOperationType}"
     },
     {
-        label: "${'table.position' | t}",
+        label: "table.position",
         name: "position",
         type: "combo",
         items: [
@@ -70,78 +70,78 @@ const baseInfoForm = [
         type: "tabs",
         tabs: [
             {
-                title: "${'table.robotWorkstations' | t}",
+                title: "table.robotWorkstations",
                 body: [
                     {
-                        label: "${'table.workBitEncoding' | t}",
+                        label: "table.workBitEncoding",
                         name: "workLocations[0].workLocationCode",
                         type: "select",
                         source: work_location,
                         requiredOn: "${workLocations[0].enable}"
                     },
                     {
-                        label: "${'table.terminalType' | t}",
+                        label: "table.terminalType",
                         name: "workLocations[0].terminalType",
                         type: "select",
                         source: "${TerminalType}",
                         requiredOn: "${workLocations[0].enable}"
                     },
                     {
-                        label: "${'table.whetherEnabled' | t}",
+                        label: "table.whetherEnabled",
                         name: "workLocations[0].enable",
                         type: "switch"
                     }
                 ]
             },
             {
-                title: "${'table.conveyorLines' | t}",
+                title: "table.conveyorLines",
                 body: [
                     {
-                        label: "${'table.workBitEncoding' | t}",
+                        label: "table.workBitEncoding",
                         name: "workLocations[1].workLocationCode",
                         type: "select",
                         source: work_location,
                         requiredOn: "${workLocations[1].enable}"
                     },
                     {
-                        label: "${'table.terminalType' | t}",
+                        label: "table.terminalType",
                         name: "workLocations[1].terminalType",
                         type: "select",
                         source: "${TerminalType}",
                         requiredOn: "${workLocations[1].enable}"
                     },
                     {
-                        label: "${'table.whetherEnabled' | t}",
+                        label: "table.whetherEnabled",
                         name: "workLocations[1].enable",
                         type: "switch"
                     }
                 ]
             },
             {
-                title: "${'table.cacheShelves' | t}",
+                title: "table.cacheShelves",
                 body: [
                     {
-                        label: "${'table.workBitEncoding' | t}",
+                        label: "table.workBitEncoding",
                         name: "workLocations[2].workLocationCode}",
                         type: "select",
                         source: work_location,
                         requiredOn: "${workLocations[2].enable}"
                     },
                     {
-                        label: "${'table.terminalType' | t}",
+                        label: "table.terminalType",
                         name: "workLocations[2].terminalType",
                         type: "select",
                         source: "${TerminalType}",
                         requiredOn: "${workLocations[2].enable}"
                     },
                     {
-                        label: "${'table.whetherEnabled' | t}",
+                        label: "table.whetherEnabled",
                         name: "workLocations[2].enable",
                         type: "switch"
                     },
                     {
                         name: "workLocations[2].workLocationSlots",
-                        label: "${'table.workingCompartmentInformation' | t}",
+                        label: "table.workingCompartmentInformation",
                         type: "input-table",
                         addable: true,
                         editable: true,
@@ -149,32 +149,32 @@ const baseInfoForm = [
                             {
                                 name: "workLocationCode",
                                 type: "input-text",
-                                label: "${'table.workBitEncoding' | t}"
+                                label: "table.workBitEncoding"
                             },
                             {
                                 name: "groupCode",
                                 type: "input-text",
-                                label: "${'table.groupNumber' | t}"
+                                label: "table.groupNumber"
                             },
                             {
                                 name: "slotCode",
                                 type: "input-text",
-                                label: "${'table.gridSlogan' | t}"
+                                label: "table.gridSlogan"
                             },
                             {
                                 name: "level",
                                 type: "input-number",
-                                label: "${'workLocationArea.layer' | t}"
+                                label: "workLocationArea.layer"
                             },
                             {
                                 name: "bay",
                                 type: "input-number",
-                                label: "${'table.colum' | t}"
+                                label: "table.colum"
                             },
                             {
                                 name: "enable",
                                 type: "switch",
-                                label: "${'table.whetherEnabled' | t}"
+                                label: "table.whetherEnabled"
                             }
                         ]
                     }
@@ -217,7 +217,7 @@ const configInfoForm = [
             //     ]
             // },
             {
-                title: "${'table.outboundConfiguration' | t}",
+                title: "table.outboundConfiguration",
                 body: [
                     {
                         type: "combo",
@@ -225,25 +225,25 @@ const configInfoForm = [
                         items: [
                             {
                                 type: "switch",
-                                label: "${'table.emptyContainerRecycling' | t}",
+                                label: "table.emptyContainerRecycling",
                                 name: "emptyToteRecycle",
                                 options: true_false_options
                             },
                             {
                                 type: "switch",
-                                label: "${'table.mergeBatchPicking' | t}",
+                                label: "table.mergeBatchPicking",
                                 name: "mergeBatchPicking",
                                 options: true_false_options
                             },
                             {
                                 type: "switch",
-                                label: "${'table.validateCustomerWaveNoBeforeBound' | t}",
+                                label: "table.validateCustomerWaveNoBeforeBound",
                                 name: "validateCustomerWaveNoBeforeBound",
                                 options: true_false_options
                             },
                             {
                                 type: "switch",
-                                label: "${'table.validateTransferContainerPicking' | t}",
+                                label: "table.validateTransferContainerPicking",
                                 name: "validateTransferContainerPicking",
                                 options: true_false_options
                             }
@@ -254,7 +254,7 @@ const configInfoForm = [
                     },
                     {
                         type: "fieldSet",
-                        title: "${'table.seedingWallDisplayOrder' | t}",
+                        title: "table.seedingWallDisplayOrder",
                         body: [
                             {
                                 type: "combo",
@@ -262,13 +262,13 @@ const configInfoForm = [
                                 items: [
                                     {
                                         type: "select",
-                                        label: "${'table.leftSeedingWall' | t}",
+                                        label: "table.leftSeedingWall",
                                         name: "leftPutWallDisplayOrder",
                                         source: "${PutWallDisplayOrderEnum}"
                                     },
                                     {
                                         type: "select",
-                                        label: "${'table.rightSeedingWall' | t}",
+                                        label: "table.rightSeedingWall",
                                         name: "rightPutWallDisplayOrder",
                                         source: "${PutWallDisplayOrderEnum}"
                                     }
@@ -281,7 +281,7 @@ const configInfoForm = [
                     },
                     {
                         type: "fieldSet",
-                        title: "${'table.seedingWallGridField' | t}",
+                        title: "table.seedingWallGridField",
                         body: [
                             {
                                 type: "combo",
@@ -294,30 +294,30 @@ const configInfoForm = [
                                     {
                                         type: "input-text",
                                         name: "fieldName",
-                                        label: "${'table.fieldName' | t}",
+                                        label: "table.fieldName",
                                         hidden: "true"
                                     },
                                     {
                                         type: "input-text",
                                         name: "fieldDesc",
-                                        label: "${'table.fieldDescription' | t}",
+                                        label: "table.fieldDescription",
                                         readOnly: "true"
                                     },
                                     {
                                         type: "switch",
                                         name: "display",
-                                        label: "${'table.whetherDisplayed' | t}"
+                                        label: "table.whetherDisplayed"
                                     },
                                     {
                                         type: "select",
                                         name: "color",
-                                        label: "${'table.fieldColor' | t}",
+                                        label: "table.fieldColor",
                                         source: "${FieldColors}"
                                     },
                                     {
                                         type: "checkbox",
                                         name: "bold",
-                                        label: "${'table.whetherBold' | t}"
+                                        label: "table.whetherBold"
                                     }
                                 ]
                             }
@@ -328,29 +328,29 @@ const configInfoForm = [
                     },
                     {
                         type: "fieldSet",
-                        title: "${'table.seedingWallTplConfig' | t}",
+                        title: "table.seedingWallTplConfig",
                         body: [
                             {
                                 type: "combo",
                                 name: "pickingStationConfig.putWallTagConfig.waitingBinding",
-                                label: "${'putWallArea.bindBox' | t}",
+                                label: "putWallArea.bindBox",
                                 items: [
                                     {
                                         type: "select",
                                         name: "color",
-                                        label: "${'table.tplLightColor' | t}",
+                                        label: "table.tplLightColor",
                                         source: "${PtlColorEnum}"
                                     },
                                     {
                                         type: "select",
                                         name: "mode",
-                                        label: "${'table.tplLightMode' | t}",
+                                        label: "table.tplLightMode",
                                         source: "${PtlModeEnum}"
                                     },
                                     {
                                         type: "select",
                                         name: "updown",
-                                        label: "${'table.tplLightUpdown' | t}",
+                                        label: "table.tplLightUpdown",
                                         source: "${PtlUpdownEnum}"
                                     }
                                 ]
@@ -358,24 +358,24 @@ const configInfoForm = [
                             {
                                 type: "combo",
                                 name: "pickingStationConfig.putWallTagConfig.dispatch",
-                                label: "${'putWallArea.sowing' | t}",
+                                label: "putWallArea.sowing",
                                 items: [
                                     {
                                         type: "select",
                                         name: "color",
-                                        label: "${'table.tplLightColor' | t}",
+                                        label: "table.tplLightColor",
                                         source: "${PtlColorEnum}"
                                     },
                                     {
                                         type: "select",
                                         name: "mode",
-                                        label: "${'table.tplLightMode' | t}",
+                                        label: "table.tplLightMode",
                                         source: "${PtlModeEnum}"
                                     },
                                     {
                                         type: "select",
                                         name: "updown",
-                                        label: "${'table.tplLightUpdown' | t}",
+                                        label: "table.tplLightUpdown",
                                         source: "${PtlUpdownEnum}"
                                     }
                                 ]
@@ -383,24 +383,24 @@ const configInfoForm = [
                             {
                                 type: "combo",
                                 name: "pickingStationConfig.putWallTagConfig.waitingSeal",
-                                label: "${'putWallArea.seal' | t}",
+                                label: "putWallArea.seal",
                                 items: [
                                     {
                                         type: "select",
                                         name: "color",
-                                        label: "${'table.tplLightColor' | t}",
+                                        label: "table.tplLightColor",
                                         source: "${PtlColorEnum}"
                                     },
                                     {
                                         type: "select",
                                         name: "mode",
-                                        label: "${'table.tplLightMode' | t}",
+                                        label: "table.tplLightMode",
                                         source: "${PtlModeEnum}"
                                     },
                                     {
                                         type: "select",
                                         name: "updown",
-                                        label: "${'table.tplLightUpdown' | t}",
+                                        label: "table.tplLightUpdown",
                                         source: "${PtlUpdownEnum}"
                                     }
                                 ]
@@ -408,12 +408,12 @@ const configInfoForm = [
                             {
                                 type: "combo",
                                 name: "pickingStationConfig.putWallTagConfig.disabled",
-                                label: "${'putWallArea.disabled' | t}",
+                                label: "putWallArea.disabled",
                                 items: [
                                     {
                                         type: "select",
                                         name: "color",
-                                        label: "${'table.tplLightColor' | t}",
+                                        label: "table.tplLightColor",
                                         source: "${PtlColorEnum}"
                                     }
                                 ]
@@ -421,12 +421,12 @@ const configInfoForm = [
                             {
                                 type: "combo",
                                 name: "pickingStationConfig.putWallTagConfig.selected",
-                                label: "${'putWallArea.selected' | t}",
+                                label: "putWallArea.selected",
                                 items: [
                                     {
                                         type: "select",
                                         name: "color",
-                                        label: "${'table.tplLightColor' | t}",
+                                        label: "table.tplLightColor",
                                         source: "${PtlColorEnum}"
                                     }
                                 ]
@@ -434,12 +434,12 @@ const configInfoForm = [
                             {
                                 type: "combo",
                                 name: "pickingStationConfig.putWallTagConfig.optional",
-                                label: "${'putWallArea.optional' | t}",
+                                label: "putWallArea.optional",
                                 items: [
                                     {
                                         type: "select",
                                         name: "color",
-                                        label: "${'table.tplLightColor' | t}",
+                                        label: "table.tplLightColor",
                                         source: "${PtlColorEnum}"
                                     }
                                 ]
@@ -468,10 +468,10 @@ const add = {
     type: "button",
     actionType: "dialog",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "role",
     dialog: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         size: "lg",
         closeOnEsc: true,
         body: {
@@ -495,12 +495,12 @@ const columns = [
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         hidden: true
     },
     {
         name: "warehouseAreaId",
-        label: "${'table.warehouseAreaBelongs' | t}",
+        label: "table.warehouseAreaBelongs",
         type: "mapping",
         source: warehouse_area_id,
         searchable: {
@@ -510,22 +510,22 @@ const columns = [
     },
     {
         name: "stationCode",
-        label: "${'table.workstationCoding' | t}",
+        label: "table.workstationCoding",
         searchable: true
     },
     {
         name: "stationName",
-        label: "${'table.workstationName' | t}"
+        label: "table.workstationName"
     },
     {
         name: "operationType",
-        label: "${'table.currentOperationType' | t}",
+        label: "table.currentOperationType",
         type: "mapping",
         source: "${WorkStationOperationType}"
     },
     {
         name: "workStationStatus",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         source: "${WorkStationStatus}",
         searchable: {
@@ -545,7 +545,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'workstationManagement.title' | t}",
+    title: "workstationManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -578,15 +578,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 180,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 size: "lg",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
@@ -599,11 +599,11 @@ const schema = {
                             }
                         },
                         {
-                            label: "${'table.workstationConfiguration' | t}",
+                            label: "table.workstationConfiguration",
                             type: "button",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'table.workstationConfiguration' | t}",
+                                title: "table.workstationConfiguration",
                                 size: "lg",
                                 closeOnEsc: true,
                                 closeOnOutside: true,

@@ -16,18 +16,18 @@ const columns = [
     },
     // {
     //     name: "ownerCode",
-    //     label: "${'table.productOwner' | t}",
+    //     label: "table.productOwner",
     //     searchable: false,
     //     hidden: true
     // },
     {
         name: "lpnCode",
-        label: "${'table.LPNNo' | t}",
+        label: "table.LPNNo",
         searchable: true
     },
     {
         name: "customerOrderNo",
-        label: "${'table.customerOrderNo' | t}",
+        label: "table.customerOrderNo",
         searchable: true
     },
 //     {
@@ -37,7 +37,7 @@ const columns = [
 //     },
     {
         name: "inboundPlanOrderStatus",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         source: "${InboundPlanOrderStatus}",
         searchable: {
@@ -48,22 +48,22 @@ const columns = [
 
     {
         name: "orderNo",
-        label: "${'table.orderNo' | t}",
+        label: "table.orderNo",
         searchable: true
     },
     {
         name: "sender",
-        label: "${'table.shipper' | t}",
+        label: "table.shipper",
         searchable: true
     },
     {
         name: "skuKindNum",
-        label: "${'table.skuTypes' | t}",
+        label: "table.skuTypes",
         searchable: true
     },
     {
         name: "storageType",
-        label: "${'table.storageType' | t}",
+        label: "table.storageType",
         type: "mapping",
         source: "${StorageType}",
         searchable: {
@@ -73,27 +73,27 @@ const columns = [
     },
     {
         name: "totalBox",
-        label: "${'table.boxesNumber' | t}"
+        label: "table.boxesNumber"
     },
     {
         name: "totalQty",
-        label: "${'table.totalQuantity' | t}"
+        label: "table.totalQuantity"
     },
     {
         name: "trackingNumber",
-        label: "${'table.theTrackingNumber' | t}",
+        label: "table.theTrackingNumber",
         searchable: true
     },
     {
         name: "shippingMethod",
-        label: "${'table.modeOfCarriage' | t}",
+        label: "table.modeOfCarriage",
         searchable: true
     },
     ...create_update_columns,
     {
         type: "tpl",
         name: "remark",
-        label: "${'table.remark' | t}",
+        label: "table.remark",
         tpl: "${remark|truncate:30}",
         popOver: {
             trigger: "hover",
@@ -115,71 +115,71 @@ const detailColumns = [
     },
     {
         name: "batchAttributes",
-        label: "${'table.batchAttributes' | t}"
+        label: "table.batchAttributes"
     },
     {
         name: "boxNo",
-        label: "${'table.lpnNumber' | t}"
+        label: "table.lpnNumber"
     },
     {
         name: "brand",
-        label: "${'table.brand' | t}"
+        label: "table.brand"
     },
     {
         name: "color",
-        label: "${'table.color' | t}"
+        label: "table.color"
     },
     {
         name: "containerCode",
-        label: "${'table.containerNumber' | t}"
+        label: "table.containerNumber"
     },
     {
         name: "containerSlotCode",
-        label: "${'table.containerLatticeSlogan' | t}"
+        label: "table.containerLatticeSlogan"
     },
     {
         name: "containerSpecCode",
-        label: "${'table.containerSpecificationNumber' | t}"
+        label: "table.containerSpecificationNumber"
     },
     {
         name: "qtyAbnormal",
-        label: "${'skuArea.qtyAbnormal' | t}"
+        label: "skuArea.qtyAbnormal"
     },
     {
         name: "qtyAccepted",
-        label: "${'table.acceptanceQuantity' | t}"
+        label: "table.acceptanceQuantity"
     },
     {
         name: "qtyRestocked",
-        label: "${'table.plannedQuantity' | t}"
+        label: "table.plannedQuantity"
     },
     {
         name: "qtyUnreceived",
-        label: "${'table.unreceivedQuantity' | t}"
+        label: "table.unreceivedQuantity"
     },
     {
         name: "responsibleParty",
-        label: "${'table.responsibleParty' | t}"
+        label: "table.responsibleParty"
     },
     {
         name: "size",
-        label: "${'table.size' | t}"
+        label: "table.size"
     },
     {
         name: "skuCode",
-        label: "${'table.skuCode' | t}"
+        label: "table.skuCode"
     },
     {
         name: "skuName",
-        label: "${'table.skuName' | t}"
+        label: "table.skuName"
     },
     // {
     //     name: "ownerCode",
-    //     label: "${'table.productOwner' | t}"
+    //     label: "table.productOwner"
     // },
     {
         name: "style",
-        label: "${'table.style' | t}"
+        label: "table.style"
     }
 ]
 
@@ -189,7 +189,7 @@ const showColumns = columns
 const showDetailColumns = detailColumns
 
 const detailDialog = {
-    title: "${'table.inboundPlanDetails' | t}",
+    title: "table.inboundPlanDetails",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -216,7 +216,7 @@ const detailDialog = {
 
 const schema = {
     type: "page",
-    title: "${'menu.inboundOrder' | t}",
+    title: "menu.inboundOrder",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -247,7 +247,7 @@ const schema = {
                 "reload",
                 {
                     type: "export-excel",
-                    label: "${'button.export' | t}",
+                    label: "button.export",
                     method: "POST",
                     api: {
                         method: "POST",
@@ -267,7 +267,7 @@ const schema = {
             columns: [
                 ...columns,
                 {
-                    label: "${'button.detail' | t}",
+                    label: "button.detail",
                     type: "button",
                     level: "link",
                     actionType: "dialog",

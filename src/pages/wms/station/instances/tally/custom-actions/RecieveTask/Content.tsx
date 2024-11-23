@@ -14,19 +14,19 @@ const columns = [
     },
     {
         name: "orderNo",
-        label: "${'table.countOrderNumber' | t}",
+        label: "table.countOrderNumber",
         dbField: "o.order_no",
         searchable: true
     },
     // {
     //     name: "taskNo",
-    //     label: "${'table.inventoryTaskNumber' | t}",
+    //     label: "table.inventoryTaskNumber",
     //     dbField: "t.task_no",
     //     searchable: true
     // },
     // {
     //     name: "warehouseCode",
-    //     label: "${'table.warehouse' | t}",
+    //     label: "table.warehouse",
     //     dbField: "t.warehouse_code"
     // },
     // {
@@ -41,7 +41,7 @@ const columns = [
     // },
     {
         name: "stockTaskDetailStatus",
-        label: "${'table.status' | t}",
+        label: "table.status",
         dbField: "t.stocktake_task_status",
         source: "${StocktakeTaskStatus}",
         // type: "mapping",
@@ -53,13 +53,13 @@ const columns = [
     },
     {
         dbField: "t.create_user",
-        label: "${'table.createdBy' | t}",
+        label: "table.createdBy",
         name: "createUser"
     },
     {
         dbField: "t.create_time",
         name: "createTime",
-        label: "${'table.creationTime' | t}",
+        label: "table.creationTime",
         tpl: "${createTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
         searchable: {
             type: "input-date-range",
@@ -68,12 +68,12 @@ const columns = [
     },
     {
         dbField: "t.update_user",
-        label: "${'table.modifiedBy' | t}",
+        label: "table.modifiedBy",
         name: "updateUser"
     },
     {
         dbField: "t.update_time",
-        label: "${'table.updated' | t}",
+        label: "table.updated",
         name: "updateTime",
         tpl: "${updateTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}"
     }
@@ -100,42 +100,42 @@ const detailColumns = [
     {
         dbField: "g.bar_code_list",
         name: "barCodeList",
-        label: "${'skuArea.barcode' | t}"
+        label: "skuArea.barcode"
     },
     {
         dbField: "s.sku_name",
         name: "skuName",
-        label: "${'skuArea.productName' | t}"
+        label: "skuArea.productName"
     },
     {
         dbField: "td.warehouse_code",
         name: "warehouseCode",
-        label: "${'table.warehouse' | t}"
+        label: "table.warehouse"
     },
     {
         dbField: "td.container_code",
         name: "containerCode",
-        label: "${'table.containerCode' | t}"
+        label: "table.containerCode"
     },
     {
         dbField: "td.container_face",
         name: "containerFace",
-        label: "${'workLocationArea.face' | t}"
+        label: "workLocationArea.face"
     },
     {
         dbField: "st.container_slot_code",
         name: "containerSlotCode",
-        label: "${'table.containerSlotCode' | t}"
+        label: "table.containerSlotCode"
     },
     {
         dbField: "st.total_qty",
         name: "qtyOriginal",
-        label: "${'table.inventoryQuantity' | t}"
+        label: "table.inventoryQuantity"
     },
     {
         dbField: "td.stocktake_task_detail_status",
         name: "stockTaskDetailStatus",
-        label: "${'table.status' | t}",
+        label: "table.status",
         source: "${StocktakeTaskDetailStatus}"
     }
 ]
@@ -146,7 +146,7 @@ const showColumns = columns
 const showDetailColumns = detailColumns
 
 const detailDialog = {
-    title: "${'inventoryCounting.detail.modal.title' | t}",
+    title: "inventoryCounting.detail.modal.title",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -176,7 +176,7 @@ const detailDialog = {
 
 const schema = {
     type: "page",
-    title: "${'modal.receiveInventoryList' | t}",
+    title: "modal.receiveInventoryList",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -208,7 +208,7 @@ const schema = {
             headerToolbar: ["reload", "bulkActions"],
             bulkActions: [
                 {
-                    label: "${'button.receiveInBatches' | t}",
+                    label: "button.receiveInBatches",
                     level: "primary",
                     // actionType: "ajax",
                     // api: {
@@ -245,7 +245,7 @@ const schema = {
             columns: [
                 ...columns,
                 {
-                    label: "${'button.detail' | t}",
+                    label: "button.detail",
                     type: "button",
                     level: "link",
                     actionType: "dialog",

@@ -6,7 +6,7 @@ let warehouseCode = localStorage.getItem("warehouseCode")
 
 const form = [
     {
-        label: "${'workLocationArea.containerSpecification' | t}",
+        label: "workLocationArea.containerSpecification",
         type: "select",
         name: "containerSpecCode",
         source: {
@@ -23,7 +23,7 @@ const form = [
     },
     {
         id: "containerCode",
-        label: "${'table.containerCode' | t}",
+        label: "table.containerCode",
         type: "input-text",
         name: "containerCode",
         options: [{ label: "", value: "" }],
@@ -35,7 +35,7 @@ const form = [
     },
     {
         id: "locationCode",
-        label: "${'table.locationCode' | t}",
+        label: "table.locationCode",
         type: "input-text",
         name: "locationCode"
     }
@@ -45,10 +45,10 @@ const add = {
     type: "button",
     actionType: "dialog",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "emptyContainerInboundOrderTable",
     dialog: {
-        title: "${'menu.emptyContainerInboundOrder' | t}",
+        title: "menu.emptyContainerInboundOrder",
         closeOnEsc: true,
         body: {
             id: "inputForm",
@@ -68,12 +68,12 @@ const columns = [
     },
     {
         name: "orderNo",
-        label: "${'table.orderNo' | t}",
+        label: "table.orderNo",
         searchable: true
     },
     {
         name: "inboundWay",
-        label: "${'table.inboundMethod' | t}",
+        label: "table.inboundMethod",
         source: "${EmptyContainerInboundWay}",
         searchable: {
             type: "select",
@@ -82,13 +82,13 @@ const columns = [
     },
     {
         name: "planCount",
-        label: "${'table.plannedQuantity' | t}",
+        label: "table.plannedQuantity",
         searchable: true
     },
     {
         name: "inboundStatus",
         // label: "状态",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         source: "${PutAwayTaskStatusEnum}",
         searchable: {
@@ -99,7 +99,7 @@ const columns = [
     ...create_update_columns,
     {
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         hidden: true
     }
 ]
@@ -112,19 +112,19 @@ const detailColumns = [
     },
     {
         name: "containerCode",
-        label: "${'table.containerCode' | t}"
+        label: "table.containerCode"
     },
     {
         name: "containerSpecCode",
-        label: "${'workLocationArea.containerSpecification' | t}"
+        label: "workLocationArea.containerSpecification"
     },
     {
         name: "locationCode",
-        label: "${'table.inboundGroundCode' | t}"
+        label: "table.inboundGroundCode"
     },
     {
         name: "inboundStatus",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         source: "${PutAwayTaskStatusEnum}"
     }
@@ -136,7 +136,7 @@ const showColumns = columns
 const showDetailColumns = detailColumns
 
 const detailDialog = {
-    title: "${'emptyContainerInboundOrder.detail.modal.title' | t}",
+    title: "emptyContainerInboundOrder.detail.modal.title",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -163,7 +163,7 @@ const detailDialog = {
 
 const schema = {
     type: "page",
-    title: "${'menu.emptyContainerInboundOrder' | t}",
+    title: "menu.emptyContainerInboundOrder",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -195,7 +195,7 @@ const schema = {
             columns: [
                 ...columns,
                 {
-                    label: "${'button.detail' | t}",
+                    label: "button.detail",
                     type: "button",
                     level: "link",
                     actionType: "dialog",

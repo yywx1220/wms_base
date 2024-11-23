@@ -34,19 +34,19 @@ const columns = [
     },
     {
         name: "skuCode",
-        label: "${'skuArea.skuCode' | t}",
+        label: "skuArea.skuCode",
         dbField: "a.sku_code",
         searchable: true
     },
     {
         name: "barcode",
-        label: "${'skuArea.barcode' | t}",
+        label: "skuArea.barcode",
         dbField: "f.bar_code",
         searchable: true
     },
     {
         name: "ownerCode",
-        label: "${'skuArea.ownerCode' | t}",
+        label: "skuArea.ownerCode",
         dbField: "a.owner_code",
         source: owner_code,
         searchable: {
@@ -56,46 +56,46 @@ const columns = [
     },
     {
         name: "brand",
-        label: "${'table.brand' | t}",
+        label: "table.brand",
         dbField: "a.brand"
         // searchable: true
     },
     {
         name: "style",
-        label: "${'table.style' | t}",
+        label: "table.style",
         dbField: "a.style"
         // searchable: true
     },
     {
         name: "color",
-        label: "${'table.color' | t}",
+        label: "table.color",
         dbField: "a.color"
         // searchable: true
     },
     {
         name: "size",
-        label: "${'table.size' | t}",
+        label: "table.size",
         dbField: "a.size"
         // searchable: true
     },
     {
         name: "skuFirstCategory",
-        label: "${'table.levelOneClassification' | t}",
+        label: "table.levelOneClassification",
         dbField: "a.sku_first_category"
     },
     {
         name: "skuAttributeCategory",
-        label: "${'table.first-level_attributes' | t}",
+        label: "table.first-level_attributes",
         dbField: "a.sku_attribute_category"
     },
     {
         name: "skuAttributes",
-        label: "${'table.batchAttributes' | t}",
+        label: "table.batchAttributes",
         dbField: "e.sku_attributes"
     },
     {
         name: "warehouseAreaCode",
-        label: "${'workLocationArea.warehouseArea' | t}",
+        label: "workLocationArea.warehouseArea",
         dbField: "wa.warehouse_area_code",
         source: warehouse_area_code,
         searchable: {
@@ -105,43 +105,43 @@ const columns = [
     },
     {
         name: "containerCode",
-        label: "${'table.containerCode' | t}",
+        label: "table.containerCode",
         dbField: "k.container_code",
         searchable: true
     },
     {
         name: "containerSlotCode",
-        label: "${'table.containerSlotCode' | t}",
+        label: "table.containerSlotCode",
         dbField: "k.container_slot_code"
     },
     {
         name: "totalQty",
-        label: "${'table.inventoryQuantity' | t}",
+        label: "table.inventoryQuantity",
         dbField: "k.total_qty"
     },
     {
         name: "availableQty",
-        label: "${'table.availableQuantity' | t}",
+        label: "table.availableQuantity",
         dbField: "k.available_qty"
     },
     {
         name: "noOutboundLockedQty",
-        label: "${'table.libraryOccupancy' | t}",
+        label: "table.libraryOccupancy",
         dbField: "k.no_outbound_locked_qty"
     },
     {
         name: "outboundLockedQty",
-        label: "${'table.pickingOccupancy' | t}",
+        label: "table.pickingOccupancy",
         dbField: "k.outbound_locked_qty"
     },
     {
         name: "frozenQty",
-        label: "${'table.frozenQuantity' | t}",
+        label: "table.frozenQuantity",
         dbField: "k.frozen_qty"
     },
     {
         name: "createTime",
-        label: "${'table.creationTime' | t}",
+        label: "table.creationTime",
         dbField: "k.create_time",
         tpl: "${createTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
         searchable: {
@@ -151,13 +151,13 @@ const columns = [
     },
     {
         name: "updateTime",
-        label: "${'table.updated' | t}",
+        label: "table.updated",
         dbField: "k.update_time",
         tpl: "${updateTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}"
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         dbField: "k.warehouse_code",
         hidden: true
     }
@@ -168,7 +168,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'inventoryDetails.title' | t}",
+    title: "inventoryDetails.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -200,7 +200,7 @@ const schema = {
                 "reload",
                 {
                     type: "export-excel",
-                    label: "${'button.export' | t}",
+                    label: "button.export",
                     api:
                         "/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
                         warehouseCode,
@@ -212,20 +212,20 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 130,
                     hidden:
                         !permissions?.includes("freeze") &&
                         !permissions?.includes("thaw"),
                     buttons: [
                         {
-                            label: "${'button.freeze' | t}",
+                            label: "button.freeze",
                             type: "button",
                             level: "link",
                             actionType: "dialog",
                             hidden: !permissions?.includes("freeze"),
                             dialog: {
-                                title: "${'button.freeze' | t}",
+                                title: "button.freeze",
                                 size: "sm",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
@@ -235,7 +235,7 @@ const schema = {
                                     controls: [
                                         ...form,
                                         {
-                                            label: "${'table.quantity' | t}",
+                                            label: "table.quantity",
                                             type: "input-number",
                                             name: "qty",
                                             min: 1,
@@ -247,14 +247,14 @@ const schema = {
                             }
                         },
                         {
-                            label: "${'button.thaw' | t}",
+                            label: "button.thaw",
                             type: "button",
                             level: "link",
                             actionType: "dialog",
                             disabledOn: "${frozenQty === 0}",
                             hidden: !permissions?.includes("thaw"),
                             dialog: {
-                                title: "${'button.thaw' | t}",
+                                title: "button.thaw",
                                 size: "sm",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
@@ -264,7 +264,7 @@ const schema = {
                                     controls: [
                                         ...form,
                                         {
-                                            label: "${'table.quantity' | t}",
+                                            label: "table.quantity",
                                             type: "input-number",
                                             name: "qty",
                                             min: 1,

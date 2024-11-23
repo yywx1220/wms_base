@@ -32,7 +32,7 @@ const schema = {
                 type: "input-text",
                 multiple: true,
                 mode: "horizontal",
-                placeholder: "${'form.inverntory.scanShelfCode' | t}",
+                placeholder: "form.inverntory.scanShelfCode",
                 trimContents: true,
                 clearable: true,
                 className: "w-4/5 inline-block mr-3 align-top pl-4",
@@ -136,7 +136,7 @@ const schema = {
         ],
         actions: [
             {
-                label: "${'button.submit' | t}",
+                label: "button.submit",
                 type: "button",
                 actionType: "submit",
                 level: "primary",

@@ -54,7 +54,7 @@ const schema = {
                 type: "input-text",
                 label: false,
                 multiple: true,
-                placeholder: "${'skuArea.scanBarcode' | t}",
+                placeholder: "skuArea.scanBarcode",
                 trimContents: true,
                 clearable: true,
                 className: "w-3/4 inline-block mr-3 align-top pl-4",
@@ -94,7 +94,7 @@ const schema = {
                     url: "/mdm/common-import/parse"
                 },
                 className: "inline-block align-top",
-                btnLabel: "${'button.import' | t} Excel",
+                btnLabel: "button.import Excel",
                 onEvent: {
                     success: {
                         actions: [
@@ -122,7 +122,7 @@ const schema = {
                 }
             },
             {
-                label: "${'modal.downloadTheTemplate' | t}",
+                label: "modal.downloadTheTemplate",
                 type: "action",
                 actionType: "download",
                 className: "inline-block align-top",
@@ -257,7 +257,7 @@ const schema = {
         ],
         actions: [
             {
-                label: "${'button.submit' | t}",
+                label: "button.submit",
                 type: "button",
                 actionType: "submit",
                 level: "primary",

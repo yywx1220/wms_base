@@ -39,7 +39,7 @@ const schema = {
         {
             name: "barCode",
             type: "input-text",
-            label: "${'skuArea.scanBarcode' | t}",
+            label: "skuArea.scanBarcode",
             autoFocus: true
         },
         {
@@ -174,12 +174,12 @@ const schema = {
                 //     {
                 //         type: "button",
                 //         level: "link",
-                //         label: "${'button.chooseContainer' | t}",
+                //         label: "button.chooseContainer",
                 //         // icon: "fa fa-eye",
                 //         actionType: "dialog",
                 //         dialog: {
                 //             size: "lg",
-                //             title: "${'button.chooseContainer' | t}",
+                //             title: "button.chooseContainer",
                 //             body: {
                 //                 type: "table2",
                 //                 source: "$details",
@@ -197,7 +197,7 @@ const schema = {
                 //                         hidden: true
                 //                     },
                 //                     {
-                //                         // label: "${'table.containerNumber' | t}",
+                //                         // label: "table.containerNumber",
                 //                         // title: (
                 //                         //     <Translation>
                 //                         //         {(t) =>
@@ -212,7 +212,7 @@ const schema = {
                 //                         }
                 //                     },
                 //                     {
-                //                         // title: "${'workLocationArea.face' | t}",
+                //                         // title: "workLocationArea.face",
                 //                         // title: (
                 //                         //     <Translation>
                 //                         //         {(t) =>
@@ -227,7 +227,7 @@ const schema = {
                 //                         }
                 //                     },
                 //                     {
-                //                         // title: "${'table.containerSlotCode' | t}",
+                //                         // title: "table.containerSlotCode",
                 //                         // title: (
                 //                         //     <Translation>
                 //                         //         {(t) =>
@@ -242,7 +242,7 @@ const schema = {
                 //                         }
                 //                     },
                 //                     {
-                //                         // title: "${'workLocationArea.gridSpecifications' | t}",
+                //                         // title: "workLocationArea.gridSpecifications",
                 //                         // title: (
                 //                         //     <Translation>
                 //                         //         {(t) =>
@@ -259,7 +259,7 @@ const schema = {
                 //                         }
                 //                     },
                 //                     {
-                //                         // title: "${'table.inventoryQuantity' | t}",
+                //                         // title: "table.inventoryQuantity",
                 //                         // title: (
                 //                         //     <Translation>
                 //                         //         {(t) =>
@@ -274,7 +274,7 @@ const schema = {
                 //                         }
                 //                     },
                 //                     {
-                //                         // title: "${'table.lockQuantity' | t}",
+                //                         // title: "table.lockQuantity",
                 //                         // title: (
                 //                         //     <Translation>
                 //                         //         {(t) => t("table.lockQuantity")}

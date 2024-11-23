@@ -25,75 +25,75 @@ const form = [
         name: "version"
     },
     {
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         type: "input-text",
         name: "warehouseCode",
         maxLength: 64,
         required: true
     },
     {
-        label: "${'table.warehouseName' | t}",
+        label: "table.warehouseName",
         type: "input-text",
         name: "warehouseName",
         maxLength: 128,
         required: true
     },
     {
-        label: "${'table.warehouseType' | t}",
+        label: "table.warehouseType",
         type: "select",
         name: "warehouseType",
         source: "${WarehouseType}",
         required: true
     },
     {
-        label: "${'table.warehouseProperties' | t}",
+        label: "table.warehouseProperties",
         type: "select",
         name: "warehouseAttrType",
         source: "${WarehouseAttrType}",
         required: true
     },
     {
-        label: "${'table.warehouseLevel' | t}",
+        label: "table.warehouseLevel",
         type: "select",
         name: "warehouseLevel",
         source: "${WarehouseLevel}",
         required: true
     },
     {
-        label: "${'table.warehouseLables' | t}",
+        label: "table.warehouseLables",
         type: "select",
         name: "warehouseLabel",
         source: "${WarehouseLabel}",
         maxLength: 64
     },
     {
-        label: "${'table.mainBusiness' | t}",
+        label: "table.mainBusiness",
         type: "select",
         name: "businessType",
         source: "${WarehouseBusinessType}",
         required: true
     },
     {
-        label: "${'table.warehouseStructure' | t}",
+        label: "table.warehouseStructure",
         type: "select",
         name: "structureType",
         source: "${WarehouseStructureType}",
         required: true
     },
     {
-        label: "${'table.warehouseArea' | t}",
+        label: "table.warehouseArea",
         type: "input-number",
         name: "area",
         minimum: 0
     },
     {
-        label: "${'table.WarehouseFloorHeight' | t}",
+        label: "table.WarehouseFloorHeight",
         type: "input-number",
         name: "height",
         minimum: 0
     },
     {
-        label: "${'table.virtualWarehouse' | t}",
+        label: "table.virtualWarehouse",
         type: "switch",
         name: "virtualWarehouse",
         value: false
@@ -101,13 +101,13 @@ const form = [
 
     // 地址信息
     {
-        label: "${'table.country' | t}",
+        label: "table.country",
         type: "select",
         name: "addressDTO.country",
         source: country
     },
     {
-        label: "${'table.province' | t}",
+        label: "table.province",
         type: "select",
         name: "addressDTO.province",
         initFetchOn: "data.addressDTO.country",
@@ -117,7 +117,7 @@ const form = [
         }
     },
     {
-        label: "${'table.city' | t}",
+        label: "table.city",
         type: "select",
         name: "addressDTO.city",
         initFetchOn: "data.addressDTO.province",
@@ -129,7 +129,7 @@ const form = [
         }
     },
     {
-        label: "${'table.district/county' | t}",
+        label: "table.district/county",
         type: "select",
         name: "addressDTO.district",
         initFetchOn: "data.addressDTO.city",
@@ -141,19 +141,19 @@ const form = [
         }
     },
     {
-        label: "${'table.fullAddress' | t}",
+        label: "table.fullAddress",
         type: "input-text",
         name: "addressDTO.address"
     },
 
     // 联系方式
     {
-        label: "${'table.contact' | t}",
+        label: "table.contact",
         type: "input-text",
         name: "contactorDTO.name"
     },
     {
-        label: "${'table.phoneNumber' | t}",
+        label: "table.phoneNumber",
         type: "input-text",
         name: "contactorDTO.tel",
         validations: {
@@ -161,7 +161,7 @@ const form = [
         }
     },
     {
-        label: "${'table.email' | t}",
+        label: "table.email",
         type: "input-text",
         name: "contactorDTO.mail",
         validations: {
@@ -169,7 +169,7 @@ const form = [
         }
     },
     {
-        label: "${'table.fax' | t}",
+        label: "table.fax",
         type: "input-text",
         name: "contactorDTO.fax",
         validations: {
@@ -182,10 +182,10 @@ const add = {
     type: "button",
     actionType: "drawer",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "role",
     drawer: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         body: {
             type: "form",
@@ -209,17 +209,17 @@ const columns = [
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         searchable: true
     },
     {
         name: "warehouseName",
-        label: "${'table.warehouseName' | t}",
+        label: "table.warehouseName",
         searchable: true
     },
     {
         name: "warehouseType",
-        label: "${'table.warehouseType' | t}",
+        label: "table.warehouseType",
         type: "mapping",
         source: "${WarehouseType}",
         searchable: {
@@ -229,7 +229,7 @@ const columns = [
     },
     {
         name: "warehouseAttrType",
-        label: "${'table.warehouseProperties' | t}",
+        label: "table.warehouseProperties",
         type: "mapping",
         source: "${WarehouseAttrType}",
         searchable: {
@@ -239,7 +239,7 @@ const columns = [
     },
     {
         name: "warehouseLevel",
-        label: "${'table.warehouseLevel' | t}",
+        label: "table.warehouseLevel",
         type: "mapping",
         source: "${WarehouseLevel}",
         searchable: {
@@ -249,7 +249,7 @@ const columns = [
     },
     {
         name: "warehouseLabel",
-        label: "${'table.warehouseLables' | t}",
+        label: "table.warehouseLables",
         type: "mapping",
         source: "${WarehouseLabel}",
         searchable: {
@@ -259,7 +259,7 @@ const columns = [
     },
     {
         name: "businessType",
-        label: "${'table.mainBusiness' | t}",
+        label: "table.mainBusiness",
         type: "mapping",
         source: "${WarehouseBusinessType}",
         searchable: {
@@ -269,7 +269,7 @@ const columns = [
     },
     {
         name: "structureType",
-        label: "${'table.warehouseStructure' | t}",
+        label: "table.warehouseStructure",
         type: "mapping",
         source: "${WarehouseStructureType}",
         searchable: {
@@ -279,41 +279,41 @@ const columns = [
     },
     {
         name: "virtualWarehouse",
-        label: "${'table.virtualWarehouse' | t}",
+        label: "table.virtualWarehouse",
         type: "mapping",
         map: true_false_options
     },
     {
         name: "country",
-        label: "${'table.country' | t}"
+        label: "table.country"
     },
     {
         name: "province",
-        label: "${'table.province' | t}"
+        label: "table.province"
     },
     {
         name: "city",
-        label: "${'table.city' | t}"
+        label: "table.city"
     },
     {
         name: "district",
-        label: "${'table.district/county' | t}"
+        label: "table.district/county"
     },
     {
         name: "name",
-        label: "${'table.contact' | t}"
+        label: "table.contact"
     },
     {
         name: "tel",
-        label: "${'table.phoneNumber' | t}"
+        label: "table.phoneNumber"
     },
     {
         name: "mail",
-        label: "${'table.email' | t}"
+        label: "table.email"
     },
     {
         name: "fax",
-        label: "${'table.fax' | t}"
+        label: "table.fax"
     },
     ...create_update_columns
 ]
@@ -323,7 +323,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'warehouseManagement.title' | t}",
+    title: "warehouseManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -354,15 +354,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 150,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "drawer",
                             drawer: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 body: {
@@ -375,11 +375,11 @@ const schema = {
                             reload: "role"
                         },
                         {
-                            label: "${'button.parameterConfiguration' | t}",
+                            label: "button.parameterConfiguration",
                             type: "button",
                             actionType: "drawer",
                             drawer: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 body: {

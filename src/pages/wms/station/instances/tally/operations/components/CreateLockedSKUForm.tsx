@@ -147,7 +147,7 @@ const schema = {
         ],
         actions: [
             {
-                label: "${'button.submit' | t}",
+                label: "button.submit",
                 type: "button",
                 actionType: "submit",
                 level: "primary",

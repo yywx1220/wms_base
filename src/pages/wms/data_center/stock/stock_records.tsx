@@ -19,51 +19,51 @@ const columns = [
     {
         dbField: "msbd.bar_code",
         name: "barcode",
-        label: "${'skuArea.barcode' | t}",
+        label: "skuArea.barcode",
         searchable: true
     },
     {
         dbField: "msmd.sku_name",
         name: "skuName",
-        label: "${'table.skuName' | t}"
+        label: "table.skuName"
     },
     {
         dbField: "wcst.order_no",
         name: "orderNo",
-        label: "${'table.orderNo' | t}",
+        label: "table.orderNo",
         searchable: true
     },
     {
         dbField: "wcst.sku_batch_stock_id",
         name: "skuBatchStockId",
-        label: "${'table.lotNumber' | t}",
+        label: "table.lotNumber",
         hidden: true
     },
     {
         name: "keywords",
-        label: "${'table.shelfCoding' | t}",
+        label: "table.shelfCoding",
         searchable: true,
         hidden: true
     },
     {
         dbField: "wcst.source_container_code",
         name: "sourceContainerCode",
-        label: "${'table.sourceContainerNumber' | t}"
+        label: "table.sourceContainerNumber"
     },
     {
         dbField: "wcst.source_container_slot_code",
         name: "sourceContainerSlotCode",
-        label: "${'table.sourceContainerLattice' | t}"
+        label: "table.sourceContainerLattice"
     },
     {
         dbField: "wcst.target_container_code",
         name: "targetContainerCode",
-        label: "${'table.targetContainerNumber' | t}"
+        label: "table.targetContainerNumber"
     },
     {
         dbField: "wcst.target_container_slot_code",
         name: "targetContainerSlotCode",
-        label: "${'table.targetContainerLattice' | t}"
+        label: "table.targetContainerLattice"
     },
     {
         dbField: "wcst.task_id",
@@ -74,22 +74,22 @@ const columns = [
     {
         dbField: "wcst.before_transfer_qty",
         name: "beforeTransferQty",
-        label: "${'table.beforeTransferQty' | t}"
+        label: "table.beforeTransferQty"
     },
     {
         dbField: "wcst.transfer_qty",
         name: "transferQty",
-        label: "${'table.quantity' | t}"
+        label: "table.quantity"
     },
     {
         dbField: "wcst.after_transfer_qty",
         name: "afterTransferQty",
-        label: "${'table.afterTransferQty' | t}"
+        label: "table.afterTransferQty"
     },
     {
         dbField: "wcst.operation_task_type",
         name: "operationTaskType",
-        label: "${'table.currentOperationType' | t}",
+        label: "table.currentOperationType",
         type: "mapping",
         source: "${OperationTaskType}"
     },
@@ -102,18 +102,18 @@ const columns = [
     {
         dbField: "wcst.warehouse_code",
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         hidden: true
     },
     {
         dbField: "wcst.create_user",
-        label: "${'table.createdBy' | t}",
+        label: "table.createdBy",
         name: "createUser"
     },
     {
         dbField: "wcst.create_time",
         name: "createTime",
-        label: "${'table.creationTime' | t}",
+        label: "table.creationTime",
         tpl: "${createTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
         searchable: {
             type: "input-date-range",
@@ -122,12 +122,12 @@ const columns = [
     },
     {
         dbField: "wcst.update_user",
-        label: "${'table.modifiedBy' | t}",
+        label: "table.modifiedBy",
         name: "updateUser"
     },
     {
         dbField: "wcst.update_time",
-        label: "${'table.updated' | t}",
+        label: "table.updated",
         name: "updateTime",
         tpl: "${updateTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}"
     }
@@ -144,7 +144,7 @@ const searchObject = {
 
 const schema = {
     type: "page",
-    title: "${'wms.menu.inventoryRecords' | t}",
+    title: "wms.menu.inventoryRecords",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -197,7 +197,7 @@ const schema = {
                 "reload",
                 {
                     type: "export-excel",
-                    label: "${'button.export' | t}",
+                    label: "button.export",
                     api:
                         "/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
                         warehouseCode,

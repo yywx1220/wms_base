@@ -3,12 +3,12 @@ import {api_system_config_get, api_system_config_save_or_update} from "@/pages/w
 
 const schema = {
     type: "page",
-    // title: "${'systemConfigManagement.title' | t}",
+    // title: "systemConfigManagement.title",
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "form",
-            title: "${'systemConfigManagement.title' | t}",
+            title: "systemConfigManagement.title",
             initApi: api_system_config_get,
             api: api_system_config_save_or_update,
             body: [
@@ -16,7 +16,7 @@ const schema = {
                     type: "tabs",
                     tabs: [
                         {
-                            title: "${'form.tab.emsConfiguration' | t}",
+                            title: "form.tab.emsConfiguration",
                             name: "emsConfig",
                             body: [
                                 {
@@ -28,12 +28,12 @@ const schema = {
                             ]
                         },
                         {
-                            title: "${'form.tab.inboundConfiguration' | t}",
+                            title: "form.tab.inboundConfiguration",
                             name: "inboundConfig",
 
                         },
                         {
-                            title: "${'form.tab.outboundConfiguration' | t}",
+                            title: "form.tab.outboundConfiguration",
                             name: "outboundConfig",
                             body: [
                                 {
@@ -41,15 +41,15 @@ const schema = {
                                     body: [
                                         {
                                             type: "input-number",
-                                            label: "${'form.config.pickingOrderFetchSizeWhenEveryTimeDispatching' | t}",
+                                            label: "form.config.pickingOrderFetchSizeWhenEveryTimeDispatching",
                                             name: "outboundConfig.pickingOrderFetchSizeWhenEveryTimeDispatching",
-                                            description: "${'form.config.pickingOrderFetchSizeWhenEveryTimeDispatching.description' | t}"
+                                            description: "form.config.pickingOrderFetchSizeWhenEveryTimeDispatching.description"
                                         },
                                         {
                                             type: "input-number",
-                                            label: "${'form.config.undoOperationTaskFetchSizeWhenEveryTimeDispatching' | t}",
+                                            label: "form.config.undoOperationTaskFetchSizeWhenEveryTimeDispatching",
                                             name: "outboundConfig.undoOperationTaskFetchSizeWhenEveryTimeDispatching",
-                                            description: "${'form.config.undoOperationTaskFetchSizeWhenEveryTimeDispatching.description' | t}"
+                                            description: "form.config.undoOperationTaskFetchSizeWhenEveryTimeDispatching.description"
                                         }
                                     ]
                                 },
@@ -58,19 +58,19 @@ const schema = {
                                     body: [
                                         {
                                             type: "input-number",
-                                            label: "${'form.config.operationTaskFetchSizeWhenContainerArrived' | t}",
+                                            label: "form.config.operationTaskFetchSizeWhenContainerArrived",
                                             name: "outboundConfig.operationTaskFetchSizeWhenContainerArrived",
-                                            description: "${'form.config.operationTaskFetchSizeWhenContainerArrived.description' | t}"
+                                            description: "form.config.operationTaskFetchSizeWhenContainerArrived.description"
                                         },
                                         {
                                             type: "switch",
-                                            label: "${'form.config.checkArrivedContainerForDispatchedOrder' | t}",
+                                            label: "form.config.checkArrivedContainerForDispatchedOrder",
                                             name: "outboundConfig.checkArrivedContainerForDispatchedOrder",
-                                            description: "${'form.config.checkArrivedContainerForDispatchedOrder.description' | t}"
+                                            description: "form.config.checkArrivedContainerForDispatchedOrder.description"
                                         },
                                         {
                                             type: "select",
-                                            label: "${'form.config.excludeCustomerOrderTypes' | t}",
+                                            label: "form.config.excludeCustomerOrderTypes",
                                             multiple: true,
                                             joinValues: false,
                                             extractValue: true,
@@ -84,17 +84,17 @@ const schema = {
                                     body: [
                                         {
                                             type: "switch",
-                                            label: "${'form.config.autoUnlockTransferContainer' | t}",
+                                            label: "form.config.autoUnlockTransferContainer",
                                             name: "outboundConfig.autoUnlockTransferContainer"
                                         },
                                         {
                                             type: "input-number",
-                                            label: "${'form.config.autoUnlockTransferContainerTimeInMillis' | t}",
+                                            label: "form.config.autoUnlockTransferContainerTimeInMillis",
                                             name: "outboundConfig.autoUnlockTransferContainerTimeInMillis"
                                         },
                                         {
                                             type: "input-number",
-                                            label: "${'form.config.autoUnlockTransferContainerSizeEveryTime' | t}",
+                                            label: "form.config.autoUnlockTransferContainerSizeEveryTime",
                                             name: "outboundConfig.autoUnlockTransferContainerSizeEveryTime"
                                         }
                                     ]
@@ -102,7 +102,7 @@ const schema = {
                             ]
                         },
                         {
-                            title: "${'form.tab.outboundAlgoConfiguration' | t}",
+                            title: "form.tab.outboundAlgoConfiguration",
                             name: "outboundAlgoConfig",
                             body: [
                                 {
@@ -110,13 +110,13 @@ const schema = {
                                     body: [
                                         {
                                             type: "input-number",
-                                            label: "${'modal.cutoffTime' | t}",
+                                            label: "modal.cutoffTime",
                                             name: "outboundAlgoConfig.cutoffTime",
-                                            description: "${'modal.cutoffTime.description' | t}"
+                                            description: "modal.cutoffTime.description"
                                         },
                                         {
                                             type: "select",
-                                            label: "${'modal.algoMode' | t}",
+                                            label: "modal.algoMode",
                                             name: "outboundAlgoConfig.mode"
                                         }
                                     ]
@@ -126,18 +126,18 @@ const schema = {
                                     body: [
                                         {
                                             type: "input-number",
-                                            label: "${'modal.shareRackPoolMaxStationDistance' | t}",
+                                            label: "modal.shareRackPoolMaxStationDistance",
                                             name: "outboundAlgoConfig.shareRackPoolMaxStationDistance",
                                             precision: 2
                                         },
                                         {
                                             type: "input-number",
-                                            label: "${'modal.maxHitNum' | t}",
+                                            label: "modal.maxHitNum",
                                             name: "outboundAlgoConfig.maxHitNum"
                                         },
                                         {
                                             type: "select",
-                                            label: "${'modal.orderDispatchStrategy' | t}",
+                                            label: "modal.orderDispatchStrategy",
                                             source: "${OrderDispatchStrategy}",
                                             name: "outboundAlgoConfig.orderDispatchStrategy"
                                         }
@@ -148,19 +148,19 @@ const schema = {
                                     body: [
                                         {
                                             type: "input-number",
-                                            label: "${'modal.orderDispatchBalanceOffset' | t}",
+                                            label: "modal.orderDispatchBalanceOffset",
                                             name: "outboundAlgoConfig.orderDispatchBalanceOffset",
-                                            description: "${'modal.orderDispatchBalanceOffset.description' | t}",
+                                            description: "modal.orderDispatchBalanceOffset.description",
                                         },
                                         {
                                             type: "input-text",
-                                            label: "${'modal.firstHitRackSide' | t}",
+                                            label: "modal.firstHitRackSide",
                                             source: "${FirstHitRackSide}",
                                             name: "outboundAlgoConfig.firstHitRackSide"
                                         },
                                         {
                                             type: "select",
-                                            label: "${'modal.algoName' | t}",
+                                            label: "modal.algoName",
                                             source: "${OrderDispatchHitAlgoName}",
                                             name: "outboundAlgoConfig.algoName"
                                         }
@@ -171,20 +171,20 @@ const schema = {
                                     body: [
                                         {
                                             type: "input-number",
-                                            label: "${'modal.maxOnTheWayRackNum' | t}",
+                                            label: "modal.maxOnTheWayRackNum",
                                             name: "outboundAlgoConfig.maxOnTheWayRackNum",
-                                            description: "${'modal.maxOnTheWayRackNum.description' | t}",
+                                            description: "modal.maxOnTheWayRackNum.description",
                                         },
                                         {
                                             type: "select",
-                                            label: "${'modal.taskBalanceDimension' | t}",
+                                            label: "modal.taskBalanceDimension",
                                             source: "${TaskBalanceDimension}",
                                             name: "outboundAlgoConfig.taskBalanceDimension"
                                         },
                                         {
                                             type: "select",
-                                            label: "${'modal.warehouseLogicTypePriority' | t}",
-                                            description: "${'modal.warehouseLogicTypePriority.description' | t}",
+                                            label: "modal.warehouseLogicTypePriority",
+                                            description: "modal.warehouseLogicTypePriority.description",
                                             source: "${WarehouseLogicType}",
                                             multiple: true,
                                             joinValues: false,

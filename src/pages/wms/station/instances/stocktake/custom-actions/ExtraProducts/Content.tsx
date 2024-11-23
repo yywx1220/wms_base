@@ -26,23 +26,23 @@ const columns = [
     },
     {
         name: "code",
-        label: "${'table.ruleEncoding' | t}",
+        label: "table.ruleEncoding",
         searchable: true
     },
     {
         name: "name",
-        label: "${'table.ruleName' | t}",
+        label: "table.ruleName",
         searchable: true
     },
     {
         name: "ownerCode",
-        label: "${'table.productOwner' | t}",
+        label: "table.productOwner",
         type: "mapping",
         source: owner_code
     },
     {
         name: "skuFirstCategory",
-        label: "${'table.SKUCategories' | t}",
+        label: "table.SKUCategories",
         type: "mapping",
         source: "${SkuFirstCategory}"
     },
@@ -82,7 +82,7 @@ const schema = {
                         name: "ownerCode",
                         id: "ownerCode",
                         required: true,
-                        label: "${'table.productOwner' | t}",
+                        label: "table.productOwner",
                         source: owner_code,
                         onEvent: {
                             change: {
@@ -105,7 +105,7 @@ const schema = {
                     {
                         type: "input-text",
                         name: "barcode",
-                        label: "${'skuArea.barcode' | t}",
+                        label: "skuArea.barcode",
                         id: "barcode",
                         source: [],
                         clearable: true,
@@ -183,7 +183,7 @@ const schema = {
                     {
                         type: "input-number",
                         name: "stocktakeQty",
-                        label: "${'table.quantity' | t}",
+                        label: "table.quantity",
                         displayMode: "enhance",
                         min: 1,
                         max: 10000,
@@ -197,14 +197,14 @@ const schema = {
                     {
                         type: "input-text",
                         name: "containerCode",
-                        label: "${'table.containerNumber' | t}",
+                        label: "table.containerNumber",
                         disabled: true,
                         columnRatio: 4
                     },
                     {
                         type: "select",
                         name: "containerSlotCode",
-                        label: "${'table.containerSlotCode' | t}",
+                        label: "table.containerSlotCode",
                         disabled: true,
                         columnRatio: 4
                     }
@@ -216,12 +216,12 @@ const schema = {
                 name: "tabName",
                 tabs: [
                     {
-                        title: "${'form.inverntory.originalBatch' | t}",
+                        title: "form.inverntory.originalBatch",
                         value: "ORIGINAL",
                         body: {
                             type: "crud2",
                             id: "crud2_table",
-                            placeholder: "${'table.noData' | t}",
+                            placeholder: "table.noData",
                             required: true,
                             rowSelection: {
                                 type: "radio",
@@ -261,7 +261,7 @@ const schema = {
                         }
                     },
                     {
-                        title: "${'form.inverntory.newBatch' | t}",
+                        title: "form.inverntory.newBatch",
                         value: "NEW",
                         body: {
                             type: "service",
@@ -311,7 +311,7 @@ const schema = {
             },
             {
                 type: "submit",
-                label: "${'button.submit' | t}",
+                label: "button.submit",
                 level: "primary",
                 size: "lg",
                 className: "fixed bottom-8 right-12",

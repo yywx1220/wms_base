@@ -99,7 +99,7 @@ function WorkStationValueProvider(props: WorkStationProviderProps) {
 
     useEffect(() => {
         if (history.location.pathname.includes("workStation")) return
-        workStationEventLoop.stop()
+        // workStationEventLoop.stop()
     }, [history.location.pathname])
 
     return (

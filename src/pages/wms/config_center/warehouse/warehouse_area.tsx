@@ -19,73 +19,73 @@ const form = {
             name: "version"
         },
         {
-            label: "${'table.warehouseAreaEncoding' | t}",
+            label: "table.warehouseAreaEncoding",
             name: "warehouseGroupCode",
             type: "select",
             source: warehouse_area_group,
             required: true
         },
         {
-            label: "${'table.reservoirAreaCode' | t}",
+            label: "table.reservoirAreaCode",
             name: "warehouseAreaCode",
             type: "input-text",
             required: true
         },
         {
-            label: "${'table.reservoirAreaName' | t}",
+            label: "table.reservoirAreaName",
             name: "warehouseAreaName",
             type: "input-text",
             required: true
         },
         {
-            label: "${'table.reservoirAreaType' | t}",
+            label: "table.reservoirAreaType",
             name: "warehouseAreaType",
             type: "select",
             source: "${WarehouseAreaType}",
             required: true
         },
         {
-            label: "${'table.reservoirAreaPurpose' | t}",
+            label: "table.reservoirAreaPurpose",
             name: "warehouseAreaUse",
             type: "select",
             source: "${WarehouseAreaUse}",
             required: true
         },
         {
-            label: "${'table.reservoirAreaWorkType' | t}",
+            label: "table.reservoirAreaWorkType",
             name: "warehouseAreaWorkType",
             type: "select",
             source: "${WarehouseAreaWorkType}",
             required: true
         },
         {
-            label: "${'table.floor' | t}",
+            label: "table.floor",
             name: "level",
             type: "input-number"
         },
         {
-            label: "${'table.temperatureLimits' | t}",
+            label: "table.temperatureLimits",
             name: "temperatureLimit",
             type: "input-number"
         },
         {
-            label: "${'table.humidityLimitation' | t}",
+            label: "table.humidityLimitation",
             name: "wetLimit",
             type: "input-number"
         },
         {
-            label: "${'table.remark' | t}",
+            label: "table.remark",
             name: "remark",
             type: "input-text"
         },
         {
-            label: "${'table.status' | t}",
+            label: "table.status",
             name: "enable",
             type: "switch",
             options: enable_options
         },
         {
-            label: "${'table.warehouseCode' | t}",
+            label: "table.warehouseCode",
             name: "warehouseCode",
             type: "hidden",
             value: warehouseCode
@@ -97,10 +97,10 @@ const add = {
     type: "button",
     actionType: "drawer",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "role",
     drawer: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         body: form
     }
@@ -119,12 +119,12 @@ const columns = [
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouseCode' | t}",
+        label: "table.warehouseCode",
         hidden: true
     },
     {
         name: "warehouseGroupCode",
-        label: "${'table.warehouseAreaEncoding' | t}",
+        label: "table.warehouseAreaEncoding",
         type: "mapping",
         source: warehouse_area_group,
         searchable: {
@@ -134,28 +134,28 @@ const columns = [
     },
     {
         name: "warehouseAreaCode",
-        label: "${'table.reservoirAreaCode' | t}",
+        label: "table.reservoirAreaCode",
         searchable: true
     },
     {
         name: "warehouseAreaName",
-        label: "${'table.reservoirAreaName' | t}"
+        label: "table.reservoirAreaName"
     },
     {
         name: "warehouseAreaType",
-        label: "${'table.reservoirAreaType' | t}",
+        label: "table.reservoirAreaType",
         type: "mapping",
         source: "${WarehouseAreaType}"
     },
     {
         name: "warehouseAreaUse",
-        label: "${'table.reservoirAreaPurpose' | t}",
+        label: "table.reservoirAreaPurpose",
         type: "mapping",
         source: "${WarehouseAreaUse}"
     },
     {
         name: "warehouseAreaWorkType",
-        label: "${'table.reservoirAreaWorkType' | t}",
+        label: "table.reservoirAreaWorkType",
         type: "mapping",
         source: "${WarehouseAreaWorkType}",
         searchable: {
@@ -165,23 +165,23 @@ const columns = [
     },
     {
         name: "level",
-        label: "${'table.floor' | t}"
+        label: "table.floor"
     },
     {
         name: "temperatureLimit",
-        label: "${'table.temperatureLimits' | t}"
+        label: "table.temperatureLimits"
     },
     {
         name: "wetLimit",
-        label: "${'table.humidityLimitation' | t}"
+        label: "table.humidityLimitation"
     },
     {
         name: "remark",
-        label: "${'table.remark' | t}"
+        label: "table.remark"
     },
     {
         name: "enable",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         map: enable_options,
         searchable: {
@@ -197,7 +197,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'reservoirAreaManagement.title' | t}",
+    title: "reservoirAreaManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -230,15 +230,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 100,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "drawer",
                             drawer: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 body: form

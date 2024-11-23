@@ -16,51 +16,51 @@ const form = [
         name: "version"
     },
     {
-        label: "${'table.parameterEncoding' | t}",
+        label: "table.parameterEncoding",
         type: "input-text",
         name: "code"
     },
     {
-        label: "${'table.parameterName' | t}",
+        label: "table.parameterName",
         type: "input-text",
         name: "name"
     },
     {
-        label: "${'table.parameterObject' | t}",
+        label: "table.parameterObject",
         type: "select",
         name: "configApplyObject",
         source: "${ConfigApplyObject}"
     },
     {
-        label: "${'table.businessModules' | t}",
+        label: "table.businessModules",
         type: "select",
         name: "configApplyModule",
         source: "${ConfigApplyModule}"
     },
     {
-        label: "${'table.parameterType' | t}",
+        label: "table.parameterType",
         type: "select",
         name: "configType",
         source: "${ConfigType}"
     },
     {
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "switch",
         name: "enable",
         options: enable_options
     },
     {
-        label: "${'table.defaultValue' | t}",
+        label: "table.defaultValue",
         type: "input-text",
         name: "defaultValue"
     },
     {
-        label: "${'table.description' | t}",
+        label: "table.description",
         type: "input-text",
         name: "description"
     },
     {
-        label: "${'table.remark' | t}",
+        label: "table.remark",
         type: "input-text",
         name: "remark"
     }
@@ -70,10 +70,10 @@ const add = {
     type: "button",
     actionType: "dialog",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     dialog: {
         name: "addDialog",
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         size: "lg",
         body: {
@@ -97,17 +97,17 @@ const columns = [
     },
     {
         name: "code",
-        label: "${'table.parameterEncoding' | t}",
+        label: "table.parameterEncoding",
         searchable: true
     },
     {
         name: "name",
-        label: "${'table.parameterName' | t}",
+        label: "table.parameterName",
         searchable: true
     },
     {
         name: "configApplyObject",
-        label: "${'table.parameterObject' | t}",
+        label: "table.parameterObject",
         type: "mapping",
         source: "${ConfigApplyObject}",
         searchable: {
@@ -117,7 +117,7 @@ const columns = [
     },
     {
         name: "configApplyModule",
-        label: "${'table.businessModules' | t}",
+        label: "table.businessModules",
         type: "mapping",
         source: "${ConfigApplyModule}",
         searchable: {
@@ -127,7 +127,7 @@ const columns = [
     },
     {
         name: "configType",
-        label: "${'table.parameterType' | t}",
+        label: "table.parameterType",
         type: "mapping",
         source: "${ConfigType}",
         searchable: {
@@ -137,7 +137,7 @@ const columns = [
     },
     {
         name: "enable",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         map: enable_options
     },
@@ -149,7 +149,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'parameterManagement.title' | t}",
+    title: "parameterManagement.title",
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
@@ -179,15 +179,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 100,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 size: "lg",

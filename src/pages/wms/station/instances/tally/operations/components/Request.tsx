@@ -56,7 +56,7 @@ const schema = {
                 id: "barCode",
                 type: "input-text",
                 multiple: true,
-                placeholder: "${'skuArea.scanBarcode' | t}",
+                placeholder: "skuArea.scanBarcode",
                 trimContents: true,
                 clearable: true,
                 className: "w-4/5 inline-block mr-3 align-top pl-4",
@@ -95,7 +95,7 @@ const schema = {
                     url: "/mdm/common-import/parse"
                 },
                 className: "inline-block w-1/6 align-top",
-                btnLabel: "${'button.import' | t} Excel",
+                btnLabel: "button.import Excel",
                 onEvent: {
                     success: {
                         actions: [
@@ -239,7 +239,7 @@ const schema = {
         ],
         actions: [
             {
-                label: "${'button.submit' | t}",
+                label: "button.submit",
                 type: "button",
                 actionType: "submit",
                 level: "primary",

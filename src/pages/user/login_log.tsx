@@ -7,12 +7,12 @@ const columns = [
     },
     {
         name: "account",
-        label: "${'userCenter.userManagement.table.loginUsername' | t}",
+        label: "userCenter.userManagement.table.loginUsername",
         searchable: true
     },
     {
         name: "gmtLoginTime",
-        label: "${'userCenter.loginLogs.table.loginTime' | t}",
+        label: "userCenter.loginLogs.table.loginTime",
         tpl: "${gmtLoginTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
         searchable: {
             type: "input-date-range",
@@ -21,15 +21,15 @@ const columns = [
     },
     {
         name: "loginResult",
-        label: "${'userCenter.loginLogs.table.loginResults' | t}"
+        label: "userCenter.loginLogs.table.loginResults"
     },
     {
         name: "loginAddress",
-        label: "${'userCenter.loginLogs.table.loginAddress' | t}"
+        label: "userCenter.loginLogs.table.loginAddress"
     },
     {
         name: "loginFailureMsg",
-        label: "${'userCenter.loginLogs.table.loginFailureReason' | t}"
+        label: "userCenter.loginLogs.table.loginFailureReason"
     }
 ]
 
@@ -38,7 +38,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'userCenter.loginLogs.title' | t}",
+    title: "userCenter.loginLogs.title",
     toolbar: [],
     body: [
         {

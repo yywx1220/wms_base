@@ -135,45 +135,45 @@ const detailColumns = [
     {
         name: "customerOrderNo",
         dbField: "b.customer_order_no",
-        label: "${'table.customerOrderNo' | t}",
+        label: "table.customerOrderNo",
         hidden: true
     },
     {
         name: "customerWaveNo",
         dbField: "b.customer_wave_no",
-        label: "${'table.customerWaveNo' | t}",
+        label: "table.customerWaveNo",
         hidden: true
     },
     {
         name: "ownerCode",
         dbField: "a.owner_code",
-        label: "${'table.productOwner' | t}",
+        label: "table.productOwner",
         searchable: true
     },
     {
         name: "batchAttributes",
         dbField: "a.batch_attributes",
-        label: "${'table.batchAttributes' | t}"
+        label: "table.batchAttributes"
     },
     {
         name: "qtyActual",
         dbField: "a.qty_actual",
-        label: "${'table.actualOutboundQuantity' | t}"
+        label: "table.actualOutboundQuantity"
     },
     {
         name: "qtyRequired",
         dbField: "a.qty_required",
-        label: "${'table.plannedOutboundQuantity' | t}"
+        label: "table.plannedOutboundQuantity"
     },
     {
         name: "skuCode",
         dbField: "a.sku_code",
-        label: "${'table.skuCode' | t}"
+        label: "table.skuCode"
     },
     {
         name: "skuName",
         dbField: "a.sku_name",
-        label: "${'table.skuName' | t}"
+        label: "table.skuName"
     }
 ]
 
@@ -183,7 +183,7 @@ const showColumns = columns
 const showDetailColumns = detailColumns
 
 const detailDialog = {
-    title: "${'outboundOrder.detail.modal.title' | t}",
+    title: "outboundOrder.detail.modal.title",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -224,7 +224,7 @@ function genUUID() {
 
 const dialog = {
     type: "wizard",
-    actionFinishLabel: "${'modal.generateOutboundPlanOrder' | t}",
+    actionFinishLabel: "modal.generateOutboundPlanOrder",
     api: {
         url: api_outbound_plan_order_add,
         requestAdaptor: (api: any, context: any) => {
@@ -274,7 +274,7 @@ const dialog = {
                     name: "customerOrderNo"
                 },
                 {
-                    label: "${'table.warehouseCode' | t}",
+                    label: "table.warehouseCode",
                     name: "warehouseCode",
                     type: "hidden",
                     value: warehouseCode
@@ -282,7 +282,7 @@ const dialog = {
                 {
                     type: "select",
                     name: "warehouseAreaId",
-                    label: "${'workLocationArea.warehouseArea' | t}",
+                    label: "workLocationArea.warehouseArea",
                     selectFirst: true,
                     source: {
                         ...warehouse_area_id,
@@ -294,7 +294,7 @@ const dialog = {
                     className: "warehouseArea"
                 },
                 {
-                    label: "${'table.orderType' | t}",
+                    label: "table.orderType",
                     name: "customerOrderType",
                     type: "select",
                     required: true,
@@ -305,7 +305,7 @@ const dialog = {
                 //     type: "select",
                 //     name: "warehouseLogicId",
                 //     // "initFetchOn": "data.warehouseAreaCode",
-                //     label: "${'table.logicArea' | t}",
+                //     label: "table.logicArea",
                 //     clearable: true,
                 //     source: warehouse_logic_id,
                 //     className: "warehouseLogic"
@@ -313,13 +313,13 @@ const dialog = {
                 {
                     type: "select",
                     name: "ownerCode",
-                    label: "${'table.productOwner' | t}",
+                    label: "table.productOwner",
                     clearable: true,
                     source: owner_code,
                     className: "ownerCode"
                 },
                 {
-                    label: "${'table.priority' | t}",
+                    label: "table.priority",
                     type: "input-number",
                     min: 1,
                     max: 100,
@@ -328,7 +328,7 @@ const dialog = {
                 {
                     type: "select",
                     name: "targetWorkStationIds",
-                    label: "${'table.targetPickWorkStation' | t}",
+                    label: "table.targetPickWorkStation",
                     source: work_station,
                     searchable: true,
                     checkAll: true,
@@ -340,7 +340,7 @@ const dialog = {
                 {
                     type: "select",
                     name: "destinations",
-                    label: "${'table.destinationManualAreas' | t}",
+                    label: "table.destinationManualAreas",
                     source: {
                         ...warehouse_area_id,
                         url:
@@ -358,19 +358,19 @@ const dialog = {
                     label: "",
                     body: [
                         {
-                            label: "${'table.shortOut' | t}",
+                            label: "table.shortOut",
                             type: "switch",
                             name: "shortOutbound",
                             columnRatio: 6,
                             value: true
                         },
                         // {
-                        //     label: "${'table.shortOut' | t}",
+                        //     label: "table.shortOut",
                         //     type: "switch",
                         //     name: "shortWaiting"
                         // },
                         {
-                            label: "${'modal.oneLineOneOrder' | t}",
+                            label: "modal.oneLineOneOrder",
                             type: "switch",
                             name: "oneLineOneOrder",
                             columnRatio: 6,
@@ -406,7 +406,7 @@ const dialog = {
                         id: "barCode",
                         type: "input-text",
                         multiple: true,
-                        placeholder: "${'skuArea.scanBarcode' | t}",
+                        placeholder: "skuArea.scanBarcode",
                         trimContents: true,
                         clearable: true,
                         className: "w-4/5	inline-block mr-3 align-top	",
@@ -445,7 +445,7 @@ const dialog = {
                             url: "/mdm/common-import/parse"
                         },
                         className: "inline-block w-1/6 align-top",
-                        btnLabel: "${'button.import' | t} Excel",
+                        btnLabel: "button.import Excel",
                         onEvent: {
                             success: {
                                 actions: [
@@ -630,7 +630,7 @@ const dialog = {
                     }
                 },
                 {
-                    label: "${'modal.generateOutboundPlanOrder' | t}",
+                    label: "modal.generateOutboundPlanOrder",
                     type: "submit",
                     level: "primary",
                     actionType: "submit",
@@ -657,9 +657,9 @@ const add = {
     type: "button",
     actionType: "dialog",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     dialog: {
-        title: "${'button.add' | t}",
+        title: "button.add",
         actions: [],
         closeOnEsc: true,
         size: "xl",
@@ -669,7 +669,7 @@ const add = {
 
 const schema = {
     type: "page",
-    title: "${'outboundOrder.title' | t}",
+    title: "outboundOrder.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [

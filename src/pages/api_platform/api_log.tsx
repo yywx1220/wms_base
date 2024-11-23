@@ -9,38 +9,38 @@ const form = [
     {
         type: "input-text",
         name: "apiCode",
-        label: "${'interfacePlatform.interfaceManagement.table.interfaceCode' | t}",
+        label: "interfacePlatform.interfaceManagement.table.interfaceCode",
         readOnly: true
     },
     {
         type: "input-text",
         name: "costTime",
-        label: "${'interfacePlatform.interfaceLogs.table.duration' | t}(ms)",
+        label: "interfacePlatform.interfaceLogs.table.duration(ms)",
         readOnly: true
     },
     {
         type: "input-text",
         name: "retryCount",
-        label: "${'interfacePlatform.interfaceLogs.table.numberOfRetries' | t}",
+        label: "interfacePlatform.interfaceLogs.table.numberOfRetries",
         readOnly: true
     },
     {
         type: "input-text",
         name: "status",
-        label: "${'table.status' | t}",
+        label: "table.status",
         readOnly: true
     },
     {
         type: "textarea",
         name: "requestData",
-        label: "${'interfacePlatform.interfaceLogs.from.requestPackets' | t}",
+        label: "interfacePlatform.interfaceLogs.from.requestPackets",
         maxRows: 10,
         readOnly: true
     },
     {
         type: "textarea",
         name: "responseData",
-        label: "${'interfacePlatform.interfaceLogs.from.responsePackets' | t}",
+        label: "interfacePlatform.interfaceLogs.from.responsePackets",
         maxRows: 10,
         readOnly: true
     }
@@ -54,20 +54,20 @@ const columns = [
     },
     {
         name: "apiCode",
-        label: "${'interfacePlatform.interfaceManagement.table.interfaceCode' | t}",
+        label: "interfacePlatform.interfaceManagement.table.interfaceCode",
         searchable: true
     },
     {
         name: "costTime",
-        label: "${'interfacePlatform.interfaceLogs.table.duration' | t}(ms)"
+        label: "interfacePlatform.interfaceLogs.table.duration(ms)"
     },
     {
         name: "retryCount",
-        label: "${'interfacePlatform.interfaceLogs.table.numberOfRetries' | t}"
+        label: "interfacePlatform.interfaceLogs.table.numberOfRetries"
     },
     {
         name: "status",
-        label: "${'table.status' | t}",
+        label: "table.status",
         searchable: {
             type: "select",
             source: "${ApiLogStatus}"
@@ -81,7 +81,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'interfacePlatform.interfaceLogs.title' | t}",
+    title: "interfacePlatform.interfaceLogs.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -112,16 +112,16 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 230,
                     buttons: [
                         {
-                            label: "${'button.detail' | t}",
+                            label: "button.detail",
                             type: "button",
                             level: "link",
                             actionType: "dialog",
                             dialog: {
-                                title: "${'button.detail' | t}",
+                                title: "button.detail",
                                 size: "lg",
                                 closeOnEsc: true,
                                 closeOnOutside: true,

@@ -13,24 +13,24 @@ const columns = [
     },
     {
         name: "warehouseCode",
-        label: "${'table.warehouse' | t}"
+        label: "table.warehouse"
     },
     {
         name: "pickingOrderNo",
-        label: "${'table.pickOrderNumber' | t}",
+        label: "table.pickOrderNumber",
         searchable: true
     },
     {
         name: "assignedStationSlot",
-        label: "${'table.assignedLattice' | t}"
+        label: "table.assignedLattice"
     },
     {
         name: "waveNo",
-        label: "${'table.waveNumber' | t}"
+        label: "table.waveNumber"
     },
     {
         name: "pickingOrderStatus",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         source: "${PickingOrderStatus}",
         searchable: {
@@ -40,7 +40,7 @@ const columns = [
     },
     {
         name: "priority",
-        label: "${'table.priority' | t}"
+        label: "table.priority"
     },
     ...create_update_columns
 ]
@@ -162,7 +162,7 @@ const detailDialog = {
 
 const schema = {
     type: "page",
-    title: "${'pickingTasks.title' | t}",
+    title: "pickingTasks.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -222,7 +222,7 @@ const schema = {
             columns: [
                 ...columns,
                 {
-                    label: "${'button.detail' | t}",
+                    label: "button.detail",
                     type: "button",
                     level: "link",
                     actionType: "dialog",

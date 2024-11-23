@@ -13,60 +13,60 @@ const form = [
         name: "id"
     },
     {
-        label: "${'userCenter.menuManagement.form.systemCoding' | t}",
+        label: "userCenter.menuManagement.form.systemCoding",
         type: "select",
         name: "systemCode",
         source: "${SystemCode}",
         required: true
     },
     {
-        label: "${'userCenter.menuManagement.form.parentMenu' | t}",
+        label: "userCenter.menuManagement.form.parentMenu",
         type: "select",
         name: "parentId",
         searchable: true,
         source: menu_search_api
     },
     {
-        label: "${'userCenter.menuManagement.form.menuType' | t}",
+        label: "userCenter.menuManagement.form.menuType",
         type: "select",
         name: "type",
         source: "${MenuType}",
         required: true
     },
     {
-        label: "${'userCenter.menuManagement.table.menuName' | t}",
+        label: "userCenter.menuManagement.table.menuName",
         type: "input-text",
         name: "title",
         required: true
     },
     {
-        label: "${'table.description' | t}",
+        label: "table.description",
         type: "input-text",
         name: "description"
     },
     {
-        label: "${'userCenter.menuManagement.table.permissionID' | t}",
+        label: "userCenter.menuManagement.table.permissionID",
         type: "input-text",
         name: "permissions"
     },
     {
-        label: "${'userCenter.menuManagement.table.sort' | t}",
+        label: "userCenter.menuManagement.table.sort",
         type: "input-number",
         name: "orderNum",
         required: true
     },
     {
-        label: "${'userCenter.menuManagement.table.icon' | t}",
+        label: "userCenter.menuManagement.table.icon",
         type: "input-text",
         name: "icon"
     },
     {
-        label: "${'userCenter.menuManagement.table.pathAddress' | t}",
+        label: "userCenter.menuManagement.table.pathAddress",
         type: "input-text",
         name: "path"
     },
     {
-        label: "${'userCenter.menuManagement.table.iframeDisplayed' | t}",
+        label: "userCenter.menuManagement.table.iframeDisplayed",
         type: "switch",
         name: "iframeShow",
         value: 0,
@@ -74,7 +74,7 @@ const form = [
         falseValue: 0
     },
     {
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "switch",
         name: "enable",
         value: 1,
@@ -88,11 +88,11 @@ const add = {
     type: "button",
     actionType: "drawer",
     icon: "fa fa-plus",
-    label: "${'button.add' | t}",
+    label: "button.add",
     target: "MenuTable",
     drawer: {
         size: "lg",
-        title: "${'button.add' | t}",
+        title: "button.add",
         closeOnEsc: true,
         body: {
             type: "form",
@@ -116,12 +116,12 @@ const columns = [
     },
     {
         name: "title",
-        label: "${'userCenter.menuManagement.table.menuName' | t}",
+        label: "userCenter.menuManagement.table.menuName",
         searchable: true
     },
     {
         name: "systemCode",
-        label: "${'userCenter.menuManagement.table.affiliation' | t}",
+        label: "userCenter.menuManagement.table.affiliation",
         type: "mapping",
         source: "${SystemCode}",
         searchable: {
@@ -131,7 +131,7 @@ const columns = [
     },
     {
         name: "type",
-        label: "${'userCenter.menuManagement.table.type' | t}",
+        label: "userCenter.menuManagement.table.type",
         type: "mapping",
         source: "${MenuType}",
         searchable: {
@@ -141,34 +141,34 @@ const columns = [
     },
     {
         name: "description",
-        label: "${'table.description' | t}"
+        label: "table.description"
     },
     {
         name: "permissions",
-        label: "${'userCenter.menuManagement.table.permissionID' | t}"
+        label: "userCenter.menuManagement.table.permissionID"
     },
     {
         name: "orderNum",
-        label: "${'userCenter.menuManagement.table.sort' | t}",
+        label: "userCenter.menuManagement.table.sort",
         hidden: true
     },
     {
         name: "icon",
-        label: "${'userCenter.menuManagement.table.icon' | t}"
+        label: "userCenter.menuManagement.table.icon"
     },
     {
         name: "path",
-        label: "${'userCenter.menuManagement.table.pathAddress' | t}"
+        label: "userCenter.menuManagement.table.pathAddress"
     },
     {
         name: "iframeShow",
-        label: "${'userCenter.menuManagement.table.iframeDisplayed' | t}",
+        label: "userCenter.menuManagement.table.iframeDisplayed",
         type: "mapping",
         map: yes_no_options
     },
     {
         name: "enable",
-        label: "${'table.status' | t}",
+        label: "table.status",
         type: "mapping",
         map: yes_no_options
     },
@@ -180,7 +180,7 @@ const showColumns = columns
 
 const schema = {
     type: "page",
-    title: "${'userCenter.menuManagement.title' | t}",
+    title: "userCenter.menuManagement.title",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
@@ -207,7 +207,7 @@ const schema = {
                 add,
                 {
                     type: "export-excel",
-                    label: "${'button.export' | t}",
+                    label: "button.export",
                     api: {
                         method: "POST",
                         url: "/search/search?page=${1}&perPage=${100000}&createTime-op=bt"
@@ -220,15 +220,15 @@ const schema = {
                 ...columns,
                 {
                     type: "operation",
-                    label: "${'table.operation' | t}",
+                    label: "table.operation",
                     width: 130,
                     buttons: [
                         {
-                            label: "${'button.modify' | t}",
+                            label: "button.modify",
                             type: "button",
                             actionType: "drawer",
                             drawer: {
-                                title: "${'button.modify' | t}",
+                                title: "button.modify",
                                 closeOnEsc: true,
                                 closeOnOutside: true,
                                 body: {
@@ -240,12 +240,12 @@ const schema = {
                             }
                         },
                         {
-                            label: "${'button.delete' | t}",
+                            label: "button.delete",
                             type: "button",
                             actionType: "ajax",
                             level: "danger",
-                            confirmText: "${'toast.sureDelete' | t}",
-                            confirmTitle: "${'button.delete' | t}",
+                            confirmText: "toast.sureDelete",
+                            confirmTitle: "button.delete",
                             api: api_menu_delete
                         }
                     ],

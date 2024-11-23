@@ -11,30 +11,30 @@ const columns = [
     {
         name: "warehouseCode",
         dbField: "ot.warehouse_code",
-        label: "${'table.warehouseCode' | t}"
+        label: "table.warehouseCode"
     },
     {
         name: "customerOrderNo",
         dbField: "opo.customer_order_no",
-        label: "${'table.customerOrderNo' | t}",
+        label: "table.customerOrderNo",
         searchable: true
     },
     {
         name: "customerOrderType",
         dbField: "opo.customer_order_type",
-        label: "${'table.orderType' | t}",
+        label: "table.orderType",
         searchable: true
     },
     {
         name: "skuCode",
         dbField: "smd.sku_code",
-        label: "${'skuArea.skuCode' | t}",
+        label: "skuArea.skuCode",
         searchable: true
     },
     {
         name: "skuName",
         dbField: "smd.sku_name",
-        label: "${'skuArea.productName' | t}",
+        label: "skuArea.productName",
         searchable: true
     },
     {
@@ -45,29 +45,29 @@ const columns = [
     {
         name: "priority",
         dbField: "ot.priority",
-        label: "${'table.priority' | t}"
+        label: "table.priority"
     },
     {
         name: "requiredQty",
         dbField: "ot.required_qty",
-        label: "${'table.qtyRequired' | t}"
+        label: "table.qtyRequired"
     },
     {
         name: "operatedQty",
         dbField: "ot.operated_qty",
-        label: "${'table.qtyPicked' | t}"
+        label: "table.qtyPicked"
     },
 
     {
         name: "sourceContainerCode",
         dbField: "ot.source_container_code",
-        label: "${'table.sourceContainerNumber' | t}",
+        label: "table.sourceContainerNumber",
         searchable: true
     },
     {
         name: "sourceContainerSlot",
         dbField: "ot.source_container_slot",
-        label: "${'table.sourceContainerLattice' | t}"
+        label: "table.sourceContainerLattice"
     },
     // {
     //     name: "sourceContainerFace",
@@ -82,25 +82,25 @@ const columns = [
     {
         name: "targetContainerCode",
         dbField: "ot.target_container_code",
-        label: "${'table.targetContainerNumber' | t}",
+        label: "table.targetContainerNumber",
         searchable: true
     },
     {
         name: "targetContainerSlotCode",
         dbField: "ot.target_container_slot_code",
-        label: "${'table.targetContainerLattice' | t}"
+        label: "table.targetContainerLattice"
     },
 
     {
         name: "targetLocationCode",
         dbField: "ot.target_location_code",
-        label: "${'table.seedingWallLattices' | t}",
+        label: "table.seedingWallLattices",
         searchable: true
     },
     {
         name: "taskStatus",
         dbField: "ot.task_status",
-        label: "${'table.taskStatus' | t}"
+        label: "table.taskStatus"
     },
     // {
     //     name: "taskType",
@@ -111,7 +111,7 @@ const columns = [
     {
         name: "skuAttributes",
         dbField: "sba.sku_attributes",
-        label: "${'table.batchAttributes' | t}"
+        label: "table.batchAttributes"
     }
 ]
 
@@ -152,7 +152,7 @@ const schema = {
             bulkActions: [
                 {
                     type: "button",
-                    label: "${'button.batchRetry' | t}",
+                    label: "button.batchRetry",
                     actionType: "ajax",
                     api: {
                         method: "PUT",
@@ -164,7 +164,7 @@ const schema = {
                             success: "success"
                         }
                     },
-                    confirmText: "${'modal.confirmBatchRetry' | t}"
+                    confirmText: "modal.confirmBatchRetry"
                 }
             ],
             headerToolbar: ["bulkActions", "reload"],
