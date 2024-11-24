@@ -32,28 +32,28 @@ const cardOptions = [
         rightIcon: images.spshbg,
         backgroundColor: "#f8f3ff"
     },
-    {
-        title: <Translation>{(t) => t("replenish.title")}</Translation>,
-        value: "SELECT_CONTAINER_PUT_AWAY",
-        description: (
-            <Translation>{(t) => t("replenish.cardDescription")}</Translation>
-        ),
-        avatar: images.xzrqsj,
-        rightIcon: images.xzrqsjbg,
-        backgroundColor: "#f8f3ff"
-    },
-    {
-        title: <Translation>{(t) => t("noOrdersReplenish.title")}</Translation>,
-        value: "WITHOUT_ORDER_PUT_AWAY",
-        description: (
-            <Translation>
-                {(t) => t("noOrdersReplenish.cardDescription")}
-            </Translation>
-        ),
-        avatar: images.zxsj,
-        rightIcon: images.zxsjbg,
-        backgroundColor: "#f2f5ff"
-    },
+    // {
+    //     title: <Translation>{(t) => t("replenish.title")}</Translation>,
+    //     value: "SELECT_CONTAINER_PUT_AWAY",
+    //     description: (
+    //         <Translation>{(t) => t("replenish.cardDescription")}</Translation>
+    //     ),
+    //     avatar: images.xzrqsj,
+    //     rightIcon: images.xzrqsjbg,
+    //     backgroundColor: "#f8f3ff"
+    // },
+    // {
+    //     title: <Translation>{(t) => t("noOrdersReplenish.title")}</Translation>,
+    //     value: "WITHOUT_ORDER_PUT_AWAY",
+    //     description: (
+    //         <Translation>
+    //             {(t) => t("noOrdersReplenish.cardDescription")}
+    //         </Translation>
+    //     ),
+    //     avatar: images.zxsj,
+    //     rightIcon: images.zxsjbg,
+    //     backgroundColor: "#f2f5ff"
+    // },
     {
         title: <Translation>{(t) => t("picking.title")}</Translation>,
         value: "PICKING",
@@ -72,15 +72,15 @@ const cardOptions = [
         avatar: images.pd,
         rightIcon: images.pdbg
     },
-    {
-        title: <Translation>{(t) => t("library.title")}</Translation>,
-        value: "ONE_STEP_RELOCATION",
-        description: (
-            <Translation>{(t) => t("library.cardDescription")}</Translation>
-        ),
-        avatar: images.lk,
-        rightIcon: images.lkbg
-    }
+    // {
+    //     title: <Translation>{(t) => t("library.title")}</Translation>,
+    //     value: "ONE_STEP_RELOCATION",
+    //     description: (
+    //         <Translation>{(t) => t("library.cardDescription")}</Translation>
+    //     ),
+    //     avatar: images.lk,
+    //     rightIcon: images.lkbg
+    // }
     // {
     //     title: <Translation>{(t) => t("library.title")}</Translation>,
     //     value: "ONE_STEP_RELOCATION",

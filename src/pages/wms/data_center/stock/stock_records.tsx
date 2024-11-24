@@ -138,7 +138,7 @@ const searchIdentity2 = "WContainerStockTransaction2"
 const showColumns = columns
 
 const searchObject = {
-    tables: "w_container_stock_transaction wcst left join sentrix.w_container_stock wcs on wcs.id = wcst.container_stock_id left join sentrix.m_sku_barcode_data msbd on wcs.sku_id = msbd.sku_id left join m_sku_main_data msmd on msmd.id = wcs.sku_id",
+    tables: "w_container_stock_transaction wcst left join w_container_stock wcs on wcs.id = wcst.container_stock_id left join m_sku_barcode_data msbd on wcs.sku_id = msbd.sku_id left join m_sku_main_data msmd on msmd.id = wcs.sku_id",
     orderBy: "wcst.create_time desc"
 }
 

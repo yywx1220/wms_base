@@ -1,23 +1,15 @@
 import schema2component from "@/utils/schema2component"
 import {
-    container_code_table,
     owner_code,
-    shelf_code_table,
     stock_id_table,
-    stock_sku_id_table,
     warehouse_area_id,
-    warehouse_logic_id,
-    stock_abnormal_table
+    warehouse_logic_id
 } from "@/pages/wms/constants/select_search_api_contant"
-import { api_stocktake_order_add } from "@/pages/wms/data_center/constants/api_constant"
-import { create_update_columns, yes_no_options } from "@/utils/commonContants"
+import {api_stocktake_order_add} from "@/pages/wms/data_center/constants/api_constant"
+import {create_update_columns, yes_no_options} from "@/utils/commonContants"
 import React from "react"
-import { Translation } from "react-i18next"
-import { method, orderBy } from "lodash"
-import { debounce } from "lodash"
-import { toast } from "amis"
-import { DEBOUNCE_TIME } from "@/pages/wms/station/constant"
-import request from "@/utils/requestInterceptor"
+import {Translation} from "react-i18next"
+import {toast} from "amis"
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
