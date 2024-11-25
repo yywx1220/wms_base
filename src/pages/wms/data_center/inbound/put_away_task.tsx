@@ -14,11 +14,6 @@ const columns = [
         label: "仓库",
         hidden: true
     },
-    // {
-    //     name: "ownerCode",
-    //     label: "货主",
-    //     hidden: true
-    // },
     {
         name: "containerCode",
         label: "容器号",
@@ -35,13 +30,8 @@ const columns = [
         hidden: true
     },
     {
-        name: "orderNo",
-        label: "table.putAwayTaskNo",
-        searchable: true
-    },
-    {
         name: "taskNo",
-        label: "table.internalTrackingNumber",
+        label: "table.putAwayTaskNo",
         searchable: true
     },
     {
@@ -64,11 +54,6 @@ const columns = [
             source: "${PutAwayTaskStatusEnum}"
         }
     },
-    // {
-    //     name: "taskType",
-    //     label: "入库类型",
-    //     searchable: true
-    // },
     {
         name: "workStationId",
         label: "station.operatingStation",
@@ -100,10 +85,10 @@ const columns = [
 ]
 
 const detailColumns = [
-    // {
-    //     name: "ownerCode",
-    //     label: "货主"
-    // },
+    {
+        name: "ownerCode",
+        label: "table.productOwner"
+    },
     {
         name: "putAwayTaskId",
         label: "上架单ID",
@@ -113,30 +98,14 @@ const detailColumns = [
         name: "skuCode",
         label: "skuArea.skuCode"
     },
-    // {
-    //     name: "skuName",
-    //     label: "商品名称"
-    // },
-    // {
-    //     name: "status",
-    //     label: "状态"
-    // },
     {
-        name: "qtyPlanPutAway",
-        label: "table.plannedQuantity"
+        name: "skuName",
+        label: "skuArea.skuName"
     },
     {
         name: "qtyPutAway",
         label: "table.qtyPutAway"
     },
-    {
-        name: "qtyAbnormal",
-        label: "table.qtyDifferences"
-    },
-    // {
-    //     name: "qtyAbnormal",
-    //     label: "差异原因"
-    // },
     {
         name: "containerCode",
         label: "table.containerCode"
@@ -144,22 +113,6 @@ const detailColumns = [
     {
         name: "containerSlotCode",
         label: "table.containerLatticeSlogan"
-    },
-    // {
-    //     name: "locationCode",
-    //     label: "库位"
-    // }
-    // {
-    //     name: "stationCode",
-    //     label: "操作台"
-    // }
-    // {
-    //     name: "auditTime",
-    //     label: "完成时间"
-    // }
-    {
-        name: "batchAttributeId",
-        label: "table.lotNumber"
     }
 ]
 

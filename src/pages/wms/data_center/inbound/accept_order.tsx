@@ -1,4 +1,5 @@
 import schema2component from "@/utils/schema2component"
+import { create_update_columns } from "@/utils/commonContants"
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
@@ -13,100 +14,178 @@ const columns = [
         label: "仓库",
         hidden: true
     },
+    // {
+    //     name: "ownerCode",
+    //     label: "table.productOwner",
+    //     searchable: false,
+    //     hidden: true
+    // },
     {
-        name: "orderNo",
-        label: "table.acceptOrderNo",
+        name: "lpnCode",
+        label: "table.LPNNo",
         searchable: true
     },
     {
-        name: "identifyNo",
-        label: "table.containerCode"
+        name: "customerOrderNo",
+        label: "table.customerOrderNo",
+        searchable: true
     },
+//     {
+//         name: "inboundOrderType",
+//         label: "订单类型",
+//         hidden: true
+//     },
     {
-        name: "acceptMethod",
-        label: "table.acceptMethod",
+        name: "inboundPlanOrderStatus",
+        label: "table.status",
         type: "mapping",
-        source: "${AcceptMethodEnum}",
+        source: "${InboundPlanOrderStatus}",
         searchable: {
             type: "select",
-            source: "${AcceptMethodEnum}"
+            source: "${InboundPlanOrderStatus}"
         }
     },
+
     {
-        name: "acceptOrderStatus",
-        label: "table.acceptOrderStatus",
+        name: "orderNo",
+        label: "table.orderNo",
+        searchable: true
+    },
+    {
+        name: "sender",
+        label: "table.shipper",
+        searchable: true
+    },
+    {
+        name: "skuKindNum",
+        label: "table.skuTypes",
+        searchable: true
+    },
+    {
+        name: "storageType",
+        label: "table.storageType",
         type: "mapping",
-        source: "${AcceptOrderStatusEnum}",
+        source: "${StorageType}",
         searchable: {
             type: "select",
-            source: "${AcceptOrderStatusEnum}"
+            source: "${StorageType}"
         }
     },
     {
-        label: "table.createdBy",
-        name: "createUser"
+        name: "totalBox",
+        label: "table.boxesNumber"
     },
     {
-        name: "createTime",
-        label: "table.creationTime",
-        tpl: "${createTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
-        searchable: {
-            type: "input-date-range",
-            valueFormat: "x"
-        }
+        name: "totalQty",
+        label: "table.totalQuantity"
     },
     {
-        name: "updateTime",
-        label: "table.completionTime",
-        // tpl: "${auditTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
-        tpl: "${updateTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
-        searchable: {
-            type: "input-date-range",
-            valueFormat: "x"
+        name: "trackingNumber",
+        label: "table.theTrackingNumber",
+        searchable: true
+    },
+    {
+        name: "shippingMethod",
+        label: "table.modeOfCarriage",
+        searchable: true
+    },
+    ...create_update_columns,
+    {
+        type: "tpl",
+        name: "remark",
+        label: "table.remark",
+        tpl: "${remark|truncate:30}",
+        popOver: {
+            trigger: "hover",
+            position: "left-top",
+            showIcon: false,
+            body: {
+                type: "tpl",
+                tpl: "${remark}"
+            }
         }
     }
 ]
 
 const detailColumns = [
     {
-        name: "acceptOrderId",
-        label: "收货单ID",
+        name: "inboundPlanOrderId",
+        label: "入库通知单ID",
         hidden: true
     },
     {
-        name: "skuCode",
-        label: "skuArea.skuCode"
+        name: "batchAttributes",
+        label: "table.batchAttributes"
     },
     {
-        name: "skuName",
-        label: "skuArea.skuName"
+        name: "boxNo",
+        label: "table.lpnNumber"
     },
     {
-        name: "qtyAccepted",
-        label: "table.acceptedQuantity"
+        name: "brand",
+        label: "table.brand"
     },
     {
-        name: "targetContainerCode",
-        label: "table.containerCode"
+        name: "color",
+        label: "table.color"
     },
     {
-        name: "targetContainerSlotCode",
+        name: "containerCode",
+        label: "table.containerNumber"
+    },
+    {
+        name: "containerSlotCode",
         label: "table.containerLatticeSlogan"
     },
     {
-        name: "workStationId",
-        label: "操作台"
+        name: "containerSpecCode",
+        label: "table.containerSpecificationNumber"
+    },
+    {
+        name: "qtyAbnormal",
+        label: "skuArea.qtyAbnormal"
+    },
+    {
+        name: "qtyAccepted",
+        label: "table.acceptanceQuantity"
+    },
+    {
+        name: "qtyRestocked",
+        label: "table.plannedQuantity"
+    },
+    {
+        name: "qtyUnreceived",
+        label: "table.unreceivedQuantity"
+    },
+    {
+        name: "responsibleParty",
+        label: "table.responsibleParty"
+    },
+    {
+        name: "size",
+        label: "table.size"
+    },
+    {
+        name: "skuCode",
+        label: "table.skuCode"
+    },
+    {
+        name: "skuName",
+        label: "table.skuName"
+    },
+    {
+        name: "style",
+        label: "table.style"
     }
 ]
 
-const searchIdentity = "WAcceptOrder"
-const searchDetailIdentity = "WAcceptOrderDetail"
+const searchIdentity = "WInboundPlanOrder"
+const searchDetailIdentity = "WInboundPlanOrderDetail"
 const showColumns = columns
-
 const showDetailColumns = detailColumns
 
 const detailDialog = {
-    title: "accept.order.detail.modal.title",
+    title: "table.inboundPlanDetails",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -115,18 +194,15 @@ const detailDialog = {
         {
             type: "crud",
             syncLocation: false,
-            name: "acceptOrderDetailTable",
+            name: "inboundPlanOrderDetailTable",
             api: {
                 method: "POST",
-                url: "/search/search?page=${page}&perPage=${perPage}&acceptOrderId=${id}&acceptOrderId-op=eq",
+                url: "/search/search?page=${page}&perPage=${perPage}&inboundPlanOrderId=${id}&inboundPlanOrderId-op=eq",
                 dataType: "application/json"
             },
             defaultParams: {
                 searchIdentity: searchDetailIdentity,
-                showColumns: showDetailColumns,
-                searchObject: {
-                    tables: "w_accept_order_detail"
-                }
+                showColumns: showDetailColumns
             },
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
             columns: detailColumns
@@ -136,18 +212,18 @@ const detailDialog = {
 
 const schema = {
     type: "page",
-    title: "wms.menu.receiptManagement",
+    title: "menu.inboundOrder",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "crud",
             syncLocation: false,
-            name: "AcceptOrderTable",
+            name: "inboundPlanOrderTable",
             api: {
                 method: "POST",
                 url:
-                    "/search/search?page=${page}&perPage=${perPage}&createTime-op=bt&updateTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
+                    "/search/search?page=${page}&perPage=${perPage}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
                     warehouseCode,
                 dataType: "application/json"
             },
@@ -155,8 +231,7 @@ const schema = {
                 searchIdentity: searchIdentity,
                 showColumns: showColumns,
                 searchObject: {
-                    tables: "w_accept_order",
-                    orderBy: "accept_order_status, update_time desc"
+                    orderBy: "inbound_plan_order_status, update_time desc"
                 }
             },
             autoFillHeight: true,
@@ -177,7 +252,7 @@ const schema = {
                             warehouseCode,
                         dataType: "application/json"
                     },
-                    filename: "accept_order",
+                    filename: "inbound_plan_order",
                     defaultParams: {
                         searchIdentity: searchIdentity,
                         showColumns: showColumns
