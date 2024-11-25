@@ -219,15 +219,6 @@ const schema = {
                                     }
                                 ]
                             }
-                            // actionType: "ajax",
-                            // confirmText: "toast.sureToCloseOrder",
-                            // confirmTitle: "button.close",
-                            // api: {
-                            //     method: "post",
-                            //     url: "/wms/stock/abnormal/record/manualClose",
-                            //     data: ["${id}"]
-                            // },
-                            // reload: "paramConfigTable"
                         },
                         {
                             label: "button.adjustInventoryOrder",

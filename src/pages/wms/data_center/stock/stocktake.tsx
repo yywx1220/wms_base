@@ -25,48 +25,38 @@ let barCodeCondition = {
 const ShelfCountColumns = [
     {
         name: "label",
-        label: <Translation>{(t) => t("table.shelfCoding")}</Translation>
+        label: "table.shelfCoding"
     },
     {
         name: "locationCode",
-        label: <Translation>{(t) => t("table.locationCode")}</Translation>
+        label: "table.locationCode"
     }
 ]
 
 const SKUCountColumns = [
     {
         name: "barCodeList",
-        label: <Translation>{(t) => t("skuArea.barcode")}</Translation>
+        label: "skuArea.barcode"
     },
-    // {
-    //     name: "skuName",
-    //     label: (
-    //         <Translation>
-    //             {(t) =>
-    //                 t("skuArea.productName")
-    //             }
-    //         </Translation>
-    //     ),
-    // },
     {
         name: "totalQty",
-        label: <Translation>{(t) => t("table.inventoryQuantity")}</Translation>
+        label: "table.inventoryQuantity"
     },
     {
         name: "ownerCode",
-        label: <Translation>{(t) => t("table.productOwner")}</Translation>
+        label: "table.productOwner"
     },
     {
         name: "containerCode",
-        label: <Translation>{(t) => t("table.containerCode")}</Translation>
+        label: "table.containerCode"
     },
     {
         name: "containerFace",
-        label: <Translation>{(t) => t("workLocationArea.face")}</Translation>
+        label: "workLocationArea.face"
     },
     {
         name: "containerSlotCode",
-        label: <Translation>{(t) => t("table.containerSlotCode")}</Translation>
+        label: "table.containerSlotCode"
     }
 ]
 
@@ -79,12 +69,7 @@ const dialog = {
     id: "wizardComponent",
     steps: [
         {
-            // title: "modal.selectInventoryArea",
-            title: (
-                <Translation>
-                    {(t) => t("modal.selectInventoryArea")}
-                </Translation>
-            ),
+            title: "modal.selectInventoryArea",
             body: [
                 {
                     type: "hidden",
@@ -112,7 +97,6 @@ const dialog = {
                 {
                     type: "select",
                     name: "warehouseLogicId",
-                    // "initFetchOn": "data.warehouseAreaCode",
                     label: "table.logicArea",
                     clearable: true,
                     source: warehouse_logic_id,
@@ -138,12 +122,7 @@ const dialog = {
             ]
         },
         {
-            title: (
-                <Translation>
-                    {(t) => t("modal.selectCountingRules")}
-                </Translation>
-            ),
-
+            title: "modal.selectCountingRules",
             body: [
                 {
                     type: "button-group-select",
@@ -163,28 +142,11 @@ const dialog = {
                     required: true,
                     className: "stocktakeMethod"
                 },
-                // {
-                //     "type": "button-group-select",
-                //     "name": "businessType",
-                //     "label": "动碰类型",
-                //     "source": "${ActiveBusinessType}"
-                // },
-                // {
-                //     "type": "input-date-range",
-                //     "valueFormat": "x",
-                //     "name": "activeDateRange",
-                //     "label": "动碰时间"
-                // },
                 {
                     type: "switch",
                     name: "includeZeroStock",
                     label: "modal.inventory0ItemsInStock"
                 },
-                // {
-                //     type: "switch",
-                //     name: "isStocktakeEmptySlot",
-                //     label: "modal.spaceCouting"
-                // }
             ],
             actions: [
                 {
@@ -202,46 +164,14 @@ const dialog = {
             ]
         },
         {
-            title: (
-                <Translation>
-                    {(t) => t("modal.selectCountingTarget")}
-                </Translation>
-            ),
+            title: "modal.selectCountingTarget",
             wrapperComponent: "div",
             body: {
                 type: "tabs",
                 name: "stocktakeUnitType",
                 tabsMode: "strong",
-                tabs: [
-                    // {
-                    //     title: "modal.countByShelf",
-                    //     value: "SHELF",
-                    //     hiddenOn: "${stocktakeType === 'DISCREPANCY_REVIEW'}",
-                    //     disabledOn: "${stockIds.length > 0}",
-                    //     tab: {
-                    //         type: "transfer",
-                    //         name: "shelfCodes",
-                    //         joinValues: false,
-                    //         extractValue: true,
-                    //         selectMode: "table",
-                    //         // "required": true,
-                    //         source: {
-                    //             ...shelf_code_table,
-                    //             url: shelf_code_table.url + areaConditions
-                    //         },
-                    //         pagination: {
-                    //             enable: true,
-                    //             layout: ["pager", "perpage", "total"]
-                    //         },
-                    //         columns: ShelfCountColumns
-                    //     }
-                    // },
-                    {
-                        title: (
-                            <Translation>
-                                {(t) => t("modal.countByProduct")}
-                            </Translation>
-                        ),
+                tabs: [{
+                        title: "modal.countByProduct",
                         value: "STOCK",
                         hiddenOn: "${stocktakeType === 'DISCREPANCY_REVIEW'}",
                         body: {
@@ -331,7 +261,6 @@ const dialog = {
                                     type: "service",
                                     id: "skuCount-service-reload",
                                     name: "skuCount-service-reload",
-                                    // body: "当前时间：${options}",
                                     api: {
                                         ...stock_id_table,
                                         url:
@@ -355,14 +284,11 @@ const dialog = {
                                         resultListModeFollowSelect: true,
                                         id: "transferTable",
                                         virtualThreshold: 10,
-                                        // searchable: true,
-                                        // searchPlaceholder: "请扫描商品条码",
                                         "en-US": {
                                             searchPlaceholder:
                                                 "Please scan the product bar code"
                                         },
                                         source: "${options}",
-                                        // source: "${transferOptions}",
                                         pagination: {
                                             enable: false,
                                             layout: [
@@ -534,16 +460,6 @@ const columns = [
         }
     },
     {
-        name: "suspend",
-        label: "table.pendingOrderID",
-        type: "mapping",
-        map: yes_no_options,
-        searchable: {
-            type: "select",
-            options: yes_no_options
-        }
-    },
-    {
         name: "abnormal",
         label: "table.exceptionIdentification",
         type: "mapping",
@@ -556,60 +472,23 @@ const columns = [
     ...create_update_columns
 ]
 
-const detailColumns_STOCK = [
+const detailColumns = [
     {
         name: "stocktakeOrderId",
         label: "盘点单ID",
         hidden: true
+    },
+    {
+        name: "stocktakeUnitType",
+        label: "table.stocktakeUnitType"
+    },
+    {
+        name: "unitCode",
+        label: "table.unitCode"
     },
     {
         name: "unitId",
-        label: "盘点单位ID",
-        hidden: true
-    },
-    {
-        name: "barCodeList",
-        label: "skuArea.barcode"
-    },
-    {
-        name: "skuName",
-        label: "skuArea.productName"
-    },
-    {
-        name: "ownerCode",
-        label: "table.productOwner"
-    },
-    {
-        name: "containerCode",
-        label: "table.containerCode"
-    },
-    {
-        name: "containerFace",
-        label: "workLocationArea.face"
-    },
-    {
-        name: "containerSlotCode",
-        label: "table.containerSlotCode"
-    }
-]
-
-const detailColumns_SHELF = [
-    {
-        name: "stocktakeOrderId",
-        label: "盘点单ID",
-        hidden: true
-    },
-    {
-        name: "containerCode",
-        label: "table.containerCode"
-    },
-    {
-        name: "containerFace",
-        label: "workLocationArea.face"
-    },
-    {
-        name: "containerSlotCode",
-        label: "table.containerSlotCode"
+        label: "table.unitId"
     }
 ]
 
@@ -636,10 +515,6 @@ const recordColumns = [
         name: "warehouseCode",
         label: "table.warehouse"
     },
-    // {
-    //     name: "ownerCode",
-    //     label: "货主"
-    // },
     {
         name: "containerCode",
         label: "table.containerCode"
@@ -668,32 +543,10 @@ const recordColumns = [
     }
 ]
 
-const detailDialog_STOCK = {
-    title: "inventoryCounting.detail.modal.title",
-    actions: [],
-    closeOnEsc: true,
-    closeOnOutside: true,
-    size: "xl",
-    body: [
-        {
-            type: "crud",
-            syncLocation: false,
-            name: "stocktakeOrderDetailTableForSKU",
-            api: {
-                method: "POST",
-                url: "/search/searchV2?page=${page}&perPage=${perPage}&stocktakeOrderId-eq=${id}",
-                dataType: "application/json"
-            },
-            defaultParams: {
-                searchIdentity: "findStocktakeOrderDetailByOrderId-STOCK",
-            },
-            footerToolbar: ["switch-per-page", "statistics", "pagination"],
-            columns: detailColumns_STOCK
-        }
-    ]
-}
+const searchIdentity = "WStocktakeOrder"
+const searchDetailIdentity = "WStocktakeOrderDetail"
 
-const DetailDialog_SHELF = {
+const detailDialog = {
     title: "inventoryCounting.detail.modal.title",
     actions: [],
     closeOnEsc: true,
@@ -706,14 +559,14 @@ const DetailDialog_SHELF = {
             name: "stocktakeOrderDetailTableForSHELF",
             api: {
                 method: "POST",
-                url: "/search/searchV2?page=${page}&perPage=${perPage}&stocktakeOrderId-eq=${id}",
+                url: "/search/search?page=${page}&perPage=${perPage}&stocktakeOrderId-eq=${id}",
                 dataType: "application/json"
             },
             defaultParams: {
-                searchIdentity: "findStocktakeOrderDetailByOrderId-SHELF",
+                searchIdentity: searchDetailIdentity,
             },
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
-            columns: detailColumns_SHELF
+            columns: detailColumns
         }
     ]
 }
@@ -731,7 +584,7 @@ const recordDialog = {
             name: "stocktakeRecordTable",
             api: {
                 method: "POST",
-                url: "/search/searchV2?page=${page}&perPage=${perPage}&stocktakeOrderId-eq=${id}",
+                url: "/search/search?page=${page}&perPage=${perPage}&stocktakeOrderId-eq=${id}",
                 dataType: "application/json"
             },
             defaultParams: {
@@ -757,21 +610,12 @@ const schema = {
             api: {
                 method: "POST",
                 url:
-                    "/search/searchV2?page=${page}&perPage=${perPage}&warehouseCode-eq=" +
+                    "/search/search?page=${page}&perPage=${perPage}&warehouseCode-eq=" +
                     warehouseCode,
                 dataType: "application/json",
                 data: {
-                    searchIdentity: "searchStocktakeOrder",
-                    "orderNo-ct": "${orderNo}",
-                    "stocktakeType-eq": "${stocktakeType}",
-                    "stocktakeCreateMethod-eq": "${stocktakeCreateMethod}",
-                    "stocktakeUnitType-eq": "${stocktakeUnitType}",
-                    "stocktakeOrderStatus-eq": "${stocktakeOrderStatus}",
-                    "warehouseAreaId-eq": "${warehouseAreaId}",
-                    "warehouseLogicId-eq": "${warehouseLogicId}",
-                    "suspend-eq": "${suspend}",
-                    "abnormal-eq": "${abnormal}",
-                    "createTime-bt": "${createTime}",
+                    searchIdentity: searchIdentity,
+                    showColumns: columns
                 },
             },
             autoFillHeight: true,
@@ -792,15 +636,7 @@ const schema = {
                             label: "button.detail",
                             type: "button",
                             actionType: "dialog",
-                            dialog: detailDialog_STOCK,
-                            visibleOn: "${stocktakeUnitType === 'STOCK'}"
-                        },
-                        {
-                            label: "button.detail",
-                            type: "button",
-                            actionType: "dialog",
-                            dialog: DetailDialog_SHELF,
-                            visibleOn: "${stocktakeUnitType === 'SHELF'}"
+                            dialog: detailDialog
                         },
                         {
                             label: "button.inventoryRecord",
