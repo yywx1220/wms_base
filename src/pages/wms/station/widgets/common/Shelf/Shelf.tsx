@@ -13,7 +13,7 @@ const Shelf = ({
     return (
         <div
             key={index}
-            className="d-flex flex-col-reverse items-center m-1"
+            className="d-flex flex-col-reverse items-center"
             style={{
                 width: 100 + "%",
                 flexDirection: "initial"
@@ -33,7 +33,7 @@ const Shelf = ({
                     return (
                         <div
                             key={i}
-                            className="relative d-flex flex-col justify-between w-full p-1 text-white m-1 rounded-md"
+                            className="relative d-flex flex-col justify-between w-full p-1 text-white rounded-md"
                             onClick={(e) =>
                                 !isDisabledSlot &&
                                 onCustomActionDispatch &&

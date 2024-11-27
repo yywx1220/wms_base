@@ -50,6 +50,7 @@ export enum ProcessStatusEnum {
 export interface OperationTaskDTOS {
     sourceContainerId: any
     processStatus: ProcessStatusEnum
+    taskStatus: ProcessStatusEnum
     receivedQty: number
     detailId: string
     toBeOperatedQty: number

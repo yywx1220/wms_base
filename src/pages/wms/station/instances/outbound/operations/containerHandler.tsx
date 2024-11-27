@@ -84,6 +84,12 @@ const ContainerHandler = (
                 onCustomActionDispatch={onCustomActionDispatch}
             />
         ),
+        BUFFER_SHELVING: (
+            <MaterialHandler
+                value={containerViews}
+                onCustomActionDispatch={onCustomActionDispatch}
+            />
+        ),
         DEFAULT: (
             <EmptyImage
                 workStationInfo={workStationInfo}

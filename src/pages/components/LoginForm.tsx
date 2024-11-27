@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button, Checkbox, Form, Input } from "antd"
+import { Button, Checkbox, Form, Input, Typography } from "antd"
 import { toast } from "amis"
 import { RouteComponentProps } from "react-router-dom"
 import Message, { MessageType } from "@/pages/wms/station/widgets/message"
@@ -10,6 +10,9 @@ import { withRouter } from "react-router"
 import request from "@/utils/requestInterceptor"
 import "@/scss/style.scss"
 import { withTranslation, Translation } from "react-i18next"
+
+const { Title, Text } = Typography
+
 interface LoginProps extends RouteComponentProps<any> {
     store: IMainStore
 }
@@ -78,60 +81,87 @@ class LoginForm extends React.Component<any> {
     render() {
         const { t } = this.props
         return (
-            <Form
-                name="basic"
-                wrapperCol={{ span: 24 }}
-                initialValues={{ remember: true }}
-                onFinish={this.handleFormSaved}
-                // onFinishFailed={onFinishFailed}
-                autoComplete="off"
-                size="large"
-                className="bg-white w-full p-4 pt-8"
-                // style={{backgroundColor: "#fff", }}
-            >
-                <Form.Item
-                    // label="Username"
-                    name="username"
-                    rules={[
-                        {
-                            required: true,
-                            message: "Please input your username!"
-                        }
-                    ]}
-                >
-                    <Input
-                        placeholder={t("login.username")}
-                        style={{ borderRadius: 10 }}
-                        value={this.state.username}
-                        onChange={this.handleChangeForUsername}
-                    />
-                </Form.Item>
+            <div className="text-center mb-2.5 bg-white p-10 shadow-lg">
+                {/* <h2 className="text-lg font-semibold text-gray-900 leading-none mb-4">
+                    Sign in
+                </h2> */}
+                <Title level={3} className="text-gray-900 leading-none pb-6">
+                    {t("login.submitText")}
+                </Title>
 
-                <Form.Item
-                    name="password"
-                    rules={[
-                        {
-                            required: true,
-                            message: "Please input your password!"
-                        },
-                        { type: "string", min: 6 }
-                    ]}
+                <Form
+                    name="basic"
+                    layout="vertical"
+                    // wrapperCol={{ span: 24 }}
+                    // initialValues={{ remember: true }}
+                    onFinish={this.handleFormSaved}
+                    // onFinishFailed={onFinishFailed}
+                    autoComplete="off"
+                    // size="large"
+                    requiredMark={false}
                 >
-                    <Input.Password
-                        placeholder={t("login.password")}
-                        style={{ borderRadius: 10 }}
-                        value={this.state.password}
-                        onChange={this.handleChangeForPassword}
-                    />
-                </Form.Item>
+                    <Form.Item
+                        label={t("login.username")}
+                        name="username"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please input your username!"
+                            }
+                        ]}
+                    >
+                        <Input
+                            // placeholder={t("login.username")}
+                            // style={{ borderRadius: 10 }}
+                            value={this.state.username}
+                            size="large"
+                            onChange={this.handleChangeForUsername}
+                        />
+                    </Form.Item>
 
-                <Form.Item wrapperCol={{ span: 16 }}>
-                    <Button type="primary" htmlType="submit" shape="round">
-                        {t("login.submitText")}
-                        <i className="fa-solid fa-arrow-right m-l-xxl"></i>
-                    </Button>
-                </Form.Item>
-            </Form>
+                    <Form.Item
+                        label={t("login.password")}
+                        name="password"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please input your password!"
+                            },
+                            { type: "string", min: 6 }
+                        ]}
+                    >
+                        <Input.Password
+                            // placeholder={t("login.password")}
+                            // style={{ borderRadius: 10 }}
+                            value={this.state.password}
+                            size="large"
+                            onChange={this.handleChangeForPassword}
+                        />
+                    </Form.Item>
+                    <Form.Item
+                        name="remember"
+                        valuePropName="checked"
+                        className="text-left"
+                    >
+                        <Checkbox>Remember me</Checkbox>
+                    </Form.Item>
+                    <Form.Item>
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            size="large"
+                            block
+                            // shape="round"
+                        >
+                            {t("login.submitText")}
+                            {/* <i className="fa-solid fa-arrow-right m-l-xxl"></i> */}
+                        </Button>
+                    </Form.Item>
+                </Form>
+                <Text type="secondary" className="pb-8">
+                    Need an account? Please contact the administrator.
+                </Text>
+            </div>
         )
     }
 }

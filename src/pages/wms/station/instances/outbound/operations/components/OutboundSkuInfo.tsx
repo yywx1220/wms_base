@@ -27,7 +27,7 @@ const OutboundSkuInfo = (props: OutboundSkuInfoProps) => {
     const scannedSkuInfo =
         pickingViews?.find(
             (item) =>
-                item.operationTaskDTOS?.[0]?.processStatus ===
+                item.operationTaskDTOS?.[0]?.taskStatus ===
                 ProcessStatusEnum.PROCESSING
         ) || pickingViews?.[0]
 
@@ -101,7 +101,20 @@ const OutboundSkuInfo = (props: OutboundSkuInfoProps) => {
                         {t("skuArea.productDetails")}
                     </div>
                     <SkuInfo
-                        {...scannedSkuInfo}
+                        // {...scannedSkuInfo}
+                        skuAttributes={
+                            scannedSkuInfo?.skuBatchAttributeDTO?.skuAttributes
+                        }
+                        skuName={scannedSkuInfo?.skuMainDataDTO.skuName}
+                        barCode={
+                            scannedSkuInfo?.skuMainDataDTO.skuBarcode
+                                ?.barcodes[0] ||
+                            scannedSkuInfo?.skuMainDataDTO.skuCode
+                        }
+                        url={
+                            scannedSkuInfo?.skuMainDataDTO.skuAttribute
+                                ?.imageUrl
+                        }
                         imgWidth={160}
                         detailHeight={130}
                     />

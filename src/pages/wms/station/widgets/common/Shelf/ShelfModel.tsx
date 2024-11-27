@@ -72,7 +72,7 @@ const ShelfModel = (props: any) => {
                         key={index}
                         style={{ height: 100 / list.length + "%" }}
                     >
-                        {showLevel && item && (
+                        {/* {showLevel && item && (
                             <div
                                 className="d-flex items-center justify-center w-10 text-md rounded-md m-1"
                                 style={{
@@ -84,7 +84,7 @@ const ShelfModel = (props: any) => {
                             >
                                 {item?.[0].level}
                             </div>
-                        )}
+                        )} */}
                         <Shelf
                             item={item}
                             index={index}

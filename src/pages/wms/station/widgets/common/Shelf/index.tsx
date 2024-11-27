@@ -3,6 +3,8 @@ import ShelfModel from "./ShelfModel"
 import Code from "./Code"
 import React from "react"
 import { useTranslation } from "react-i18next"
+import { Typography } from "antd"
+const { Title } = Typography
 
 export interface MaterialProps {
     onCustomActionDispatch?: (value: any) => void
@@ -57,12 +59,14 @@ const MaterialRack = (props: MaterialProps) => {
     )
     return (
         <div className="d-flex flex-col items-center w-full h-full">
-            <Code
+            {/* <Code
                 containerCode={containerCode}
                 face={arrivedContainer?.face}
                 level={toBePickdSlot?.level}
                 bay={toBePickdSlot?.locBay}
-            />
+            /> */}
+            <Title level={4}>{containerCode}</Title>
+
             <ShelfModel
                 containerSlotSpecs={containerSpec?.containerSlotSpecs}
                 activeSlotCodes={activeSlotCodes}

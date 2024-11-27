@@ -22,21 +22,22 @@ class LoginRoute extends React.Component<LoginProps, any> {
     render() {
         const { t } = this.props
         return (
-            <div className="login-page-container d-flex flex-col justify-center">
-                <div
-                    className="flex justify-end"
-                    style={{
-                        paddingTop: "72px",
-                        paddingLeft: "79px",
-                        paddingRight: "75px"
-                    }}
-                >
-                    {/* <img
-                        src={logo}
-                        alt="logo"
-                        style={{ width: "300px", height: "140px" }}
-                    /> */}
-                    <Language />
+            <div className="login-page-container d-flex justify-center">
+                <div className="w-1/2">
+                    <div
+                        className="relative h-full d-flex flex-col justify-center items-center"
+                        // style={{
+                        //     width: "520px"
+                        // }}
+                    >
+                        {/* <span className="block login-title break-words pt-16">
+                                {t("login.system")}
+                            </span> */}
+                        {/* <span className="text-iwms">iWMS</span> */}
+                        <div className="flex-1 d-flex flex-col justify-center max-w-6xl">
+                            <LoginForm />
+                        </div>
+                    </div>
                 </div>
                 <div
                     // style={{
@@ -44,7 +45,7 @@ class LoginRoute extends React.Component<LoginProps, any> {
                     //     // paddingLeft: "172px",
                     //     flex: 1
                     // }}
-                    className="flex-1"
+                    className="flex-1 bg-blue-50"
                 >
                     {/*<span className="block m-b-xl text-center">一个开箱可用的Amis + React 低代码开发环境</span>*/}
 
@@ -52,23 +53,25 @@ class LoginRoute extends React.Component<LoginProps, any> {
                         className="d-flex justify-between items-center relative"
                         style={{ height: "100%" }}
                     >
-                        <div className="login-image"></div>
                         <div
-                            className="relative w-1/3 h-3/4 h-full d-flex flex-col justify-center items-center"
-                            // style={{
-                            //     width: "520px"
-                            // }}
+                            className="flex-1 h-full"
+                            // style={{ backgroundColor: "#f2f2f2" }}
                         >
-                            {/* <span className="block login-title break-words pt-16">
-                                {t("login.system")}
-                            </span> */}
-                            <span className="text-iwms">iWMS</span>
-                            <div className="flex-1 d-flex flex-col justify-center w-2/3">
-                                <LoginForm />
+                            <div
+                                className="flex justify-end"
+                                style={{
+                                    paddingTop: "72px",
+                                    paddingLeft: "79px",
+                                    paddingRight: "75px"
+                                }}
+                            >
+                                <Language />
                             </div>
+                            <div className="login-image"></div>
                         </div>
                     </div>
                 </div>
+
                 {/* <div className="flex justify-center items-center text-gray-400">
                     {t("login.allRightsReservs")}@{t("login.company")}丨
                     {t("login.hotline")}
