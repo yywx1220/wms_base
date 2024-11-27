@@ -521,9 +521,46 @@ export const work_station = {
 export const shelf_code_table = {
     method: "post",
     url:
-        "/search/searchV2?page=1&perPage=500&warehouseCode-eq=" + warehouseCode,
+        "/search/search?page=${page}&perPage=10&warehouseCode-op=eq&warehouseCode=" +
+        warehouseCode,
     data: {
-        searchIdentity: "stocktakeByShelf"
+        searchIdentity: "SearchContainerCodeTable",
+        searchObject: {
+            tables: "w_container c, w_container_spec cs",
+            where: "c.container_spec_code = cs.container_spec_code and cs.container_type = 'CONTAINER'"
+        },
+        showColumns: [
+            {
+                dbField: "c.warehouse_code",
+                name: "warehouseCode",
+                javaType: "java.lang.String"
+            },
+            {
+                dbField: "c.container_code",
+                name: "value",
+                javaType: "java.lang.String"
+            },
+            {
+                dbField: "c.container_code",
+                name: "label",
+                javaType: "java.lang.String"
+            },
+            {
+                dbField: "c.location_code",
+                name: "locationCode",
+                javaType: "java.lang.String"
+            },
+            {
+                dbField: "c.warehouse_area_id",
+                name: "warehouseAreaId",
+                javaType: "java.lang.String"
+            },
+            {
+                dbField: "c.warehouse_logic_code",
+                name: "warehouseLogicCode",
+                javaType: "java.lang.String"
+            }
+        ]
     }
 }
 
@@ -585,7 +622,11 @@ export const stock_sku_id_table = {
             where: "k.sku_id = a.id and k.container_id = c.id",
             groupBy: "k.sku_id, c.warehouse_area_id"
         },
-        showColumns: [
+        showColumns: stock_sku_id_table_columns
+    }
+}
+
+export const stock_sku_id_table_columns = [
             {
                 dbField: "max(c.warehouse_code)",
                 name: "warehouseCode",
@@ -632,8 +673,6 @@ export const stock_sku_id_table = {
                 javaType: "java.lang.String"
             }
         ]
-    }
-}
 
 export const stock_abnormal_table = {
     method: "post",

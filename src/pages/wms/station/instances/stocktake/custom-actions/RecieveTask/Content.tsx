@@ -16,25 +16,6 @@ const columns = [
         label: "table.countOrderNumber",
         searchable: true
     },
-    // {
-    //     name: "taskNo",
-    //     label: "table.inventoryTaskNumber",
-    //     searchable: true
-    // },
-    // {
-    //     name: "warehouseCode",
-    //     label: "table.warehouse",
-    // },
-    // {
-    //     name: "stocktakeType",
-    //     label: "盘点类型",
-    //     type: "mapping",
-    //     source: "${StocktakeType}",
-    //     searchable: {
-    //         type: "select",
-    //         source: "${StocktakeType}"
-    //     }
-    // },
     {
         name: "stocktakeTaskStatus",
         label: "table.status",
@@ -63,11 +44,6 @@ const columns = [
         name: "updateTime",
         tpl: "${updateTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}"
     }
-    // {
-    //     name: "inboundOrderType",
-    //     label: "容器数"
-    // },
-    // ...create_update_columns
 ]
 
 const detailColumns = [
@@ -131,11 +107,12 @@ const detailDialog = {
             name: "stocktakeTaskDetailTable",
             api: {
                 method: "POST",
-                url: "/search/searchV2?page=${page}&perPage=${perPage}&stocktakeTaskId-eq=${id}",
+                url: "/search/search?page=${page}&perPage=${perPage}&stocktakeTaskId-eq=${id}",
                 dataType: "application/json"
             },
             defaultParams: {
-                searchIdentity: "findStocktakeTaskDetailByTaskId",
+                searchIdentity: "WStocktakeTaskDetail",
+                showColumns: detailColumns,
             },
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
             columns: detailColumns
@@ -156,15 +133,13 @@ const schema = {
             api: {
                 method: "POST",
                 url:
-                    "/search/searchV2?page=${page}&perPage=${perPage}&warehouseCode-eq=" +
+                    "/search/search?page=${page}&perPage=${perPage}&warehouseCode-eq=" +
                     warehouseCode,
                 dataType: "application/json",
-                data: {
-                    searchIdentity: "searchStocktakeTask",
-                    "stocktakeTaskStatus-il": ["NEW"],
-                    "orderNo-ct": "${orderNo}",
-                    "createTime-bt": "${createTime}",
-                },
+            },
+            defaultParams: {
+                searchIdentity: "WStocktakeTask",
+                showColumns: columns,
             },
             autoFillHeight: true,
             autoGenerateFilter: {
@@ -176,14 +151,6 @@ const schema = {
                 {
                     label: "button.receiveInBatches",
                     level: "primary",
-                    // actionType: "ajax",
-                    // api: {
-                    //     method: "put",
-                    //     url: `/station/api?apiCode=${CustomActionType.STOCKTAKE_EXECUTE_TASK}`,
-                    //     data: {
-                    //         taskIds: "${ids|split}"
-                    //     }
-                    // },
                     onClick: debounce(
                         async (e: any, props: any) => {
                             const { onCustomActionDispatch } = props

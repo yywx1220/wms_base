@@ -60,8 +60,8 @@ const StocktakeAreaHandler = (
 
     const getStockTakeOptions = async () => {
         const res: any = await request({
-            method: "get",
-            url: `post:/mdm/config/dictionary/getAll`
+            method: "post",
+            url: `/mdm/config/dictionary/getAll`
         })
 
         const stocktakeMethod = res?.data?.StocktakeMethod.find((item: any) => {

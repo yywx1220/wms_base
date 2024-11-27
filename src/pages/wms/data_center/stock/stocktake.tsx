@@ -6,21 +6,14 @@ import {
     warehouse_logic_id
 } from "@/pages/wms/constants/select_search_api_contant"
 import {api_stocktake_order_add} from "@/pages/wms/data_center/constants/api_constant"
+import { stock_sku_id_table } from "@/pages/wms/constants/select_search_api_contant"
+import { stock_sku_id_table_columns } from "@/pages/wms/constants/select_search_api_contant"
 import {create_update_columns, yes_no_options} from "@/utils/commonContants"
 import React from "react"
 import {Translation} from "react-i18next"
 import {toast} from "amis"
 
 let warehouseCode = localStorage.getItem("warehouseCode")
-
-let areaConditions =
-    "&warehouseAreaId-eq=${warehouseAreaId}" +
-    "&warehouseLogicCode-eq=${warehouseLogicCode}" +
-    "&ownerCode-eq=${ownerCode}"
-
-let barCodeCondition = {
-    "barCode-il": "${barCode | split}"
-}
 
 const ShelfCountColumns = [
     {
@@ -30,33 +23,6 @@ const ShelfCountColumns = [
     {
         name: "locationCode",
         label: "table.locationCode"
-    }
-]
-
-const SKUCountColumns = [
-    {
-        name: "barCodeList",
-        label: "skuArea.barcode"
-    },
-    {
-        name: "totalQty",
-        label: "table.inventoryQuantity"
-    },
-    {
-        name: "ownerCode",
-        label: "table.productOwner"
-    },
-    {
-        name: "containerCode",
-        label: "table.containerCode"
-    },
-    {
-        name: "containerFace",
-        label: "workLocationArea.face"
-    },
-    {
-        name: "containerSlotCode",
-        label: "table.containerSlotCode"
     }
 ]
 
@@ -141,16 +107,11 @@ const dialog = {
                     source: "${StocktakeMethod}",
                     required: true,
                     className: "stocktakeMethod"
-                },
-                {
-                    type: "switch",
-                    name: "includeZeroStock",
-                    label: "modal.inventory0ItemsInStock"
-                },
+                }
             ],
             actions: [
                 {
-                    label: "Prev",
+                    label: "Previous",
                     type: "button",
                     actionType: "prev"
                 },
@@ -261,19 +222,7 @@ const dialog = {
                                     type: "service",
                                     id: "skuCount-service-reload",
                                     name: "skuCount-service-reload",
-                                    api: {
-                                        ...stock_id_table,
-                                        url:
-                                            stock_id_table.url + areaConditions,
-                                        data: {
-                                            ...stock_id_table.data,
-                                            ...barCodeCondition,
-                                            "includeZeroStock": "${includeZeroStock}",
-                                        },
-                                        responseData: {
-                                            options: "${items}"
-                                        }
-                                    },
+                                    api: stock_sku_id_table,
                                     body: {
                                         type: "transfer",
                                         name: "stockIds",
@@ -289,15 +238,8 @@ const dialog = {
                                                 "Please scan the product bar code"
                                         },
                                         source: "${options}",
-                                        pagination: {
-                                            enable: false,
-                                            layout: [
-                                                "pager",
-                                                "perpage",
-                                                "total"
-                                            ]
-                                        },
-                                        columns: SKUCountColumns,
+                                        footerToolbar: ["switch-per-page", "statistics", "pagination"],
+                                        columns: stock_sku_id_table_columns,
                                         onEvent: {
                                             change: {
                                                 actions: [
@@ -564,6 +506,7 @@ const detailDialog = {
             },
             defaultParams: {
                 searchIdentity: searchDetailIdentity,
+                showColumns: detailColumns,
             },
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
             columns: detailColumns

@@ -12,6 +12,14 @@ interface Iprops {
     batchList: any[]
 }
 
+const columns = [
+    {
+        name: "id",
+        label: "ID",
+        hidden: true
+    }
+]
+
 const SelectCreateMode = ({ modeList, batchList, onClick }: Iprops) => {
     const { t } = useTranslation()
     const [processTotal, setProcessTotal] = useState<number>(0)
@@ -24,11 +32,11 @@ const SelectCreateMode = ({ modeList, batchList, onClick }: Iprops) => {
         request({
             method: "post",
             url:
-                "/search/searchV2?page=1&perPage=10&warehouseCode-eq=" +
+                "/search/search?page=1&perPage=10&warehouseCode-eq=" +
                 warehouseCode,
             data: {
-                searchIdentity: "searchStocktakeTask",
-                "stocktakeTaskStatus-il": ["NEW"]
+                searchIdentity: "WStocktakeTask",
+                showColumns: columns,
             }
         }).then((res: any) => {
             setProcessTotal(res?.data?.total)

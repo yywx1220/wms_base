@@ -2,6 +2,7 @@ import schema2component from "@/utils/schema2component"
 
 import { Translation } from "react-i18next"
 import { api_stocktake_order_add } from "@/pages/wms/data_center/constants/api_constant"
+import { stock_sku_code_table } from "@/pages/wms/constants/select_search_api_contant"
 import React from "react"
 import { toast } from "amis"
 import {
@@ -14,14 +15,6 @@ import { CustomActionType } from "@/pages/wms/station/instances/stocktake/custom
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
-let barCodeCondition = {
-    "barCode-il": "${barCode | split}"
-}
-let areaConditions =
-    "&warehouseAreaId-eq=${warehouseAreaId}" +
-    "&warehouseLogicCode-eq=${warehouseLogicCode}" +
-    "&ownerCode-eq=${ownerCode}"
-
 const schema = {
     type: "page",
     title: "modal.receiveInventoryList",
@@ -29,18 +22,12 @@ const schema = {
     body: {
         type: "wizard",
         actionFinishLabel: "modal.generateInventoryOrder",
-        // api: api_stocktake_order_add,
         preventEnterSubmit: true,
         reload: "stocktakeOrderTable",
         id: "wizardComponent",
         steps: [
             {
-                // title: "modal.selectInventoryArea",
-                title: (
-                    <Translation>
-                        {(t) => t("modal.selectInventoryArea")}
-                    </Translation>
-                ),
+                title: "modal.selectInventoryArea",
                 body: [
                     {
                         type: "hidden",
@@ -68,7 +55,6 @@ const schema = {
                     {
                         type: "select",
                         name: "warehouseLogicId",
-                        // "initFetchOn": "data.warehouseAreaCode",
                         label: "table.logicArea",
                         clearable: true,
                         source: warehouse_logic_id,
@@ -94,12 +80,7 @@ const schema = {
                 ]
             },
             {
-                title: (
-                    <Translation>
-                        {(t) => t("modal.selectCountingRules")}
-                    </Translation>
-                ),
-
+                title: "modal.selectCountingRules",
                 body: [
                     {
                         type: "button-group-select",
@@ -119,28 +100,11 @@ const schema = {
                         required: true,
                         className: "stocktakeMethod"
                     },
-                    // {
-                    //     "type": "button-group-select",
-                    //     "name": "businessType",
-                    //     "label": "动碰类型",
-                    //     "source": "${ActiveBusinessType}"
-                    // },
-                    // {
-                    //     "type": "input-date-range",
-                    //     "valueFormat": "x",
-                    //     "name": "activeDateRange",
-                    //     "label": "动碰时间"
-                    // },
                     {
                         type: "switch",
                         name: "includeZeroStock",
                         label: "modal.inventory0ItemsInStock"
-                    },
-                    // {
-                    //     type: "switch",
-                    //     name: "isStocktakeEmptySlot",
-                    //     label: "modal.spaceCouting"
-                    // }
+                    }
                 ],
                 actions: [
                     {
@@ -158,61 +122,15 @@ const schema = {
                 ]
             },
             {
-                title: (
-                    <Translation>
-                        {(t) => t("modal.selectCountingTarget")}
-                    </Translation>
-                ),
+                title: "modal.selectCountingTarget",
                 wrapperComponent: "div",
                 body: {
                     type: "tabs",
                     name: "stocktakeUnitType",
                     tabsMode: "strong",
                     tabs: [
-                        // {
-                        //     title: "modal.countByShelf",
-                        //     value: "SHELF",
-                        //     tab: {
-                        //         type: "transfer",
-                        //         name: "shelfCodes",
-                        //         joinValues: false,
-                        //         extractValue: true,
-                        //         selectMode: "table",
-                        //         // "required": true,
-                        //         source: {
-                        //             ...shelf_code_table,
-                        //             url: shelf_code_table.url + areaConditions
-                        //         },
-                        //         pagination: {
-                        //             enable: true,
-                        //             layout: ["pager", "perpage", "total"]
-                        //         },
-                        //         columns: [
-                        //             {
-                        //                 name: "label",
-                        //                 label: (
-                        //                     <Translation>
-                        //                         {(t) => t("table.shelfCoding")}
-                        //                     </Translation>
-                        //                 )
-                        //             },
-                        //             {
-                        //                 name: "locationCode",
-                        //                 label: (
-                        //                     <Translation>
-                        //                         {(t) => t("table.locationCode")}
-                        //                     </Translation>
-                        //                 )
-                        //             }
-                        //         ]
-                        //     }
-                        // },
                         {
-                            title: (
-                                <Translation>
-                                    {(t) => t("modal.countByProduct")}
-                                </Translation>
-                            ),
+                            title: "modal.countByProduct",
                             value: "STOCK",
                             body: {
                                 type: "form",
@@ -304,21 +222,7 @@ const schema = {
                                         type: "service",
                                         id: "service-reload",
                                         name: "service-reload",
-                                        // body: "当前时间：${options}",
-                                        api: {
-                                            ...stock_id_table,
-                                            url:
-                                                stock_id_table.url +
-                                                areaConditions,
-                                            data: {
-                                                ...stock_id_table.data,
-                                                ...barCodeCondition,
-                                                "includeZeroStock": "${includeZeroStock}",
-                                            },
-                                            responseData: {
-                                                options: "${items}"
-                                            }
-                                        },
+                                        api: stock_sku_code_table,
                                         body: {
                                             type: "transfer",
                                             name: "stockIds",
@@ -329,18 +233,15 @@ const schema = {
                                             resultListModeFollowSelect: true,
                                             id: "transferTable",
                                             virtualThreshold: 10,
-                                            // searchable: true,
-                                            // searchPlaceholder: "请扫描商品条码",
                                             "en-US": {
                                                 searchPlaceholder:
                                                     "Please scan the product bar code"
                                             },
                                             source: "${options}",
-                                            // source: "${transferOptions}",
                                             pagination: {
-                                                enable: false,
+                                                enable: true,
                                                 layout: [
-                                                    "pager",
+                                                    "page",
                                                     "perpage",
                                                     "total"
                                                 ]
@@ -348,85 +249,27 @@ const schema = {
                                             columns: [
                                                 {
                                                     name: "barCodeList",
-                                                    label: (
-                                                        <Translation>
-                                                            {(t) =>
-                                                                t(
-                                                                    "skuArea.barcode"
-                                                                )
-                                                            }
-                                                        </Translation>
-                                                    )
+                                                    label: "skuArea.barcode"
                                                 },
-                                                // {
-                                                //     name: "skuName",
-                                                //     label: (
-                                                //         <Translation>
-                                                //             {(t) =>
-                                                //                 t("skuArea.productName")
-                                                //             }
-                                                //         </Translation>
-                                                //     ),
-                                                // },
                                                 {
                                                     name: "totalQty",
-                                                    label: (
-                                                        <Translation>
-                                                            {(t) =>
-                                                                t(
-                                                                    "table.inventoryQuantity"
-                                                                )
-                                                            }
-                                                        </Translation>
-                                                    )
+                                                    label: "table.inventoryQuantity"
                                                 },
                                                 {
                                                     name: "ownerCode",
-                                                    label: (
-                                                        <Translation>
-                                                            {(t) =>
-                                                                t(
-                                                                    "table.productOwner"
-                                                                )
-                                                            }
-                                                        </Translation>
-                                                    )
+                                                    label: "table.productOwner"
                                                 },
                                                 {
                                                     name: "containerCode",
-                                                    label: (
-                                                        <Translation>
-                                                            {(t) =>
-                                                                t(
-                                                                    "table.containerCode"
-                                                                )
-                                                            }
-                                                        </Translation>
-                                                    )
+                                                    label: "table.containerCode"
                                                 },
                                                 {
                                                     name: "containerFace",
-                                                    label: (
-                                                        <Translation>
-                                                            {(t) =>
-                                                                t(
-                                                                    "workLocationArea.face"
-                                                                )
-                                                            }
-                                                        </Translation>
-                                                    )
+                                                    label: "workLocationArea.face"
                                                 },
                                                 {
                                                     name: "containerSlotCode",
-                                                    label: (
-                                                        <Translation>
-                                                            {(t) =>
-                                                                t(
-                                                                    "table.containerSlotCode"
-                                                                )
-                                                            }
-                                                        </Translation>
-                                                    )
+                                                    label: "table.containerSlotCode"
                                                 }
                                             ],
                                             onEvent: {

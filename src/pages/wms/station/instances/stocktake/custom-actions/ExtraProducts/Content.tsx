@@ -228,18 +228,7 @@ const schema = {
                                 keyField: "id",
                                 rowClick: true
                             },
-                            api: {
-                                method: "POST",
-                                url: "/search/searchV2?page=1&perPage=10",
-                                data: {
-                                    searchIdentity: "searchSkuBatchAttribute",
-                                    "warehouseCode-eq": warehouseCode,
-                                    "ownerCode-eq": "${ownerCode}",
-                                    "skuCode-eq": "${skuCode}",
-                                    af: "${(skuCode === null || skuCode === '') || (ownerCode === null || ownerCode === '')}"
-                                },
-                                sendOn: "this.ownerCode"
-                            },
+                            api: container_code_table,
                             onEvent: {
                                 selectedChange: {
                                     actions: [
@@ -258,32 +247,6 @@ const schema = {
                                     ]
                                 }
                             }
-                        }
-                    },
-                    {
-                        title: "form.inverntory.newBatch",
-                        value: "NEW",
-                        body: {
-                            type: "service",
-                            id: "service_form",
-                            schemaApi: {
-                                method: "POST",
-                                url: "/search/searchV2?page=1&perPage=10",
-                                data: {
-                                    searchIdentity: "batchAttributeControls",
-                                    "ownerCode-eq": "${ownerCode}"
-                                },
-                                sendOn: "this.ownerCode"
-                            }
-                            // body: [
-                            //     {
-                            //         type: "input-date",
-                            //         name: "inboundDate",
-                            //         label: "入库日期",
-                            //         valueFormat: "YYYYMMDD",
-                            //         maxDate: "now"
-                            //     }
-                            // ]
                         }
                     }
                 ],
