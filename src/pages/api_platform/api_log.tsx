@@ -73,7 +73,19 @@ const columns = [
             source: "${ApiLogStatus}"
         }
     },
-    ...create_update_columns
+    {
+        label: "table.createdBy",
+        name: "createUser"
+    },
+    {
+        name: "createTime",
+        label: "table.creationTime",
+        tpl: "${createTime/1000|date:YYYY-MM-DD HH\\:mm\\:ss}",
+        searchable: {
+            type: "input-date-range",
+            valueFormat: "x"
+        }
+    }
 ]
 
 const searchIdentity = "AApiLog"

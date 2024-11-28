@@ -183,6 +183,8 @@
     "orderArea.scanLpnNo": "请扫描LPN号",
     "menu.inboundOrder": "入库单",
     "menu.emptyContainerInboundOrder": "空箱入库单",
+    "menu.acceptOrder": "收货单",
+    "table.acceptOrderDetails": "收货单明细",
     "inventoryCount.selectCreateMethod": "选择创建盘点单方式",
 
     "emptyContainerInboundOrder.detail.modal.title": "空箱入库单详情",
@@ -247,6 +249,7 @@
     "table.acceptanceQuantity": "验收数量",
     "table.plannedQuantity": "计划数量",
     "table.unreceivedQuantity": "未收货数量",
+    "table.receivedQuantity": "收货数量",
     "table.responsibleParty": "异常原因责任方",
     "table.size": "尺码",
     "table.skuCode": "sku编码",
@@ -629,6 +632,7 @@
     "wms.menu.inventoryTransferTask": "移库任务",
     "wms.menu.encodingRules": "编码规则",
     "wms.menu.shelfManagement": "货架管理",
+    "wms.menu.receiveManagement": "收货管理",
 
     "user.menu.clientAuthorization": "客户端授权"
 }

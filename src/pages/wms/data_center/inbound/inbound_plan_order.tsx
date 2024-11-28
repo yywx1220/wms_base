@@ -14,12 +14,6 @@ const columns = [
         label: "仓库",
         hidden: true
     },
-    // {
-    //     name: "ownerCode",
-    //     label: "table.productOwner",
-    //     searchable: false,
-    //     hidden: true
-    // },
     {
         name: "lpnCode",
         label: "table.LPNNo",
@@ -30,11 +24,6 @@ const columns = [
         label: "table.customerOrderNo",
         searchable: true
     },
-//     {
-//         name: "inboundOrderType",
-//         label: "订单类型",
-//         hidden: true
-//     },
     {
         name: "inboundPlanOrderStatus",
         label: "table.status",
@@ -130,18 +119,6 @@ const detailColumns = [
         label: "table.color"
     },
     {
-        name: "containerCode",
-        label: "table.containerNumber"
-    },
-    {
-        name: "containerSlotCode",
-        label: "table.containerLatticeSlogan"
-    },
-    {
-        name: "containerSpecCode",
-        label: "table.containerSpecificationNumber"
-    },
-    {
         name: "qtyAbnormal",
         label: "skuArea.qtyAbnormal"
     },
@@ -173,10 +150,10 @@ const detailColumns = [
         name: "skuName",
         label: "table.skuName"
     },
-    // {
-    //     name: "ownerCode",
-    //     label: "table.productOwner"
-    // },
+    {
+        name: "ownerCode",
+        label: "table.productOwner"
+    },
     {
         name: "style",
         label: "table.style"

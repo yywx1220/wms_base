@@ -14,63 +14,36 @@ const columns = [
         label: "仓库",
         hidden: true
     },
-    // {
-    //     name: "ownerCode",
-    //     label: "table.productOwner",
-    //     searchable: false,
-    //     hidden: true
-    // },
     {
-        name: "lpnCode",
-        label: "table.LPNNo",
+        name: "identifyNo",
+        label: "table.containerCode",
         searchable: true
     },
     {
-        name: "customerOrderNo",
-        label: "table.customerOrderNo",
-        searchable: true
-    },
-//     {
-//         name: "inboundOrderType",
-//         label: "订单类型",
-//         hidden: true
-//     },
-    {
-        name: "inboundPlanOrderStatus",
+        name: "acceptOrderStatus",
         label: "table.status",
         type: "mapping",
-        source: "${InboundPlanOrderStatus}",
+        source: "${AcceptOrderStatus}",
         searchable: {
             type: "select",
-            source: "${InboundPlanOrderStatus}"
+            source: "${AcceptOrderStatus}"
         }
     },
-
     {
         name: "orderNo",
         label: "table.orderNo",
         searchable: true
     },
-    {
-        name: "sender",
-        label: "table.shipper",
-        searchable: true
-    },
-    {
-        name: "skuKindNum",
-        label: "table.skuTypes",
-        searchable: true
-    },
-    {
-        name: "storageType",
-        label: "table.storageType",
-        type: "mapping",
-        source: "${StorageType}",
-        searchable: {
-            type: "select",
-            source: "${StorageType}"
-        }
-    },
+    // {
+    //     name: "acceptType",
+    //     label: "table.acceptType",
+    //     type: "mapping",
+    //     source: "${AcceptType}",
+    //     searchable: {
+    //         type: "select",
+    //         source: "${AcceptType}"
+    //     }
+    // },
     {
         name: "totalBox",
         label: "table.boxesNumber"
@@ -78,16 +51,6 @@ const columns = [
     {
         name: "totalQty",
         label: "table.totalQuantity"
-    },
-    {
-        name: "trackingNumber",
-        label: "table.theTrackingNumber",
-        searchable: true
-    },
-    {
-        name: "shippingMethod",
-        label: "table.modeOfCarriage",
-        searchable: true
     },
     ...create_update_columns,
     {
@@ -109,83 +72,50 @@ const columns = [
 
 const detailColumns = [
     {
-        name: "inboundPlanOrderId",
-        label: "入库通知单ID",
+        name: "acceptOrderDetailId",
+        dbField: "id",
         hidden: true
     },
     {
-        name: "batchAttributes",
-        label: "table.batchAttributes"
+        name: "acceptOrderId",
+        hidden: true
     },
     {
-        name: "boxNo",
-        label: "table.lpnNumber"
-    },
-    {
-        name: "brand",
-        label: "table.brand"
-    },
-    {
-        name: "color",
-        label: "table.color"
-    },
-    {
-        name: "containerCode",
-        label: "table.containerNumber"
-    },
-    {
-        name: "containerSlotCode",
-        label: "table.containerLatticeSlogan"
-    },
-    {
-        name: "containerSpecCode",
+        name: "targetContainerSpecCode",
         label: "table.containerSpecificationNumber"
     },
     {
-        name: "qtyAbnormal",
-        label: "skuArea.qtyAbnormal"
+        name: "targetContainerSlotCode",
+        label: "table.containerLatticeSlogan"
     },
     {
-        name: "qtyAccepted",
-        label: "table.acceptanceQuantity"
-    },
-    {
-        name: "qtyRestocked",
-        label: "table.plannedQuantity"
-    },
-    {
-        name: "qtyUnreceived",
-        label: "table.unreceivedQuantity"
-    },
-    {
-        name: "responsibleParty",
-        label: "table.responsibleParty"
-    },
-    {
-        name: "size",
-        label: "table.size"
+        name: "ownerCode",
+        label: "table.productOwner",
+        searchable: true
     },
     {
         name: "skuCode",
-        label: "table.skuCode"
+        label: "skuArea.skuCode",
+        searchable: true
     },
     {
         name: "skuName",
-        label: "table.skuName"
+        label: "skuArea.productName",
+        searchable: true
     },
     {
-        name: "style",
-        label: "table.style"
+        name: "qtyAccepted",
+        label: "table.receivedQuantity"
     }
 ]
 
-const searchIdentity = "WInboundPlanOrder"
-const searchDetailIdentity = "WInboundPlanOrderDetail"
+const searchIdentity = "WAcceptOrder"
+const searchDetailIdentity = "WAcceptOrderDetail"
 const showColumns = columns
 const showDetailColumns = detailColumns
 
 const detailDialog = {
-    title: "table.inboundPlanDetails",
+    title: "table.acceptOrderDetails",
     actions: [],
     closeOnEsc: true,
     closeOnOutside: true,
@@ -194,10 +124,10 @@ const detailDialog = {
         {
             type: "crud",
             syncLocation: false,
-            name: "inboundPlanOrderDetailTable",
+            name: "acceptOrderDetailTable",
             api: {
                 method: "POST",
-                url: "/search/search?page=${page}&perPage=${perPage}&inboundPlanOrderId=${id}&inboundPlanOrderId-op=eq",
+                url: "/search/search?page=${page}&perPage=${perPage}&acceptOrderId=${id}&acceptOrderId-op=eq",
                 dataType: "application/json"
             },
             defaultParams: {
@@ -212,14 +142,14 @@ const detailDialog = {
 
 const schema = {
     type: "page",
-    title: "menu.inboundOrder",
+    title: "menu.acceptOrder",
     toolbar: [],
     initApi: "post:/mdm/config/dictionary/getAll",
     body: [
         {
             type: "crud",
             syncLocation: false,
-            name: "inboundPlanOrderTable",
+            name: "acceptOrderTable",
             api: {
                 method: "POST",
                 url:
@@ -231,7 +161,7 @@ const schema = {
                 searchIdentity: searchIdentity,
                 showColumns: showColumns,
                 searchObject: {
-                    orderBy: "inbound_plan_order_status, update_time desc"
+                    orderBy: "accept_order_status, update_time desc"
                 }
             },
             autoFillHeight: true,
@@ -252,7 +182,7 @@ const schema = {
                             warehouseCode,
                         dataType: "application/json"
                     },
-                    filename: "inbound_plan_order",
+                    filename: "accept_order",
                     defaultParams: {
                         searchIdentity: searchIdentity,
                         showColumns: showColumns

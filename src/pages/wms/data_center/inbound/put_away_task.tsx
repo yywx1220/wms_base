@@ -100,7 +100,7 @@ const detailColumns = [
     },
     {
         name: "skuName",
-        label: "skuArea.skuName"
+        label: "skuArea.productName"
     },
     {
         name: "qtyPutAway",

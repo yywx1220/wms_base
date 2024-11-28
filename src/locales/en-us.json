@@ -190,6 +190,8 @@
 
     "menu.inboundOrder": "Inbound Orders",
     "menu.emptyContainerInboundOrder": "Empty Container Inbound Orders",
+    "menu.acceptOrder": "Accept Orders",
+    "table.acceptOrderDetails": "Accept Order Details",
     "inventoryCount.selectCreateMethod": "Select the method to create an inventory count order",
 
     "emptyContainerInboundOrder.detail.modal.title": "Empty container inbound order details",
@@ -253,6 +255,7 @@
     "table.acceptanceQuantity": "QTY Acceptance",
     "table.plannedQuantity": "QTY Planned",
     "table.unreceivedQuantity": "QTY Unreceived",
+    "table.receivedQuantity": "QTY received",
     "table.responsibleParty": "Responsible party",
     "table.size": "Size",
     "table.skuCode": "Product code",
