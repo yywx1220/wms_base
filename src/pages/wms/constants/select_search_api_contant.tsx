@@ -686,6 +686,9 @@ export const stock_sku_id_table = {
             groupBy: "k.sku_id, c.warehouse_area_id"
         },
         showColumns: stock_sku_id_table_columns
+    },
+    responseData: {
+        options: "${items}"
     }
 }
 
