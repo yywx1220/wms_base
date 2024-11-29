@@ -15,17 +15,6 @@ import {toast} from "amis"
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
-const ShelfCountColumns = [
-    {
-        name: "label",
-        label: "table.shelfCoding"
-    },
-    {
-        name: "locationCode",
-        label: "table.locationCode"
-    }
-]
-
 const dialog = {
     type: "wizard",
     actionFinishLabel: "modal.generateInventoryOrder",
@@ -437,6 +426,7 @@ const detailColumns = [
 const recordColumns = [
     {
         name: "id",
+        dbField: "k.id",
         label: "盘点记录ID",
         hidden: true
     },
@@ -444,10 +434,6 @@ const recordColumns = [
         name: "stocktakeOrderId",
         label: "盘点单ID",
         hidden: true
-    },
-    {
-        name: "barCodeList",
-        label: "skuArea.barcode"
     },
     {
         name: "skuName",
@@ -487,6 +473,7 @@ const recordColumns = [
 
 const searchIdentity = "WStocktakeOrder"
 const searchDetailIdentity = "WStocktakeOrderDetail"
+const searchRecordIdentity = "WStocktakeRecord"
 
 const detailDialog = {
     title: "inventoryCounting.detail.modal.title",
@@ -498,10 +485,10 @@ const detailDialog = {
         {
             type: "crud",
             syncLocation: false,
-            name: "stocktakeOrderDetailTableForSHELF",
+            name: "stocktakeOrderDetailTable",
             api: {
                 method: "POST",
-                url: "/search/search?page=${page}&perPage=${perPage}&stocktakeOrderId-eq=${id}",
+                url: "/search/search?page=${page}&perPage=${perPage}&stocktakeOrderId=${id}&stocktakeOrderId-op=eq",
                 dataType: "application/json"
             },
             defaultParams: {
@@ -527,11 +514,15 @@ const recordDialog = {
             name: "stocktakeRecordTable",
             api: {
                 method: "POST",
-                url: "/search/search?page=${page}&perPage=${perPage}&stocktakeOrderId-eq=${id}",
+                url: "/search/search?page=${page}&perPage=${perPage}&stocktakeOrderId=${id}&stocktakeOrderId-op=eq",
                 dataType: "application/json"
             },
             defaultParams: {
-                searchIdentity: "findStocktakeRecordByOrderId",
+                searchIdentity: searchRecordIdentity,
+                showColumns:recordColumns,
+                searchObject:{
+                    tables: "w_stocktake_record k  inner join m_sku_main_data a on k.sku_id = a.id"
+                }
             },
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
             columns: recordColumns
@@ -553,7 +544,7 @@ const schema = {
             api: {
                 method: "POST",
                 url:
-                    "/search/search?page=${page}&perPage=${perPage}&warehouseCode-eq=" +
+                    "/search/search?page=${page}&perPage=${perPage}&warehouseCode-op=eq&warehouseCode=" +
                     warehouseCode,
                 dataType: "application/json",
                 data: {
