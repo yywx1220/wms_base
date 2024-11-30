@@ -48,10 +48,10 @@ const columns = [
         name: "taskStatus",
         label: "table.putAwayStatus",
         type: "mapping",
-        source: "${PutAwayTaskStatusEnum}",
+        source: "${PutAwayTaskStatus}",
         searchable: {
             type: "select",
-            source: "${PutAwayTaskStatusEnum}"
+            source: "${PutAwayTaskStatus}"
         }
     },
     {

@@ -253,15 +253,6 @@ const menuRouter = [
         name: <Translation>{(t) => t("wms.menu.rulesManagement")}</Translation>
     },
     {
-        path: "/wms/config-center/rule/param-config",
-        name: (
-            <Translation>{(t) => t("parameterManagement.title")}</Translation>
-        ),
-        component: lazy(
-            () => import("@/pages/wms/config_center/rule/param_config")
-        )
-    },
-    {
         path: "/wms/config-center/rule/system-config",
         name: (
             <Translation>

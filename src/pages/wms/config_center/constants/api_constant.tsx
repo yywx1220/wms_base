@@ -35,14 +35,9 @@ export const api_dictionary_add = "post:/wms/config/dictionary/createOrUpdate"
 export const api_dictionary_update = "post:/wms/config/dictionary/createOrUpdate"
 export const api_dictionary_get = "post:/wms/config/dictionary/get/${id}"
 
-// param config module
-export const api_param_config_add = "post:/wms/config/parameterConfig/createOrUpdate"
-export const api_param_config_update = "post:/wms/config/parameterConfig/createOrUpdate"
-export const api_param_config_get = "post:/wms/config/parameterConfig/${id}"
-
 // system config module
-export const api_system_config_save_or_update = "post:/wms/config/systemConfig/createOrUpdate"
-export const api_system_config_get = "post:/wms/config/systemConfig/get"
+export const api_system_config_save_or_update = "post:/wms/config/system/config/createOrUpdate"
+export const api_system_config_get = "post:/wms/config/system/config/getSystemConfig"
 
 // container spec module
 export const api_container_spec_add = "post:/wms/basic/containerSpec/createOrUpdate"

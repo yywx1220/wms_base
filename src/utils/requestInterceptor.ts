@@ -104,11 +104,11 @@ export default function request(config: AxiosRequestConfig) {
                     response.data.error ||
                     response.data.message ||
                     response.statusText
-                // toast["error"](msg, "消息")
-                reject({
-                    ...res,
-                    message: msg
-                })
+                toast["error"](msg, "消息")
+                // reject({
+                //     ...res,
+                //     message: msg
+                // })
             } else if (axios.isCancel(res)) {
                 console.info("request canceled, url: ", config.url)
             } else {

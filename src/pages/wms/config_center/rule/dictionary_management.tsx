@@ -142,7 +142,7 @@ const schema = {
             name: "dictionaryTable",
             api: {
                 method: "POST",
-                url: "/search/search?page=${page}&perPage=${perPage}&createTime-op=bt",
+                url: "/search/search?page=${page}&perPage=${perPage}&createTime-op=bt&code-op=ct",
                 dataType: "application/json"
             },
             defaultParams: {

@@ -90,10 +90,10 @@ const columns = [
         // label: "状态",
         label: "table.status",
         type: "mapping",
-        source: "${PutAwayTaskStatusEnum}",
+        source: "${PutAwayTaskStatus}",
         searchable: {
             type: "select",
-            source: "${PutAwayTaskStatusEnum}"
+            source: "${PutAwayTaskStatus}"
         }
     },
     ...create_update_columns,
@@ -126,7 +126,7 @@ const detailColumns = [
         name: "inboundStatus",
         label: "table.status",
         type: "mapping",
-        source: "${PutAwayTaskStatusEnum}"
+        source: "${PutAwayTaskStatus}"
     }
 ]
 

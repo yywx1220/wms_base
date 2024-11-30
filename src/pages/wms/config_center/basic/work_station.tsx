@@ -240,13 +240,13 @@ const configInfoForm = [
                                         type: "select",
                                         label: "table.leftSeedingWall",
                                         name: "leftPutWallDisplayOrder",
-                                        source: "${PutWallDisplayOrderEnum}"
+                                        source: "${PutWallDisplayOrder}"
                                     },
                                     {
                                         type: "select",
                                         label: "table.rightSeedingWall",
                                         name: "rightPutWallDisplayOrder",
-                                        source: "${PutWallDisplayOrderEnum}"
+                                        source: "${PutWallDisplayOrder}"
                                     }
                                 ]
                             }
@@ -315,19 +315,19 @@ const configInfoForm = [
                                         type: "select",
                                         name: "color",
                                         label: "table.tplLightColor",
-                                        source: "${PtlColorEnum}"
+                                        source: "${PtlColor}"
                                     },
                                     {
                                         type: "select",
                                         name: "mode",
                                         label: "table.tplLightMode",
-                                        source: "${PtlModeEnum}"
+                                        source: "${PtlMode}"
                                     },
                                     {
                                         type: "select",
                                         name: "updown",
                                         label: "table.tplLightUpdown",
-                                        source: "${PtlUpdownEnum}"
+                                        source: "${PtlUpdown}"
                                     }
                                 ]
                             },
@@ -340,19 +340,19 @@ const configInfoForm = [
                                         type: "select",
                                         name: "color",
                                         label: "table.tplLightColor",
-                                        source: "${PtlColorEnum}"
+                                        source: "${PtlColor}"
                                     },
                                     {
                                         type: "select",
                                         name: "mode",
                                         label: "table.tplLightMode",
-                                        source: "${PtlModeEnum}"
+                                        source: "${PtlMode}"
                                     },
                                     {
                                         type: "select",
                                         name: "updown",
                                         label: "table.tplLightUpdown",
-                                        source: "${PtlUpdownEnum}"
+                                        source: "${PtlUpdown}"
                                     }
                                 ]
                             },
@@ -365,19 +365,19 @@ const configInfoForm = [
                                         type: "select",
                                         name: "color",
                                         label: "table.tplLightColor",
-                                        source: "${PtlColorEnum}"
+                                        source: "${PtlColor}"
                                     },
                                     {
                                         type: "select",
                                         name: "mode",
                                         label: "table.tplLightMode",
-                                        source: "${PtlModeEnum}"
+                                        source: "${PtlMode}"
                                     },
                                     {
                                         type: "select",
                                         name: "updown",
                                         label: "table.tplLightUpdown",
-                                        source: "${PtlUpdownEnum}"
+                                        source: "${PtlUpdown}"
                                     }
                                 ]
                             },
@@ -390,7 +390,7 @@ const configInfoForm = [
                                         type: "select",
                                         name: "color",
                                         label: "table.tplLightColor",
-                                        source: "${PtlColorEnum}"
+                                        source: "${PtlColor}"
                                     }
                                 ]
                             },
@@ -403,7 +403,7 @@ const configInfoForm = [
                                         type: "select",
                                         name: "color",
                                         label: "table.tplLightColor",
-                                        source: "${PtlColorEnum}"
+                                        source: "${PtlColor}"
                                     }
                                 ]
                             },
@@ -416,7 +416,7 @@ const configInfoForm = [
                                         type: "select",
                                         name: "color",
                                         label: "table.tplLightColor",
-                                        source: "${PtlColorEnum}"
+                                        source: "${PtlColor}"
                                     }
                                 ]
                             }
