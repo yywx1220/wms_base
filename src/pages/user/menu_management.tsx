@@ -123,10 +123,10 @@ const columns = [
         name: "systemCode",
         label: "userCenter.menuManagement.table.affiliation",
         type: "mapping",
-        source: "${SystemCode}",
+        source: "${AppCode}",
         searchable: {
             type: "select",
-            source: "${SystemCode}"
+            source: "${AppCode}"
         }
     },
     {

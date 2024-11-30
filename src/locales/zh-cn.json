@@ -426,7 +426,7 @@
     "table.virtualWarehouse": "是否虚拟仓",
     "table.warehouseFloorHeight": "仓库层高",
     "table.warehouseArea": "仓库面积",
-    "table.warehouseAreaEncoding": "库区编码",
+    "table.warehouseAreaEncoding": "仓区编码",
     "table.warehouseAreaName": "库区名称",
     "table.warehouseLogicName": "逻辑区名称",
     "table.warehouseLogicType": "逻辑区类型",

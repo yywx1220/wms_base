@@ -82,7 +82,7 @@ const form = [
         minimum: 0
     },
     {
-        label: "table.WarehouseFloorHeight",
+        label: "table.warehouseFloorHeight",
         type: "input-number",
         name: "height",
         minimum: 0

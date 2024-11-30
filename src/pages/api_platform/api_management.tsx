@@ -221,36 +221,23 @@ const columns = [
         name: "apiType",
         label: "interfacePlatform.interfaceManagement.table.interfaceType",
         type: "mapping",
-        source: "${ApiType}",
+        source: "${ApiCallType}",
         searchable: {
             type: "select",
-            source: "${ApiType}"
+            source: "${ApiCallType}"
         }
     },
     {
         name: "method",
-        label: "interfacePlatform.interfaceManagement.table.interfaceRequestMethod",
-        type: "mapping",
-        source: "${HttpMethod}",
-        searchable: {
-            type: "select",
-            source: "${HttpMethod}"
-        }
+        label: "interfacePlatform.interfaceManagement.table.interfaceRequestMethod"
     },
     {
         name: "format",
-        label: "interfacePlatform.interfaceManagement.table.interfaceRequestFormat",
-        type: "mapping",
-        source: "${MediaType}",
-        searchable: {
-            type: "select",
-            source: "${MediaType}"
-        }
+        label: "interfacePlatform.interfaceManagement.table.interfaceRequestFormat"
     },
     {
         name: "encoding",
-        label: "interfacePlatform.interfaceManagement.table.interfaceRequestEncoding",
-        searchable: true
+        label: "interfacePlatform.interfaceManagement.table.interfaceRequestEncoding"
     },
     {
         name: "headersStr",

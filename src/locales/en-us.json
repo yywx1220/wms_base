@@ -432,7 +432,7 @@
     "table.virtualWarehouse": "Virtual warehouse",
     "table.warehouseFloorHeight": "Warehouse floor height",
     "table.warehouseArea": "Warehouse area",
-    "table.warehouseAreaEncoding": "Warehouse area encoding",
+    "table.warehouseAreaEncoding": "Warehouse area group encoding",
     "table.warehouseAreaName": "Warehouse area name",
     "table.warehouseLogicName": "Warehouse logic name",
     "table.warehouseLogicType": "Warehouse logic type",
