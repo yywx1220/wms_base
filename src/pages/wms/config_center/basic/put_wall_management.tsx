@@ -1,6 +1,11 @@
 import schema2component from "@/utils/schema2component"
 import {put_wall_spec, work_station} from "@/pages/wms/constants/select_search_api_contant"
-import {create_update_columns, enable_options} from "@/utils/commonContants"
+import {create_update_columns} from "@/utils/commonContants"
+import {
+    api_put_wall_add,
+    api_put_wall_delete,
+    api_put_wall_get
+} from "@/pages/wms/config_center/constants/api_constant";
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
@@ -59,7 +64,7 @@ const putWallSlotColumns = [
     }];
 
 const formApi = {
-    url: "post:/wms/putWall/createOrUpdate?warehouseCode=" + warehouseCode,
+    url: api_put_wall_add + "?warehouseCode=" + warehouseCode,
     requestAdaptor: (api: any, context: any) => {
         return {
             ...api,
@@ -201,10 +206,8 @@ const columns = [
         searchable: true
     },
     {
-        name: "containerSpecId",
-        label: "table.seedingWallSpecifications",
-        type: "mapping",
-        source: put_wall_spec
+        name: "containerSpecCode",
+        label: "table.seedingWallSpecifications"
     },
     {
         name: "enable",
@@ -267,7 +270,7 @@ const schema = {
                                 body: {
                                     type: "form",
                                     api: formApi,
-                                    initApi: "get:/wms/putWall/${id}",
+                                    initApi: api_put_wall_get,
                                     body: formBody
                                 }
                             }
@@ -279,7 +282,7 @@ const schema = {
                             level: "danger",
                             confirmText: "toast.sureDelete",
                             confirmTitle: "button.delete",
-                            api: "delete:/wms/putWall/${id}",
+                            api: api_put_wall_delete,
                             reload: "PutWallTable"
                         }
                     ],

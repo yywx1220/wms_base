@@ -72,19 +72,9 @@ const columns = [
         hidden: true
     },
     {
-        dbField: "wcst.before_transfer_qty",
-        name: "beforeTransferQty",
-        label: "table.beforeTransferQty"
-    },
-    {
         dbField: "wcst.transfer_qty",
         name: "transferQty",
         label: "table.quantity"
-    },
-    {
-        dbField: "wcst.after_transfer_qty",
-        name: "afterTransferQty",
-        label: "table.afterTransferQty"
     },
     {
         dbField: "wcst.operation_task_type",
