@@ -3,6 +3,7 @@ import { CustomActionType } from "@/pages/wms/station/instances/stocktake/custom
 import { debounce } from "lodash"
 import { DEBOUNCE_TIME } from "@/pages/wms/station/constant"
 import {
+    container_code_table,
     owner_code,
     owner_code_by_sku_code
 } from "@/pages/wms/constants/select_search_api_contant"

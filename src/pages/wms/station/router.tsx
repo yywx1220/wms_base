@@ -1,6 +1,6 @@
-import React, { lazy } from "react"
-import { Route, Switch } from "react-router-dom"
-import Index, { WORK_STATION_PATH_PREFIX } from "./WorkStationCard"
+import React, {lazy} from "react"
+import {Route, Switch} from "react-router-dom"
+import Index, {WORK_STATION_PATH_PREFIX} from "./WorkStationCard"
 // import WorkStation from "./workStation"
 const WorkStation = lazy(() => import("@/pages/wms/station"))
 
@@ -8,7 +8,7 @@ const WORK_STATION_ROUTES = [
     {
         /* 收货 */
         path: "/receiving",
-        component: (props) => <WorkStation {...props} station="receiving" />
+        component: (props: any) => <WorkStation {...props} station="receiving"/>
     },
     // {
     //     /* 入库 */
@@ -20,7 +20,7 @@ const WORK_STATION_ROUTES = [
     {
         /* 拣货 */
         path: "/outbound",
-        component: (props: any) => <WorkStation {...props} station="outbound" />
+        component: (props: any) => <WorkStation {...props} station="outbound"/>
         // component: lazy(() => import("@/pages/wms/station/workStation"))
         // component: WorkStation
     },
@@ -59,14 +59,14 @@ const WORK_STATION_ROUTES = [
         /* 选择容器上架 */
         path: "/inventory",
         component: (props: any) => (
-            <WorkStation {...props} station="replenish" />
+            <WorkStation {...props} station="replenish"/>
         )
     },
     {
         /* 盘点 */
         path: "/replenish",
         component: (props: any) => (
-            <WorkStation {...props} station="inventory" />
+            <WorkStation {...props} station="inventory"/>
         )
     },
     // {

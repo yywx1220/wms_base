@@ -32,19 +32,19 @@ const CreateSKUForm = lazy(
         )
 )
 
-const CreateShelfForm = lazy(
-    () =>
-        import(
-            "@/pages/wms/station/instances/stocktake/operations/components/CreateShelfForm"
-        )
-)
-
-const CreateLockedSKUForm = lazy(
-    () =>
-        import(
-            "@/pages/wms/station/instances/stocktake/operations/components/CreateLockedSKUForm"
-        )
-)
+// const CreateShelfForm = lazy(
+//     () =>
+//         import(
+//             "@/pages/wms/station/instances/stocktake/operations/components/CreateShelfForm"
+//         )
+// )
+//
+// const CreateLockedSKUForm = lazy(
+//     () =>
+//         import(
+//             "@/pages/wms/station/instances/stocktake/operations/components/CreateLockedSKUForm"
+//         )
+// )
 
 const Request = lazy(
     () =>
@@ -71,26 +71,27 @@ const modeList = (props: any) => [
         ),
         icon: <ProcductFillSvg style={{ fontSize: 20, color: "#40a9ff" }} />
     },
-    {
-        mode: "SHELF",
-        icon: <ShelfSvg style={{ fontSize: 20, color: "#40a9ff" }} />,
-        component: (
-            <CreateShelfForm
-                warehouseAreaId={props.value}
-                onCustomActionDispatch={props.onCustomActionDispatch}
-            />
-        )
-    },
-    {
-        mode: "LOCKED",
-        icon: <LockFillSvg style={{ fontSize: 20, color: "#40a9ff" }} />,
-        component: (
-            <CreateLockedSKUForm
-                warehouseAreaId={props.value}
-                onCustomActionDispatch={props.onCustomActionDispatch}
-            />
-        )
-    }
+    // {
+    //     mode: "SHELF",
+    //     icon: <ShelfSvg style={{ fontSize: 20, color: "#40a9ff" }} />,
+    //     component: (
+    //         <CreateShelfForm
+    //             warehouseAreaId={props.value}
+    //             onCustomActionDispatch={props.onCustomActionDispatch}
+    //         />
+    //     )
+    // },
+    // {
+    //     mode: "LOCKED",
+    //     icon: <LockFillSvg style={{ fontSize: 20, color: "#40a9ff" }} />,
+    //     component: (
+    //
+    //         <CreateLockedSKUForm
+    //             warehouseAreaId={props.value}
+    //             onCustomActionDispatch={props.onCustomActionDispatch}
+    //         />
+    //     )
+    // }
 ]
 
 const CreateOrder = (props: OperationProps<any, any>) => {
