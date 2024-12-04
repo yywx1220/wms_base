@@ -139,7 +139,7 @@ const formBody = [
         label: "table.seedingWallLocation",
         name: "location",
         type: "select",
-        source: "${PutwallLocation}",
+        source: "${PutWallLocation}",
         required: true
     },
     {
