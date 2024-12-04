@@ -2,7 +2,7 @@ import React from "react"
 
 const TextMap = {
     WAIT_ROBOT: "Please wait,Gathering the Shelves for the next task.",
-    NOT_TASK: "HIT CONTAINER LEAVE WHEN READY."
+    NO_TASK: "HIT CONTAINER LEAVE WHEN READY."
 }
 
 const PromptCard = ({ stationProcessingStatus }: any) => {

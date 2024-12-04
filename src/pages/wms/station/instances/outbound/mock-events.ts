@@ -3246,7 +3246,7 @@ const mockData = {
         enableSplitContainer: true,
         enableReleaseSlot: true
     },
-    stationProcessingStatus: "NOT_TASK"
+    stationProcessingStatus: "NO_TASK"
 }
 
 export default mockData

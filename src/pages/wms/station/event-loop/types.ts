@@ -208,7 +208,7 @@ export interface putWallSlotColor {
 }
 
 export type StationProcessingStatus =
-    | "NOT_TASK"
+    | "NO_TASK"
     | "WAIT_ROBOT"
     | "WAIT_CALL_CONTAINER"
 

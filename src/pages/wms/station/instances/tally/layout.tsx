@@ -42,7 +42,7 @@ const Layout = (props: StocktakeLayoutProps) => {
 
     return (
         <Row className="h-full" gutter={24}>
-            {stationStatus === "NOT_TASK" ? (
+            {stationStatus === "NO_TASK" ? (
                 <Col className="flex-1 rounded-lg">
                     <ComponentWrapper
                         type={StationOperationType.defaultArea}

@@ -58,14 +58,6 @@ const detailColumns = [
         hidden: true
     },
     {
-        name: "barCodeList",
-        label: "skuArea.barcode"
-    },
-    {
-        name: "skuName",
-        label: "skuArea.productName"
-    },
-    {
         name: "warehouseCode",
         label: "table.warehouse"
     },
@@ -76,14 +68,6 @@ const detailColumns = [
     {
         name: "containerFace",
         label: "workLocationArea.face"
-    },
-    {
-        name: "containerSlotCode",
-        label: "table.containerSlotCode"
-    },
-    {
-        name: "totalQty",
-        label: "table.inventoryQuantity"
     },
     {
         name: "stocktakeTaskDetailStatus",

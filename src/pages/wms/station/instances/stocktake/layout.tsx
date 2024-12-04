@@ -63,14 +63,14 @@ const Layout = (props: StocktakeLayoutProps) => {
                         <ComponentWrapper
                             type={StationOperationType.defaultArea}
                             Component={
-                                stationStatus === "NOT_TASK"
+                                stationStatus === "NO_TASK"
                                     ? OPERATION_MAP.createOrder
                                     : OPERATION_MAP[
                                           StationOperationType.defaultArea
                                       ]
                             }
                             valueFilter={
-                                stationStatus === "NOT_TASK"
+                                stationStatus === "NO_TASK"
                                     ? createFilter
                                     : defaultFilter
                             }

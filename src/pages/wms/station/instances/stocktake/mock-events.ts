@@ -9117,7 +9117,7 @@ const mockData = {
     putWallArea: null,
     orderArea: null,
     toolbar: null,
-    stationProcessingStatus: "NOT_TASK"
+    stationProcessingStatus: "NO_TASK"
 }
 
 export default mockData
