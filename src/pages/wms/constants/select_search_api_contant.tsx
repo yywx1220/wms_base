@@ -439,9 +439,9 @@ export const put_wall_spec = {
                 javaType: "java.lang.String"
             },
             {
-                dbField: "id",
+                dbField: "container_spec_code",
                 name: "value",
-                javaType: "java.lang.Long"
+                javaType: "java.lang.String"
             },
             {
                 dbField: "container_slot_specs",

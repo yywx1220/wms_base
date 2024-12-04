@@ -64,12 +64,13 @@ const putWallSlotColumns = [
     }];
 
 const formApi = {
-    url: api_put_wall_add + "?warehouseCode=" + warehouseCode,
+    url: api_put_wall_add ,
     requestAdaptor: (api: any, context: any) => {
         return {
             ...api,
             data: {
                 ...api.data,
+                "warehouseCode": warehouseCode,
                 putWallSlots: api.data.putWallSlots.map((slot: any) => {
                     return {
                         ...slot,
@@ -122,7 +123,7 @@ const formBody = [
     },
     {
         label: "table.seedingWallSpecifications",
-        name: "containerSpecId",
+        name: "containerSpecCode",
         type: "select",
         source: put_wall_spec,
         required: true,

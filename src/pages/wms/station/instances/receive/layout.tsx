@@ -55,7 +55,7 @@ const Layout = (props: ReplenishLayoutProps) => {
         request({
             method: "post",
             // url: `/wms/inbound/plan/query/${orderNo}/${workStationEvent.warehouseCode}`
-            url: `/wms/inbound/plan/query/${orderNo}/MOBILESENTRIX`
+            url: `/wms/inbound/plan/query/${orderNo}/`+warehouseCode
         })
             .then((res: any) => {
                 console.log("res", res)
