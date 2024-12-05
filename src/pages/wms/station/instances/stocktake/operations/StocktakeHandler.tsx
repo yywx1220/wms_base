@@ -248,10 +248,14 @@ const StocktakeAreaHandler = (
             </Row>
             <div>
                 <SkuInfo
-                    skuMainDataDTO={skuMainDataDTO}
-                    skuBatchAttributeDTO={skuBatchAttributeDTO}
+                    // skuMainDataDTO={skuMainDataDTO}
+                    // skuBatchAttributeDTO={skuBatchAttributeDTO}
                     imgWidth={180}
                     detailHeight={180}
+                    skuName={skuMainDataDTO?.skuName}
+                    barCode={skuMainDataDTO?.skuBarcode?.barcodes[0]}
+                    url={skuMainDataDTO?.skuAttribute?.imageUrl}
+                    skuAttributes={skuBatchAttributeDTO?.skuAttributes}
                 />
             </div>
             <Row className="pt-4 pb-3">

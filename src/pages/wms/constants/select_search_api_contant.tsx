@@ -611,67 +611,67 @@ export const container_code_table = {
 }
 
 export const stock_sku_id_table_columns = [
-            {
-                dbField: "k.sku_id",
-                name: "value",
-                hidden: true,
-                javaType: "java.lang.Long"
-            },
-            {
-                dbField: "max(a.sku_code)",
-                name: "label",
-                label: "skuArea.skuCode",
-                javaType: "java.lang.String"
-            },
-            {
-                dbField: "max(a.sku_name)",
-                name: "skuCode",
-                label: "skuArea.productName",
-                javaType: "java.lang.String"
-            },
-            {
-                dbField: "max(c.warehouse_area_id)",
-                name: "warehouseAreaId",
-                javaType: "java.lang.String",
-                hidden: true,
-            },
-            {
-                dbField: "max(a.owner_code)",
-                name: "ownerCode",
-                label: "skuArea.ownerCode",
-                javaType: "java.lang.String"
-            },
-            {
-                dbField: "max(a.brand)",
-                name: "brand",
-                label: "table.brand",
-                javaType: "java.lang.String"
-            },
-            {
-                dbField: "max(a.style)",
-                name: "style",
-                label: "table.style",
-                javaType: "java.lang.String"
-            },
-            {
-                dbField: "max(a.color)",
-                name: "color",
-                label: "table.color",
-                javaType: "java.lang.String"
-            },
-            {
-                dbField: "sum(k.available_qty)",
-                name: "availableQuantity",
-                label: "table.availableQuantity",
-                javaType: "java.lang.String"
-            },
-            {
-                dbField: "sum(k.total_qty)",
-                name: "totalQty",
-                label: "table.inventoryQuantity",
-                javaType: "java.lang.String"
-            }
-        ]
+    {
+        dbField: "k.sku_id",
+        name: "value",
+        hidden: true,
+        javaType: "java.lang.Long"
+    },
+    {
+        dbField: "max(a.sku_code)",
+        name: "label",
+        label: "skuArea.skuCode",
+        javaType: "java.lang.String"
+    },
+    {
+        dbField: "max(a.sku_name)",
+        name: "skuCode",
+        label: "skuArea.productName",
+        javaType: "java.lang.String"
+    },
+    {
+        dbField: "max(c.warehouse_area_id)",
+        name: "warehouseAreaId",
+        javaType: "java.lang.String",
+        hidden: true
+    },
+    {
+        dbField: "max(a.owner_code)",
+        name: "ownerCode",
+        label: "skuArea.ownerCode",
+        javaType: "java.lang.String"
+    },
+    {
+        dbField: "max(a.brand)",
+        name: "brand",
+        label: "table.brand",
+        javaType: "java.lang.String"
+    },
+    {
+        dbField: "max(a.style)",
+        name: "style",
+        label: "table.style",
+        javaType: "java.lang.String"
+    },
+    {
+        dbField: "max(a.color)",
+        name: "color",
+        label: "table.color",
+        javaType: "java.lang.String"
+    },
+    {
+        dbField: "sum(k.available_qty)",
+        name: "availableQuantity",
+        label: "table.availableQuantity",
+        javaType: "java.lang.String"
+    },
+    {
+        dbField: "sum(k.total_qty)",
+        name: "totalQty",
+        label: "table.inventoryQuantity",
+        javaType: "java.lang.String"
+    }
+]
 
 export const stock_sku_id_table = {
     method: "post",
@@ -705,7 +705,7 @@ export const stock_abnormal_table = {
 export const stock_sku_code_table = {
     method: "post",
     url:
-        "/search/search?page=${page}&perPage=10&warehouseCode-op=eq&warehouseCode=" +
+        "/search/search?page=1&perPage=10&warehouseCode-op=eq&warehouseCode=" +
         warehouseCode,
     data: {
         searchIdentity: "SearchSkuCodeTable",

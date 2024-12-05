@@ -2,6 +2,8 @@ import schema2component from "@/utils/schema2component"
 import { CustomActionType } from "@/pages/wms/station/instances/stocktake/customActionType"
 import { debounce } from "lodash"
 import { DEBOUNCE_TIME } from "@/pages/wms/station/constant"
+import request from "@/utils/requestInterceptor"
+import WorkStation from "@/pages/wms/station"
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
@@ -20,7 +22,7 @@ const columns = [
         name: "stocktakeTaskStatus",
         label: "table.status",
         source: "${StocktakeTaskStatus}",
-        type: "mapping",
+        type: "mapping"
     },
     {
         label: "table.createdBy",
@@ -77,7 +79,6 @@ const detailColumns = [
     }
 ]
 
-
 const detailDialog = {
     title: "inventoryCounting.detail.modal.title",
     actions: [],
@@ -96,7 +97,7 @@ const detailDialog = {
             },
             defaultParams: {
                 searchIdentity: "WStocktakeTaskDetail",
-                showColumns: detailColumns,
+                showColumns: detailColumns
             },
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
             columns: detailColumns
@@ -119,11 +120,11 @@ const schema = {
                 url:
                     "/search/search?page=${page}&perPage=${perPage}&warehouseCode-eq=" +
                     warehouseCode,
-                dataType: "application/json",
+                dataType: "application/json"
             },
             defaultParams: {
                 searchIdentity: "WStocktakeTask",
-                showColumns: columns,
+                showColumns: columns
             },
             autoFillHeight: true,
             autoGenerateFilter: {
@@ -133,28 +134,64 @@ const schema = {
             headerToolbar: ["reload", "bulkActions"],
             bulkActions: [
                 {
+                    type: "button",
                     label: "button.receiveInBatches",
                     level: "primary",
+                    className: "batchTakeOrders",
+                    // actionType: "ajax",
+                    // api: {
+                    //     method: "POST",
+                    //     url: "/wms/stocktake/order/receive",
+                    //     dataType: "application/json",
+                    //     data: {
+                    //         stocktakeTaskIds:
+                    //             "${ARRAYMAP(selectedItems, item => item.id)}",
+                    //         workStationId: ""
+                    //     }
+                    // }
                     onClick: debounce(
                         async (e: any, props: any) => {
-                            const { onCustomActionDispatch } = props
-                            const { code } = await onCustomActionDispatch({
-                                eventCode:
-                                    CustomActionType.STOCKTAKE_EXECUTE_TASK,
+                            console.log("props", props)
+                            // const { onCustomActionDispatch } = props
+                            // const { code } = await onCustomActionDispatch({
+                            //     eventCode:
+                            //         CustomActionType.STOCKTAKE_EXECUTE_TASK,
+                            //     data: {
+                            //         taskIds: props.data.ids.split(",")
+                            //     }
+                            // })
+                            // if (code !== "-1") {
+                            //     props.setModalVisible(false)
+                            //     return
+                            // }
+                            request({
+                                method: "post",
+                                url: "/wms/stocktake/order/receive",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
                                 data: {
-                                    taskIds: props.data.ids.split(",")
+                                    stocktakeTaskIds: props.data.ids.split(","),
+                                    workStationId:
+                                        props.workStationEvent.workStationId
                                 }
                             })
-
-                            if (code !== "-1") {
-                                props.setModalVisible(false)
-                                return
-                            }
+                                .then((res: any) => {
+                                    if (res.status === 200) {
+                                        props.setModalVisible(false)
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.log("error", error)
+                                })
+                            // if (res. !== "-1") {
+                            //     props.setModalVisible(false)
+                            //     return
+                            // }
                         },
                         DEBOUNCE_TIME,
                         { leading: false }
-                    ),
-                    className: "batchTakeOrders"
+                    )
                 }
             ],
             footerToolbar: ["switch-per-page", "statistics", "pagination"],

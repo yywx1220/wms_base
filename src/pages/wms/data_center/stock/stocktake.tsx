@@ -5,13 +5,13 @@ import {
     warehouse_area_id,
     warehouse_logic_id
 } from "@/pages/wms/constants/select_search_api_contant"
-import {api_stocktake_order_add} from "@/pages/wms/data_center/constants/api_constant"
+import { api_stocktake_order_add } from "@/pages/wms/data_center/constants/api_constant"
 import { stock_sku_id_table } from "@/pages/wms/constants/select_search_api_contant"
 import { stock_sku_id_table_columns } from "@/pages/wms/constants/select_search_api_contant"
-import {create_update_columns, yes_no_options} from "@/utils/commonContants"
+import { create_update_columns, yes_no_options } from "@/utils/commonContants"
 import React from "react"
-import {Translation} from "react-i18next"
-import {toast} from "amis"
+import { Translation } from "react-i18next"
+import { toast } from "amis"
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
@@ -120,7 +120,8 @@ const dialog = {
                 type: "tabs",
                 name: "stocktakeUnitType",
                 tabsMode: "strong",
-                tabs: [{
+                tabs: [
+                    {
                         title: "modal.countByProduct",
                         value: "SKU",
                         hiddenOn: "${stocktakeType === 'DISCREPANCY_REVIEW'}",
@@ -227,7 +228,11 @@ const dialog = {
                                                 "Please scan the product bar code"
                                         },
                                         source: "${options}",
-                                        footerToolbar: ["switch-per-page", "statistics", "pagination"],
+                                        footerToolbar: [
+                                            "switch-per-page",
+                                            "statistics",
+                                            "pagination"
+                                        ],
                                         columns: stock_sku_id_table_columns,
                                         onEvent: {
                                             change: {
@@ -238,8 +243,7 @@ const dialog = {
                                                         actionType: "setValue",
                                                         args: {
                                                             value: {
-                                                                stockIds:
-                                                                    "${event.data.value}"
+                                                                skuIds: "${event.data.value}"
                                                             }
                                                         }
                                                     }
@@ -280,8 +284,8 @@ const dialog = {
                     className: "generateInventoryOrder",
                     onClick: (_e: any, props: any) => {
                         if (
-                            !props.scope.stockIds ||
-                            props.scope.stockIds.length === 0
+                            !props.scope.skuIds ||
+                            props.scope.skuIds.length === 0
                         ) {
                             toast["error"](
                                 "Please select the products you want to count",
@@ -493,7 +497,7 @@ const detailDialog = {
             },
             defaultParams: {
                 searchIdentity: searchDetailIdentity,
-                showColumns: detailColumns,
+                showColumns: detailColumns
             },
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
             columns: detailColumns
@@ -519,8 +523,8 @@ const recordDialog = {
             },
             defaultParams: {
                 searchIdentity: searchRecordIdentity,
-                showColumns:recordColumns,
-                searchObject:{
+                showColumns: recordColumns,
+                searchObject: {
                     tables: "w_stocktake_record k  inner join m_sku_main_data a on k.sku_id = a.id"
                 }
             },
@@ -550,15 +554,32 @@ const schema = {
                 data: {
                     searchIdentity: searchIdentity,
                     showColumns: columns
-                },
+                }
             },
             autoFillHeight: true,
             autoGenerateFilter: {
                 columnsNum: 3,
                 showBtnToolbar: true
             },
-            headerToolbar: ["reload", add],
+            headerToolbar: ["reload", add, "bulkActions"],
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
+            bulkActions: [
+                {
+                    label: "执行盘点单",
+                    actionType: "ajax",
+                    api: {
+                        method: "post",
+                        url: "/wms/stocktake/order/execute",
+                        data: {
+                            warehouseCode,
+                            orderNos:
+                                "${ARRAYMAP(selectedItems, item => item.orderNo)}",
+                            taskCount: "${COUNT(selectedItems)}"
+                        }
+                    },
+                    confirmText: "确定要执行盘点单?"
+                }
+            ],
             columns: [
                 ...columns,
                 {
