@@ -58,7 +58,7 @@ const RobotHandler = (props: any) => {
     const { value, onConfirm } = props
 
     const [inputValue, setInputValue] = useState<number>()
-    const [specOtions, setSpecOtions] = useState<any[]>([])
+    const [specOptions, setSpecOptions] = useState<any[]>([])
     const [containerSpec, setContainerSpec] = useState<any>({})
     const [containerSlotSpec, setContainerSlotSpec] = useState<string>("")
     const [activeSlot, setActiveSlot] = useState<string[]>([])
@@ -106,7 +106,7 @@ const RobotHandler = (props: any) => {
             }
         }).then((res: any) => {
             console.log("res", res?.data?.options)
-            setSpecOtions(res?.data?.options || [])
+            setSpecOptions(res?.data?.options || [])
             setContainerSpec({
                 containerSpecCode: res?.data?.options[0]?.value
             })
@@ -134,7 +134,7 @@ const RobotHandler = (props: any) => {
             ...containerSpec,
             containerSpecCode: e.target.value
         })
-        const slotSpec = specOtions.find(
+        const slotSpec = specOptions.find(
             (item) => item.value === e.target.value
         )?.containerSlotSpecs
         setContainerSlotSpec(JSON.parse(slotSpec))
@@ -236,7 +236,7 @@ const RobotHandler = (props: any) => {
                                 buttonStyle="solid"
                                 onChange={onSpecChange}
                             >
-                                {specOtions.map((item) => (
+                                {specOptions.map((item) => (
                                     <Radio.Button value={item.value}>
                                         {item.label}
                                     </Radio.Button>

@@ -1,14 +1,15 @@
 import React from "react"
 import schema2component from "@/utils/schema2component"
-import { volume } from "@/pages/wms/config_center/constants/form_constants"
-import { Translation } from "react-i18next"
-import { create_update_columns } from "@/utils/commonContants"
+import {volume} from "@/pages/wms/config_center/constants/form_constants"
+import {Translation} from "react-i18next"
+import {create_update_columns} from "@/utils/commonContants"
 import {
     api_container_spec_add,
+    api_container_spec_delete,
     api_container_spec_get,
-    api_container_spec_update,
-    api_container_spec_delete
+    api_container_spec_update
 } from "@/pages/wms/config_center/constants/api_constant"
+
 let warehouseCode = localStorage.getItem("warehouseCode")
 
 const fromBody = [
@@ -64,18 +65,10 @@ const fromBody = [
             {
                 name: "face",
                 label: "table.face/wall_coding",
-                type: "select",
-                options: [
-                    {
-                        label: "F",
-                        value: "F"
-                    },
-                    {
-                        label: "B",
-                        value: "B"
-                    }
-                ],
-                required: true
+                type: "input-text",
+                value: "",
+                hiddenOn: "this.containerType == 'CONTAINER' || this.containerType == 'TRANSFER_CONTAINER' ",
+                requiredOn: "this.containerType == 'SHELF'",
             },
             {
                 name: "level",
@@ -180,8 +173,6 @@ const columns = [
 ]
 
 const searchIdentity = "WContainerSpec"
-const showColumns = columns
-
 const schema = {
     type: "page",
     //   title: "容器规格管理",
@@ -202,7 +193,7 @@ const schema = {
             },
             defaultParams: {
                 searchIdentity: searchIdentity,
-                showColumns: showColumns,
+                showColumns: columns,
                 searchObject: {
                     orderBy: "update_time desc"
                 }

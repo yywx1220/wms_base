@@ -122,7 +122,7 @@ const dialog = {
                 tabsMode: "strong",
                 tabs: [{
                         title: "modal.countByProduct",
-                        value: "STOCK",
+                        value: "SKU",
                         hiddenOn: "${stocktakeType === 'DISCREPANCY_REVIEW'}",
                         body: {
                             type: "form",

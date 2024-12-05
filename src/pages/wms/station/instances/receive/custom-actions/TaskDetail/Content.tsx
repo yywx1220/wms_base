@@ -67,8 +67,6 @@ const columns = [
 ]
 
 const searchIdentity = "WReceiveDTaskDetail"
-const showColumns = columns
-
 const schema = {
     type: "page",
     // title: "订单详情",
@@ -87,7 +85,7 @@ const schema = {
             },
             defaultParams: {
                 searchIdentity: searchIdentity,
-                showColumns: showColumns,
+                showColumns: columns,
                 searchObject: {
                     tables: "w_accept_order a inner join w_accept_order_detail ad on a.id = ad.accept_order_id",
                     where: "a.accept_order_status = 'NEW'"
