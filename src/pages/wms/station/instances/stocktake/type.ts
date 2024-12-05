@@ -14,7 +14,8 @@ export enum StationOperationType {
     selectBatchTipArea = "selectBatchTipArea",
     selectEmptyTipArea = "selectEmptyTipArea",
     defaultArea = "defaultArea",
-    skuArea = "skuArea"
+    skuArea = "skuArea",
+    orderArea = "orderArea"
 }
 
 /**

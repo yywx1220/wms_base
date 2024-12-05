@@ -3,15 +3,11 @@ import type {
     StationProcessingStatus
 } from "@/pages/wms/station/event-loop/types"
 import type { OperationProps } from "@/pages/wms/station/instances/types"
-import classNames from "classnames/bind"
 import React from "react"
 import { Translation } from "react-i18next"
 
-import style from "../index.module.scss"
 import noTaskImg from "@/icon/station/no_task.png"
 import waitBinImg from "@/icon/station/wait_bin.png"
-
-const cx = classNames.bind(style)
 
 export interface DefaultProps {
     containerViews: any
@@ -32,18 +28,7 @@ export const valueFilter = (
     if (!data) return {}
     return data.stationProcessingStatus
 }
-// const taskStatusText = {
-//     NO_TASK: <IntlMessages id="workstaion.common.tip.pleaseCollectCallRobot" />,
-//     WAIT_ROBOT: (
-//         <IntlMessages id="workstaion.manualWarehousing.prompt.patient" />
-//     ),
-//     WAIT_CONTAINER: (
-//         <IntlMessages id="workstaion.manualWarehousing.prompt.patient" />
-//     ),
-//     WAIT_CALL_CONTAINER: (
-//         <IntlMessages id="workstaion.manualWarehousing.prompt.waitCallContainer" />
-//     )
-// }
+
 export const taskStatusText = {
     NO_TASK: <Translation>{(t) => t("station.NO_TASK")}</Translation>,
     WAIT_ROBOT: <Translation>{(t) => t("station.WAITING_ROBOT")}</Translation>,
@@ -75,9 +60,21 @@ const DefaultPage = (
                 src={taskStatusImage[value as StationProcessingStatus]}
                 alt=""
             />
-            <div style={{ padding: "24px 0" }} data-testid="taskStatusText">
+            <div
+                style={{ padding: "24px 0", textAlign: "center" }}
+                data-testid="taskStatusText"
+            >
                 {taskStatusText[value as StationProcessingStatus] ||
                     taskStatusText.NO_TASK}
+                {value === "NO_TASK" ? (
+                    <div>
+                        {
+                            <Translation>
+                                {(t) => t("station.TAKE_TASK")}
+                            </Translation>
+                        }
+                    </div>
+                ) : null}
             </div>
         </div>
     )

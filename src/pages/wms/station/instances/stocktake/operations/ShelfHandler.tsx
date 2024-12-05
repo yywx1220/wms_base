@@ -4,6 +4,8 @@ import type { OperationProps } from "@/pages/wms/station/instances/types"
 import MaterialRack from "@/pages/wms/station/widgets/common/Shelf"
 import React from "react"
 import { CustomActionType } from "@/pages/wms/station/instances/replenish/customActionType"
+import { Typography } from "antd"
+const { Title } = Typography
 
 export interface ContainerHandlerConfirmProps {
     operationType: string
@@ -52,36 +54,33 @@ const RobotHandler = (
         robotArea?.workLocationViews?.[0].workLocationSlots?.[0]
             ?.arrivedContainer
 
-    // const handleSelectSlot = async (cell: any) => {
-    //     if (
-    //         arrivedContainer?.activeSlotCodes?.includes(
-    //             cell.containerSlotSpecCode
-    //         )
-    //     ) {
-    //         return
-    //     }
-    //     await onCustomActionDispatch({
-    //         eventCode: CustomActionType.CHOOSE_CONTAINER_SLOT_CODE,
-    //         data: cell.containerSlotSpecCode
-    //     })
-    // }
     return (
-        <div
-            style={{
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%"
-            }}
-        >
-            <MaterialRack
-                // onCustomActionDispatch={(cell) => handleSelectSlot(cell)}
-                arrivedContainer={arrivedContainer}
-                showSlotCode={true}
-                // showAllSlots={true}
-            />
+        <div className="h-full w-full">
+            <Title level={3} className="pb-6">
+                Container
+            </Title>
+            <div
+                style={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    // justifyContent: "center",
+                    width: "100%"
+                }}
+            >
+                <div
+                    style={{
+                        height: "70%",
+                        width: "70%"
+                    }}
+                >
+                    <MaterialRack
+                        arrivedContainer={arrivedContainer}
+                        showSlotCode={true}
+                    />
+                </div>
+            </div>
         </div>
     )
 }

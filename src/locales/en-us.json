@@ -8,10 +8,11 @@
     "login.password": "Password",
 
     "station.operatingStation": "Station",
-    "station.NO_TASK": "No task",
+    "station.NO_TASK": "No task.",
+    "station.TAKE_TASK": "Please click the 'Take Orders' button to get the task.",
     "station.WAITING_CONTAINER": "Waiting for the container",
     "station.CALL_CONTAINER": "Please call the container",
-    "station.WAITING_ROBOT": "The robot is coming on the way",
+    "station.WAITING_ROBOT": "The robot is moving, please wait patiently",
 
     "replenish.title": "Replenish",
     "replenish.cardDescription": "Manually select the container for launching",
@@ -29,7 +30,7 @@
     "library.title": "Refill",
     "library.cardDescription": "Sort the inventory of SKU",
 
-    "button.takeOrder": "Take orders",
+    "button.takeOrder": "Take Orders",
     "button.createCountOrder": "Create order",
     "button.taskDetail": "Task details",
     "button.abnormalRecord": "Discrepancy record",

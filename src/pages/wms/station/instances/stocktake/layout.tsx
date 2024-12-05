@@ -55,73 +55,52 @@ const Layout = (props: StocktakeLayoutProps) => {
     }, [])
 
     return (
-        <>
-            <Row className="h-full" gutter={24}>
-                {stationStatus &&
-                Object.keys(taskStatusText).includes(stationStatus) ? (
-                    <Col className="flex-1 rounded-lg">
+        <Row className="h-full" gutter={24}>
+            {stationStatus &&
+            Object.keys(taskStatusText).includes(stationStatus) ? (
+                <Col className="flex-1 rounded-lg">
+                    <ComponentWrapper
+                        type={StationOperationType.defaultArea}
+                        Component={
+                            OPERATION_MAP[StationOperationType.defaultArea]
+                        }
+                        valueFilter={defaultFilter}
+                    />
+                </Col>
+            ) : (
+                <>
+                    <Col className="rounded-lg h-full" span={8}>
                         <ComponentWrapper
-                            type={StationOperationType.defaultArea}
+                            type={StationOperationType.orderArea}
                             Component={
-                                stationStatus === "NO_TASK"
-                                    ? OPERATION_MAP.createOrder
-                                    : OPERATION_MAP[
-                                          StationOperationType.defaultArea
-                                      ]
+                                OPERATION_MAP[StationOperationType.orderArea]
                             }
-                            valueFilter={
-                                stationStatus === "NO_TASK"
-                                    ? createFilter
-                                    : defaultFilter
-                            }
+                            valueFilter={shelfFilter}
                         />
                     </Col>
-                ) : (
-                    <>
-                        <Col className="rounded-lg h-full" span={12}>
-                            <ComponentWrapper
-                                type={StationOperationType.shelfArea}
-                                Component={
-                                    OPERATION_MAP[
-                                        StationOperationType.shelfArea
-                                    ]
-                                }
-                                valueFilter={shelfFilter}
-                            />
-                        </Col>
-                        <Col className="rounded-lg h-full" span={12}>
-                            <ComponentWrapper
-                                type={StationOperationType.stocktakeArea}
-                                Component={
-                                    OPERATION_MAP[
-                                        StationOperationType.stocktakeArea
-                                    ]
-                                }
-                                valueFilter={stocktakeFilter}
-                            />
-                        </Col>
-                    </>
-                )}
-            </Row>
-
-            {/* <ComponentWrapper
-                type={StationOperationType.selectBatchTipArea}
-                Component={
-                    OPERATION_MAP[StationOperationType.selectBatchTipArea]
-                }
-                valueFilter={selectBatchTipFilter}
-                withWrapper={false}
-            />
-
-            <ComponentWrapper
-                type={StationOperationType.selectEmptyTipArea}
-                Component={
-                    OPERATION_MAP[StationOperationType.selectEmptyTipArea]
-                }
-                valueFilter={selectEmptyTipFilter}
-                withWrapper={false}
-            /> */}
-        </>
+                    <Col className="rounded-lg h-full" span={8}>
+                        <ComponentWrapper
+                            type={StationOperationType.stocktakeArea}
+                            Component={
+                                OPERATION_MAP[
+                                    StationOperationType.stocktakeArea
+                                ]
+                            }
+                            valueFilter={stocktakeFilter}
+                        />
+                    </Col>
+                    <Col className="rounded-lg h-full" span={8}>
+                        <ComponentWrapper
+                            type={StationOperationType.shelfArea}
+                            Component={
+                                OPERATION_MAP[StationOperationType.shelfArea]
+                            }
+                            valueFilter={shelfFilter}
+                        />
+                    </Col>
+                </>
+            )}
+        </Row>
     )
 }
 

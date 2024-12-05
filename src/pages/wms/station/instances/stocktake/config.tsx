@@ -16,12 +16,14 @@ import DefaultArea from "@/pages/wms/station/instances/replenish/operations/defa
 // import SelectEmptyTip from "./operations/SelectEmptyTip"
 import ShelfHandler from "./operations/ShelfHandler"
 import StocktakeHandler from "./operations/StocktakeHandler"
+import OrderHandler from "./operations/OrderHandler"
 import CreateOrder from "./operations/CreateOrder"
 import { StationOperationType } from "./type"
 
 export const OPERATION_MAP = {
     // [StationOperationType.conveyorArea]: ConveyorHandler,
     // [StationOperationType.robotArea]: RobotHandler,
+    [StationOperationType.orderArea]: OrderHandler,
     [StationOperationType.shelfArea]: ShelfHandler,
     [StationOperationType.stocktakeArea]: StocktakeHandler,
     // [StationOperationType.selectBatchTipArea]: SelectBatchTip,  // 选择SKU的批次属性
