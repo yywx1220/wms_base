@@ -1,6 +1,5 @@
 import React from "react"
 import { Translation } from "react-i18next"
-// import { ReactComponent as AbnormalSvg } from "@/icon/fontIcons/abnormal.svg" // path to your '*.svg' file.
 import AbnormalSvg from "@/icon/fontIcons/abnormal.svg" // path to your '*.svg' file.
 
 import type { TabAction } from "@/pages/wms/station/tab-actions/types"
@@ -9,7 +8,6 @@ import { TipType } from "@/pages/wms/station/instances/outbound/operations/tips/
 
 const taskConfig: TabAction = {
     name: <Translation>{(t) => t("button.abnormalRecord")}</Translation>,
-    // <IntlMessages id="workstaion.outbound.action.exceptionRegistration" />
     key: "exceptionLog",
     position: "right",
     permissions: [10705],
