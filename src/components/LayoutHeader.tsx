@@ -78,7 +78,7 @@ const Header = ({
                     <i className="fa fa-bars text-white" />
                 </button>
                 <div
-                    className={`cxd-Layout-brand d-flex juftify-center items-center`}
+                    className={`cxd-Layout-brand d-flex juftify-center items-center shadow`}
                     style={{ height: 50 }}
                 >
                     <Icon
