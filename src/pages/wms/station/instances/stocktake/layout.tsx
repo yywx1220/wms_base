@@ -1,38 +1,27 @@
-import {Col, Row} from "antd"
-import classNames from "classnames/bind"
-import React, {useEffect} from "react"
+import { Col, Row } from "antd"
+import React, { useEffect } from "react"
 
-import type {WorkStationEvent, WorkStationInfo} from "@/pages/wms/station/event-loop/types"
-import type {OperationProps} from "@/pages/wms/station/instances/types"
+import type {
+    WorkStationEvent,
+    WorkStationInfo
+} from "@/pages/wms/station/event-loop/types"
+import type { OperationProps } from "@/pages/wms/station/instances/types"
 
 import ComponentWrapper from "../../component-wrapper"
-import {OPERATION_MAP} from "./config"
-import style from "./index.module.scss"
-import {valueFilter as orderFilter} from "./operations/OrderHandler"
-import {valueFilter as shelfFilter} from "./operations/ShelfHandler"
-import {valueFilter as stocktakeFilter} from "./operations/StocktakeHandler"
-import {StationOperationType, StationPhysicalType} from "./type"
+import { OPERATION_MAP } from "./config"
+import { valueFilter as orderFilter } from "./operations/OrderHandler"
+import { valueFilter as shelfFilter } from "./operations/ShelfHandler"
+import { valueFilter as stocktakeFilter } from "./operations/StocktakeHandler"
+import { StationOperationType } from "./type"
 import {
     taskStatusText,
     valueFilter as defaultFilter
-} from "@/pages/wms/station/instances/replenish/operations/defaultPage"
+} from "@/pages/wms/station/instances/receive/operations/defaultPage"
 
 interface StocktakeLayoutProps extends OperationProps<any, any> {
     workStationEvent: WorkStationEvent<any>
     workStationInfo: WorkStationInfo
 }
-
-const filterMap = {
-    shelfArea: shelfFilter
-}
-
-const containerAreaMap: Record<string, string> = {
-    // [StationPhysicalType.CONVEYOR]: "conveyorArea",
-    // [StationPhysicalType.ROBOT]: "robotArea",
-    [StationPhysicalType.SHELF]: "shelfArea"
-}
-
-const cx = classNames.bind(style)
 
 const Layout = (props: StocktakeLayoutProps) => {
     const { workStationEvent } = props

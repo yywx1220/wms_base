@@ -1,8 +1,6 @@
-// import IntlMessages from '@/@jumbo/utils/IntlMessages';
 import type { TabAction } from "@/pages/wms/station/tab-actions/types"
 import { TabActionModalType } from "@/pages/wms/station/tab-actions/types"
 import React from "react"
-import { Translation } from "react-i18next"
 
 import Content from "./Content"
 

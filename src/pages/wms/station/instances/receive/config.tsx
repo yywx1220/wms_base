@@ -5,8 +5,7 @@ import type { WorkStationConfig } from "@/pages/wms/station/instances/types"
 import { DebugType } from "@/pages/wms/station/instances/types"
 import { TabActionType } from "@/pages/wms/station/tab-actions/constant"
 
-import Tips from "@/pages/wms/station/instances/replenish/operations/tips"
-import Abnormal from "./custom-actions/Abnormal"
+import Tips from "./operations/tips"
 import TaskDetail from "./custom-actions/TaskDetail"
 import InstanceLayout from "./layout"
 import mockData from "./mock-events"
@@ -14,7 +13,7 @@ import PickingHandler from "./operations/pickingHandler"
 import RobotHandler from "./operations/RobotHandler"
 import OrderHandler from "./operations/orderHandler"
 
-import { StationOperationType } from "@/pages/wms/station/instances/replenish/type"
+import { StationOperationType } from "./type"
 
 export const OPERATION_MAP = {
     [StationOperationType.robotArea]: RobotHandler,

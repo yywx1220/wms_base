@@ -17,7 +17,6 @@ import {
     ArrivedContainer,
     SkuMainDataDTO
 } from "@/pages/wms/station/event-loop/types"
-// import { AbnormalReportReason } from "@/pages/wms/station/instances/replenish/operations/tips/Abnormal"
 interface AbnormalInfo {
     /** 组件ref */
     refs: RefObject<any>

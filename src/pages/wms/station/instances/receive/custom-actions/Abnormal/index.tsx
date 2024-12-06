@@ -1,7 +1,7 @@
 import type { TabAction } from "@/pages/wms/station/tab-actions/types"
 import { TabActionModalType } from "@/pages/wms/station/tab-actions/types"
 import React from "react"
-import { CustomActionType } from "@/pages/wms/station/instances/replenish/customActionType"
+import { CustomActionType } from "../../customActionType"
 import { Translation } from "react-i18next"
 
 const taskConfig = () => {

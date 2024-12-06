@@ -1,4 +1,4 @@
-import type { DefaultProps } from "@/pages/wms/station/instances/replenish/operations/defaultPage"
+import type { DefaultProps } from "./operations/defaultPage"
 
 import type { CustomActionResponse } from "../types"
 import type { RobotHandlerProps } from "./operations/RobotHandler"

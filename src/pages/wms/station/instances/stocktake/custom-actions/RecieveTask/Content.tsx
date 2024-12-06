@@ -1,9 +1,7 @@
 import schema2component from "@/utils/schema2component"
-import { CustomActionType } from "@/pages/wms/station/instances/stocktake/customActionType"
 import { debounce } from "lodash"
 import { DEBOUNCE_TIME } from "@/pages/wms/station/constant"
 import request from "@/utils/requestInterceptor"
-import WorkStation from "@/pages/wms/station"
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
@@ -138,32 +136,8 @@ const schema = {
                     label: "button.receiveInBatches",
                     level: "primary",
                     className: "batchTakeOrders",
-                    // actionType: "ajax",
-                    // api: {
-                    //     method: "POST",
-                    //     url: "/wms/stocktake/order/receive",
-                    //     dataType: "application/json",
-                    //     data: {
-                    //         stocktakeTaskIds:
-                    //             "${ARRAYMAP(selectedItems, item => item.id)}",
-                    //         workStationId: ""
-                    //     }
-                    // }
                     onClick: debounce(
                         async (e: any, props: any) => {
-                            console.log("props", props)
-                            // const { onCustomActionDispatch } = props
-                            // const { code } = await onCustomActionDispatch({
-                            //     eventCode:
-                            //         CustomActionType.STOCKTAKE_EXECUTE_TASK,
-                            //     data: {
-                            //         taskIds: props.data.ids.split(",")
-                            //     }
-                            // })
-                            // if (code !== "-1") {
-                            //     props.setModalVisible(false)
-                            //     return
-                            // }
                             request({
                                 method: "post",
                                 url: "/wms/stocktake/order/receive",
@@ -184,10 +158,6 @@ const schema = {
                                 .catch((error) => {
                                     console.log("error", error)
                                 })
-                            // if (res. !== "-1") {
-                            //     props.setModalVisible(false)
-                            //     return
-                            // }
                         },
                         DEBOUNCE_TIME,
                         { leading: false }

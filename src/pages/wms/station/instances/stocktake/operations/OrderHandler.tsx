@@ -3,8 +3,6 @@ import React from "react"
 import { WorkStationEvent } from "@/pages/wms/station/event-loop/types"
 import type { OperationProps } from "@/pages/wms/station/instances/types"
 
-import Operation from "./components/Operation"
-
 const { Title } = Typography
 
 /**

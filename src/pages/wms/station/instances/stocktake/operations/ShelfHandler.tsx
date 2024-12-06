@@ -1,9 +1,8 @@
 import type { WorkStationEvent } from "@/pages/wms/station/event-loop/types"
-import type { replenishProps } from "@/pages/wms/station/instances/replenish/type"
+import type { replenishProps } from "@/pages/wms/station/instances/receive/type"
 import type { OperationProps } from "@/pages/wms/station/instances/types"
 import MaterialRack from "@/pages/wms/station/widgets/common/Shelf"
 import React from "react"
-import { CustomActionType } from "@/pages/wms/station/instances/replenish/customActionType"
 import { Typography } from "antd"
 const { Title } = Typography
 
@@ -47,7 +46,7 @@ export const valueFilter = (
 const RobotHandler = (
     props: OperationProps<RobotHandlerProps, ContainerHandlerConfirmProps>
 ) => {
-    const { value, onCustomActionDispatch } = props
+    const { value } = props
 
     const { robotArea } = value || {}
     const arrivedContainer =
