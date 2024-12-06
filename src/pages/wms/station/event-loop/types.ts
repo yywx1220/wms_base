@@ -223,6 +223,17 @@ export interface OrderList {
     receivedSkuTypes: number
 }
 
+export interface OrderArea {
+    currentStocktakeOrder: StocktakeOrder
+}
+
+export interface StocktakeOrder {
+    taskNo: string
+    stocktakeCreateMethod: string
+    stocktakeMethod: string
+    stocktakeType: string
+}
+
 export interface WorkStationEvent<T> {
     // workStationEvent?: SworkStationInfoInterface<T>
     /** 操作台类型 */
@@ -239,6 +250,7 @@ export interface WorkStationEvent<T> {
     putWallArea: putWallArea
     /** 客户订单区域信息 */
     orderArea: OrderList[]
+    operationOrderArea: OrderArea
     /** 工作位容器信息 */
     workLocationArea: WorkLocationArea
     tips: any

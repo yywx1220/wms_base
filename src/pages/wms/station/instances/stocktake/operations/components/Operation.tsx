@@ -14,7 +14,7 @@ const Operation = (props: any) => {
             ) : (
                 <QTYFILL
                     requiredQty={activeTask?.operationTaskDTOS[0]?.requiredQty}
-                    detailId={activeTask?.operationTaskDTOS[0]?.detailId}
+                    detailId={activeTask?.operationTaskDTOS[0]?.id}
                 />
             )}
         </>

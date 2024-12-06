@@ -1,26 +1,20 @@
-import { Col, Row } from "antd"
+import {Col, Row} from "antd"
 import classNames from "classnames/bind"
-import React, { useEffect } from "react"
+import React, {useEffect} from "react"
 
-import type {
-    WorkStationEvent,
-    WorkStationInfo
-} from "@/pages/wms/station/event-loop/types"
-import type { OperationProps } from "@/pages/wms/station/instances/types"
+import type {WorkStationEvent, WorkStationInfo} from "@/pages/wms/station/event-loop/types"
+import type {OperationProps} from "@/pages/wms/station/instances/types"
 
 import ComponentWrapper from "../../component-wrapper"
-import { OPERATION_MAP } from "./config"
+import {OPERATION_MAP} from "./config"
 import style from "./index.module.scss"
-// import { valueFilter as defaultAreaFilter } from "./operations/DefaultArea"
-// import { valueFilter as selectBatchTipFilter } from "./operations/SelectBatchTip"
-// import { valueFilter as selectEmptyTipFilter } from "./operations/SelectEmptyTip"
-import { valueFilter as shelfFilter } from "./operations/ShelfHandler"
-import { valueFilter as stocktakeFilter } from "./operations/StocktakeHandler"
-import { valueFilter as createFilter } from "./operations/CreateOrder"
-import { StationOperationType, StationPhysicalType } from "./type"
+import {valueFilter as orderFilter} from "./operations/OrderHandler"
+import {valueFilter as shelfFilter} from "./operations/ShelfHandler"
+import {valueFilter as stocktakeFilter} from "./operations/StocktakeHandler"
+import {StationOperationType, StationPhysicalType} from "./type"
 import {
-    valueFilter as defaultFilter,
-    taskStatusText
+    taskStatusText,
+    valueFilter as defaultFilter
 } from "@/pages/wms/station/instances/replenish/operations/defaultPage"
 
 interface StocktakeLayoutProps extends OperationProps<any, any> {
@@ -75,7 +69,7 @@ const Layout = (props: StocktakeLayoutProps) => {
                             Component={
                                 OPERATION_MAP[StationOperationType.orderArea]
                             }
-                            valueFilter={shelfFilter}
+                            valueFilter={orderFilter}
                         />
                     </Col>
                     <Col className="rounded-lg h-full" span={8}>
