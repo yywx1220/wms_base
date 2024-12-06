@@ -4,9 +4,11 @@ import { useHistory } from "react-router"
 import { Button, Dropdown, Menu, Space, Select } from "antd"
 import { DownOutlined } from "@ant-design/icons"
 import type { MenuProps } from "antd"
+import Icon from "@ant-design/icons"
 
 import store from "@/stores"
-import logo from "@/icon/icon_logo/SentrixAutomatation-Logo(transparent).png"
+import LogoSvg from "@/icon/icon_logo/wes.svg"
+
 import Language from "@/pages/components/Language"
 import ChangePasswordForm from "@/pages/components/ChangePassword"
 
@@ -76,14 +78,17 @@ const Header = ({
                     <i className="fa fa-bars text-white" />
                 </button>
                 <div
-                    className={`cxd-Layout-brand`}
-                    // style={{ background: "#5c6ee8" }}
+                    className={`cxd-Layout-brand d-flex juftify-center items-center`}
+                    style={{ height: 50 }}
                 >
-                    <img
-                        src={logo}
-                        alt="logo"
-                        style={{ width: "150px", maxHeight: 55 }}
+                    <Icon
+                        component={() => <LogoSvg />}
+                        style={{
+                            fontSize: "32px",
+                            color: "#fff"
+                        }}
                     />
+                    <span className="text-xl font-bold pl-3">OPEN-WES</span>
                 </div>
             </div>
             <div className={`cxd-Layout-headerBar pt-2`}>

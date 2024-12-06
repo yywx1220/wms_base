@@ -22,7 +22,7 @@ const RenderAside = ({ navigations, iframeShow, iframeMenuClick }: any) => {
         <AsideNav
             key={store.asideFolded ? "folded-aside" : "aside"}
             navigations={navigations}
-            // style={{ background: "#5c6ee8" }}
+            // style={{ background: "#1890ff" }}
             renderLink={({
                 link,
                 toggleExpand,
