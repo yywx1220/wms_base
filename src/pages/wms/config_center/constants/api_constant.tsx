@@ -58,6 +58,6 @@ export const api_work_station_config_get = "post:/wms/basic/work/station/getStat
 export const api_work_station_config_add = "post:/wms/basic/work/station/createOrUpdateStationConfig"
 
 // put wall module
-export const api_put_wall_add = "post:/wms/basic/putWall/createOrUpdate"
+export const api_put_wall_add = "/wms/basic/putWall/createOrUpdate"
 export const api_put_wall_get = "post:/wms/basic/putWall/get/${id}"
 export const api_put_wall_delete = "post:/wms/basic/putWall/delete/${id}"
