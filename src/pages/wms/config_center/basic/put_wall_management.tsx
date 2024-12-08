@@ -270,7 +270,7 @@ const schema = {
                                 size: "lg",
                                 body: {
                                     type: "form",
-                                    api: formApi,
+                                    api: api_put_wall_add,
                                     initApi: api_put_wall_get,
                                     body: formBody
                                 }
