@@ -254,11 +254,7 @@ const dialog = {
     id: "wizardComponent",
     steps: [
         {
-            title: (
-                <Translation>
-                    {(t) => t("modal.selectOutboundRules")}
-                </Translation>
-            ),
+            title: "modal.selectOutboundRules",
             columnCount: 2,
             body: [
                 {
@@ -297,19 +293,9 @@ const dialog = {
                     label: "table.orderType",
                     name: "customerOrderType",
                     type: "select",
-                    required: true,
                     value: "${CustomerOrderType|filter:defaultValue:isTrue|pick:value|join}",
                     source: "${CustomerOrderType}"
                 },
-                // {
-                //     type: "select",
-                //     name: "warehouseLogicId",
-                //     // "initFetchOn": "data.warehouseAreaCode",
-                //     label: "table.logicArea",
-                //     clearable: true,
-                //     source: warehouse_logic_id,
-                //     className: "warehouseLogic"
-                // },
                 {
                     type: "select",
                     name: "ownerCode",
@@ -390,11 +376,7 @@ const dialog = {
             ]
         },
         {
-            title: (
-                <Translation>
-                    {(t) => t("modal.selectOutboundDetails")}
-                </Translation>
-            ),
+            title: "modal.selectOutboundDetails",
             wrapperComponent: "div",
             body: {
                 type: "form",
@@ -457,14 +439,6 @@ const dialog = {
                                                 "${event.data.result.list | pick:barcode | join}"
                                         }
                                     }
-                                    // {
-                                    //     actionType: "setValue",
-                                    //     componentId: "transferTable",
-                                    //     args: {
-                                    //         // value: "${event.data.result.list| CONCATENATE(pick:ownerCode, '-', pick:barcode)}"
-                                    //         value: "${event.data.result.list}"
-                                    //     }
-                                    // }
                                 ]
                             },
                             remove: {
@@ -708,11 +682,7 @@ const schema = {
                 "reload",
                 {
                     type: "export-csv",
-                    label: (
-                        <Translation>
-                            {(t) => t("button.exportOrder")}
-                        </Translation>
-                    ),
+                    label: "button.exportOrder",
                     method: "POST",
                     api: {
                         method: "POST",
@@ -725,11 +695,7 @@ const schema = {
                 },
                 {
                     type: "export-csv",
-                    label: (
-                        <Translation>
-                            {(t) => t("button.exportDetail")}
-                        </Translation>
-                    ),
+                    label: "button.exportDetail",
                     method: "POST",
                     api: {
                         method: "POST",
@@ -747,8 +713,8 @@ const schema = {
                     },
                     filename: "outbound_plan_order_details",
                     exportColumns: JSON.parse(JSON.stringify(showDetailColumns))
-                },
-                add
+                }
+                // add
             ],
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
             columns: [

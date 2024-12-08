@@ -166,16 +166,6 @@ const menuRouter = [
             () => import("@/pages/wms/config_center/basic/work_station")
         )
     },
-    {
-        path: "/wms/config-center/basic/work-location-management",
-        name: <Translation>{(t) => t("workBitsManagement.title")}</Translation>,
-        component: lazy(
-            () =>
-                import(
-                    "@/pages/wms/config_center/basic/work_location_management"
-                    )
-        )
-    },
 
     // WMS - config center - warehouse
     {
