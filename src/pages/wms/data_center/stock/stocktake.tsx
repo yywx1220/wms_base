@@ -1,17 +1,14 @@
 import schema2component from "@/utils/schema2component"
 import {
     owner_code,
-    stock_id_table,
+    stock_sku_id_table,
+    stock_sku_id_table_columns,
     warehouse_area_id,
     warehouse_logic_id
 } from "@/pages/wms/constants/select_search_api_contant"
-import { api_stocktake_order_add } from "@/pages/wms/data_center/constants/api_constant"
-import { stock_sku_id_table } from "@/pages/wms/constants/select_search_api_contant"
-import { stock_sku_id_table_columns } from "@/pages/wms/constants/select_search_api_contant"
-import { create_update_columns, yes_no_options } from "@/utils/commonContants"
-import React from "react"
-import { Translation } from "react-i18next"
-import { toast } from "amis"
+import {api_stocktake_order_add} from "@/pages/wms/data_center/constants/api_constant"
+import {create_update_columns, yes_no_options} from "@/utils/commonContants"
+import {toast} from "amis"
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
@@ -29,6 +26,11 @@ const dialog = {
                 {
                     type: "hidden",
                     name: "id"
+                },
+                {
+                    type: "hidden",
+                    name: "warehouseCode",
+                    value: warehouseCode
                 },
                 {
                     type: "hidden",
@@ -435,39 +437,48 @@ const recordColumns = [
         hidden: true
     },
     {
+        dbField: "k.stocktake_order_id",
         name: "stocktakeOrderId",
         label: "盘点单ID",
         hidden: true
     },
     {
+        dbField: "a.sku_code",
+        name: "skuCode",
+        label: "skuArea.skuCode"
+    },
+    {
+        dbField: "a.sku_name",
         name: "skuName",
         label: "skuArea.productName"
     },
     {
-        name: "warehouseCode",
-        label: "table.warehouse"
-    },
-    {
+        dbField: "k.container_code",
         name: "containerCode",
         label: "table.containerCode"
     },
     {
+        dbField: "k.container_face",
         name: "containerFace",
         label: "workLocationArea.face"
     },
     {
+        dbField: "k.container_slot_code",
         name: "containerSlotCode",
         label: "table.containerSlotCode"
     },
     {
+        dbField: "k.qty_original",
         name: "qtyOriginal",
         label: "table.inventoryQuantity"
     },
     {
+        dbField: "k.qty_stocktake",
         name: "qtyStocktake",
         label: "table.countQty"
     },
     {
+        dbField: "k.stocktake_record_status",
         name: "stocktakeRecordStatus",
         label: "table.status",
         type: "mapping",

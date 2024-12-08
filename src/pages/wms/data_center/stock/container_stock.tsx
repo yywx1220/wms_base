@@ -202,7 +202,7 @@ const schema = {
                     type: "export-excel",
                     label: "button.export",
                     api:
-                        "/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
+                        "post:/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
                         warehouseCode,
                     fileName: "container_stock"
                 }

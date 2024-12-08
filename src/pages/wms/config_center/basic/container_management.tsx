@@ -1,19 +1,8 @@
 import schema2component from "@/utils/schema2component"
-import {
-    container_spec,
-    warehouse_area_id,
-    warehouse_logic_code
-} from "@/pages/wms/constants/select_search_api_contant"
-import {
-    create_update_columns,
-    true_false_options
-} from "@/utils/commonContants"
-import {
-    api_container_batch_add,
-    api_container_change_spec,
-    api_container_get,
-    api_container_delete
-} from "@/pages/wms/config_center/constants/api_constant"
+import {container_spec, warehouse_area_id, warehouse_logic_code} from "@/pages/wms/constants/select_search_api_contant"
+import {create_update_columns, true_false_options} from "@/utils/commonContants"
+import {api_container_batch_add} from "@/pages/wms/config_center/constants/api_constant"
+
 let warehouseCode = localStorage.getItem("warehouseCode")
 
 const fromBody = [

@@ -1,4 +1,5 @@
 import schema2component from "@/utils/schema2component"
+import {create_update_columns} from "@/utils/commonContants";
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
@@ -23,11 +24,8 @@ const columns = [
             type: "select",
             source: "${StockAdjustmentOrderStatus}"
         }
-    }
-    // {
-    //     name: "description",
-    //     label: "table.description"
-    // }
+    },
+    ...create_update_columns
 ]
 
 const detailColumns = [
@@ -61,13 +59,6 @@ const detailColumns = [
         dbField: "d.qty_adjustment",
         name: "qtyAdjustment",
         label: "table.adjustQuantity"
-    },
-    {
-        dbField: "d.increase_or_decrease",
-        name: "increaseOrDecrease",
-        label: "table.increaseOrDecrease",
-        type: "mapping",
-        source: "${IncreaseOrDecrease}"
     },
     {
         dbField: "d.sku_id",
@@ -160,14 +151,6 @@ const schema = {
             },
             headerToolbar: [
                 "reload"
-                // {
-                //     type: "export-excel",
-                //     label: "button.export",
-                //     api:
-                //         "/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
-                //         warehouseCode,
-                //     fileName: "container_stock"
-                // }
             ],
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
             columns: [
@@ -214,15 +197,6 @@ const schema = {
                                     }
                                 ]
                             }
-                            // actionType: "ajax",
-                            // confirmText: "toast.confirmAjust",
-                            // confirmTitle: "toast.prompt",
-                            // api: {
-                            //     method: "post",
-                            //     url: "/wms/stock/adjustment/adjust",
-                            //     data: ["${id}"]
-                            // },
-                            // reload: "stockAdjustmentTable"
                         },
                         {
                             label: "button.close",
@@ -254,15 +228,6 @@ const schema = {
                                     }
                                 ]
                             }
-                            // actionType: "ajax",
-                            // confirmText: "toast.confirmToClose",
-                            // confirmTitle: "button.close",
-                            // api: {
-                            //     method: "post",
-                            //     url: "/wms/stock/adjustment/close",
-                            //     data: ["${id}"]
-                            // },
-                            // reload: "stockAdjustmentTable"
                         }
                     ],
                     toggled: true

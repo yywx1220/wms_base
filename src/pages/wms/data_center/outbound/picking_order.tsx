@@ -193,11 +193,7 @@ const schema = {
                 "reload",
                 {
                     type: "export-csv",
-                    label: (
-                        <Translation>
-                            {(t) => t("button.export")}
-                        </Translation>
-                    ),
+                    label: "button.export",
                     method: "POST",
                     api: {
                         method: "POST",

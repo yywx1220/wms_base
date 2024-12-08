@@ -89,8 +89,8 @@ const columns = [
         label: "table.profit"
     },
     {
-        dbField: "r.stock_abnormal_reason",
-        name: "stockAbnormalReason",
+        dbField: "r.abnormal_reason",
+        name: "abnormalReason",
         label: "table.differenceReason",
         type: "mapping",
         source: "${StockAbnormalReason}"
@@ -176,9 +176,9 @@ const schema = {
                     type: "export-excel",
                     label: "button.export",
                     api:
-                        "/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
+                        "post:/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
                         warehouseCode,
-                    fileName: "container_stock"
+                    fileName: "stock_abnormal"
                 }
             ],
             footerToolbar: ["switch-per-page", "statistics", "pagination"],
@@ -251,38 +251,38 @@ const schema = {
                                 ]
                             }
                         },
-                        {
-                            label: "button.takeInventoryAgain",
-                            type: "button",
-                            level: "link",
-                            disabledOn: "${stockAbnormalStatus !== 'NEW'}",
-                            actionType: "dialog",
-                            dialog: {
-                                title: "toast.prompt",
-                                body: "toast.confirmRecount",
-                                actions: [
-                                    {
-                                        label: "button.cancel",
-                                        actionType: "cancel",
-                                        // primary: true,
-                                        type: "button"
-                                    },
-                                    {
-                                        label: "button.confirm",
-                                        actionType: "ajax",
-                                        primary: true,
-                                        type: "button",
-                                        api: {
-                                            method: "post",
-                                            url: "/wms/stock/abnormal/record/createRecheckOrder",
-                                            data: ["${id}"]
-                                        },
-                                        close: true,
-                                        reload: "paramConfigTable"
-                                    }
-                                ]
-                            }
-                        }
+                        // {
+                        //     label: "button.takeInventoryAgain",
+                        //     type: "button",
+                        //     level: "link",
+                        //     disabledOn: "${stockAbnormalStatus !== 'NEW'}",
+                        //     actionType: "dialog",
+                        //     dialog: {
+                        //         title: "toast.prompt",
+                        //         body: "toast.confirmRecount",
+                        //         actions: [
+                        //             {
+                        //                 label: "button.cancel",
+                        //                 actionType: "cancel",
+                        //                 // primary: true,
+                        //                 type: "button"
+                        //             },
+                        //             {
+                        //                 label: "button.confirm",
+                        //                 actionType: "ajax",
+                        //                 primary: true,
+                        //                 type: "button",
+                        //                 api: {
+                        //                     method: "post",
+                        //                     url: "/wms/stock/abnormal/record/createRecheckOrder",
+                        //                     data: ["${id}"]
+                        //                 },
+                        //                 close: true,
+                        //                 reload: "paramConfigTable"
+                        //             }
+                        //         ]
+                        //     }
+                        // }
                     ],
                     toggled: true
                 }

@@ -1,5 +1,5 @@
 import schema2component from "@/utils/schema2component"
-import { create_update_columns } from "@/utils/commonContants"
+import {create_update_columns} from "@/utils/commonContants"
 
 let warehouseCode = localStorage.getItem("warehouseCode")
 
@@ -23,6 +23,11 @@ const columns = [
         searchable: true
     },
     {
+        dbField: "msmd.sku_code",
+        name: "skuCode",
+        label: "table.skuCode"
+    },
+    {
         dbField: "msmd.sku_name",
         name: "skuName",
         label: "table.skuName"
@@ -40,8 +45,9 @@ const columns = [
         hidden: true
     },
     {
-        name: "keywords",
-        label: "table.shelfCoding",
+        dbField: "wcst.container_code",
+        name: "containerCode",
+        label: "table.containerCode",
         searchable: true,
         hidden: true
     },
@@ -123,12 +129,13 @@ const columns = [
     }
 ]
 
-const searchIdentity1 = "WContainerStockTransaction1"
-const searchIdentity2 = "WContainerStockTransaction2"
+const searchIdentity = "WContainerStockTransaction"
 const showColumns = columns
 
 const searchObject = {
-    tables: "w_container_stock_transaction wcst left join w_container_stock wcs on wcs.id = wcst.container_stock_id left join m_sku_barcode_data msbd on wcs.sku_id = msbd.sku_id left join m_sku_main_data msmd on msmd.id = wcs.sku_id",
+    tables: "w_container_stock_transaction wcst " +
+        "left join m_sku_barcode_data msbd on msbd.sku_id = wcst.sku_id " +
+        "left join m_sku_main_data msmd on msmd.id = wcst.sku_id",
     orderBy: "wcst.create_time desc"
 }
 
@@ -147,36 +154,12 @@ const schema = {
                 url:
                     "/search/search?page=${page}&perPage=${perPage}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
                     warehouseCode,
-                dataType: "application/json",
-                requestAdaptor: function (api: any, context: any) {
-                    const { keywords, page, perPage } = api.data
-                    if (keywords) {
-                        return {
-                            ...api,
-                            url: `/search/search?keywords=${keywords}&page=${page}&perPage=${perPage}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=${warehouseCode}`,
-                            data: {
-                                ...api.data,
-                                searchObject: {
-                                    ...searchObject,
-                                    where: "wcst.source_container_code = :keywords or wcst.target_container_code = :keywords"
-                                },
-                                searchIdentity: searchIdentity1
-                            }
-                        }
-                    }
-                    return {
-                        ...api,
-                        data: {
-                            ...api.data,
-                            searchObject,
-                            searchIdentity: searchIdentity2
-                        }
-                    }
-                }
+                dataType: "application/json"
             },
-
             defaultParams: {
-                showColumns: showColumns
+                searchIdentity: searchIdentity,
+                showColumns: showColumns,
+                searchObject: searchObject
             },
             autoFillHeight: true,
             autoGenerateFilter: {
@@ -189,7 +172,7 @@ const schema = {
                     type: "export-excel",
                     label: "button.export",
                     api:
-                        "/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
+                        "post:/search/search?page=${1}&perPage=${100000}&createTime-op=bt&warehouseCode-op=eq&warehouseCode=" +
                         warehouseCode,
                     fileName: "stock_records"
                 }

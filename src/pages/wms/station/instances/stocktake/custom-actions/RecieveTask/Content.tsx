@@ -90,7 +90,7 @@ const detailDialog = {
             name: "stocktakeTaskDetailTable",
             api: {
                 method: "POST",
-                url: "/search/search?page=${page}&perPage=${perPage}&stocktakeTaskId-eq=${id}",
+                url: "/search/search?page=${page}&perPage=${perPage}&&stocktakeTaskId=${id}&stocktakeTaskId-op=eq",
                 dataType: "application/json"
             },
             defaultParams: {

@@ -27,24 +27,24 @@ export default function request(config: AxiosRequestConfig) {
 
     let data = config.data
 
-    if (
-        config.url.startsWith("/gw/wms") &&
-        (config.method == "post" || config.method == "POST") &&
-        config.data !== undefined &&
-        !Array.isArray(data)
-    ) {
-        if (config.headers["Content-Type"] == "application/json") {
-            if (typeof config.data === "string") {
-                data = {...JSON.parse(config.data)}
-            }
-            if (data["warehouseCode"] === null || data["warehouseCode"] === undefined || data["warehouseCode"] === "") {
-                data["warehouseCode"] = warehouseCode
-            }
-            config.data = JSON.stringify(data)
-        } else {
-            config.data = warehouseCode
-        }
-    }
+    // if (
+    //     config.url.startsWith("/gw/wms") &&
+    //     (config.method == "post" || config.method == "POST") &&
+    //     config.data !== undefined &&
+    //     !Array.isArray(JSON.parse(config.data))
+    // ) {
+    //     if (config.headers["Content-Type"] == "application/json") {
+    //         if (typeof config.data === "string") {
+    //             data = {...JSON.parse(config.data)}
+    //         }
+    //         if (data["warehouseCode"] === null || data["warehouseCode"] === undefined || data["warehouseCode"] === "") {
+    //             data["warehouseCode"] = warehouseCode
+    //         }
+    //         config.data = JSON.stringify(data)
+    //     } else {
+    //         config.data = warehouseCode
+    //     }
+    // }
     const __ = makeTranslator("zh-CN")
     return new Promise((resolve, reject) => {
         let onSuccess = async (res: any) => {
